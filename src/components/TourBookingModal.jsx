@@ -27,6 +27,10 @@ export default function TourBookingModal({ isOpen, onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.parentName || !formData.phone || !formData.email || !formData.childName) {
+      setSubmitError("Please fill in all required fields including parent name, phone, email, and child's name.");
+      return;
+    }
     setIsSubmitting(true);
     setSubmitError(null);
 
@@ -138,8 +142,25 @@ export default function TourBookingModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              {/* Child Info Grid */}
+              {/* Email Address & Child Name */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-bold text-brand-navy mb-1">
+                    Email Address *
+                  </label>
+                  <div className="relative">
+                    <Mail className="w-4 h-4 text-brand-navy/40 absolute left-3 top-3 pointer-events-none" />
+                    <input
+                      type="email"
+                      required
+                      placeholder="parent@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-brand-navy/15 focus:border-brand-turquoise focus:ring-1 focus:ring-brand-turquoise outline-none bg-white"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-[11px] font-bold text-brand-navy mb-1">
                     Child's Full Name *
@@ -147,13 +168,16 @@ export default function TourBookingModal({ isOpen, onClose }) {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Aarav"
+                    placeholder="e.g. Aarav Sharma"
                     value={formData.childName}
                     onChange={(e) => setFormData({ ...formData, childName: e.target.value })}
                     className="w-full px-3 py-2 text-xs rounded-xl border border-brand-navy/15 focus:border-brand-turquoise focus:ring-1 focus:ring-brand-turquoise outline-none bg-white"
                   />
                 </div>
+              </div>
 
+              {/* Child Info & Center */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11px] font-bold text-brand-navy mb-1">
                     Child's Age (Years) *
@@ -173,29 +197,10 @@ export default function TourBookingModal({ isOpen, onClose }) {
                     <option value="5.5+">5.5+ Years (Senior KG / Daycare)</option>
                   </select>
                 </div>
-              </div>
-
-              {/* Preferred Date & Campus */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-[11px] font-bold text-brand-navy mb-1">
-                    Preferred Visit Date *
-                  </label>
-                  <div className="relative">
-                    <Calendar className="w-4 h-4 text-brand-navy/40 absolute left-3 top-3 pointer-events-none" />
-                    <input
-                      type="date"
-                      required
-                      value={formData.preferredDate}
-                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-brand-navy/15 focus:border-brand-turquoise focus:ring-1 focus:ring-brand-turquoise outline-none bg-white"
-                    />
-                  </div>
-                </div>
 
                 <div>
                   <label className="block text-[11px] font-bold text-brand-navy mb-1">
-                    Select Center / Branch
+                    Select Center / Branch *
                   </label>
                   <div className="relative">
                     <MapPin className="w-4 h-4 text-brand-navy/40 absolute left-3 top-3 pointer-events-none" />
@@ -210,6 +215,23 @@ export default function TourBookingModal({ isOpen, onClose }) {
                       <option value="Virtual Walkthrough (Video Call)">Virtual Walkthrough (Video Call)</option>
                     </select>
                   </div>
+                </div>
+              </div>
+
+              {/* Preferred Date */}
+              <div>
+                <label className="block text-[11px] font-bold text-brand-navy mb-1">
+                  Preferred Visit Date *
+                </label>
+                <div className="relative">
+                  <Calendar className="w-4 h-4 text-brand-navy/40 absolute left-3 top-3 pointer-events-none" />
+                  <input
+                    type="date"
+                    required
+                    value={formData.preferredDate}
+                    onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+                    className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-brand-navy/15 focus:border-brand-turquoise focus:ring-1 focus:ring-brand-turquoise outline-none bg-white"
+                  />
                 </div>
               </div>
 
@@ -300,10 +322,14 @@ export default function TourBookingModal({ isOpen, onClose }) {
                 <span className="text-brand-navy/60">Contact Confirmed:</span>
                 <span className="font-bold text-brand-navy">{formData.phone}</span>
               </div>
+              <div className="flex justify-between">
+                <span className="text-brand-navy/60">Email:</span>
+                <span className="font-bold text-brand-navy truncate max-w-[220px]">{formData.email}</span>
+              </div>
             </div>
 
             <div className="text-[11px] text-brand-navy/60">
-              A confirmation and visit reminder have been logged for {formData.phone}.
+              A confirmation and visit reminder have been logged for {formData.phone} and {formData.email}.
             </div>
 
             <button

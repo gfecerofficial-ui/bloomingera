@@ -63,8 +63,8 @@ export default function AdmissionsPage({ onOpenTourModal }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.parentName || !formData.phone) {
-      alert("Please provide parent name and phone number.");
+    if (!formData.parentName || !formData.phone || !formData.childName) {
+      setSubmitError("Please provide parent name, phone number, and child's name.");
       return;
     }
     setIsSubmitting(true);
@@ -292,10 +292,11 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-white/80 mb-2 uppercase">Child's Name</label>
+                    <label className="block text-xs font-bold text-white/80 mb-2 uppercase">Child's Full Name *</label>
                     <input
                       type="text"
-                      placeholder="Child's first name"
+                      required
+                      placeholder="e.g. Aarav Sharma"
                       value={formData.childName}
                       onChange={(e) => setFormData({ ...formData, childName: e.target.value })}
                       className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#8ed727]"
