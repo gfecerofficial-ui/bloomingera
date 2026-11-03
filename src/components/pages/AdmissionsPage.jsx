@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Compass, MapPin, Phone, Mail, Calendar, CheckCircle2, ArrowRight,
-  ShieldCheck, Heart, Sparkles, Clock, User, Award
+  ShieldCheck, Heart, Sparkles, Clock, User, Award, Loader2, Copy, Check
 } from 'lucide-react';
 import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
+import { submitForm } from '../../services/formService';
 
 const ADMISSION_STEPS = [
   {
@@ -50,19 +51,52 @@ export default function AdmissionsPage({ onOpenTourModal }) {
     phone: '',
     email: '',
     childName: '',
-    programme: 'Nursery (3+)',
+    programme: 'Nursery (Ages 3–4)',
     city: 'Bengaluru / Central Campus',
     notes: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [enquiryId, setEnquiryId] = useState(null);
+  const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.parentName || !formData.phone) {
       alert("Please provide parent name and phone number.");
       return;
     }
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitForm({
+      formType: 'admission',
+      parentName: formData.parentName,
+      phone: formData.phone,
+      email: formData.email,
+      childName: formData.childName,
+      programme: formData.programme,
+      city: formData.city,
+      notes: formData.notes || ''
+    });
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      setEnquiryId(result.enquiryId || `AA${Date.now().toString().slice(-6)}`);
+      setSubmitted(true);
+    } else {
+      setSubmitError(result.error || 'Failed to submit admission enquiry. Please try again.');
+    }
+  };
+
+  const handleCopyId = () => {
+    if (enquiryId) {
+      navigator.clipboard.writeText(enquiryId);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
@@ -187,12 +221,28 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                 <div className="w-16 h-16 rounded-full bg-[#8ed727] text-[#091E3A] flex items-center justify-center mx-auto text-2xl font-black">
                   ✓
                 </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 border border-white/30">
+                  <span className="text-xs font-mono font-bold text-white tracking-wider">
+                    Enquiry ID: {enquiryId}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleCopyId}
+                    title="Copy ID"
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    {copied ? <Check className="w-3.5 h-3.5 text-[#8ed727]" /> : <Copy className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
                 <h3 className="text-2xl font-extrabold text-white">Thank You, {formData.parentName}!</h3>
                 <p className="text-sm text-white/85 max-w-md mx-auto font-medium">
-                  We have received your admission enquiry for <b>{formData.childName || "your child"}</b> ({formData.programme}). Our Admissions Coordinator will call you shortly at <b>{formData.phone}</b> to schedule your discovery tour.
+                  We have logged your admission enquiry for <b>{formData.childName || "your child"}</b> ({formData.programme}) under ID <b>{enquiryId}</b>. Our Admissions Coordinator will call you shortly at <b>{formData.phone}</b> to schedule your discovery tour.
                 </p>
                 <button
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => {
+                    setSubmitted(false);
+                    setEnquiryId(null);
+                  }}
                   className="px-6 py-2.5 rounded-xl bg-white/20 text-white font-bold text-xs hover:bg-white/30"
                 >
                   Submit Another Enquiry
@@ -200,6 +250,11 @@ export default function AdmissionsPage({ onOpenTourModal }) {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {submitError && (
+                  <div className="p-4 rounded-2xl bg-rose-500/20 border border-rose-300 text-white text-xs font-semibold">
+                    {submitError}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-bold text-white/80 mb-2 uppercase">Parent's Full Name *</label>
@@ -274,10 +329,20 @@ export default function AdmissionsPage({ onOpenTourModal }) {
 
                 <button
                   type="submit"
-                  className="w-full btn-lime py-4 rounded-2xl text-sm font-black shadow-xl flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full btn-lime py-4 rounded-2xl text-sm font-black shadow-xl flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <span>Submit Admission Enquiry</span>
-                  <ArrowRight className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span>Submitting Admission Enquiry...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit Admission Enquiry</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}

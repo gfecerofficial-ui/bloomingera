@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { X, Sparkles, Calendar, Clock, MapPin, CheckCircle2, User, Phone, Mail, ArrowRight } from 'lucide-react';
+import { X, Sparkles, Calendar, Clock, MapPin, CheckCircle2, User, Phone, Mail, ArrowRight, Loader2, Copy, Check } from 'lucide-react';
 import { BRAND, PROGRAMMES } from '../data/websiteContent';
+import { submitForm } from '../services/formService';
 
 export default function TourBookingModal({ isOpen, onClose }) {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [enquiryId, setEnquiryId] = useState(null);
+  const [copied, setCopied] = useState(false);
+
   const [formData, setFormData] = useState({
     parentName: '',
     phone: '',
@@ -19,13 +25,46 @@ export default function TourBookingModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setStep(2);
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitForm({
+      formType: 'tour',
+      parentName: formData.parentName,
+      phone: formData.phone,
+      email: formData.email,
+      childName: formData.childName,
+      childAge: formData.childAge,
+      campus: formData.location,
+      date: formData.preferredDate,
+      timeSlot: formData.timeSlot,
+      notes: formData.interests?.join(', ') || ''
+    });
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      setEnquiryId(result.enquiryId || `TA${Date.now().toString().slice(-6)}`);
+      setStep(2);
+    } else {
+      setSubmitError(result.error || 'Unable to book tour right now. Please check your connection and try again.');
+    }
+  };
+
+  const handleCopyId = () => {
+    if (enquiryId) {
+      navigator.clipboard.writeText(enquiryId);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   const handleReset = () => {
     setStep(1);
+    setEnquiryId(null);
+    setSubmitError(null);
     onClose();
   };
 
@@ -185,12 +224,28 @@ export default function TourBookingModal({ isOpen, onClose }) {
                 </p>
               </div>
 
+              {submitError && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                  {submitError}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="btn-lime w-full py-3 rounded-2xl text-xs font-black flex items-center justify-center gap-2 shadow-lg"
+                disabled={isSubmitting}
+                className="btn-lime w-full py-3 rounded-2xl text-xs font-black flex items-center justify-center gap-2 shadow-lg disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
               >
-                <span>Confirm Tour Reservation</span>
-                <ArrowRight className="w-4 h-4 text-brand-navy" />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-brand-navy" />
+                    <span>Booking Your Tour...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Confirm Tour Reservation</span>
+                    <ArrowRight className="w-4 h-4 text-brand-navy" />
+                  </>
+                )}
               </button>
             </form>
           </div>
@@ -202,19 +257,33 @@ export default function TourBookingModal({ isOpen, onClose }) {
             </div>
 
             <div>
-              <span className="text-[10px] font-mono font-bold uppercase text-brand-turquoise-dark px-2.5 py-0.5 rounded-full bg-brand-turquoise/20">
-                Booking ID: #BE-TOUR-2026-{Math.floor(1000 + Math.random() * 9000)}
-              </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-turquoise/15 border border-brand-turquoise/30">
+                <span className="text-[11px] font-mono font-extrabold uppercase text-brand-navy tracking-wider">
+                  Enquiry ID: {enquiryId}
+                </span>
+                <button
+                  type="button"
+                  onClick={handleCopyId}
+                  title="Copy ID"
+                  className="text-brand-navy/60 hover:text-brand-navy transition-colors"
+                >
+                  {copied ? <Check className="w-3.5 h-3.5 text-brand-lime" /> : <Copy className="w-3.5 h-3.5" />}
+                </button>
+              </div>
               <h3 className="text-2xl font-extrabold text-brand-navy mt-2">
                 Tour Reserved Successfully!
               </h3>
               <p className="text-xs text-brand-navy/70 mt-1 max-w-sm mx-auto">
-                Thank you, <strong className="text-brand-navy">{formData.parentName || 'Parent'}</strong>! We are excited to welcome <strong className="text-brand-navy">{formData.childName || 'your child'}</strong> to Blooming Era.
+                Thank you, <strong className="text-brand-navy">{formData.parentName || 'Parent'}</strong>! We have saved your visit in our admissions log and sent an alert to our campus team.
               </p>
             </div>
 
             {/* Tour Ticket Summary */}
             <div className="p-4 rounded-2xl bg-brand-navy/5 border border-brand-navy/10 text-left text-xs space-y-2 max-w-sm mx-auto">
+              <div className="flex justify-between">
+                <span className="text-brand-navy/60">Booking ID:</span>
+                <span className="font-mono font-bold text-brand-navy">{enquiryId}</span>
+              </div>
               <div className="flex justify-between">
                 <span className="text-brand-navy/60">Campus:</span>
                 <span className="font-bold text-brand-navy">{formData.location}</span>
@@ -225,7 +294,7 @@ export default function TourBookingModal({ isOpen, onClose }) {
               </div>
               <div className="flex justify-between">
                 <span className="text-brand-navy/60">Time Window:</span>
-                <span className="font-bold text-brand-navy">10:30 AM – 11:30 AM</span>
+                <span className="font-bold text-brand-navy">{formData.timeSlot}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-brand-navy/60">Contact Confirmed:</span>
@@ -234,7 +303,7 @@ export default function TourBookingModal({ isOpen, onClose }) {
             </div>
 
             <div className="text-[11px] text-brand-navy/60">
-              A reminder WhatsApp and location pin have been dispatched to {formData.phone}.
+              A confirmation and visit reminder have been logged for {formData.phone}.
             </div>
 
             <button

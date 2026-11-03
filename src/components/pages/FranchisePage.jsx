@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   TrendingUp, ShieldCheck, Award, Layers, Users, Building, CheckCircle2,
-  Phone, Mail, ArrowRight, DollarSign, Sparkles, FileText, Check, ChevronRight
+  Phone, Mail, ArrowRight, DollarSign, Sparkles, FileText, Check, ChevronRight,
+  Loader2, Copy
 } from 'lucide-react';
 import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
+import { submitForm } from '../../services/formService';
 
 const FOUR_PILLARS = [
   {
@@ -53,15 +55,48 @@ export default function FranchisePage({ onOpenTourModal }) {
     investmentBudget: '₹10–15 Lakh',
     propertyStatus: 'Rented space ready'
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [enquiryId, setEnquiryId] = useState(null);
+  const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) {
       alert("Please provide your name and phone number.");
       return;
     }
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const result = await submitForm({
+      formType: 'franchise',
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      city: formData.city,
+      investmentBudget: formData.investmentBudget,
+      propertyStatus: formData.propertyStatus,
+      notes: `Budget: ${formData.investmentBudget} | Space: ${formData.propertyStatus}`
+    });
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      setEnquiryId(result.enquiryId || `FA${Date.now().toString().slice(-6)}`);
+      setSubmitted(true);
+    } else {
+      setSubmitError(result.error || 'Failed to submit franchise request. Please try again.');
+    }
+  };
+
+  const handleCopyId = () => {
+    if (enquiryId) {
+      navigator.clipboard.writeText(enquiryId);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
@@ -251,13 +286,40 @@ export default function FranchisePage({ onOpenTourModal }) {
                 <div className="w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center mx-auto text-2xl font-black">
                   ✓
                 </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200/80 border border-slate-300">
+                  <span className="text-xs font-mono font-bold text-[#091E3A] tracking-wider">
+                    Application ID: {enquiryId}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleCopyId}
+                    title="Copy ID"
+                    className="text-slate-500 hover:text-slate-900 transition-colors"
+                  >
+                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
                 <h3 className="text-2xl font-extrabold text-[#091E3A]">Franchise Request Received</h3>
                 <p className="text-sm text-slate-600 max-w-md mx-auto font-medium">
-                  Thank you, <b>{formData.name}</b>. Our Head of Franchise Expansion will contact you at <b>{formData.phone}</b> within 24 hours to share our confidential Franchise Information Memorandum (FIM) and schedule a discovery call.
+                  Thank you, <b>{formData.name}</b>. Your franchise request is logged under ID <b>{enquiryId}</b>. Our Head of Franchise Expansion will contact you at <b>{formData.phone}</b> within 24 hours to share our confidential Franchise Information Memorandum (FIM) and schedule a discovery call.
                 </p>
+                <button
+                  onClick={() => {
+                    setSubmitted(false);
+                    setEnquiryId(null);
+                  }}
+                  className="px-6 py-2.5 rounded-xl bg-slate-200 text-[#091E3A] font-bold text-xs hover:bg-slate-300 transition-colors"
+                >
+                  Submit Another Request
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {submitError && (
+                  <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                    {submitError}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-2 uppercase">Your Name *</label>
@@ -337,10 +399,20 @@ export default function FranchisePage({ onOpenTourModal }) {
 
                 <button
                   type="submit"
-                  className="w-full btn-lime py-4 rounded-2xl text-sm font-black shadow-xl flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full btn-lime py-4 rounded-2xl text-sm font-black shadow-xl flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <span>Request Franchise Information Kit</span>
-                  <ArrowRight className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span>Submitting Franchise Request...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Request Franchise Information Kit</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}
