@@ -139,3 +139,109 @@ body {
 .glow-ring {
   animation: pulseGlowRing 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* ========================================================================= */
+/* SUBTLE FLOWING SAND ANIMATIONS FOR STATS BOXES                             */
+/* ========================================================================= */
+@keyframes sandFlowForward {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-25%, -6px, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes sandFlowReverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  50% {
+    transform: translate3d(-25%, 5px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sandDriftBreeze {
+  0% {
+    transform: translate3d(0, 0, 0) scaleY(1);
+  }
+  50% {
+    transform: translate3d(-15%, -4px, 0) scaleY(1.08);
+  }
+  100% {
+    transform: translate3d(-30%, 2px, 0) scaleY(0.96);
+  }
+}
+
+@keyframes sandShimmerShift {
+  0%, 100% {
+    opacity: 0.35;
+    transform: translate3d(-10%, -10%, 0) scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translate3d(10%, 10%, 0) scale(1.12);
+  }
+}
+
+.animate-sand-forward {
+  animation: sandFlowForward 18s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: transform;
+}
+
+.animate-sand-reverse {
+  animation: sandFlowReverse 24s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: transform;
+}
+
+.animate-sand-drift {
+  animation: sandDriftBreeze 32s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-sand-shimmer {
+  animation: sandShimmerShift 10s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* ========================================================================= */
+/* SUBTLE FLOWING WAVE DIVIDER ANIMATIONS                                    */
+/* ========================================================================= */
+@keyframes waveFlowForward {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes waveFlowReverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-wave-main {
+  animation: waveFlowForward 22s linear infinite;
+  will-change: transform;
+}
+
+.animate-wave-slow {
+  animation: waveFlowForward 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-wave-reverse {
+  animation: waveFlowReverse 36s linear infinite;
+  will-change: transform;
+}

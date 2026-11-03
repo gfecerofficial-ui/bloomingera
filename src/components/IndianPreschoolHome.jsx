@@ -26,25 +26,51 @@ const CHILD_PHOTOS = {
   coloredPencilsCraft: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=90",
 };
 
-// Flowy Wave SVG Divider Component
+// Flowy Wave SVG Divider Component with Subtle Continuous Flowing Animation
 function FlowyWaveDivider({ flip = false, fill = "#FFFFFF", accentColor = "#60C8D4" }) {
   return (
-    <div className={`w-full overflow-hidden leading-none select-none pointer-events-none ${flip ? 'rotate-180' : ''}`}>
-      <svg
-        className="relative block w-full h-12 sm:h-20 lg:h-24"
-        viewBox="0 0 1440 120"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0,40 C240,115 480,-20 720,45 C960,110 1200,5 1440,55 L1440,120 L0,120 Z"
-          fill={accentColor}
-          fillOpacity="0.18"
-        />
-        <path
-          d="M0,65 C320,125 640,5 960,70 C1180,115 1320,40 1440,75 L1440,120 L0,120 Z"
-          fill={fill}
-        />
-      </svg>
+    <div className={`w-full overflow-hidden leading-none select-none pointer-events-none relative ${flip ? 'rotate-180' : ''}`}>
+      <div className="relative w-full h-12 sm:h-20 lg:h-24 overflow-hidden">
+        
+        {/* Layer 1: Ambient Accent Drift Wave */}
+        <svg
+          className="absolute top-0 left-0 w-[200%] h-full animate-wave-slow will-change-transform"
+          viewBox="0 0 2880 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,45 C360,110 720,-10 1080,55 C1260,90 1350,20 1440,45 C1800,110 2160,-10 2520,55 C2700,90 2790,20 2880,45 L2880,120 L0,120 Z"
+            fill={accentColor}
+            fillOpacity="0.14"
+          />
+        </svg>
+
+        {/* Layer 2: Counter-Flowing Delicate Shimmer Wave */}
+        <svg
+          className="absolute top-0 left-0 w-[200%] h-full animate-wave-reverse will-change-transform"
+          viewBox="0 0 2880 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,35 C280,5 560,95 840,30 C1120,-15 1280,65 1440,35 C1720,5 2000,95 2280,30 C2560,-15 2720,65 2880,35 L2880,120 L0,120 Z"
+            fill={accentColor}
+            fillOpacity="0.20"
+          />
+        </svg>
+
+        {/* Layer 3: Main Foreground Fill Wave */}
+        <svg
+          className="absolute top-0 left-0 w-[200%] h-full animate-wave-main will-change-transform"
+          viewBox="0 0 2880 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,65 C320,125 640,15 960,75 C1180,115 1320,40 1440,65 C1760,125 2080,15 2400,75 C2620,115 2760,40 2880,65 L2880,120 L0,120 Z"
+            fill={fill}
+          />
+        </svg>
+
+      </div>
     </div>
   );
 }
@@ -56,6 +82,11 @@ const HERO_SLIDES = [
     tag: "Slide 01 • The Brand Experience",
     smallHeading: "THE FUTURE BLOOMS HERE",
     headline: "Little Minds. Limitless Possibilities.",
+    headlineLines: [
+      { text: "Little Minds." },
+      { text: "Limitless" },
+      { text: "Possibilities.", highlight: true }
+    ],
     description: "Discover a world where curiosity leads, learning comes alive, and every child grows with confidence, creativity and care.",
     primaryBtn: "Explore Blooming Era",
     primaryHref: "#welcome",
@@ -72,6 +103,11 @@ const HERO_SLIDES = [
     tag: "Slide 02 • No-Book Learning",
     smallHeading: "BEYOND BOOKS. INTO THE WORLD.",
     headline: "Less Memorising. More Meaningful Learning.",
+    headlineLines: [
+      { text: "Less Memorising." },
+      { text: "More Meaningful" },
+      { text: "Learning.", highlight: true }
+    ],
     description: "Real experiences, discovery labs, purposeful play and strong academic foundations — because children learn best when learning makes sense.",
     primaryBtn: "Discover Our Learning Philosophy",
     primaryHref: "#philosophy",
@@ -88,6 +124,11 @@ const HERO_SLIDES = [
     tag: "Slide 03 • Franchise Opportunity",
     smallHeading: "FRANCHISE OPPORTUNITY",
     headline: "Build a Preschool. Shape a Generation.",
+    headlineLines: [
+      { text: "Build a Preschool." },
+      { text: "Shape a" },
+      { text: "Generation.", highlight: true }
+    ],
     description: "Build a legacy in education with our distinctive preschool franchise model, future-ready learning and structured 360° support.",
     primaryBtn: "Explore Franchise Opportunities",
     primaryHref: "#franchise-opportunity",
@@ -150,35 +191,87 @@ const WHY_PARENTS_CARDS = [
   }
 ];
 
-// SECTION 05: STATISTICS COUNTER
+// SECTION 05: STATISTICS COUNTER (4 DISTINCT LOGO PALETTE THEMES WITH FLOWING SAND EFFECT)
 const STATS_ITEMS = [
   {
     number: "5",
     label: "Foundational Learning Years",
     sub: "(Ages 3–8) NCF-FS Continuum",
-    color: "#8ed727",
-    icon: GraduationCap
+    icon: GraduationCap,
+    theme: {
+      id: "lime",
+      bgGradient: "linear-gradient(135deg, #8ed727 0%, #7ec71e 50%, #99e22f 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.32)",
+      waveColor2: "rgba(105, 175, 18, 0.28)",
+      waveColor3: "rgba(255, 255, 255, 0.20)",
+      sandShimmer: "rgba(235, 255, 190, 0.45)",
+      borderColor: "rgba(255, 255, 255, 0.65)",
+      shadow: "0 22px 55px rgba(142, 215, 39, 0.35)",
+      textColor: "#091E3A",
+      subTextColor: "rgba(9, 30, 58, 0.82)",
+      iconBg: "#091E3A",
+      iconColor: "#8ed727",
+    }
   },
   {
     number: "8",
     label: "Interconnected Learning Dimensions",
     sub: "Holistic Child Growth",
-    color: "#60C8D4",
-    icon: Compass
+    icon: Compass,
+    theme: {
+      id: "cyan",
+      bgGradient: "linear-gradient(135deg, #02c9fe 0%, #05b8e9 50%, #36d6fe 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.34)",
+      waveColor2: "rgba(2, 130, 195, 0.26)",
+      waveColor3: "rgba(255, 255, 255, 0.20)",
+      sandShimmer: "rgba(210, 248, 255, 0.45)",
+      borderColor: "rgba(255, 255, 255, 0.65)",
+      shadow: "0 22px 55px rgba(2, 201, 254, 0.35)",
+      textColor: "#091E3A",
+      subTextColor: "rgba(9, 30, 58, 0.82)",
+      iconBg: "#091E3A",
+      iconColor: "#02c9fe",
+    }
   },
   {
     number: "12",
     label: "Future-Ready Learning Themes",
     sub: "Real-World Experiential Units",
-    color: "#8ed727",
-    icon: Sparkles
+    icon: Sparkles,
+    theme: {
+      id: "yellow",
+      bgGradient: "linear-gradient(135deg, #fece13 0%, #f7be0b 50%, #fedd46 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.35)",
+      waveColor2: "rgba(215, 150, 0, 0.24)",
+      waveColor3: "rgba(255, 255, 255, 0.22)",
+      sandShimmer: "rgba(255, 252, 215, 0.5)",
+      borderColor: "rgba(255, 255, 255, 0.65)",
+      shadow: "0 22px 55px rgba(254, 206, 19, 0.35)",
+      textColor: "#091E3A",
+      subTextColor: "rgba(9, 30, 58, 0.82)",
+      iconBg: "#091E3A",
+      iconColor: "#fece13",
+    }
   },
   {
     number: "360°",
     label: "Holistic Learning Approach",
     sub: "Mind, Heart, Body & Spirit",
-    color: "#60C8D4",
-    icon: Sun
+    icon: Sun,
+    theme: {
+      id: "rose",
+      bgGradient: "linear-gradient(135deg, #fa0672 0%, #e20063 50%, #fc3c91 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.28)",
+      waveColor2: "rgba(160, 0, 68, 0.26)",
+      waveColor3: "rgba(255, 255, 255, 0.18)",
+      sandShimmer: "rgba(255, 220, 238, 0.45)",
+      borderColor: "rgba(255, 255, 255, 0.55)",
+      shadow: "0 22px 55px rgba(250, 6, 114, 0.35)",
+      textColor: "#FFFFFF",
+      subTextColor: "rgba(255, 255, 255, 0.90)",
+      iconBg: "#FFFFFF",
+      iconColor: "#fa0672",
+    }
   }
 ];
 
@@ -288,7 +381,7 @@ const PROGRAMMES_LIST = [
   }
 ];
 
-// SECTION 08: KINDERMAGIC PRIMEX 5-STEP FLOW
+// SECTION 08: KINDERMAGIC PRIMEX 5-STEP FLOW (LOGO-INSPIRED FLOWING SAND THEMES)
 const PRIMEX_STEPS = [
   {
     step: "01",
@@ -296,7 +389,20 @@ const PRIMEX_STEPS = [
     summary: "Discover ideas through hands-on experiences.",
     detail: "Children touch, manipulate and investigate real-world sensory materials, wooden blocks, magnifiers and story props to spark natural curiosity.",
     image: CHILD_PHOTOS.toddlerBeadMaze,
-    color: "#8ed727"
+    color: "#8ed727",
+    theme: {
+      bgGradient: "linear-gradient(135deg, #8ed727 0%, #7ec71e 50%, #99e22f 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.32)",
+      waveColor2: "rgba(105, 175, 18, 0.28)",
+      sandShimmer: "rgba(235, 255, 190, 0.45)",
+      borderColor: "rgba(255, 255, 255, 0.65)",
+      shadow: "0 14px 35px rgba(142, 215, 39, 0.28)",
+      textColor: "#091E3A",
+      subTextColor: "rgba(9, 30, 58, 0.82)",
+      pillBg: "#091E3A",
+      pillText: "#8ed727",
+      arrowColor: "#091E3A",
+    }
   },
   {
     step: "02",
@@ -304,7 +410,20 @@ const PRIMEX_STEPS = [
     summary: "Connect concepts with real life.",
     detail: "Instead of only reading about plants or numbers, children grow seedlings, run pretend markets and experiment in our Wonder Lab.",
     image: CHILD_PHOTOS.natureExplorerChild,
-    color: "#60C8D4"
+    color: "#02C9FE",
+    theme: {
+      bgGradient: "linear-gradient(135deg, #02c9fe 0%, #05b8e9 50%, #36d6fe 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.34)",
+      waveColor2: "rgba(2, 130, 195, 0.26)",
+      sandShimmer: "rgba(210, 248, 255, 0.45)",
+      borderColor: "rgba(255, 255, 255, 0.65)",
+      shadow: "0 14px 35px rgba(2, 201, 254, 0.28)",
+      textColor: "#091E3A",
+      subTextColor: "rgba(9, 30, 58, 0.82)",
+      pillBg: "#091E3A",
+      pillText: "#02c9fe",
+      arrowColor: "#091E3A",
+    }
   },
   {
     step: "03",
@@ -312,7 +431,20 @@ const PRIMEX_STEPS = [
     summary: "Share ideas through language, art and play.",
     detail: "Story circles, puppet theatre, finger-painting and role-play empower every child to voice their discoveries with joyful confidence.",
     image: CHILD_PHOTOS.fingerPaintingGirl,
-    color: "#8ed727"
+    color: "#FECE13",
+    theme: {
+      bgGradient: "linear-gradient(135deg, #fece13 0%, #f7be0b 50%, #fedd46 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.35)",
+      waveColor2: "rgba(215, 150, 0, 0.24)",
+      sandShimmer: "rgba(255, 252, 215, 0.5)",
+      borderColor: "rgba(255, 255, 255, 0.65)",
+      shadow: "0 14px 35px rgba(254, 206, 19, 0.28)",
+      textColor: "#091E3A",
+      subTextColor: "rgba(9, 30, 58, 0.82)",
+      pillBg: "#091E3A",
+      pillText: "#fece13",
+      arrowColor: "#091E3A",
+    }
   },
   {
     step: "04",
@@ -320,7 +452,20 @@ const PRIMEX_STEPS = [
     summary: "Practise understanding through projects and guided tasks.",
     detail: "Age-appropriate, purposeful worksheets and collaborative maker challenges reinforce concepts children have already experienced physically.",
     image: CHILD_PHOTOS.classroomDrawing,
-    color: "#60C8D4"
+    color: "#F6A60B",
+    theme: {
+      bgGradient: "linear-gradient(135deg, #f6a60b 0%, #eb9200 50%, #fdb933 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.34)",
+      waveColor2: "rgba(195, 110, 0, 0.26)",
+      sandShimmer: "rgba(255, 240, 215, 0.45)",
+      borderColor: "rgba(255, 255, 255, 0.65)",
+      shadow: "0 14px 35px rgba(246, 166, 11, 0.28)",
+      textColor: "#091E3A",
+      subTextColor: "rgba(9, 30, 58, 0.82)",
+      pillBg: "#091E3A",
+      pillText: "#f6a60b",
+      arrowColor: "#091E3A",
+    }
   },
   {
     step: "05",
@@ -328,7 +473,20 @@ const PRIMEX_STEPS = [
     summary: "Celebrate progress through holistic observation.",
     detail: "Teachers observe, guide and document each child's unique milestones across all 8 developmental dimensions without exam pressure.",
     image: CHILD_PHOTOS.toddlerLaughingBook,
-    color: "#8ed727"
+    color: "#FA0672",
+    theme: {
+      bgGradient: "linear-gradient(135deg, #fa0672 0%, #e20063 50%, #fc3c91 100%)",
+      waveColor1: "rgba(255, 255, 255, 0.28)",
+      waveColor2: "rgba(160, 0, 68, 0.26)",
+      sandShimmer: "rgba(255, 220, 238, 0.45)",
+      borderColor: "rgba(255, 255, 255, 0.55)",
+      shadow: "0 14px 35px rgba(250, 6, 114, 0.28)",
+      textColor: "#FFFFFF",
+      subTextColor: "rgba(255, 255, 255, 0.90)",
+      pillBg: "#FFFFFF",
+      pillText: "#fa0672",
+      arrowColor: "#FFFFFF",
+    }
   }
 ];
 
@@ -398,7 +556,8 @@ const LEADERSHIP_TEAM = [
     bio: "The vision behind Blooming Era's distinctive, child-centred and future-ready educational philosophy.",
     initials: "MY",
     badge: "Visionary Founder",
-    accent: "#8ed727"
+    accent: "#8ed727",
+    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
   },
   {
     name: "Dr. Shelly Bisht",
@@ -406,7 +565,8 @@ const LEADERSHIP_TEAM = [
     bio: "Guiding curriculum quality, teaching practices, academic planning and educator development.",
     initials: "SB",
     badge: "Academic Excellence",
-    accent: "#60C8D4"
+    accent: "#60C8D4",
+    photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
   },
   {
     name: "Ayaan Hossain",
@@ -414,7 +574,8 @@ const LEADERSHIP_TEAM = [
     bio: "Part of the leadership team supporting Blooming Era's institutional vision and future development.",
     initials: "AH",
     badge: "Operational Scale",
-    accent: "#8ed727"
+    accent: "#fece13",
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
   },
   {
     name: "Mohd. Neyaz Alam",
@@ -422,7 +583,8 @@ const LEADERSHIP_TEAM = [
     bio: "Part of the leadership team contributing to the organisation's development and strategic direction.",
     initials: "NA",
     badge: "Strategic Growth",
-    accent: "#60C8D4"
+    accent: "#091E3A",
+    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
@@ -572,6 +734,7 @@ export default function IndianPreschoolHome({
   const [galleryFilter, setGalleryFilter] = useState("All");
   const [lightboxImage, setLightboxImage] = useState(null);
   const [activeVideoModal, setActiveVideoModal] = useState(null);
+  const [flippedLeader, setFlippedLeader] = useState(null);
 
   // Auto-advance Hero Slider every 6.5 seconds
   useEffect(() => {
@@ -581,10 +744,12 @@ export default function IndianPreschoolHome({
     return () => clearInterval(timer);
   }, []);
 
-  // Auto-advance Beyond Academics (8 Dimensions) every 5 seconds on both mobile & desktop
+  // Auto-advance Beyond Academics (8 Dimensions) every 5 seconds on desktop only
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveDimension((prev) => (prev + 1) % HOLISTIC_DIMENSIONS.length);
+      if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+        setActiveDimension((prev) => (prev + 1) % HOLISTIC_DIMENSIONS.length);
+      }
     }, 5000);
     return () => clearInterval(timer);
   }, []);
@@ -718,22 +883,29 @@ export default function IndianPreschoolHome({
       {/* ===================================================================== */}
       {/* SECTION 01 — HOMEPAGE HERO SLIDER (FLOWY GLASSMORPHIC 3-SLIDE HERO)   */}
       {/* ===================================================================== */}
-      <section className="relative pt-8 pb-16 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-28 px-4 sm:px-6 overflow-hidden">
-        {/* Flowy Ambient Orbs & Floating Preschool Decor */}
+      <section className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]">
+        {/* Soft feather vignette at very top for ultra-smooth transition from pre-header */}
+        <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#091E3A]/[0.06] to-transparent pointer-events-none z-[1]" />
+
+        {/* Silky Flowy Ambient Orbs — Seamless multi-stop diffusion spanning behind header */}
         <div
-          className="ambient-orb w-[420px] h-[420px] -top-16 -left-24 opacity-45"
-          style={{ background: 'radial-gradient(circle, #60C8D4 0%, transparent 70%)' }}
+          className="ambient-orb w-[580px] h-[580px] -top-36 -left-16 opacity-45"
+          style={{ background: 'radial-gradient(circle, rgba(2,201,254,0.42) 0%, rgba(96,200,212,0.18) 38%, rgba(96,200,212,0.05) 60%, transparent 75%)' }}
         />
         <div
-          className="ambient-orb w-[460px] h-[460px] top-12 -right-24 opacity-45"
-          style={{ background: 'radial-gradient(circle, #8ed727 0%, transparent 70%)', animationDelay: '-5s' }}
+          className="ambient-orb w-[580px] h-[580px] -top-32 -right-16 opacity-40"
+          style={{ background: 'radial-gradient(circle, rgba(142,215,39,0.38) 0%, rgba(142,215,39,0.16) 38%, rgba(142,215,39,0.04) 60%, transparent 75%)', animationDelay: '-5s' }}
+        />
+        <div
+          className="ambient-orb w-[500px] h-[500px] -top-40 left-1/3 opacity-30"
+          style={{ background: 'radial-gradient(circle, rgba(254,206,19,0.32) 0%, rgba(254,206,19,0.1) 40%, transparent 70%)', animationDelay: '-9s' }}
         />
 
         {/* Floating Animated Preschool Badges (Cloud / Star / Flower) */}
         <motion.div
           animate={{ y: [0, -12, 0], rotate: [0, 4, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden lg:flex absolute top-24 left-[7%] z-10 w-14 h-14 rounded-3xl glass-panel-elevated items-center justify-center text-2xl border-2 border-white shadow-lg will-change-transform select-none"
+          className="hidden xl:flex absolute top-44 left-6 2xl:left-12 z-10 w-14 h-14 rounded-3xl glass-panel-elevated items-center justify-center text-2xl border-2 border-white shadow-lg will-change-transform select-none"
         >
           🌸
         </motion.div>
@@ -847,11 +1019,11 @@ export default function IndianPreschoolHome({
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Narrative Column - Locked Heights to completely eliminate vertical shift */}
-            <div className="lg:col-span-6 flex flex-col justify-between min-h-[440px] sm:min-h-[410px] lg:min-h-[460px]">
+            <div className="lg:col-span-6 flex flex-col justify-between min-h-[530px] sm:min-h-[510px] lg:min-h-[540px]">
               
               <div className="space-y-4">
-                {/* Dynamic Slide Content (Badge + Headline + Description) */}
-                <div className="relative min-h-[220px] sm:min-h-[195px] lg:min-h-[225px]">
+                {/* Dynamic Slide Content (Badge + Headline + Description) - Height locked to accommodate 3-line heading without page shift */}
+                <div className="relative min-h-[315px] sm:min-h-[325px] lg:min-h-[365px]">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentSlide.id}
@@ -880,21 +1052,21 @@ export default function IndianPreschoolHome({
                         </span>
                       </div>
 
-                      {/* Headline with locked min-height */}
-                      <div className="min-h-[76px] sm:min-h-[86px] lg:min-h-[118px] flex items-center">
+                      {/* Headline with locked min-height for 3-line headings across all slides */}
+                      <div className="min-h-[125px] sm:min-h-[165px] lg:min-h-[205px] flex items-center">
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#091E3A] tracking-tight leading-[1.08]">
-                          {currentSlide.headline.split('. ').map((part, i, arr) => (
-                            <span key={i} className="block">
-                              {i === 1 ? (
-                                <span className="relative inline-block mt-1">
-                                  <span className="relative z-10">{part}{i < arr.length - 1 ? '.' : ''}</span>
+                          {(currentSlide.headlineLines || []).map((line, idx) => (
+                            <span key={idx} className="block">
+                              {line.highlight ? (
+                                <span className="relative inline-block mt-0.5 sm:mt-1">
+                                  <span className="relative z-10">{line.text}</span>
                                   <span
-                                    className="absolute bottom-1.5 left-0 right-0 h-4 -z-0 rounded-full opacity-75"
+                                    className="absolute bottom-1.5 left-0 right-0 h-3.5 sm:h-4 -z-0 rounded-full opacity-75"
                                     style={{ backgroundColor: currentSlide.accent }}
                                   />
                                 </span>
                               ) : (
-                                <span>{part}{i < arr.length - 1 ? '.' : ''}</span>
+                                <span>{line.text}</span>
                               )}
                             </span>
                           ))}
@@ -1267,7 +1439,7 @@ export default function IndianPreschoolHome({
       {/* ===================================================================== */}
       {/* SECTION 05 — NUMBERS / STATISTICS COUNTER                             */}
       {/* ===================================================================== */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6 relative">
+      <section id="framework-stats" className="py-14 sm:py-20 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block px-4 py-1 rounded-full glass-pill text-xs font-extrabold uppercase tracking-widest text-[#091E3A] mb-2">
@@ -1281,6 +1453,7 @@ export default function IndianPreschoolHome({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {STATS_ITEMS.map((stat, idx) => {
               const IconComp = stat.icon;
+              const t = stat.theme;
               return (
                 <motion.div
                   key={stat.label}
@@ -1288,24 +1461,94 @@ export default function IndianPreschoolHome({
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -6 }}
-                  className="glass-panel-elevated rounded-[32px] p-7 text-center border-2 border-white shadow-xl relative overflow-hidden"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="rounded-[34px] p-7 text-center relative overflow-hidden group transition-all duration-300"
+                  style={{
+                    background: t.bgGradient,
+                    border: `2px solid ${t.borderColor}`,
+                    boxShadow: t.shadow,
+                  }}
                 >
-                  <div
-                    className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center text-[#091E3A] shadow-md"
-                    style={{ backgroundColor: stat.color }}
-                  >
-                    <IconComp className="w-7 h-7" />
+                  {/* Subtle Sand Flow Waves & Grain */}
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[32px]">
+                    {/* Shifting Sand Sunlight Shimmer */}
+                    <div
+                      className="absolute -inset-10 animate-sand-shimmer pointer-events-none"
+                      style={{
+                        background: `radial-gradient(circle at 35% 25%, ${t.sandShimmer} 0%, transparent 60%)`,
+                      }}
+                    />
+
+                    {/* Dune Wave Layer 1 (Drifting forward) */}
+                    <svg
+                      viewBox="0 0 1000 300"
+                      preserveAspectRatio="none"
+                      className="absolute -bottom-2 left-0 w-[200%] h-36 animate-sand-forward pointer-events-none"
+                      style={{ fill: t.waveColor1 }}
+                    >
+                      <path d="M 0,140 Q 125,60 250,140 T 500,140 Q 625,60 750,140 T 1000,140 L 1000,300 L 0,300 Z" />
+                    </svg>
+
+                    {/* Dune Wave Layer 2 (Drifting reverse) */}
+                    <svg
+                      viewBox="0 0 1000 300"
+                      preserveAspectRatio="none"
+                      className="absolute -bottom-4 left-0 w-[200%] h-44 animate-sand-reverse pointer-events-none"
+                      style={{ fill: t.waveColor2 }}
+                    >
+                      <path d="M 0,180 Q 150,230 300,170 T 500,180 Q 650,230 800,170 T 1000,180 L 1000,300 L 0,300 Z" />
+                    </svg>
+
+                    {/* Dune Wave Layer 3 (Gentle foreground drift) */}
+                    <svg
+                      viewBox="0 0 1000 300"
+                      preserveAspectRatio="none"
+                      className="absolute -bottom-6 left-0 w-[200%] h-28 animate-sand-drift pointer-events-none"
+                      style={{ fill: t.waveColor3 }}
+                    >
+                      <path d="M 0,110 C 100,70 180,150 250,110 C 320,70 400,150 500,110 C 600,70 680,150 750,110 C 820,70 900,150 1000,110 L 1000,300 L 0,300 Z" />
+                    </svg>
+
+                    {/* Fine Micro Sand Grain Texture */}
+                    <div
+                      className="absolute inset-0 opacity-[0.14] mix-blend-overlay pointer-events-none"
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.85) 1px, transparent 1px), radial-gradient(circle at 20% 30%, rgba(0,0,0,0.45) 1px, transparent 1px)`,
+                        backgroundSize: '12px 12px, 16px 16px',
+                      }}
+                    />
+
+                    {/* Top Rim Specular Glint */}
+                    <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
                   </div>
-                  <div className="text-4xl sm:text-5xl font-black text-[#091E3A] tracking-tight mb-2">
-                    {stat.number}
+
+                  {/* Card Content (Relative z-10 for sharp contrast) */}
+                  <div className="relative z-10 flex flex-col items-center justify-center">
+                    <div
+                      className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg border border-white/40 transform group-hover:scale-110 transition-transform duration-300"
+                      style={{ backgroundColor: t.iconBg, color: t.iconColor }}
+                    >
+                      <IconComp className="w-7 h-7" />
+                    </div>
+                    <div
+                      className="text-4xl sm:text-5xl font-black tracking-tight mb-2 drop-shadow-xs"
+                      style={{ color: t.textColor }}
+                    >
+                      {stat.number}
+                    </div>
+                    <h3
+                      className="text-base font-extrabold leading-snug"
+                      style={{ color: t.textColor }}
+                    >
+                      {stat.label}
+                    </h3>
+                    <p
+                      className="text-xs font-semibold mt-1"
+                      style={{ color: t.subTextColor }}
+                    >
+                      {stat.sub}
+                    </p>
                   </div>
-                  <h3 className="text-base font-extrabold text-[#091E3A] leading-snug">
-                    {stat.label}
-                  </h3>
-                  <p className="text-xs font-semibold text-[#091E3A]/65 mt-1">
-                    {stat.sub}
-                  </p>
                 </motion.div>
               );
             })}
@@ -1508,31 +1751,110 @@ export default function IndianPreschoolHome({
 
           {/* 5-Step Interactive Flow Ribbon */}
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 mb-10">
-            {PRIMEX_STEPS.map((st, i) => (
-              <button
-                key={st.name}
-                onClick={() => setActivePrimexStep(i)}
-                className={`p-4 sm:p-5 rounded-3xl text-left transition-all border-2 ${
-                  activePrimexStep === i
-                    ? 'bg-[#091E3A] text-white border-[#091E3A] shadow-xl scale-105'
-                    : 'glass-panel-elevated text-[#091E3A] border-white hover:border-[#60C8D4]'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span
-                    className="text-xs font-black px-2.5 py-0.5 rounded-full text-[#091E3A]"
-                    style={{ backgroundColor: st.color }}
-                  >
-                    Step {st.step}
-                  </span>
-                  <ArrowRight className={`w-4 h-4 ${activePrimexStep === i ? 'text-[#8ed727]' : 'text-[#091E3A]/40'}`} />
-                </div>
-                <p className="text-base sm:text-lg font-extrabold tracking-tight">{st.name}</p>
-                <p className={`text-xs mt-1 line-clamp-2 ${activePrimexStep === i ? 'text-white/80' : 'text-[#091E3A]/70'}`}>
-                  {st.summary}
-                </p>
-              </button>
-            ))}
+            {PRIMEX_STEPS.map((st, i) => {
+              const isActive = activePrimexStep === i;
+              const t = st.theme;
+              return (
+                <button
+                  key={st.name}
+                  onClick={() => setActivePrimexStep(i)}
+                  className={`p-4 sm:p-5 rounded-3xl text-left transition-all duration-300 relative overflow-hidden group cursor-pointer ${
+                    isActive
+                      ? 'bg-[#091E3A] text-white border-2 border-[#8ed727] shadow-2xl scale-105 ring-4 ring-[#8ed727]/30 z-10'
+                      : 'border-2 hover:scale-[1.03]'
+                  }`}
+                  style={
+                    !isActive
+                      ? {
+                          background: t.bgGradient,
+                          borderColor: t.borderColor,
+                          boxShadow: t.shadow,
+                        }
+                      : {}
+                  }
+                >
+                  {/* Inactive Sand Flow Background */}
+                  {!isActive && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[22px]">
+                      {/* Shifting Sand Sunlight Shimmer */}
+                      <div
+                        className="absolute -inset-10 animate-sand-shimmer pointer-events-none"
+                        style={{
+                          background: `radial-gradient(circle at 35% 25%, ${t.sandShimmer} 0%, transparent 60%)`,
+                        }}
+                      />
+
+                      {/* Dune Wave Layer 1 (Drifting forward) */}
+                      <svg
+                        viewBox="0 0 1000 300"
+                        preserveAspectRatio="none"
+                        className="absolute -bottom-2 left-0 w-[200%] h-24 animate-sand-forward pointer-events-none"
+                        style={{ fill: t.waveColor1 }}
+                      >
+                        <path d="M 0,140 Q 125,60 250,140 T 500,140 Q 625,60 750,140 T 1000,140 L 1000,300 L 0,300 Z" />
+                      </svg>
+
+                      {/* Dune Wave Layer 2 (Drifting reverse) */}
+                      <svg
+                        viewBox="0 0 1000 300"
+                        preserveAspectRatio="none"
+                        className="absolute -bottom-3 left-0 w-[200%] h-28 animate-sand-reverse pointer-events-none"
+                        style={{ fill: t.waveColor2 }}
+                      >
+                        <path d="M 0,180 Q 150,230 300,170 T 500,180 Q 650,230 800,170 T 1000,180 L 1000,300 L 0,300 Z" />
+                      </svg>
+
+                      {/* Fine Micro Sand Grain Texture */}
+                      <div
+                        className="absolute inset-0 opacity-[0.12] mix-blend-overlay pointer-events-none"
+                        style={{
+                          backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.85) 1px, transparent 1px), radial-gradient(circle at 20% 30%, rgba(0,0,0,0.45) 1px, transparent 1px)`,
+                          backgroundSize: '12px 12px, 16px 16px',
+                        }}
+                      />
+
+                      {/* Top Rim Specular Glint */}
+                      <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+                    </div>
+                  )}
+
+                  {/* Button Content */}
+                  <div className="relative z-10 flex flex-col justify-between h-full">
+                    <div className="flex items-center justify-between mb-2">
+                      <span
+                        className="text-xs font-black px-2.5 py-0.5 rounded-full shadow-xs"
+                        style={{
+                          backgroundColor: isActive ? st.color : t.pillBg,
+                          color: isActive ? '#091E3A' : t.pillText,
+                        }}
+                      >
+                        Step {st.step}
+                      </span>
+                      <ArrowRight
+                        className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${
+                          isActive ? 'text-[#8ed727]' : ''
+                        }`}
+                        style={!isActive ? { color: t.arrowColor } : {}}
+                      />
+                    </div>
+                    <div>
+                      <p
+                        className="text-base sm:text-lg font-extrabold tracking-tight"
+                        style={!isActive ? { color: t.textColor } : { color: '#FFFFFF' }}
+                      >
+                        {st.name}
+                      </p>
+                      <p
+                        className="text-xs mt-1 line-clamp-2 font-medium"
+                        style={!isActive ? { color: t.subTextColor } : { color: 'rgba(255, 255, 255, 0.85)' }}
+                      >
+                        {st.summary}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
           {/* Active Step Showcase Card */}
@@ -1771,40 +2093,45 @@ export default function IndianPreschoolHome({
 
             {/* Active Dimension Photo Card */}
             <div className="col-span-5">
-              <div className="glass-panel-elevated rounded-[36px] p-6 border-2 border-white shadow-2xl">
-                <div className="relative h-64 rounded-3xl overflow-hidden mb-5 border-2 border-white">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={HOLISTIC_DIMENSIONS[activeDimension].id}
-                      src={HOLISTIC_DIMENSIONS[activeDimension].image}
-                      alt={HOLISTIC_DIMENSIONS[activeDimension].title}
-                      initial={{ opacity: 0, scale: 1.04 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.45 }}
-                      className="w-full h-full object-cover"
-                    />
-                  </AnimatePresence>
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black shadow-md z-10">
-                    Dimension 0{HOLISTIC_DIMENSIONS[activeDimension].id} of 08
+              <div className="glass-panel-elevated rounded-[36px] p-6 border-2 border-white shadow-2xl min-h-[460px] flex flex-col justify-between">
+                <div>
+                  <div className="relative h-64 rounded-3xl overflow-hidden mb-5 border-2 border-white">
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={HOLISTIC_DIMENSIONS[activeDimension].id}
+                        src={HOLISTIC_DIMENSIONS[activeDimension].image}
+                        alt={HOLISTIC_DIMENSIONS[activeDimension].title}
+                        initial={{ opacity: 0, scale: 1.04 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.45 }}
+                        className="w-full h-full object-cover"
+                      />
+                    </AnimatePresence>
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black shadow-md z-10">
+                      Dimension 0{HOLISTIC_DIMENSIONS[activeDimension].id} of 08
+                    </div>
+                  </div>
+                  {/* Stable min-height container for title & detail to eliminate scroll clamp / jitter */}
+                  <div className="min-h-[112px] flex flex-col justify-start">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={HOLISTIC_DIMENSIONS[activeDimension].id}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <h3 className="text-xl font-extrabold text-[#091E3A] mb-2 leading-snug">
+                          {HOLISTIC_DIMENSIONS[activeDimension].title}
+                        </h3>
+                        <p className="text-sm text-[#091E3A]/75 font-medium mb-4 leading-relaxed">
+                          {HOLISTIC_DIMENSIONS[activeDimension].detail}
+                        </p>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={HOLISTIC_DIMENSIONS[activeDimension].id}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <h3 className="text-xl font-extrabold text-[#091E3A] mb-2">
-                      {HOLISTIC_DIMENSIONS[activeDimension].title}
-                    </h3>
-                    <p className="text-sm text-[#091E3A]/75 font-medium mb-4">
-                      {HOLISTIC_DIMENSIONS[activeDimension].detail}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
                 <div className="pt-3 border-t border-[#091E3A]/10 flex items-center justify-between">
                   <span className="text-xs font-black text-[#091E3A]">
                     Every Milestone Matters. Every Child Matters.
@@ -1840,38 +2167,128 @@ export default function IndianPreschoolHome({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {LEADERSHIP_TEAM.map((leader, idx) => (
-              <motion.div
-                key={leader.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
-                whileHover={{ y: -6 }}
-                className="glass-panel-elevated rounded-[32px] p-6 border-2 border-white shadow-xl flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
+            {LEADERSHIP_TEAM.map((leader, idx) => {
+              const isFlipped = flippedLeader === idx;
+              return (
+                <motion.div
+                  key={leader.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  whileHover={{ y: -8, transition: { duration: 0.25, delay: 0 } }}
+                  onClick={() => setFlippedLeader(isFlipped ? null : idx)}
+                  className="group relative rounded-[28px] sm:rounded-[32px] aspect-square w-full max-w-[340px] sm:max-w-none mx-auto cursor-pointer"
+                >
+                  {/* CARD 2: Current Details Card (Hidden Behind, Revealed on Hover / Flip) */}
+                  <div
+                    className={`absolute inset-0 w-full h-full bg-white/95 backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-5 sm:p-5.5 border-2 border-white shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
+                      isFlipped
+                        ? 'opacity-100 scale-100 pointer-events-auto z-20'
+                        : 'opacity-0 scale-95 pointer-events-none z-0 group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto group-hover:z-20'
+                    }`}
+                  >
+                    {/* Subtle ambient brand tint */}
                     <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-black text-[#091E3A] shadow-md border-2 border-white"
+                      className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-20 pointer-events-none"
                       style={{ backgroundColor: leader.accent }}
-                    >
-                      {leader.initials}
+                    />
+
+                    <div>
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                        <div
+                          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center text-base sm:text-lg font-black shadow-md border-2 border-white"
+                          style={{
+                            backgroundColor: leader.accent,
+                            color: leader.accent === '#091E3A' ? '#FFFFFF' : '#091E3A'
+                          }}
+                        >
+                          {leader.initials}
+                        </div>
+                        <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#091E3A]/5 text-[#091E3A] border border-[#091E3A]/10">
+                          {leader.badge}
+                        </span>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-extrabold text-[#091E3A] leading-tight">
+                        {leader.name}
+                      </h3>
+                      <p
+                        className="text-[11px] sm:text-xs font-bold uppercase tracking-wider mt-0.5 mb-2"
+                        style={{
+                          color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#091E3A' : leader.accent
+                        }}
+                      >
+                        {leader.role}
+                      </p>
+                      <p className="text-xs sm:text-[13px] text-[#091E3A]/80 font-medium leading-relaxed">
+                        {leader.bio}
+                      </p>
                     </div>
-                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#091E3A]/5 text-[#091E3A]">
-                      {leader.badge}
-                    </span>
+
+                    <div className="pt-2 sm:pt-2.5 border-t border-[#091E3A]/10 flex items-center justify-between">
+                      <span className="text-[10px] sm:text-[11px] font-black text-[#091E3A]/70">
+                        Blooming Era Leadership
+                      </span>
+                      <span
+                        className="w-2.5 h-2.5 rounded-full"
+                        style={{ backgroundColor: leader.accent }}
+                      />
+                    </div>
                   </div>
-                  <h3 className="text-lg font-extrabold text-[#091E3A]">{leader.name}</h3>
-                  <p className="text-xs font-bold text-[#60C8D4] uppercase tracking-wider mt-0.5 mb-3">
-                    {leader.role}
-                  </p>
-                  <p className="text-xs sm:text-sm text-[#091E3A]/75 font-medium leading-relaxed">
-                    {leader.bio}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+
+                  {/* CARD 1: Full-Photo Front Card (Covers the card, fades out on hover / flip) */}
+                  <div
+                    className={`absolute inset-0 w-full h-full rounded-[28px] sm:rounded-[32px] overflow-hidden border-2 border-white shadow-xl transition-all duration-300 ease-out bg-[#091E3A] ${
+                      isFlipped
+                        ? 'opacity-0 scale-95 pointer-events-none z-0'
+                        : 'opacity-100 scale-100 pointer-events-auto z-10 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none group-hover:z-0'
+                    }`}
+                  >
+                    {/* Full Box Photo */}
+                    <img
+                      src={leader.photo}
+                      alt={leader.name}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+
+                    {/* Top Badge */}
+                    <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-20">
+                      <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-black uppercase text-[#091E3A] shadow-md border border-white">
+                        {leader.badge}
+                      </span>
+                    </div>
+
+                    {/* Subtle Gradient Vignette at Bottom */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/60 to-transparent z-10" />
+
+                    {/* Bottom Info: Just Name and Designation + Bio Pill */}
+                    <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-20">
+                      <div className="flex items-end justify-between gap-2.5">
+                        <div className="min-w-0 pr-1">
+                          <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight leading-snug drop-shadow-md">
+                            {leader.name}
+                          </h3>
+                          <p
+                            className="text-[11px] sm:text-xs font-bold uppercase tracking-wider mt-0.5 drop-shadow-sm"
+                            style={{
+                              color: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent
+                            }}
+                          >
+                            {leader.role}
+                          </p>
+                        </div>
+                        <div className="shrink-0 mb-0.5">
+                          <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-white bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/30 whitespace-nowrap shadow-sm">
+                            <span>Bio</span>
+                            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -2141,7 +2558,7 @@ export default function IndianPreschoolHome({
       {/* ===================================================================== */}
       {/* SECTION 16 — PHOTO GALLERY (A PEEK INTO OUR WORLD)                    */}
       {/* ===================================================================== */}
-      <section id="gallery" className="py-16 sm:py-24 px-4 sm:px-6 bg-white/80 relative">
+      <section id="gallery" className="py-16 sm:py-24 px-4 sm:px-6 bg-white relative">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
@@ -2205,6 +2622,9 @@ export default function IndianPreschoolHome({
           </div>
         </div>
       </section>
+
+      {/* Flowy Wave Divider into Section 17 */}
+      <FlowyWaveDivider flip={true} fill="#FFFFFF" accentColor="#8ed727" />
 
       {/* ===================================================================== */}
       {/* SECTION 17 — VIDEO BYTES (CHILDHOOD IN MOTION)                        */}

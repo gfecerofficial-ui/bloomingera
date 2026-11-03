@@ -79,7 +79,7 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
       </div>
 
       {/* Main Sticky Glass Navigation Header */}
-      <header className="sticky top-3 z-40 px-3 sm:px-6">
+      <header className="sticky top-1 sm:top-1.5 z-40 px-3 sm:px-6 mt-2.5 sm:mt-3">
         <div className="max-w-7xl mx-auto glass-panel-elevated rounded-full py-2 px-4 sm:px-6 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.1)] bg-white/85 backdrop-blur-2xl">
           <div className="flex items-center justify-between gap-3">
             

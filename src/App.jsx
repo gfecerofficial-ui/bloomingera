@@ -67,7 +67,7 @@ export default function App() {
       />
 
       {/* Main Page Content Router */}
-      <main className="flex-grow">
+      <main className={`flex-grow ${currentPage === 'home' ? '-mt-[90px] sm:-mt-[98px]' : ''}`}>
         <AnimatePresence mode="wait">
           {currentPage === 'home' && (
             <motion.div
