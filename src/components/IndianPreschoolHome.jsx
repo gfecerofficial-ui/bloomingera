@@ -5,7 +5,7 @@ import {
   Sparkles, Phone, ArrowRight, ArrowUpRight, CheckCircle2, Heart, Star,
   BookOpen, Compass, Palette, Music, Leaf, Globe2, Users, Brain,
   MessageCircle, Smile, Rocket, ShieldCheck, Award, Calendar, Play,
-  ChevronLeft, ChevronRight, MapPin, Mail, Clock, Eye, X, GraduationCap,
+  ChevronLeft, ChevronRight, ChevronDown, MapPin, Mail, Clock, Eye, X, GraduationCap,
   Layers, Flame, Sun, Flower2
 } from 'lucide-react';
 
@@ -60,7 +60,7 @@ const HERO_SLIDES = [
     primaryBtn: "Explore Blooming Era",
     primaryHref: "#welcome",
     secondaryBtn: "Book a School Tour",
-    mainImage: CHILD_PHOTOS.classroomDrawing,
+    mainImage: "/hero/slide_1.png",
     secondaryImage: CHILD_PHOTOS.fingerPaintingGirl,
     tertiaryImage: CHILD_PHOTOS.toddlerLaughingBook,
     badgeTitle: "Proudly Indian, Powerfully Global",
@@ -76,7 +76,7 @@ const HERO_SLIDES = [
     primaryBtn: "Discover Our Learning Philosophy",
     primaryHref: "#philosophy",
     secondaryBtn: "Book a School Tour",
-    mainImage: CHILD_PHOTOS.toddlerBeadMaze,
+    mainImage: "/hero/slide_2.png",
     secondaryImage: CHILD_PHOTOS.woodenBlocksChild,
     tertiaryImage: CHILD_PHOTOS.natureExplorerChild,
     badgeTitle: "Kindermagic PrimeX™ Curriculum",
@@ -92,7 +92,7 @@ const HERO_SLIDES = [
     primaryBtn: "Explore Franchise Opportunities",
     primaryHref: "#franchise-opportunity",
     secondaryBtn: "Enquire for Partnership",
-    mainImage: CHILD_PHOTOS.toddlerLaughingBook,
+    mainImage: "/hero/slide_3.png",
     secondaryImage: CHILD_PHOTOS.classroomDrawing,
     tertiaryImage: CHILD_PHOTOS.playgroupFloorToddler,
     badgeTitle: "Franchise Starting at ₹2.50 Lakh",
@@ -581,6 +581,14 @@ export default function IndianPreschoolHome({
     return () => clearInterval(timer);
   }, []);
 
+  // Auto-advance Beyond Academics (8 Dimensions) every 5 seconds on both mobile & desktop
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveDimension((prev) => (prev + 1) % HOLISTIC_DIMENSIONS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   const currentSlide = HERO_SLIDES[activeSlide];
   const filteredGallery = galleryFilter === "All"
     ? GALLERY_ITEMS
@@ -944,16 +952,16 @@ export default function IndianPreschoolHome({
               </div>
             </div>
 
-            {/* Right Organic Multi-Photo Preschool Collage - Silky Crossfade & Ambient Glow */}
+            {/* Right Organic Preschool Hero Showcase - Silky Crossfade & Ambient Glow */}
             <div className="lg:col-span-6 relative">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 {/* Ambient backlight glow */}
                 <div className="absolute -inset-4 rounded-[50px] bg-gradient-to-tr from-[#8ed727]/25 via-[#60C8D4]/25 to-[#8ed727]/15 blur-2xl opacity-75 -z-10 pointer-events-none" />
 
                 {/* Main Card Frame */}
-                <div className="relative rounded-[44px] p-3 sm:p-4 glass-panel-elevated border-4 border-white shadow-2xl">
+                <div className="relative rounded-[44px] p-2.5 sm:p-3.5 glass-panel-elevated border-4 border-white shadow-2xl">
                   <div
-                    className="relative rounded-[34px] overflow-hidden h-[380px] sm:h-[450px] bg-[#091E3A]/10"
+                    className="relative rounded-[34px] overflow-hidden h-[380px] sm:h-[450px] bg-[#091E3A]/5 shadow-inner"
                     style={{
                       WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                       transform: 'translateZ(0)',
@@ -965,101 +973,46 @@ export default function IndianPreschoolHome({
                         key={currentSlide.mainImage}
                         src={currentSlide.mainImage}
                         alt={currentSlide.headline}
-                        initial={{ opacity: 0, scale: 1.05 }}
+                        initial={{ opacity: 0, scale: 1.04 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out will-change-transform"
+                        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105 will-change-transform"
                         loading="eager"
                         decoding="async"
                       />
                     </AnimatePresence>
 
-                    {/* Smooth multi-stop lighting gradient & subtle inner border */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A]/85 via-[#091E3A]/30 via-35% to-transparent pointer-events-none" />
-                    <div className="absolute inset-0 rounded-[34px] ring-1 ring-inset ring-white/30 pointer-events-none shadow-[inset_0_0_40px_rgba(9,30,58,0.15)]" />
+                    {/* Subtle specular ring border */}
+                    <div className="absolute inset-0 rounded-[34px] ring-1 ring-inset ring-white/40 pointer-events-none" />
 
-                    {/* Bottom Floating Glass Caption inside Hero Image */}
+                    {/* Compact Floating Glass Badge */}
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={currentSlide.badgeTitle}
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.35, ease: 'easeOut' }}
-                        className="absolute bottom-4 left-4 right-4 glass-panel-elevated p-4 rounded-3xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center justify-between gap-3 shadow-lg z-10"
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                        className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
                       >
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="w-11 h-11 rounded-2xl flex items-center justify-center text-[#091E3A] font-black shadow-sm transition-colors duration-500"
-                            style={{ backgroundColor: currentSlide.accent }}
-                          >
-                            <Sparkles className="w-5 h-5" />
-                          </div>
-                          <div>
-                            <p className="text-sm font-extrabold text-[#091E3A]">{currentSlide.badgeTitle}</p>
-                            <p className="text-xs font-semibold text-[#091E3A]/70">{currentSlide.badgeSub}</p>
-                          </div>
+                        <div
+                          className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
+                          style={{ backgroundColor: currentSlide.accent }}
+                        >
+                          <Sparkles className="w-3.5 h-3.5" />
                         </div>
-                        <span className="hidden sm:inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase bg-[#091E3A] text-[#8ed727]">
+                        <div className="truncate">
+                          <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
+                          <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
+                        </div>
+                        <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#8ed727] flex-shrink-0">
                           Admissions Open
                         </span>
                       </motion.div>
                     </AnimatePresence>
                   </div>
                 </div>
-
-                {/* Secondary Floating Circular Child Bubble (Top-Left) */}
-                <motion.div
-                  animate={{ y: [0, -12, 0], rotate: [0, 2, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                  className="hidden sm:block absolute -top-7 -left-7 w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1.5 bg-white shadow-[0_16px_36px_rgba(9,30,58,0.22)] border-4 border-[#8ed727] z-20 overflow-hidden"
-                  style={{
-                    WebkitMaskImage: '-webkit-radial-gradient(white, black)',
-                    transform: 'translateZ(0)',
-                  }}
-                >
-                  <AnimatePresence initial={false}>
-                    <motion.img
-                      key={currentSlide.secondaryImage}
-                      src={currentSlide.secondaryImage}
-                      alt="Preschool child creative activity"
-                      initial={{ opacity: 0, scale: 1.08 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-                      className="absolute inset-1.5 w-[calc(100%-12px)] h-[calc(100%-12px)] object-cover rounded-full will-change-transform"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </AnimatePresence>
-                </motion.div>
-
-                {/* Tertiary Floating Circular Child Bubble (Bottom-Right) */}
-                <motion.div
-                  animate={{ y: [0, 12, 0], rotate: [0, -2, 0] }}
-                  transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
-                  className="hidden sm:block absolute -bottom-7 -right-5 w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1.5 bg-white shadow-[0_16px_36px_rgba(9,30,58,0.22)] border-4 border-[#60C8D4] z-20 overflow-hidden"
-                  style={{
-                    WebkitMaskImage: '-webkit-radial-gradient(white, black)',
-                    transform: 'translateZ(0)',
-                  }}
-                >
-                  <AnimatePresence initial={false}>
-                    <motion.img
-                      key={currentSlide.tertiaryImage}
-                      src={currentSlide.tertiaryImage}
-                      alt="Preschool joyful child"
-                      initial={{ opacity: 0, scale: 1.08 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-                      className="absolute inset-1.5 w-[calc(100%-12px)] h-[calc(100%-12px)] object-cover rounded-full will-change-transform"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </AnimatePresence>
-                </motion.div>
               </div>
             </div>
           </div>
@@ -1708,9 +1661,91 @@ export default function IndianPreschoolHome({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Mobile View: Dimensions slide box appears directly below its respective step */}
+          <div className="block lg:hidden space-y-3">
+            {HOLISTIC_DIMENSIONS.map((dim, idx) => {
+              const isActive = activeDimension === idx;
+              return (
+                <div key={dim.id} className="space-y-3">
+                  <button
+                    onClick={() => setActiveDimension(idx)}
+                    className={`w-full p-4 rounded-2xl text-left transition-all border-2 flex items-center justify-between gap-3 ${
+                      isActive
+                        ? 'bg-[#091E3A] text-white border-[#091E3A] shadow-xl'
+                        : 'glass-panel-elevated text-[#091E3A] border-white hover:border-[#60C8D4]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <span
+                        className="w-9 h-9 rounded-xl flex items-center justify-center font-black text-xs text-[#091E3A] flex-shrink-0"
+                        style={{ backgroundColor: idx % 2 === 0 ? '#8ed727' : '#60C8D4' }}
+                      >
+                        0{dim.id}
+                      </span>
+                      <span className="text-xs sm:text-sm font-extrabold leading-snug truncate">
+                        {dim.title}
+                      </span>
+                    </div>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-300 flex-shrink-0 ${
+                        isActive ? 'rotate-180 text-[#8ed727]' : 'text-[#091E3A]/50'
+                      }`}
+                    />
+                  </button>
+
+                  {/* Dimension Slide Box - Appears directly below its respective active step */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="glass-panel-elevated rounded-3xl p-5 border-2 border-white shadow-xl space-y-4">
+                          <div className="relative h-52 rounded-2xl overflow-hidden border-2 border-white shadow-inner">
+                            <img
+                              src={dim.image}
+                              alt={dim.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black shadow-sm">
+                              Dimension 0{dim.id} of 08
+                            </div>
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-extrabold text-[#091E3A] mb-1.5">
+                              {dim.title}
+                            </h3>
+                            <p className="text-xs sm:text-sm text-[#091E3A]/80 font-medium leading-relaxed">
+                              {dim.detail}
+                            </p>
+                          </div>
+                          <div className="pt-3 border-t border-[#091E3A]/10 flex items-center justify-between">
+                            <span className="text-[11px] font-black text-[#091E3A]">
+                              Every Milestone Matters.
+                            </span>
+                            <button
+                              onClick={onOpenTourModal}
+                              className="text-xs font-extrabold text-[#091E3A] underline hover:text-[#60C8D4]"
+                            >
+                              Learn More →
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop View: Side-by-Side 8 Pills + Photo Card */}
+          <div className="hidden lg:grid grid-cols-12 gap-8 items-center">
             {/* 8 Dimension Pills */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div className="col-span-7 grid grid-cols-2 gap-3.5">
               {HOLISTIC_DIMENSIONS.map((dim, idx) => (
                 <button
                   key={dim.id}
@@ -1735,24 +1770,41 @@ export default function IndianPreschoolHome({
             </div>
 
             {/* Active Dimension Photo Card */}
-            <div className="lg:col-span-5">
+            <div className="col-span-5">
               <div className="glass-panel-elevated rounded-[36px] p-6 border-2 border-white shadow-2xl">
                 <div className="relative h-64 rounded-3xl overflow-hidden mb-5 border-2 border-white">
-                  <img
-                    src={HOLISTIC_DIMENSIONS[activeDimension].image}
-                    alt={HOLISTIC_DIMENSIONS[activeDimension].title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={HOLISTIC_DIMENSIONS[activeDimension].id}
+                      src={HOLISTIC_DIMENSIONS[activeDimension].image}
+                      alt={HOLISTIC_DIMENSIONS[activeDimension].title}
+                      initial={{ opacity: 0, scale: 1.04 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.45 }}
+                      className="w-full h-full object-cover"
+                    />
+                  </AnimatePresence>
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black shadow-md z-10">
                     Dimension 0{HOLISTIC_DIMENSIONS[activeDimension].id} of 08
                   </div>
                 </div>
-                <h3 className="text-xl font-extrabold text-[#091E3A] mb-2">
-                  {HOLISTIC_DIMENSIONS[activeDimension].title}
-                </h3>
-                <p className="text-sm text-[#091E3A]/75 font-medium mb-4">
-                  {HOLISTIC_DIMENSIONS[activeDimension].detail}
-                </p>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={HOLISTIC_DIMENSIONS[activeDimension].id}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h3 className="text-xl font-extrabold text-[#091E3A] mb-2">
+                      {HOLISTIC_DIMENSIONS[activeDimension].title}
+                    </h3>
+                    <p className="text-sm text-[#091E3A]/75 font-medium mb-4">
+                      {HOLISTIC_DIMENSIONS[activeDimension].detail}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
                 <div className="pt-3 border-t border-[#091E3A]/10 flex items-center justify-between">
                   <span className="text-xs font-black text-[#091E3A]">
                     Every Milestone Matters. Every Child Matters.
@@ -1863,7 +1915,8 @@ export default function IndianPreschoolHome({
                   ))}
                 </div>
 
-                <div className="pt-2">
+                {/* Desktop Button inside Left Column */}
+                <div className="pt-2 hidden lg:block">
                   <button
                     onClick={onOpenTourModal}
                     className="btn-lime px-8 py-4 rounded-full text-sm font-black inline-flex items-center gap-2 border-2 border-white shadow-xl"
@@ -1875,7 +1928,7 @@ export default function IndianPreschoolHome({
               </div>
 
               {/* Right Investment Highlight Glass Card */}
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-5 space-y-6">
                 <div className="rounded-[32px] bg-white/12 backdrop-blur-2xl border-2 border-white/30 p-7 sm:p-8 space-y-6 shadow-2xl">
                   <div className="rounded-2xl overflow-hidden h-44 border-2 border-white/80">
                     <img
@@ -1903,6 +1956,17 @@ export default function IndianPreschoolHome({
                       Depending on space, infrastructure and location.
                     </p>
                   </div>
+                </div>
+
+                {/* Mobile Button placed below the investment div */}
+                <div className="block lg:hidden pt-2 text-center">
+                  <button
+                    onClick={onOpenTourModal}
+                    className="btn-lime w-full sm:w-auto px-8 py-4 rounded-full text-sm font-black inline-flex items-center justify-center gap-2 border-2 border-white shadow-xl"
+                  >
+                    <span>Own a Blooming Era Preschool</span>
+                    <ArrowRight className="w-4 h-4 text-[#091E3A]" />
+                  </button>
                 </div>
               </div>
             </div>
