@@ -79,7 +79,7 @@ function FlowyWaveDivider({ flip = false, fill = "#FFFFFF", accentColor = "#60C8
 const HERO_SLIDES = [
   {
     id: 1,
-    tag: "Slide 01 • The Brand Experience",
+    tag: "The Brand Experience",
     smallHeading: "THE FUTURE BLOOMS HERE",
     headline: "Little Minds. Limitless Possibilities.",
     headlineLines: [
@@ -100,7 +100,7 @@ const HERO_SLIDES = [
   },
   {
     id: 2,
-    tag: "Slide 02 • No-Book Learning",
+    tag: "No-Book Learning",
     smallHeading: "BEYOND BOOKS. INTO THE WORLD.",
     headline: "Less Memorising. More Meaningful Learning.",
     headlineLines: [
@@ -121,7 +121,7 @@ const HERO_SLIDES = [
   },
   {
     id: 3,
-    tag: "Slide 03 • Franchise Opportunity",
+    tag: "Franchise Opportunity",
     smallHeading: "FRANCHISE OPPORTUNITY",
     headline: "Build a Preschool. Shape a Generation.",
     headlineLines: [
@@ -142,7 +142,7 @@ const HERO_SLIDES = [
   }
 ];
 
-// SECTION 03: WHY PARENTS LOVE US (5 CARDS)
+// SECTION 03: WHY PARENTS LOVE US (5 CARDS WITH BOLD, AGGRESSIVE, JOYFUL COLOR PALETTE)
 const WHY_PARENTS_CARDS = [
   {
     id: 1,
@@ -151,7 +151,10 @@ const WHY_PARENTS_CARDS = [
     image: CHILD_PHOTOS.toddlerBeadMaze,
     icon: Sparkles,
     badge: "Experiential Discovery",
-    color: "#8ed727"
+    color: "#8ed727",
+    bgGradient: "linear-gradient(135deg, #d8f792 0%, #ebfaaf 25%, #ffffff 50%, #d8f792 75%, #cef578 100%)",
+    borderColor: "#8ed727",
+    shadow: "0 20px 50px -10px rgba(142,215,39,0.5)",
   },
   {
     id: 2,
@@ -160,7 +163,10 @@ const WHY_PARENTS_CARDS = [
     image: CHILD_PHOTOS.woodenBlocksChild,
     icon: Rocket,
     badge: "21st-Century Play",
-    color: "#60C8D4"
+    color: "#60C8D4",
+    bgGradient: "linear-gradient(135deg, #b2eef5 0%, #cbf5f9 25%, #ffffff 50%, #a2ebf4 75%, #88e4ef 100%)",
+    borderColor: "#60C8D4",
+    shadow: "0 20px 50px -10px rgba(96,200,212,0.5)",
   },
   {
     id: 3,
@@ -169,7 +175,10 @@ const WHY_PARENTS_CARDS = [
     image: CHILD_PHOTOS.fingerPaintingGirl,
     icon: Heart,
     badge: "360° Whole Child",
-    color: "#8ed727"
+    color: "#fece13",
+    bgGradient: "linear-gradient(135deg, #fee575 0%, #fef0a4 25%, #ffffff 50%, #fee575 75%, #fddb4c 100%)",
+    borderColor: "#fece13",
+    shadow: "0 20px 50px -10px rgba(254,206,19,0.5)",
   },
   {
     id: 4,
@@ -178,7 +187,10 @@ const WHY_PARENTS_CARDS = [
     image: CHILD_PHOTOS.classroomDrawing,
     icon: BookOpen,
     badge: "Research-Informed FLN",
-    color: "#60C8D4"
+    color: "#FF6B8B",
+    bgGradient: "linear-gradient(135deg, #ffb8c9 0%, #ffd4df 25%, #ffffff 50%, #ffb8c9 75%, #ffa1b8 100%)",
+    borderColor: "#FF6B8B",
+    shadow: "0 20px 50px -10px rgba(255,107,139,0.48)",
   },
   {
     id: 5,
@@ -187,7 +199,10 @@ const WHY_PARENTS_CARDS = [
     image: CHILD_PHOTOS.toddlerLaughingBook,
     icon: Globe2,
     badge: "Sanskar + Global Vision",
-    color: "#8ed727"
+    color: "#9B51E0",
+    bgGradient: "linear-gradient(135deg, #dcb7ff 0%, #ecd5ff 25%, #ffffff 50%, #dcb7ff 75%, #ca9aff 100%)",
+    borderColor: "#9B51E0",
+    shadow: "0 20px 50px -10px rgba(155,81,224,0.48)",
   }
 ];
 
@@ -275,7 +290,7 @@ const STATS_ITEMS = [
   }
 ];
 
-// SECTION 06: OUR ACTIVITIES (6 CARDS)
+// SECTION 06: OUR ACTIVITIES (6 CARDS WITH BOLD SATURATED ACCENTS & MOVING TINTS)
 const ACTIVITIES = [
   {
     id: "wonder-lab",
@@ -284,7 +299,10 @@ const ACTIVITIES = [
     description: "Hands-on experiments, observation and playful investigations that bring science and everyday discoveries to life.",
     image: CHILD_PHOTOS.toddlerAmazedBook,
     icon: Flame,
-    accent: "#60C8D4"
+    accent: "#02C9FE",
+    cardBg: "linear-gradient(135deg, #dcf7fb 0%, #ffffff 35%, #ebfbfd 70%, #c4f3fa 100%)",
+    borderColor: "#02C9FE",
+    glowColor: "rgba(2, 201, 254, 0.4)",
   },
   {
     id: "storyverse",
@@ -293,7 +311,10 @@ const ACTIVITIES = [
     description: "Storytelling, phonics games, puppetry and role-play nurture communication, imagination and early literacy.",
     image: CHILD_PHOTOS.toddlerLaughingBook,
     icon: BookOpen,
-    accent: "#8ed727"
+    accent: "#8ed727",
+    cardBg: "linear-gradient(135deg, #ecfad0 0%, #ffffff 35%, #f4fce5 70%, #d8f792 100%)",
+    borderColor: "#8ed727",
+    glowColor: "rgba(142, 215, 39, 0.4)",
   },
   {
     id: "maker-studio",
@@ -302,7 +323,10 @@ const ACTIVITIES = [
     description: "Construction, art, creative projects and design challenges inspire independent thinking and collaborative problem-solving.",
     image: CHILD_PHOTOS.woodenBlocksChild,
     icon: Palette,
-    accent: "#60C8D4"
+    accent: "#FECE13",
+    cardBg: "linear-gradient(135deg, #fef6cc 0%, #ffffff 35%, #fffbe6 70%, #fede54 100%)",
+    borderColor: "#FECE13",
+    glowColor: "rgba(254, 206, 19, 0.45)",
   },
   {
     id: "rhythm-motion",
@@ -311,7 +335,10 @@ const ACTIVITIES = [
     description: "Music, dance, physical play and movement support coordination, expression, confidence and wellbeing.",
     image: CHILD_PHOTOS.outdoorBallPlayKids,
     icon: Music,
-    accent: "#8ed727"
+    accent: "#FA0672",
+    cardBg: "linear-gradient(135deg, #ffd9e8 0%, #ffffff 35%, #ffeaf1 70%, #ffb8c9 100%)",
+    borderColor: "#FA0672",
+    glowColor: "rgba(250, 6, 114, 0.4)",
   },
   {
     id: "nature-explorers",
@@ -320,7 +347,10 @@ const ACTIVITIES = [
     description: "Gardening, sensory walks and outdoor exploration encourage environmental awareness and curiosity.",
     image: CHILD_PHOTOS.natureExplorerChild,
     icon: Leaf,
-    accent: "#60C8D4"
+    accent: "#22c55e",
+    cardBg: "linear-gradient(135deg, #ddf7e4 0%, #ffffff 35%, #effbf2 70%, #bbf0ca 100%)",
+    borderColor: "#22c55e",
+    glowColor: "rgba(34, 197, 94, 0.4)",
   },
   {
     id: "roots-wings",
@@ -329,11 +359,14 @@ const ACTIVITIES = [
     description: "Stories, festivals, cultures and community experiences nurture belonging, empathy, respect and global awareness.",
     image: CHILD_PHOTOS.classroomDrawing,
     icon: Globe2,
-    accent: "#8ed727"
+    accent: "#9B51E0",
+    cardBg: "linear-gradient(135deg, #f3e6ff 0%, #ffffff 35%, #faf2ff 70%, #dcb7ff 100%)",
+    borderColor: "#9B51E0",
+    glowColor: "rgba(155, 81, 224, 0.4)",
   }
 ];
 
-// SECTION 07: LEARNING PROGRAMMES (4 CARDS)
+// SECTION 07: LEARNING PROGRAMMES (4 CARDS WITH VIBRANT SIGNATURE BRAND ACCENTS)
 const PROGRAMMES_LIST = [
   {
     id: "playgroup",
@@ -343,7 +376,10 @@ const PROGRAMMES_LIST = [
     description: "Sensory discovery, warm relationships, movement and playful interactions make the first school experiences joyful and reassuring.",
     btnText: "Explore Playgroup",
     image: CHILD_PHOTOS.playgroupFloorToddler,
-    color: "#60C8D4",
+    color: "#02C9FE",
+    cardBg: "linear-gradient(180deg, rgba(2,201,254,0.38) 0%, rgba(9,30,58,0.95) 80%)",
+    accentBorder: "#02C9FE",
+    glowColor: "rgba(2,201,254,0.55)",
     badge: "2+ Years"
   },
   {
@@ -355,6 +391,9 @@ const PROGRAMMES_LIST = [
     btnText: "Explore Nursery",
     image: CHILD_PHOTOS.fingerPaintingGirl,
     color: "#8ed727",
+    cardBg: "linear-gradient(180deg, rgba(142,215,39,0.38) 0%, rgba(9,30,58,0.95) 80%)",
+    accentBorder: "#8ed727",
+    glowColor: "rgba(142,215,39,0.55)",
     badge: "3+ Years"
   },
   {
@@ -365,7 +404,10 @@ const PROGRAMMES_LIST = [
     description: "Experiential literacy, numeracy, early scientific thinking and creative challenges bring learning to life.",
     btnText: "Explore Junior KG",
     image: CHILD_PHOTOS.woodenBlocksChild,
-    color: "#60C8D4",
+    color: "#FECE13",
+    cardBg: "linear-gradient(180deg, rgba(254,206,19,0.40) 0%, rgba(9,30,58,0.95) 80%)",
+    accentBorder: "#FECE13",
+    glowColor: "rgba(254,206,19,0.55)",
     badge: "4+ Years"
   },
   {
@@ -376,7 +418,10 @@ const PROGRAMMES_LIST = [
     description: "Foundational skills grow through inquiry, collaboration, projects, communication and meaningful school-readiness experiences.",
     btnText: "Explore Senior KG",
     image: CHILD_PHOTOS.seniorKgFocusedChild,
-    color: "#8ed727",
+    color: "#FA0672",
+    cardBg: "linear-gradient(180deg, rgba(250,6,114,0.38) 0%, rgba(9,30,58,0.95) 80%)",
+    accentBorder: "#FA0672",
+    glowColor: "rgba(250,6,114,0.55)",
     badge: "5+ Years"
   }
 ];
@@ -490,49 +535,61 @@ const PRIMEX_STEPS = [
   }
 ];
 
-// SECTION 09: FUTURE-READY LEARNING (6 CAPABILITIES)
+// SECTION 09: FUTURE-READY LEARNING (6 CAPABILITIES WITH VIBRANT COLOR PALETTE)
 const FUTURE_SKILLS = [
   {
     title: "Critical Thinking",
     description: "Asking questions, observing, comparing and exploring solutions.",
     image: CHILD_PHOTOS.woodenBlocksChild,
     icon: Brain,
-    accent: "#8ed727"
+    accent: "#8ed727",
+    bgGradient: "linear-gradient(135deg, #d8f792 0%, #ffffff 35%, #eefcd5 70%, #c4f364 100%)",
+    borderColor: "#8ed727",
   },
   {
     title: "Creativity",
     description: "Imagining, designing, expressing and creating something original.",
     image: CHILD_PHOTOS.fingerPaintingGirl,
     icon: Palette,
-    accent: "#60C8D4"
+    accent: "#02C9FE",
+    bgGradient: "linear-gradient(135deg, #b2eef5 0%, #ffffff 35%, #e2fafc 70%, #8ae4f0 100%)",
+    borderColor: "#02C9FE",
   },
   {
     title: "Communication",
     description: "Listening, speaking, storytelling and sharing ideas confidently.",
     image: CHILD_PHOTOS.toddlerLaughingBook,
     icon: MessageCircle,
-    accent: "#8ed727"
+    accent: "#FECE13",
+    bgGradient: "linear-gradient(135deg, #fee575 0%, #ffffff 35%, #fff7ce 70%, #fedc46 100%)",
+    borderColor: "#f5b800",
   },
   {
     title: "Collaboration",
     description: "Making friends, working together and respecting different viewpoints.",
     image: CHILD_PHOTOS.classroomDrawing,
     icon: Users,
-    accent: "#60C8D4"
+    accent: "#FA0672",
+    bgGradient: "linear-gradient(135deg, #ffb8c9 0%, #ffffff 35%, #ffe8ee 70%, #ffa3b9 100%)",
+    borderColor: "#fa0672",
   },
   {
     title: "Emotional Intelligence",
     description: "Recognising emotions, building empathy and learning self-regulation.",
     image: CHILD_PHOTOS.toddlerAmazedBook,
     icon: Heart,
-    accent: "#8ed727"
+    accent: "#9B51E0",
+    bgGradient: "linear-gradient(135deg, #dcb7ff 0%, #ffffff 35%, #f3e6ff 70%, #cea0fd 100%)",
+    borderColor: "#9B51E0",
   },
   {
     title: "Future Awareness",
     description: "Exploring sustainability, technology, space and everyday innovation through play.",
     image: CHILD_PHOTOS.natureExplorerChild,
     icon: Rocket,
-    accent: "#60C8D4"
+    accent: "#FF8A3D",
+    bgGradient: "linear-gradient(135deg, #ffd1ab 0%, #ffffff 35%, #fff0e3 70%, #ffbe85 100%)",
+    borderColor: "#FF8A3D",
   }
 ];
 
@@ -616,60 +673,67 @@ const PARENT_STORIES = [
   }
 ];
 
-// SECTION 14: OUR EVENTS
+// SECTION 14: OUR EVENTS (VIBRANT ACCENTS)
 const EVENTS_LIST = [
   {
     title: "Discovery Days",
     date: "Interactive Science & Inquiry Showcase",
     description: "Hands-on investigations, projects and experiential learning showcases.",
     image: CHILD_PHOTOS.toddlerAmazedBook,
-    badge: "Wonder Lab Showcase"
+    badge: "Wonder Lab Showcase",
+    color: "#60C8D4"
   },
   {
     title: "Roots & Wings Celebrations",
     date: "Indian Festivals & Global Culture",
     description: "Culture, festivals, storytelling and community experiences.",
     image: CHILD_PHOTOS.classroomDrawing,
-    badge: "Cultural Harmony"
+    badge: "Cultural Harmony",
+    color: "#fece13"
   },
   {
     title: "Little Earthkeepers",
     date: "Green Campus & Nature Drive",
     description: "Nature activities and early environmental responsibility.",
     image: CHILD_PHOTOS.natureExplorerChild,
-    badge: "Eco Explorers"
+    badge: "Eco Explorers",
+    color: "#8ed727"
   },
   {
     title: "Blooming Together",
     date: "Family & Community Carnival",
     description: "Parent engagement, family events and collaborative learning.",
     image: CHILD_PHOTOS.outdoorBallPlayKids,
-    badge: "Parent-Child Joy"
+    badge: "Parent-Child Joy",
+    color: "#FF6B8B"
   }
 ];
 
-// SECTION 15: THE BLOOMING JOURNAL (BLOG)
+// SECTION 15: THE BLOOMING JOURNAL (BLOG WITH COLORFUL TAGS)
 const BLOG_POSTS = [
   {
     title: "No-Book Doesn't Mean No Learning.",
     excerpt: "Discover how experiential learning can build strong foundations beyond repetitive worksheets.",
     category: "Learning Philosophy",
     readTime: "4 Min Read",
-    image: CHILD_PHOTOS.toddlerBeadMaze
+    image: CHILD_PHOTOS.toddlerBeadMaze,
+    color: "#8ed727"
   },
   {
     title: "Why Future Skills Begin Before School.",
     excerpt: "Explore how creativity, curiosity and problem-solving start with simple childhood experiences.",
     category: "21st-Century Skills",
     readTime: "5 Min Read",
-    image: CHILD_PHOTOS.woodenBlocksChild
+    image: CHILD_PHOTOS.woodenBlocksChild,
+    color: "#60C8D4"
   },
   {
     title: "Is Your Child Really School-Ready?",
     excerpt: "Understand why emotional confidence, independence and communication matter alongside academics.",
     category: "Holistic Growth",
     readTime: "4 Min Read",
-    image: CHILD_PHOTOS.seniorKgFocusedChild
+    image: CHILD_PHOTOS.seniorKgFocusedChild,
+    color: "#fece13"
   }
 ];
 
@@ -692,6 +756,7 @@ const VIDEO_BYTES = [
     title: "Love Is the Language of Childhood",
     duration: "01:45",
     tag: "Warm Relationships",
+    color: "#8ed727",
     image: CHILD_PHOTOS.toddlerLaughingBook,
     caption: "Every morning begins with warm smiles, reassuring hugs and a classroom where every child feels cherished."
   },
@@ -700,6 +765,7 @@ const VIDEO_BYTES = [
     title: "A Day in Our Learning World",
     duration: "02:15",
     tag: "Kindermagic PrimeX",
+    color: "#60C8D4",
     image: CHILD_PHOTOS.classroomDrawing,
     caption: "Follow our little explorers from circle time storytelling to hands-on maker challenges and outdoor play."
   },
@@ -708,6 +774,7 @@ const VIDEO_BYTES = [
     title: "Little Scientists, Big Discoveries",
     duration: "01:30",
     tag: "Wonder Lab",
+    color: "#fece13",
     image: CHILD_PHOTOS.toddlerAmazedBook,
     caption: "See how everyday questions turn into joyful experiments in our hands-on Wonder Lab."
   },
@@ -716,6 +783,7 @@ const VIDEO_BYTES = [
     title: "Beyond Books, Into Possibilities",
     duration: "02:05",
     tag: "No-Book Philosophy",
+    color: "#FF6B8B",
     image: CHILD_PHOTOS.fingerPaintingGirl,
     caption: "Why children remember and understand more deeply when they learn by doing, touching and creating."
   }
@@ -918,61 +986,16 @@ export default function IndianPreschoolHome({
         </motion.div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Mobile Slide Bar: Arrows on left, ONLY active slide in the free right space */}
-          <div className="flex sm:hidden items-center gap-2 mb-6 w-full">
-            <div className="flex items-center gap-1.5 flex-shrink-0">
-              <motion.button
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-sm"
-                aria-label="Previous Hero Slide"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </motion.button>
-              <motion.button
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-sm"
-                aria-label="Next Hero Slide"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </motion.button>
-            </div>
-
-            {/* Active slide pill in the free right space of the arrows */}
-            <div className="flex-1 min-w-0">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentSlide.id}
-                  initial={{ opacity: 0, x: 6 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -6 }}
-                  transition={{ duration: 0.2 }}
-                  className="px-3.5 py-2 rounded-full bg-[#091E3A] text-white text-xs font-extrabold flex items-center justify-between gap-2 shadow-md"
-                >
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span
-                      className="w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-300"
-                      style={{ backgroundColor: currentSlide.accent }}
-                    />
-                    <span className="truncate">{currentSlide.tag}</span>
-                  </div>
-                  <span className="text-[10px] text-[#8ed727] font-mono flex-shrink-0">
-                    0{activeSlide + 1}/03
-                  </span>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-
           {/* Desktop Slide Selector Pills with Silky Sliding Layout Animation */}
-          <div className="hidden sm:flex items-center justify-between gap-3 mb-8">
+          <div className="hidden lg:flex items-center justify-between gap-3 mb-8">
             <div className="flex items-center gap-2 p-1 rounded-full glass-panel-elevated border border-white/80">
               {HERO_SLIDES.map((s, idx) => {
                 const isActive = activeSlide === idx;
                 return (
-                  <button
+                  <motion.button
                     key={s.id}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => setActiveSlide(idx)}
                     className={`relative px-4 py-2 rounded-full text-xs font-extrabold transition-colors duration-300 flex items-center gap-2 ${
                       isActive ? 'text-white' : 'text-[#091E3A]/75 hover:text-[#091E3A]'
@@ -990,7 +1013,7 @@ export default function IndianPreschoolHome({
                       style={{ backgroundColor: s.accent }}
                     />
                     <span className="relative z-10">{s.tag}</span>
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
@@ -1000,7 +1023,7 @@ export default function IndianPreschoolHome({
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors"
+                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-xs"
                 aria-label="Previous Hero Slide"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -1009,7 +1032,7 @@ export default function IndianPreschoolHome({
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors"
+                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-xs"
                 aria-label="Next Hero Slide"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -1018,12 +1041,12 @@ export default function IndianPreschoolHome({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Narrative Column - Locked Heights to completely eliminate vertical shift */}
-            <div className="lg:col-span-6 flex flex-col justify-between min-h-[530px] sm:min-h-[510px] lg:min-h-[540px]">
+            {/* Left Narrative Column - Locked Heights for Text to eliminate vertical shift */}
+            <div className="lg:col-span-6 flex flex-col justify-between">
               
               <div className="space-y-4">
-                {/* Dynamic Slide Content (Badge + Headline + Description) - Height locked to accommodate 3-line heading without page shift */}
-                <div className="relative min-h-[315px] sm:min-h-[325px] lg:min-h-[365px]">
+                {/* Dynamic Slide Content (Badge + Headline + Description) */}
+                <div className="relative min-h-[300px] sm:min-h-[325px] lg:min-h-[365px]">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentSlide.id}
@@ -1083,107 +1106,289 @@ export default function IndianPreschoolHome({
                   </AnimatePresence>
                 </div>
 
-                {/* CTA Buttons - Stationary Position */}
+                {/* MOBILE ONLY: Image Slideshow right under heading & content, with slide arrows and title below it */}
+                <div className="block lg:hidden my-6">
+                  {/* Organic Preschool Hero Showcase - Melting Frame & Ambient Glow */}
+                  <div className="relative mx-auto max-w-lg">
+                    {/* Deep melting glow wash dissolving seamlessly into hero background */}
+                    <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#8ed727]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
+
+                    {/* Luminous core aura subtly glowing around the frame */}
+                    <div className="absolute -inset-4 sm:-inset-6 rounded-[50px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#8ed727]/35 animate-glow-melt-core pointer-events-none" />
+
+                    {/* Image Showcase Frame with fluid organic border melting directly into background */}
+                    <div
+                      className="relative overflow-hidden h-[340px] sm:h-[420px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
+                      style={{
+                        WebkitMaskImage: '-webkit-radial-gradient(white, black)',
+                        transform: 'translateZ(0)',
+                      }}
+                    >
+                      {/* Subtly Sparkling Rim Border */}
+                      <div
+                        className="absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
+                        style={{
+                          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                          WebkitMaskComposite: 'xor',
+                          maskComposite: 'exclude',
+                          padding: '2px',
+                        }}
+                      />
+
+                      {/* Sparkling border glints */}
+                      <div className="absolute top-2 left-10 z-30 pointer-events-none animate-sparkle-star-1">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.95)]">
+                          <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                        </svg>
+                      </div>
+                      <div className="absolute top-1/4 right-3 z-30 pointer-events-none animate-sparkle-star-2">
+                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-[#fece13] drop-shadow-[0_0_8px_rgba(254,206,19,0.95)]">
+                          <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                        </svg>
+                      </div>
+                      <div className="absolute bottom-4 right-14 z-30 pointer-events-none animate-sparkle-star-3">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 fill-[#60C8D4] drop-shadow-[0_0_8px_rgba(96,200,212,0.95)]">
+                          <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                        </svg>
+                      </div>
+                      <div className="absolute bottom-1/3 left-3 z-30 pointer-events-none animate-sparkle-star-4">
+                        <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#8ed727] drop-shadow-[0_0_8px_rgba(142,215,39,0.95)]">
+                          <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                        </svg>
+                      </div>
+
+                      {/* Silky Pure Opacity Crossfade (No Resizing or Zooming) */}
+                      <AnimatePresence initial={false}>
+                        <motion.img
+                          key={currentSlide.mainImage}
+                          src={currentSlide.mainImage}
+                          alt={currentSlide.headline}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.6, ease: "easeInOut" }}
+                          className="absolute inset-0 w-full h-full object-cover object-center"
+                          loading="eager"
+                          decoding="async"
+                        />
+                      </AnimatePresence>
+
+                      {/* Compact Floating Glass Badge */}
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentSlide.badgeTitle}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -6 }}
+                          transition={{ duration: 0.3, ease: 'easeOut' }}
+                          className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
+                        >
+                          <div
+                            className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
+                            style={{ backgroundColor: currentSlide.accent }}
+                          >
+                            <Sparkles className="w-3.5 h-3.5" />
+                          </div>
+                          <div className="truncate">
+                            <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
+                            <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
+                          </div>
+                          <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#8ed727] flex-shrink-0">
+                            Admissions Open
+                          </span>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+                  </div>
+
+                  {/* Mobile Slide Controls: Arrows & Active Slide Title below the slideshow */}
+                  <div className="flex items-center gap-2 mt-5 w-full">
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      <motion.button
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+                        className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-sm"
+                        aria-label="Previous Hero Slide"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
+                        className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-sm"
+                        aria-label="Next Hero Slide"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </motion.button>
+                    </div>
+
+                    {/* Active slide pill in the free right space of the arrows */}
+                    <div className="flex-1 min-w-0">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentSlide.id}
+                          initial={{ opacity: 0, x: 6 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -6 }}
+                          transition={{ duration: 0.2 }}
+                          className="px-3.5 py-2 rounded-full bg-[#091E3A] text-white text-xs font-extrabold flex items-center justify-center gap-2 shadow-md"
+                        >
+                          <div className="flex items-center gap-2 min-w-0">
+                            <span
+                              className="w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-300"
+                              style={{ backgroundColor: currentSlide.accent }}
+                            />
+                            <span className="truncate">{currentSlide.tag}</span>
+                          </div>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Buttons - Interactive spring micro-animations */}
                 <div className="flex flex-wrap items-center gap-4 pt-1">
                   <motion.a
-                    whileHover={{ scale: 1.03, y: -2 }}
-                    whileTap={{ scale: 0.97 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.96 }}
                     href={currentSlide.primaryHref}
-                    className="btn-lime px-7 py-4 rounded-full text-sm font-extrabold flex items-center gap-2.5 border-2 border-white shadow-xl"
+                    className="btn-lime px-7 py-4 rounded-full text-sm font-extrabold flex items-center gap-2.5 border-2 border-white shadow-xl group transition-all"
                   >
                     <span>{currentSlide.primaryBtn}</span>
-                    <ArrowRight className="w-4 h-4 text-[#091E3A]" />
+                    <ArrowRight className="w-4 h-4 text-[#091E3A] group-hover:translate-x-1 transition-transform" />
                   </motion.a>
 
                   <motion.button
-                    whileHover={{ scale: 1.03, y: -2 }}
-                    whileTap={{ scale: 0.97 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={onOpenTourModal}
-                    className="btn-turquoise px-7 py-4 rounded-full text-sm font-extrabold flex items-center gap-2 border-2 border-white shadow-lg"
+                    className="btn-turquoise px-7 py-4 rounded-full text-sm font-extrabold flex items-center gap-2 border-2 border-white shadow-lg group transition-all"
                   >
-                    <Calendar className="w-4 h-4 text-[#091E3A]" />
+                    <Calendar className="w-4 h-4 text-[#091E3A] group-hover:rotate-6 transition-transform" />
                     <span>{currentSlide.secondaryBtn}</span>
                   </motion.button>
                 </div>
               </div>
 
-              {/* Indian Preschool Trust Highlights - Constant & Stationary */}
+              {/* Indian Preschool Trust Highlights - Bold Saturated Brand Colors */}
               <div className="pt-6 grid grid-cols-3 gap-3 max-w-lg">
-                <div className="glass-panel p-3.5 rounded-2xl border border-white/90 text-center">
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  className="p-3.5 rounded-2xl border-2 border-[#f5b800] bg-gradient-to-br from-[#fee575] via-[#fede54] to-[#fcd33f] text-center shadow-md"
+                >
                   <p className="text-xs font-black text-[#091E3A]">No-Book Model</p>
-                  <p className="text-[11px] text-[#091E3A]/70 font-medium mt-0.5">Experiential FLN</p>
-                </div>
-                <div className="glass-panel p-3.5 rounded-2xl border border-white/90 text-center">
+                  <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">Experiential FLN</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  className="p-3.5 rounded-2xl border-2 border-[#76be13] bg-gradient-to-br from-[#d4f884] via-[#c4f466] to-[#b3ed45] text-center shadow-md"
+                >
                   <p className="text-xs font-black text-[#091E3A]">2+ to 5+ Years</p>
-                  <p className="text-[11px] text-[#091E3A]/70 font-medium mt-0.5">Playgroup to Sr. KG</p>
-                </div>
-                <div className="glass-panel p-3.5 rounded-2xl border border-white/90 text-center">
+                  <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">Playgroup to Sr. KG</p>
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  className="p-3.5 rounded-2xl border-2 border-[#20b2c4] bg-gradient-to-br from-[#b2f0f7] via-[#9eeaf3] to-[#7be1ed] text-center shadow-md"
+                >
                   <p className="text-xs font-black text-[#091E3A]">360° Growth</p>
-                  <p className="text-[11px] text-[#091E3A]/70 font-medium mt-0.5">8 Dimensions</p>
-                </div>
+                  <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">8 Dimensions</p>
+                </motion.div>
               </div>
             </div>
 
-            {/* Right Organic Preschool Hero Showcase - Silky Crossfade & Ambient Glow */}
-            <div className="lg:col-span-6 relative">
+            {/* Right Organic Preschool Hero Showcase - Desktop with Melting Frame & Ambient Glow */}
+            <div className="hidden lg:block lg:col-span-6 relative">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
-                {/* Ambient backlight glow */}
-                <div className="absolute -inset-4 rounded-[50px] bg-gradient-to-tr from-[#8ed727]/25 via-[#60C8D4]/25 to-[#8ed727]/15 blur-2xl opacity-75 -z-10 pointer-events-none" />
+                {/* Deep melting glow wash dissolving seamlessly into hero background */}
+                <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#8ed727]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
 
-                {/* Main Card Frame */}
-                <div className="relative rounded-[44px] p-2.5 sm:p-3.5 glass-panel-elevated border-4 border-white shadow-2xl">
+                {/* Luminous core aura subtly glowing around the frame */}
+                <div className="absolute -inset-4 sm:-inset-6 rounded-[50px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#8ed727]/35 animate-glow-melt-core pointer-events-none" />
+
+                {/* Image Showcase Frame with fluid organic border melting directly into background */}
+                <div
+                  className="relative overflow-hidden h-[380px] sm:h-[450px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
+                  style={{
+                    WebkitMaskImage: '-webkit-radial-gradient(white, black)',
+                    transform: 'translateZ(0)',
+                  }}
+                >
+                  {/* Subtly Sparkling Rim Border */}
                   <div
-                    className="relative rounded-[34px] overflow-hidden h-[380px] sm:h-[450px] bg-[#091E3A]/5 shadow-inner"
+                    className="absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
                     style={{
-                      WebkitMaskImage: '-webkit-radial-gradient(white, black)',
-                      transform: 'translateZ(0)',
+                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                      WebkitMaskComposite: 'xor',
+                      maskComposite: 'exclude',
+                      padding: '2px',
                     }}
-                  >
-                    {/* Silky Image Crossfade */}
-                    <AnimatePresence initial={false}>
-                      <motion.img
-                        key={currentSlide.mainImage}
-                        src={currentSlide.mainImage}
-                        alt={currentSlide.headline}
-                        initial={{ opacity: 0, scale: 1.04 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105 will-change-transform"
-                        loading="eager"
-                        decoding="async"
-                      />
-                    </AnimatePresence>
+                  />
 
-                    {/* Subtle specular ring border */}
-                    <div className="absolute inset-0 rounded-[34px] ring-1 ring-inset ring-white/40 pointer-events-none" />
-
-                    {/* Compact Floating Glass Badge */}
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={currentSlide.badgeTitle}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6 }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
-                        className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
-                      >
-                        <div
-                          className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
-                          style={{ backgroundColor: currentSlide.accent }}
-                        >
-                          <Sparkles className="w-3.5 h-3.5" />
-                        </div>
-                        <div className="truncate">
-                          <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
-                          <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
-                        </div>
-                        <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#8ed727] flex-shrink-0">
-                          Admissions Open
-                        </span>
-                      </motion.div>
-                    </AnimatePresence>
+                  {/* Sparkling border glints */}
+                  <div className="absolute top-3 left-12 z-30 pointer-events-none animate-sparkle-star-1">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.95)]">
+                      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                    </svg>
                   </div>
+                  <div className="absolute top-1/4 right-3 z-30 pointer-events-none animate-sparkle-star-2">
+                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-[#fece13] drop-shadow-[0_0_8px_rgba(254,206,19,0.95)]">
+                      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                    </svg>
+                  </div>
+                  <div className="absolute bottom-4 right-16 z-30 pointer-events-none animate-sparkle-star-3">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-[#60C8D4] drop-shadow-[0_0_8px_rgba(96,200,212,0.95)]">
+                      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                    </svg>
+                  </div>
+                  <div className="absolute bottom-1/3 left-3 z-30 pointer-events-none animate-sparkle-star-4">
+                    <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#8ed727] drop-shadow-[0_0_8px_rgba(142,215,39,0.95)]">
+                      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                    </svg>
+                  </div>
+
+                  {/* Silky Pure Opacity Crossfade (No Resizing or Zooming) */}
+                  <AnimatePresence initial={false}>
+                    <motion.img
+                      key={currentSlide.mainImage}
+                      src={currentSlide.mainImage}
+                      alt={currentSlide.headline}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                      className="absolute inset-0 w-full h-full object-cover object-center"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </AnimatePresence>
+
+                  {/* Compact Floating Glass Badge */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentSlide.badgeTitle}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                      className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
+                    >
+                      <div
+                        className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
+                        style={{ backgroundColor: currentSlide.accent }}
+                      >
+                        <Sparkles className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="truncate">
+                        <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
+                        <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
+                      </div>
+                      <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#8ed727] flex-shrink-0">
+                        Admissions Open
+                      </span>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
@@ -1200,11 +1405,17 @@ export default function IndianPreschoolHome({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-[34px] p-6 sm:p-8 lg:px-12 bg-gradient-to-r from-[#091E3A] via-[#0F2C52] to-[#091E3A] text-white shadow-2xl border-2 border-[#60C8D4]/50 relative overflow-hidden"
+            className="rounded-[34px] p-6 sm:p-8 lg:px-12 text-white shadow-2xl border-2 border-[#60C8D4]/60 relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, #091E3A 0%, #0d2c55 25%, #091E3A 50%, #10386b 75%, #091E3A 100%)',
+              backgroundSize: '240% 240%',
+              animation: 'flowyColorDrift 12s ease-in-out infinite',
+            }}
           >
             {/* Decorative Glows */}
-            <div className="absolute -right-12 -top-12 w-56 h-56 rounded-full bg-[#8ed727]/20 blur-2xl pointer-events-none" />
-            <div className="absolute left-1/3 -bottom-16 w-64 h-64 rounded-full bg-[#60C8D4]/20 blur-2xl pointer-events-none" />
+            <div className="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-[#8ed727]/25 blur-3xl pointer-events-none animate-pulse" />
+            <div className="absolute left-1/3 -bottom-16 w-72 h-72 rounded-full bg-[#60C8D4]/25 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="absolute left-4 top-1/2 w-48 h-48 rounded-full bg-[#fece13]/15 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '4s' }} />
 
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
               <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -1226,20 +1437,24 @@ export default function IndianPreschoolHome({
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-3 flex-shrink-0">
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
                   onClick={onOpenTourModal}
-                  className="btn-lime px-7 py-3.5 rounded-full text-sm font-black flex items-center gap-2 border-2 border-white shadow-xl"
+                  className="btn-lime px-7 py-3.5 rounded-full text-sm font-black flex items-center gap-2 border-2 border-white shadow-xl group transition-all"
                 >
                   <span>Enquire Now</span>
-                  <ArrowRight className="w-4 h-4 text-[#091E3A]" />
-                </button>
-                <a
+                  <ArrowRight className="w-4 h-4 text-[#091E3A] group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+                <motion.a
+                  whileHover={{ scale: 1.04, y: -1 }}
+                  whileTap={{ scale: 0.96 }}
                   href="tel:+919647974093"
-                  className="px-5 py-3.5 rounded-full text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/25 transition-all flex items-center gap-2"
+                  className="px-5 py-3.5 rounded-full text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/25 transition-all flex items-center gap-2 shadow-sm"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#8ed727]" />
                   <span>+91 96479 74093</span>
-                </a>
+                </motion.a>
               </div>
             </div>
           </motion.div>
@@ -1265,7 +1480,7 @@ export default function IndianPreschoolHome({
             </h2>
           </div>
 
-          {/* 5 Flowy Glassmorphic Photo Cards */}
+          {/* 5 Flowy Glassmorphic Photo Cards with Distinct Brand Accents */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             {WHY_PARENTS_CARDS.map((card, index) => {
               const IconComp = card.icon;
@@ -1276,10 +1491,18 @@ export default function IndianPreschoolHome({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
-                  whileHover={{ y: -8 }}
-                  className={`glass-panel-elevated rounded-[32px] overflow-hidden border-2 border-white shadow-xl flex flex-col justify-between group ${
+                  whileHover={{ y: -8, scale: 1.01 }}
+                  className={`rounded-[32px] overflow-hidden border-2 shadow-xl flex flex-col justify-between group transition-all duration-300 ${
                     index === 3 ? 'lg:col-span-1' : index === 4 ? 'md:col-span-2 lg:col-span-2' : ''
                   }`}
+                  style={{
+                    background: card.bgGradient,
+                    backgroundSize: '240% 240%',
+                    animation: 'flowyColorDrift 11s ease-in-out infinite',
+                    animationDelay: `${index * 1.5}s`,
+                    borderColor: card.borderColor,
+                    boxShadow: card.shadow,
+                  }}
                 >
                   <div>
                     <div className="relative h-52 overflow-hidden">
@@ -1409,7 +1632,14 @@ export default function IndianPreschoolHome({
               </p>
 
               {/* Founder Signature Card */}
-              <div className="glass-panel rounded-3xl p-6 border-2 border-[#60C8D4]/30 bg-gradient-to-r from-[#F3FAFC] via-white to-[#8ed727]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div
+                className="rounded-3xl p-6 border-2 border-[#60C8D4]/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(243,250,252,0.95) 0%, rgba(96,200,212,0.20) 25%, rgba(255,255,255,0.95) 50%, rgba(142,215,39,0.22) 75%, rgba(254,206,19,0.20) 100%)',
+                  backgroundSize: '240% 240%',
+                  animation: 'flowyColorDrift 12s ease-in-out infinite',
+                }}
+              >
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-2xl bg-[#091E3A] text-[#8ed727] flex items-center justify-center font-extrabold text-lg shadow-md flex-shrink-0">
                     MY
@@ -1585,7 +1815,14 @@ export default function IndianPreschoolHome({
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.08 }}
                   whileHover={{ y: -8 }}
-                  className="glass-panel-elevated rounded-[34px] overflow-hidden border-2 border-white shadow-xl group flex flex-col justify-between"
+                  className="rounded-[34px] overflow-hidden border-2 shadow-xl group flex flex-col justify-between transition-all duration-300"
+                  style={{
+                    background: act.cardBg,
+                    backgroundSize: '240% 240%',
+                    animation: 'subtleBoxColorShift 14s ease-in-out infinite',
+                    borderColor: act.borderColor,
+                    boxShadow: `0 18px 40px -8px ${act.glowColor}`,
+                  }}
                 >
                   <div>
                     <div className="relative h-56 overflow-hidden">
@@ -1626,13 +1863,15 @@ export default function IndianPreschoolHome({
           </div>
 
           <div className="text-center mt-12">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.96 }}
               onClick={onOpenTourModal}
-              className="btn-lime px-8 py-4 rounded-full text-sm font-extrabold inline-flex items-center gap-2 border-2 border-white shadow-xl"
+              className="btn-lime px-8 py-4 rounded-full text-sm font-extrabold inline-flex items-center gap-2 border-2 border-white shadow-xl group transition-all"
             >
               <span>Discover Our Activities</span>
-              <ArrowRight className="w-4 h-4 text-[#091E3A]" />
-            </button>
+              <ArrowRight className="w-4 h-4 text-[#091E3A] group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </div>
         </div>
       </section>
@@ -1672,8 +1911,16 @@ export default function IndianPreschoolHome({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="rounded-[36px] bg-white/10 backdrop-blur-xl border-2 border-white/20 overflow-hidden flex flex-col justify-between p-4 shadow-2xl group hover:border-[#8ed727] transition-all"
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="rounded-[36px] overflow-hidden flex flex-col justify-between p-4 shadow-2xl group transition-all duration-300 border-2"
+                style={{
+                  background: `linear-gradient(145deg, ${prog.color}45 0%, rgba(9,30,58,0.92) 35%, rgba(9,30,58,0.98) 60%, ${prog.color}35 100%)`,
+                  backgroundSize: '240% 240%',
+                  animation: 'flowyColorDrift 10s ease-in-out infinite',
+                  animationDelay: `${idx * 1.5}s`,
+                  borderColor: prog.accentBorder,
+                  boxShadow: `0 18px 40px -10px ${prog.glowColor}`,
+                }}
               >
                 <div>
                   {/* Arch-Topped Child Image */}
@@ -1695,7 +1942,10 @@ export default function IndianPreschoolHome({
                     <h3 className="text-2xl font-extrabold text-white mb-1">
                       {prog.name}
                     </h3>
-                    <p className="text-xs font-extrabold uppercase tracking-wider text-[#8ed727] mb-3">
+                    <p
+                      className="text-xs font-extrabold uppercase tracking-wider mb-3 transition-colors"
+                      style={{ color: prog.color }}
+                    >
                       {prog.tagline}
                     </p>
                     <p className="text-sm text-white/80 font-medium leading-relaxed mb-6">
@@ -1705,27 +1955,31 @@ export default function IndianPreschoolHome({
                 </div>
 
                 <div className="px-2 pb-2">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.04, y: -2 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={onOpenTourModal}
-                    className="w-full py-3 rounded-full text-xs font-black text-[#091E3A] flex items-center justify-center gap-1.5 transition-transform group-hover:scale-102 shadow-md"
+                    className="w-full py-3 rounded-full text-xs font-black text-[#091E3A] flex items-center justify-center gap-1.5 shadow-md group/btn transition-all"
                     style={{ backgroundColor: prog.color }}
                   >
                     <span>{prog.btnText}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                  </motion.button>
                 </div>
               </motion.div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.96 }}
               onClick={onOpenTourModal}
-              className="btn-lime px-8 py-4 rounded-full text-sm font-black inline-flex items-center gap-2 border-2 border-white shadow-xl"
+              className="btn-lime px-8 py-4 rounded-full text-sm font-black inline-flex items-center gap-2 border-2 border-white shadow-xl group transition-all"
             >
               <span>View All Programmes</span>
-              <ArrowRight className="w-4 h-4 text-[#091E3A]" />
-            </button>
+              <ArrowRight className="w-4 h-4 text-[#091E3A] group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </div>
         </div>
       </section>
@@ -1865,7 +2119,14 @@ export default function IndianPreschoolHome({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -14 }}
               transition={{ duration: 0.35 }}
-              className="glass-panel-elevated rounded-[36px] p-6 sm:p-10 border-2 border-white shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              className="rounded-[36px] p-6 sm:p-10 border-2 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center transition-all duration-300 relative overflow-hidden"
+              style={{
+                background: `linear-gradient(135deg, ${PRIMEX_STEPS[activePrimexStep].color}26 0%, ${PRIMEX_STEPS[activePrimexStep].color}0d 25%, #ffffff 50%, ${PRIMEX_STEPS[activePrimexStep].color}16 75%, ${PRIMEX_STEPS[activePrimexStep].color}32 100%)`,
+                backgroundSize: '240% 240%',
+                animation: 'flowyColorDrift 10s ease-in-out infinite',
+                borderColor: `${PRIMEX_STEPS[activePrimexStep].color}70`,
+                boxShadow: `0 24px 50px -10px ${PRIMEX_STEPS[activePrimexStep].color}40`,
+              }}
             >
               <div className="lg:col-span-6 space-y-4">
                 <span
@@ -1931,13 +2192,20 @@ export default function IndianPreschoolHome({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.07 }}
-                  whileHover={{ y: -6 }}
-                  className="glass-panel-elevated rounded-[30px] p-5 border-2 border-white shadow-lg flex items-start gap-4"
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  className="rounded-[30px] p-5 border-2 shadow-lg flex items-start gap-4 transition-all duration-300"
+                  style={{
+                    background: skill.bgGradient,
+                    backgroundSize: '240% 240%',
+                    animation: 'subtleBoxColorShift 12s ease-in-out infinite',
+                    borderColor: skill.borderColor,
+                    boxShadow: `0 14px 30px -8px ${skill.accent}30`,
+                  }}
                 >
                   <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 border-2 border-white shadow-md relative">
                     <img src={skill.image} alt={skill.title} className="w-full h-full object-cover" />
                     <div
-                      className="absolute bottom-1 right-1 w-6 h-6 rounded-lg flex items-center justify-center text-[#091E3A]"
+                      className="absolute bottom-1 right-1 w-6 h-6 rounded-lg flex items-center justify-center text-[#091E3A] shadow-xs"
                       style={{ backgroundColor: skill.accent }}
                     >
                       <IconComp className="w-3.5 h-3.5" />
@@ -1955,13 +2223,15 @@ export default function IndianPreschoolHome({
           </div>
 
           <div className="text-center mt-12">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.96 }}
               onClick={onOpenTourModal}
-              className="btn-turquoise px-8 py-4 rounded-full text-sm font-extrabold inline-flex items-center gap-2 border-2 border-white shadow-lg"
+              className="btn-turquoise px-8 py-4 rounded-full text-sm font-extrabold inline-flex items-center gap-2 border-2 border-white shadow-lg group transition-all"
             >
               <span>Discover Future-Ready Learning</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </div>
         </div>
       </section>
@@ -1987,20 +2257,26 @@ export default function IndianPreschoolHome({
           <div className="block lg:hidden space-y-3">
             {HOLISTIC_DIMENSIONS.map((dim, idx) => {
               const isActive = activeDimension === idx;
+              const dimColors = ['#8ed727', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
+              const dimColor = dimColors[idx % dimColors.length];
               return (
                 <div key={dim.id} className="space-y-3">
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => setActiveDimension(idx)}
-                    className={`w-full p-4 rounded-2xl text-left transition-all border-2 flex items-center justify-between gap-3 ${
-                      isActive
-                        ? 'bg-[#091E3A] text-white border-[#091E3A] shadow-xl'
-                        : 'glass-panel-elevated text-[#091E3A] border-white hover:border-[#60C8D4]'
+                    className={`w-full p-4 rounded-2xl text-left transition-all border-2 flex items-center justify-between gap-3 shadow-xs ${
+                      isActive ? 'shadow-xl' : ''
                     }`}
+                    style={{
+                      backgroundColor: isActive ? '#091E3A' : `${dimColor}18`,
+                      borderColor: isActive ? '#091E3A' : `${dimColor}60`,
+                      color: isActive ? '#FFFFFF' : '#091E3A',
+                    }}
                   >
                     <div className="flex items-center gap-3.5 min-w-0">
                       <span
-                        className="w-9 h-9 rounded-xl flex items-center justify-center font-black text-xs text-[#091E3A] flex-shrink-0"
-                        style={{ backgroundColor: idx % 2 === 0 ? '#8ed727' : '#60C8D4' }}
+                        className="w-9 h-9 rounded-xl flex items-center justify-center font-black text-xs text-[#091E3A] flex-shrink-0 shadow-xs"
+                        style={{ backgroundColor: dimColor }}
                       >
                         0{dim.id}
                       </span>
@@ -2013,7 +2289,7 @@ export default function IndianPreschoolHome({
                         isActive ? 'rotate-180 text-[#8ed727]' : 'text-[#091E3A]/50'
                       }`}
                     />
-                  </button>
+                  </motion.button>
 
                   {/* Dimension Slide Box - Appears directly below its respective active step */}
                   <AnimatePresence>
@@ -2025,14 +2301,26 @@ export default function IndianPreschoolHome({
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="glass-panel-elevated rounded-3xl p-5 border-2 border-white shadow-xl space-y-4">
+                        <div
+                          className="rounded-3xl p-5 border-2 shadow-xl space-y-4 transition-all duration-300"
+                          style={{
+                            background: `linear-gradient(135deg, ${dimColor}24 0%, ${dimColor}0d 25%, #ffffff 50%, ${dimColor}18 75%, ${dimColor}30 100%)`,
+                            backgroundSize: '250% 250%',
+                            animation: 'flowyColorDrift 10s ease-in-out infinite',
+                            borderColor: `${dimColor}70`,
+                            boxShadow: `0 20px 45px -8px ${dimColor}35`,
+                          }}
+                        >
                           <div className="relative h-52 rounded-2xl overflow-hidden border-2 border-white shadow-inner">
                             <img
                               src={dim.image}
                               alt={dim.title}
                               className="w-full h-full object-cover"
                             />
-                            <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black shadow-sm">
+                            <div
+                              className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-xs font-black shadow-sm"
+                              style={{ backgroundColor: dimColor }}
+                            >
                               Dimension 0{dim.id} of 08
                             </div>
                           </div>
@@ -2048,12 +2336,14 @@ export default function IndianPreschoolHome({
                             <span className="text-[11px] font-black text-[#091E3A]">
                               Every Milestone Matters.
                             </span>
-                            <button
+                            <motion.button
+                              whileHover={{ scale: 1.05, x: 2 }}
+                              whileTap={{ scale: 0.95 }}
                               onClick={onOpenTourModal}
                               className="text-xs font-extrabold text-[#091E3A] underline hover:text-[#60C8D4]"
                             >
                               Learn More →
-                            </button>
+                            </motion.button>
                           </div>
                         </div>
                       </motion.div>
@@ -2068,82 +2358,110 @@ export default function IndianPreschoolHome({
           <div className="hidden lg:grid grid-cols-12 gap-8 items-center">
             {/* 8 Dimension Pills */}
             <div className="col-span-7 grid grid-cols-2 gap-3.5">
-              {HOLISTIC_DIMENSIONS.map((dim, idx) => (
-                <button
-                  key={dim.id}
-                  onClick={() => setActiveDimension(idx)}
-                  className={`p-4 rounded-2xl text-left transition-all border-2 flex items-center gap-3.5 ${
-                    activeDimension === idx
-                      ? 'bg-[#091E3A] text-white border-[#091E3A] shadow-xl scale-102'
-                      : 'glass-panel-elevated text-[#091E3A] border-white hover:border-[#60C8D4]'
-                  }`}
-                >
-                  <span
-                    className="w-9 h-9 rounded-xl flex items-center justify-center font-black text-xs text-[#091E3A] flex-shrink-0"
-                    style={{ backgroundColor: idx % 2 === 0 ? '#8ed727' : '#60C8D4' }}
+              {HOLISTIC_DIMENSIONS.map((dim, idx) => {
+                const dimColors = ['#8ed727', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
+                const dimColor = dimColors[idx % dimColors.length];
+                const isSelected = activeDimension === idx;
+                return (
+                  <motion.button
+                    key={dim.id}
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setActiveDimension(idx)}
+                    className={`p-4 rounded-2xl text-left transition-all border-2 flex items-center gap-3.5 shadow-xs ${
+                      isSelected ? 'shadow-xl scale-102' : ''
+                    }`}
+                    style={{
+                      backgroundColor: isSelected ? '#091E3A' : `${dimColor}18`,
+                      borderColor: isSelected ? '#091E3A' : `${dimColor}60`,
+                      color: isSelected ? '#FFFFFF' : '#091E3A',
+                    }}
                   >
-                    0{dim.id}
-                  </span>
-                  <span className="text-xs sm:text-sm font-extrabold leading-snug">
-                    {dim.title}
-                  </span>
-                </button>
-              ))}
+                    <span
+                      className="w-9 h-9 rounded-xl flex items-center justify-center font-black text-xs text-[#091E3A] flex-shrink-0 shadow-xs"
+                      style={{ backgroundColor: dimColor }}
+                    >
+                      0{dim.id}
+                    </span>
+                    <span className="text-xs sm:text-sm font-extrabold leading-snug">
+                      {dim.title}
+                    </span>
+                  </motion.button>
+                );
+              })}
             </div>
 
             {/* Active Dimension Photo Card */}
             <div className="col-span-5">
-              <div className="glass-panel-elevated rounded-[36px] p-6 border-2 border-white shadow-2xl min-h-[460px] flex flex-col justify-between">
-                <div>
-                  <div className="relative h-64 rounded-3xl overflow-hidden mb-5 border-2 border-white">
-                    <AnimatePresence mode="wait">
-                      <motion.img
-                        key={HOLISTIC_DIMENSIONS[activeDimension].id}
-                        src={HOLISTIC_DIMENSIONS[activeDimension].image}
-                        alt={HOLISTIC_DIMENSIONS[activeDimension].title}
-                        initial={{ opacity: 0, scale: 1.04 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.45 }}
-                        className="w-full h-full object-cover"
-                      />
-                    </AnimatePresence>
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black shadow-md z-10">
-                      Dimension 0{HOLISTIC_DIMENSIONS[activeDimension].id} of 08
+              {(() => {
+                const activeDimColors = ['#8ed727', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
+                const activeDimColor = activeDimColors[activeDimension % activeDimColors.length];
+                return (
+                  <div
+                    className="rounded-[36px] p-6 border-2 shadow-2xl min-h-[460px] flex flex-col justify-between transition-all duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, ${activeDimColor}24 0%, ${activeDimColor}0d 25%, #ffffff 50%, ${activeDimColor}18 75%, ${activeDimColor}30 100%)`,
+                      backgroundSize: '250% 250%',
+                      animation: 'flowyColorDrift 10s ease-in-out infinite',
+                      borderColor: `${activeDimColor}70`,
+                      boxShadow: `0 24px 50px -10px ${activeDimColor}35`,
+                    }}
+                  >
+                    <div>
+                      <div className="relative h-64 rounded-3xl overflow-hidden mb-5 border-2 border-white shadow-inner">
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={HOLISTIC_DIMENSIONS[activeDimension].id}
+                            src={HOLISTIC_DIMENSIONS[activeDimension].image}
+                            alt={HOLISTIC_DIMENSIONS[activeDimension].title}
+                            initial={{ opacity: 0, scale: 1.04 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.45 }}
+                            className="w-full h-full object-cover"
+                          />
+                        </AnimatePresence>
+                        <div
+                          className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-xs font-black shadow-md z-10"
+                          style={{ backgroundColor: activeDimColor }}
+                        >
+                          Dimension 0{HOLISTIC_DIMENSIONS[activeDimension].id} of 08
+                        </div>
+                      </div>
+                      {/* Stable min-height container for title & detail to eliminate scroll clamp / jitter */}
+                      <div className="min-h-[112px] flex flex-col justify-start">
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={HOLISTIC_DIMENSIONS[activeDimension].id}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -6 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <h3 className="text-xl font-extrabold text-[#091E3A] mb-2 leading-snug">
+                              {HOLISTIC_DIMENSIONS[activeDimension].title}
+                            </h3>
+                            <p className="text-sm text-[#091E3A]/75 font-medium mb-4 leading-relaxed">
+                              {HOLISTIC_DIMENSIONS[activeDimension].detail}
+                            </p>
+                          </motion.div>
+                        </AnimatePresence>
+                      </div>
+                    </div>
+                    <div className="pt-3 border-t border-[#091E3A]/10 flex items-center justify-between">
+                      <span className="text-xs font-black text-[#091E3A]">
+                        Every Milestone Matters. Every Child Matters.
+                      </span>
+                      <button
+                        onClick={onOpenTourModal}
+                        className="text-xs font-extrabold text-[#091E3A] underline hover:text-[#60C8D4]"
+                      >
+                        Understand Holistic Progress →
+                      </button>
                     </div>
                   </div>
-                  {/* Stable min-height container for title & detail to eliminate scroll clamp / jitter */}
-                  <div className="min-h-[112px] flex flex-col justify-start">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={HOLISTIC_DIMENSIONS[activeDimension].id}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <h3 className="text-xl font-extrabold text-[#091E3A] mb-2 leading-snug">
-                          {HOLISTIC_DIMENSIONS[activeDimension].title}
-                        </h3>
-                        <p className="text-sm text-[#091E3A]/75 font-medium mb-4 leading-relaxed">
-                          {HOLISTIC_DIMENSIONS[activeDimension].detail}
-                        </p>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
-                <div className="pt-3 border-t border-[#091E3A]/10 flex items-center justify-between">
-                  <span className="text-xs font-black text-[#091E3A]">
-                    Every Milestone Matters. Every Child Matters.
-                  </span>
-                  <button
-                    onClick={onOpenTourModal}
-                    className="text-xs font-extrabold text-[#091E3A] underline hover:text-[#60C8D4]"
-                  >
-                    Understand Holistic Progress →
-                  </button>
-                </div>
-              </div>
+                );
+              })()}
             </div>
           </div>
         </div>
@@ -2182,11 +2500,18 @@ export default function IndianPreschoolHome({
                 >
                   {/* CARD 2: Current Details Card (Hidden Behind, Revealed on Hover / Flip) */}
                   <div
-                    className={`absolute inset-0 w-full h-full bg-white/95 backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-5 sm:p-5.5 border-2 border-white shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
+                    className={`absolute inset-0 w-full h-full backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-5 sm:p-5.5 border-2 shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
                       isFlipped
                         ? 'opacity-100 scale-100 pointer-events-auto z-20'
                         : 'opacity-0 scale-95 pointer-events-none z-0 group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto group-hover:z-20'
                     }`}
+                    style={{
+                      background: `linear-gradient(135deg, ${leader.accent === '#091E3A' ? '#60C8D4' : leader.accent}20 0%, #ffffff 40%, #ffffff 60%, ${leader.accent === '#091E3A' ? '#8ed727' : leader.accent}18 100%)`,
+                      backgroundSize: '220% 220%',
+                      animation: 'flowyColorDrift 9s ease-in-out infinite',
+                      borderColor: `${leader.accent === '#091E3A' ? '#60C8D4' : leader.accent}55`,
+                      boxShadow: `0 18px 40px -8px ${leader.accent === '#091E3A' ? '#60C8D4' : leader.accent}35`,
+                    }}
                   >
                     {/* Subtle ambient brand tint */}
                     <div
@@ -2324,52 +2649,69 @@ export default function IndianPreschoolHome({
                     "Cost-Conscious Setup Options",
                     "Teacher Training & Academic Guidance",
                     "Marketing & Admissions Assistance"
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/15">
+                  ].map((item, pIdx) => (
+                    <motion.div
+                      key={item}
+                      whileHover={{ scale: 1.03, x: 2 }}
+                      className="flex items-center gap-2.5 bg-gradient-to-r from-white/15 via-white/10 to-[#8ed727]/15 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/20 hover:border-[#8ed727]/60 transition-all shadow-sm"
+                    >
                       <CheckCircle2 className="w-4 h-4 text-[#8ed727] flex-shrink-0" />
                       <span className="text-xs sm:text-sm font-bold text-white">{item}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
                 {/* Desktop Button inside Left Column */}
                 <div className="pt-2 hidden lg:block">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={onOpenTourModal}
-                    className="btn-lime px-8 py-4 rounded-full text-sm font-black inline-flex items-center gap-2 border-2 border-white shadow-xl"
+                    className="btn-lime px-8 py-4 rounded-full text-sm font-black inline-flex items-center gap-2 border-2 border-white shadow-xl group transition-all"
                   >
                     <span>Own a Blooming Era Preschool</span>
-                    <ArrowRight className="w-4 h-4 text-[#091E3A]" />
-                  </button>
+                    <ArrowRight className="w-4 h-4 text-[#091E3A] group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
                 </div>
               </div>
 
               {/* Right Investment Highlight Glass Card */}
               <div className="lg:col-span-5 space-y-6">
-                <div className="rounded-[32px] bg-white/12 backdrop-blur-2xl border-2 border-white/30 p-7 sm:p-8 space-y-6 shadow-2xl">
-                  <div className="rounded-2xl overflow-hidden h-44 border-2 border-white/80">
+                <div
+                  className="rounded-[32px] border-2 border-white/40 p-7 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden backdrop-blur-2xl"
+                  style={{
+                    background: 'linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(142,215,39,0.14) 35%, rgba(96,200,212,0.14) 70%, rgba(255,255,255,0.16) 100%)',
+                    backgroundSize: '240% 240%',
+                    animation: 'flowyColorDrift 11s ease-in-out infinite',
+                  }}
+                >
+                  {/* Subtle brand glow orbs */}
+                  <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-[#8ed727]/25 blur-3xl pointer-events-none animate-pulse" />
+                  <div className="absolute -bottom-10 -left-10 w-44 h-44 rounded-full bg-[#60C8D4]/25 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
+
+                  <div className="rounded-2xl overflow-hidden h-44 border-2 border-white/80 shadow-md relative z-10">
                     <img
                       src={CHILD_PHOTOS.classroomDrawing}
                       alt="Blooming Era Preschool Franchise"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-5 rounded-2xl bg-[#8ed727] text-[#091E3A]">
-                    <p className="text-xs font-extrabold uppercase tracking-wider opacity-80">
+                  <div className="p-5 rounded-2xl bg-gradient-to-r from-[#8ed727] to-[#a3e83b] text-[#091E3A] shadow-lg border border-white/40 relative z-10">
+                    <p className="text-xs font-extrabold uppercase tracking-wider opacity-85">
                       Investment Highlight
                     </p>
                     <p className="text-2xl sm:text-3xl font-black tracking-tight mt-0.5">
                       Franchise Fee Starting at ₹2.50 Lakh
                     </p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/10 border border-white/20">
+                  <div className="p-4 rounded-2xl bg-white/12 border border-white/25 backdrop-blur-md relative z-10">
                     <p className="text-xs font-bold text-[#60C8D4] uppercase tracking-wider">
                       Indicative Setup Investment
                     </p>
                     <p className="text-lg font-extrabold text-white mt-0.5">
                       ₹5–25 Lakh
                     </p>
-                    <p className="text-xs text-white/75 mt-1">
+                    <p className="text-xs text-white/80 mt-1">
                       Depending on space, infrastructure and location.
                     </p>
                   </div>
@@ -2377,13 +2719,15 @@ export default function IndianPreschoolHome({
 
                 {/* Mobile Button placed below the investment div */}
                 <div className="block lg:hidden pt-2 text-center">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={onOpenTourModal}
-                    className="btn-lime w-full sm:w-auto px-8 py-4 rounded-full text-sm font-black inline-flex items-center justify-center gap-2 border-2 border-white shadow-xl"
+                    className="btn-lime w-full sm:w-auto px-8 py-4 rounded-full text-sm font-black inline-flex items-center justify-center gap-2 border-2 border-white shadow-xl group transition-all"
                   >
                     <span>Own a Blooming Era Preschool</span>
-                    <ArrowRight className="w-4 h-4 text-[#091E3A]" />
-                  </button>
+                    <ArrowRight className="w-4 h-4 text-[#091E3A] group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
                 </div>
               </div>
             </div>
@@ -2416,13 +2760,22 @@ export default function IndianPreschoolHome({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="glass-panel-elevated rounded-[32px] overflow-hidden border-2 border-white shadow-xl flex flex-col justify-between"
+                whileHover={{ y: -6, scale: 1.01 }}
+                className="rounded-[32px] overflow-hidden border-2 shadow-xl flex flex-col justify-between transition-all duration-300"
+                style={{
+                  background: `linear-gradient(135deg, ${story.color}24 0%, ${story.color}0e 25%, #ffffff 50%, ${story.color}16 75%, ${story.color}28 100%)`,
+                  backgroundSize: '250% 250%',
+                  animation: 'flowyColorDrift 11s ease-in-out infinite',
+                  animationDelay: `${idx * 1.5}s`,
+                  borderColor: `${story.color}60`,
+                  boxShadow: `0 16px 36px -8px ${story.color}35`,
+                }}
               >
                 <div>
                   <div className="h-48 overflow-hidden relative">
                     <img src={story.image} alt={story.title} className="w-full h-full object-cover" />
                     <span
-                      className="absolute bottom-3 left-4 px-3 py-1 rounded-full text-[10px] font-black uppercase text-[#091E3A]"
+                      className="absolute bottom-3 left-4 px-3 py-1 rounded-full text-[10px] font-black uppercase text-[#091E3A] shadow-md"
                       style={{ backgroundColor: story.color }}
                     >
                       {story.tag}
@@ -2443,13 +2796,15 @@ export default function IndianPreschoolHome({
           </div>
 
           <div className="text-center mt-10">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.96 }}
               onClick={onOpenTourModal}
-              className="btn-turquoise px-7 py-3.5 rounded-full text-xs font-black inline-flex items-center gap-2 border-2 border-white shadow-md"
+              className="btn-turquoise px-7 py-3.5 rounded-full text-xs font-black inline-flex items-center gap-2 border-2 border-white shadow-md group transition-all"
             >
               <span>Hear From Our Parents</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </div>
         </div>
       </section>
@@ -2475,17 +2830,31 @@ export default function IndianPreschoolHome({
             {EVENTS_LIST.map((ev, idx) => (
               <motion.div
                 key={ev.title}
-                whileHover={{ y: -6 }}
-                className="glass-panel-elevated rounded-[30px] overflow-hidden border-2 border-white shadow-lg"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="rounded-[30px] overflow-hidden border-2 shadow-lg transition-all duration-300"
+                style={{
+                  background: `linear-gradient(135deg, ${ev.color}25 0%, ${ev.color}10 25%, #ffffff 50%, ${ev.color}18 75%, ${ev.color}30 100%)`,
+                  backgroundSize: '250% 250%',
+                  animation: 'flowyColorDrift 9s ease-in-out infinite',
+                  animationDelay: `${idx * 1.4}s`,
+                  borderColor: `${ev.color}70`,
+                  boxShadow: `0 16px 36px -8px ${ev.color}45`,
+                }}
               >
                 <div className="h-48 overflow-hidden relative">
                   <img src={ev.image} alt={ev.title} className="w-full h-full object-cover" />
-                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-[10px] font-black">
+                  <span
+                    className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-[10px] font-black shadow-md"
+                    style={{ backgroundColor: ev.color }}
+                  >
                     {ev.badge}
                   </span>
                 </div>
                 <div className="p-5">
-                  <p className="text-[11px] font-bold text-[#60C8D4] uppercase tracking-wider mb-1">
+                  <p
+                    className="text-[11px] font-bold uppercase tracking-wider mb-1"
+                    style={{ color: ev.color === '#fece13' ? '#B8860B' : ev.color }}
+                  >
                     {ev.date}
                   </p>
                   <h3 className="text-lg font-extrabold text-[#091E3A] mb-2">{ev.title}</h3>
@@ -2517,16 +2886,27 @@ export default function IndianPreschoolHome({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-            {BLOG_POSTS.map((post) => (
+            {BLOG_POSTS.map((post, idx) => (
               <motion.article
                 key={post.title}
-                whileHover={{ y: -6 }}
-                className="glass-panel-elevated rounded-[32px] overflow-hidden border-2 border-white shadow-xl flex flex-col justify-between"
+                whileHover={{ y: -8, scale: 1.01 }}
+                className="rounded-[32px] overflow-hidden border-2 shadow-xl flex flex-col justify-between transition-all duration-300"
+                style={{
+                  background: `linear-gradient(135deg, ${post.color}26 0%, ${post.color}12 25%, #ffffff 50%, ${post.color}18 75%, ${post.color}30 100%)`,
+                  backgroundSize: '250% 250%',
+                  animation: 'flowyColorDrift 10s ease-in-out infinite',
+                  animationDelay: `${idx * 1.6}s`,
+                  borderColor: `${post.color}70`,
+                  boxShadow: `0 18px 40px -8px ${post.color}40`,
+                }}
               >
                 <div>
                   <div className="h-52 overflow-hidden relative">
                     <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
-                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-[#091E3A] text-[10px] font-black">
+                    <span
+                      className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-[10px] font-black shadow-md"
+                      style={{ backgroundColor: post.color }}
+                    >
                       {post.category}
                     </span>
                   </div>
@@ -2541,13 +2921,15 @@ export default function IndianPreschoolHome({
                   </div>
                 </div>
                 <div className="px-6 pb-6">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.04, x: 2 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={onOpenTourModal}
-                    className="text-xs font-black text-[#091E3A] inline-flex items-center gap-1.5 hover:text-[#60C8D4]"
+                    className="text-xs font-black text-[#091E3A] inline-flex items-center gap-1.5 hover:text-[#60C8D4] group/link"
                   >
                     <span>Explore More Insights</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                  </motion.button>
                 </div>
               </motion.article>
             ))}
@@ -2576,8 +2958,10 @@ export default function IndianPreschoolHome({
             {/* Category Filter Pills */}
             <div className="flex flex-wrap gap-2">
               {["All", "Classroom", "Maker Studio", "Storyverse", "Wonder Lab", "Nature"].map((cat) => (
-                <button
+                <motion.button
                   key={cat}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setGalleryFilter(cat)}
                   className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all ${
                     galleryFilter === cat
@@ -2586,7 +2970,7 @@ export default function IndianPreschoolHome({
                   }`}
                 >
                   {cat}
-                </button>
+                </motion.button>
               ))}
             </div>
           </div>
@@ -2644,12 +3028,20 @@ export default function IndianPreschoolHome({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VIDEO_BYTES.map((vid) => (
+            {VIDEO_BYTES.map((vid, vIdx) => (
               <motion.div
                 key={vid.id}
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 onClick={() => setActiveVideoModal(vid)}
-                className="glass-panel-elevated rounded-[32px] overflow-hidden border-2 border-white shadow-xl cursor-pointer group"
+                className="rounded-[32px] overflow-hidden border-2 shadow-xl cursor-pointer group transition-all duration-300"
+                style={{
+                  background: `linear-gradient(135deg, ${vid.color}25 0%, ${vid.color}0d 25%, #ffffff 50%, ${vid.color}16 75%, ${vid.color}28 100%)`,
+                  backgroundSize: '250% 250%',
+                  animation: 'flowyColorDrift 10s ease-in-out infinite',
+                  animationDelay: `${vIdx * 1.5}s`,
+                  borderColor: `${vid.color}65`,
+                  boxShadow: `0 16px 36px -8px ${vid.color}40`,
+                }}
               >
                 <div className="relative h-64 overflow-hidden">
                   <img
@@ -2658,14 +3050,20 @@ export default function IndianPreschoolHome({
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-[#091E3A]/35 group-hover:bg-[#091E3A]/20 transition-colors flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-[#8ed727] text-[#091E3A] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform border-2 border-white">
+                    <div
+                      className="w-14 h-14 rounded-full text-[#091E3A] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform border-2 border-white"
+                      style={{ backgroundColor: vid.color }}
+                    >
                       <Play className="w-6 h-6 fill-[#091E3A] ml-0.5" />
                     </div>
                   </div>
-                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-[#091E3A] text-[10px] font-black">
+                  <span
+                    className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-[10px] font-black shadow-sm"
+                    style={{ backgroundColor: vid.color }}
+                  >
                     {vid.tag}
                   </span>
-                  <span className="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full bg-[#091E3A]/80 text-white text-[10px] font-bold">
+                  <span className="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full bg-[#091E3A]/85 text-white text-[10px] font-bold">
                     {vid.duration}
                   </span>
                 </div>
@@ -2688,7 +3086,17 @@ export default function IndianPreschoolHome({
       {/* ===================================================================== */}
       <section className="py-14 sm:py-20 px-4 sm:px-6 relative">
         <div className="max-w-6xl mx-auto">
-          <div className="rounded-[44px] p-8 sm:p-14 bg-gradient-to-r from-[#8ed727] via-[#E8F26B] to-[#60C8D4] text-[#091E3A] shadow-2xl border-4 border-white relative overflow-hidden text-center">
+          <div
+            className="rounded-[44px] p-8 sm:p-14 text-[#091E3A] shadow-2xl border-4 border-white relative overflow-hidden text-center"
+            style={{
+              background: 'linear-gradient(135deg, #8ed727 0%, #fae244 25%, #60C8D4 50%, #8ed727 75%, #fae244 100%)',
+              backgroundSize: '240% 240%',
+              animation: 'flowyColorDrift 10s ease-in-out infinite',
+            }}
+          >
+            {/* Ambient Floating Orbs inside Final CTA */}
+            <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-white/35 blur-3xl pointer-events-none animate-pulse" />
+            <div className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-[#60C8D4]/30 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#091E3A] text-[#8ed727] text-xs font-black uppercase tracking-widest mb-4">
               THEIR FIRST SCHOOL. A BIG DECISION.
             </span>
@@ -2699,20 +3107,24 @@ export default function IndianPreschoolHome({
               Discover a preschool that celebrates curiosity, nurtures individuality and builds strong foundations for the years ahead.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={onOpenTourModal}
-                className="px-8 py-4 rounded-full bg-[#091E3A] text-white hover:bg-[#13325C] text-sm font-black inline-flex items-center gap-2 shadow-xl transition-all hover:scale-105"
+                className="px-8 py-4 rounded-full bg-[#091E3A] text-white hover:bg-[#13325C] text-sm font-black inline-flex items-center gap-2 shadow-xl transition-all group"
               >
-                <Calendar className="w-4 h-4 text-[#8ed727]" />
+                <Calendar className="w-4 h-4 text-[#8ed727] group-hover:rotate-6 transition-transform" />
                 <span>Book a School Visit</span>
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={onOpenTourModal}
-                className="px-8 py-4 rounded-full bg-white text-[#091E3A] hover:bg-white/90 text-sm font-black inline-flex items-center gap-2 shadow-xl transition-all hover:scale-105"
+                className="px-8 py-4 rounded-full bg-white text-[#091E3A] hover:bg-white/95 text-sm font-black inline-flex items-center gap-2 shadow-xl transition-all group"
               >
                 <span>Enquire for Admissions</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
             </div>
           </div>
         </div>
@@ -2801,12 +3213,14 @@ export default function IndianPreschoolHome({
             >
               <div className="relative h-[420px]">
                 <img src={lightboxImage.image} alt={lightboxImage.title} className="w-full h-full object-cover" />
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={() => setLightboxImage(null)}
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#091E3A] text-white flex items-center justify-center"
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#091E3A] text-white flex items-center justify-center shadow-lg"
                 >
                   <X className="w-5 h-5" />
-                </button>
+                </motion.button>
               </div>
               <div className="p-6 flex items-center justify-between">
                 <div>
@@ -2815,15 +3229,17 @@ export default function IndianPreschoolHome({
                   </span>
                   <h4 className="text-xl font-extrabold text-[#091E3A] mt-2">{lightboxImage.title}</h4>
                 </div>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     setLightboxImage(null);
                     onOpenTourModal();
                   }}
-                  className="btn-lime px-5 py-2.5 rounded-full text-xs font-black"
+                  className="btn-lime px-5 py-2.5 rounded-full text-xs font-black shadow-md"
                 >
                   Book a School Tour
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>
@@ -2850,32 +3266,36 @@ export default function IndianPreschoolHome({
               <div className="relative h-80 overflow-hidden">
                 <img src={activeVideoModal.image} alt={activeVideoModal.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/30 to-transparent flex flex-col justify-end p-6 text-white">
-                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black mb-2">
+                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black mb-2 shadow-xs">
                     {activeVideoModal.tag} • {activeVideoModal.duration}
                   </span>
                   <h3 className="text-2xl font-extrabold">{activeVideoModal.title}</h3>
                   <p className="text-sm text-white/85 mt-1">{activeVideoModal.caption}</p>
                 </div>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={() => setActiveVideoModal(null)}
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#091E3A] text-white flex items-center justify-center"
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#091E3A] text-white flex items-center justify-center shadow-lg"
                 >
                   <X className="w-5 h-5" />
-                </button>
+                </motion.button>
               </div>
               <div className="p-6 flex items-center justify-between bg-[#F3FAFC]">
                 <span className="text-xs font-bold text-[#091E3A]/75">
                   Experience Blooming Era in person with your child
                 </span>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     setActiveVideoModal(null);
                     onOpenTourModal();
                   }}
-                  className="btn-lime px-6 py-2.5 rounded-full text-xs font-black"
+                  className="btn-lime px-6 py-2.5 rounded-full text-xs font-black shadow-md"
                 >
                   Book a School Visit
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>

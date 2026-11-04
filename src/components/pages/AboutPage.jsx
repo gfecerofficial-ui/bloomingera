@@ -292,13 +292,15 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               <div className="text-sm font-bold text-slate-600">
                 Dr. Masuda Yasmin — Founder & Chairperson
               </div>
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={onOpenTourModal}
-                className="btn-lime px-6 py-3 rounded-2xl text-xs font-black shadow-lg flex items-center gap-2"
+                className="btn-lime px-6 py-3 rounded-2xl text-xs font-black shadow-lg flex items-center gap-2 group transition-all"
               >
                 <span>Book Campus Tour</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
             </div>
 
           </div>

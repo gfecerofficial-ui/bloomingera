@@ -397,10 +397,12 @@ export default function FranchisePage({ onOpenTourModal }) {
                   </div>
                 </div>
 
-                <button
+                <motion.button
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-lime py-4 rounded-2xl text-sm font-black shadow-xl flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
+                  className="w-full btn-lime py-4 rounded-2xl text-sm font-black shadow-xl flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed group transition-all"
                 >
                   {isSubmitting ? (
                     <>
@@ -410,10 +412,10 @@ export default function FranchisePage({ onOpenTourModal }) {
                   ) : (
                     <>
                       <span>Request Franchise Information Kit</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
-                </button>
+                </motion.button>
               </form>
             )}
           </div>

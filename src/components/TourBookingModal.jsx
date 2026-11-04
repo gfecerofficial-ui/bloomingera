@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { X, Sparkles, Calendar, Clock, MapPin, CheckCircle2, User, Phone, Mail, ArrowRight, Loader2, Copy, Check } from 'lucide-react';
 import { BRAND, PROGRAMMES } from '../data/websiteContent';
 import { submitForm } from '../services/formService';
@@ -79,13 +80,15 @@ export default function TourBookingModal({ isOpen, onClose }) {
       <div className="glass-panel-elevated w-full max-w-xl bg-white/95 rounded-3xl border border-white shadow-2xl p-6 sm:p-8 relative max-h-[92vh] overflow-y-auto">
         
         {/* Close Button */}
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={onClose}
           className="absolute top-5 right-5 p-2 rounded-full text-brand-navy/60 hover:text-brand-navy hover:bg-brand-navy/5 transition-colors"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
-        </button>
+        </motion.button>
 
         {step === 1 ? (
           <div>
@@ -252,10 +255,12 @@ export default function TourBookingModal({ isOpen, onClose }) {
                 </div>
               )}
 
-              <button
+              <motion.button
+                whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-lime w-full py-3 rounded-2xl text-xs font-black flex items-center justify-center gap-2 shadow-lg disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
+                className="btn-lime w-full py-3 rounded-2xl text-xs font-black flex items-center justify-center gap-2 shadow-lg disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed group transition-all"
               >
                 {isSubmitting ? (
                   <>
@@ -265,10 +270,10 @@ export default function TourBookingModal({ isOpen, onClose }) {
                 ) : (
                   <>
                     <span>Confirm Tour Reservation</span>
-                    <ArrowRight className="w-4 h-4 text-brand-navy" />
+                    <ArrowRight className="w-4 h-4 text-brand-navy group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
-              </button>
+              </motion.button>
             </form>
           </div>
         ) : (
@@ -332,12 +337,14 @@ export default function TourBookingModal({ isOpen, onClose }) {
               A confirmation and visit reminder have been logged for {formData.phone} and {formData.email}.
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={handleReset}
-              className="btn-turquoise px-6 py-2.5 rounded-xl text-xs font-bold"
+              className="btn-turquoise px-6 py-2.5 rounded-xl text-xs font-bold shadow-md"
             >
               Done & Return to Website
-            </button>
+            </motion.button>
           </div>
         )}
 

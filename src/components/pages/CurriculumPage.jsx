@@ -384,13 +384,15 @@ export default function CurriculumPage({ onOpenTourModal }) {
               </div>
 
               <div className="text-center mt-12">
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
                   onClick={onOpenTourModal}
-                  className="btn-lime px-8 py-3.5 rounded-2xl text-xs sm:text-sm font-black shadow-xl inline-flex items-center gap-2"
+                  className="btn-lime px-8 py-3.5 rounded-2xl text-xs sm:text-sm font-black shadow-xl inline-flex items-center gap-2 group transition-all"
                 >
                   <span>Experience These Spaces in Person — Book Campus Tour</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
               </div>
             </div>
           </section>

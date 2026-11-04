@@ -68,12 +68,14 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
               <span>+91 96479 74093</span>
             </a>
             <span className="text-white/25 hidden sm:inline">|</span>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => handleNavClick('franchise')}
-              className="hidden md:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#8ed727]/20 hover:bg-[#8ed727]/35 text-[#8ed727] font-bold text-[11px] border border-[#8ed727]/40 transition-all"
+              className="hidden md:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#8ed727]/20 hover:bg-[#8ed727]/35 text-[#8ed727] font-bold text-[11px] border border-[#8ed727]/40 transition-all shadow-xs"
             >
               <span>Franchise Opportunity</span>
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
@@ -84,9 +86,11 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
           <div className="flex items-center justify-between gap-3">
             
             {/* Logo & Brand */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => handleNavClick('home')}
-              className="flex items-center gap-3 text-left group"
+              className="flex items-center gap-2.5 sm:gap-3 text-left group"
             >
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#8ed727] shadow-md bg-white p-0.5 group-hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform flex-shrink-0">
                 <img
@@ -95,20 +99,20 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
                   className="w-full h-full object-contain rounded-full"
                 />
               </div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="font-extrabold text-base sm:text-lg text-[#091E3A] tracking-tight">
-                    Blooming Era
-                  </span>
-                  <span className="px-2 py-0.5 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider bg-[#8ed727] text-[#091E3A] rounded-full">
+              <div className="flex flex-col justify-center gap-[3px]">
+                <span className="font-extrabold text-base sm:text-lg text-[#091E3A] tracking-tight whitespace-nowrap leading-none">
+                  Blooming Era
+                </span>
+                <div className="flex items-center">
+                  <span className="px-1.5 py-[2px] text-[8px] sm:text-[9px] font-black uppercase tracking-wider bg-[#8ed727] text-[#091E3A] rounded-full leading-none inline-block shadow-xs">
                     Preschools
                   </span>
                 </div>
-                <p className="text-[10px] sm:text-[11px] font-semibold text-[#091E3A]/65 -mt-0.5">
+                <p className="text-[9px] sm:text-[9.5px] font-bold text-[#091E3A]/85 leading-none whitespace-nowrap">
                   Proudly Indian • Powerfully Global
                 </p>
               </div>
-            </button>
+            </motion.button>
 
             {/* Desktop Navigation */}
             <nav className="hidden xl:flex items-center gap-1">
@@ -178,17 +182,19 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
             >
               <div className="grid grid-cols-2 gap-2">
                 {navItems.map((item) => (
-                  <button
+                  <motion.button
                     key={item.id}
+                    whileHover={{ scale: 1.02, x: 2 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => handleNavClick(item.id)}
                     className={`px-4 py-2.5 rounded-2xl text-xs font-bold text-left transition-all ${
                       currentPage === item.id
-                        ? 'bg-[#091E3A] text-white font-black'
+                        ? 'bg-[#091E3A] text-white font-black shadow-md'
                         : 'bg-slate-100 text-slate-700 hover:bg-[#60C8D4]/20 hover:text-[#091E3A]'
                     }`}
                   >
                     {item.label}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
               <div className="mt-4 pt-3 border-t border-slate-200 flex flex-col gap-2">
