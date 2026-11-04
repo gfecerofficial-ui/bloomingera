@@ -1248,23 +1248,23 @@ export default function IndianPreschoolHome({
                   </div>
                 </div>
 
-                {/* CTA Buttons - Interactive spring micro-animations */}
-                <div className="flex flex-wrap items-center gap-4 pt-1">
+                {/* CTA Buttons - Stacked one over another */}
+                <div className="flex flex-col items-start gap-3 pt-1">
                   <motion.a
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                     href={currentSlide.primaryHref}
-                    className="btn-lime px-7 py-4 rounded-full text-sm font-extrabold flex items-center gap-2.5 border-2 border-white shadow-xl group transition-all"
+                    className="btn-lime px-7 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2.5 border-2 border-white shadow-xl group transition-all"
                   >
                     <span>{currentSlide.primaryBtn}</span>
                     <ArrowRight className="w-4 h-4 text-[#091E3A] group-hover:translate-x-1 transition-transform" />
                   </motion.a>
 
                   <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                     onClick={onOpenTourModal}
-                    className="btn-turquoise px-7 py-4 rounded-full text-sm font-extrabold flex items-center gap-2 border-2 border-white shadow-lg group transition-all"
+                    className="btn-turquoise px-7 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2 border-2 border-white shadow-lg group transition-all"
                   >
                     <Calendar className="w-4 h-4 text-[#091E3A] group-hover:rotate-6 transition-transform" />
                     <span>{currentSlide.secondaryBtn}</span>

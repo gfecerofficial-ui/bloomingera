@@ -8,11 +8,9 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Us' },
-    { id: 'programmes', label: 'Our Programmes' },
     { id: 'curriculum', label: 'Curriculum' },
     { id: 'assessment', label: 'Assessment' },
     { id: 'admissions', label: 'Admissions' },
-    { id: 'franchise', label: 'Franchise' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -122,7 +120,7 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
             </motion.button>
 
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => {
                 const isActive = currentPage === item.id;
                 return (
@@ -144,14 +142,18 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
 
             {/* Actions & Mobile Hamburger */}
             <div className="flex items-center gap-2">
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.04, y: -1 }}
                 whileTap={{ scale: 0.96 }}
-                onClick={() => handleNavClick('franchise')}
-                className="hidden lg:inline-flex px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[#091E3A] bg-[#60C8D4]/20 hover:bg-[#60C8D4]/35 border border-[#60C8D4]/50 transition-colors"
+                href="#franchise"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('franchise');
+                }}
+                className="hidden sm:inline-flex px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[#091E3A] bg-[#60C8D4]/20 hover:bg-[#60C8D4]/35 border border-[#60C8D4]/50 transition-colors"
               >
-                Franchise @ ₹2.5L
-              </motion.button>
+                Franchise
+              </motion.a>
 
               <motion.button
                 whileHover={{ scale: 1.04, y: -1 }}
@@ -168,7 +170,7 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="xl:hidden w-9 h-9 rounded-full bg-[#091E3A] text-white flex items-center justify-center shadow-md"
+                className="lg:hidden w-9 h-9 rounded-full bg-[#091E3A] text-white flex items-center justify-center shadow-md"
                 aria-label="Toggle navigation menu"
               >
                 {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -186,7 +188,7 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="xl:hidden mt-2 max-w-7xl mx-auto rounded-3xl card-flow-multi backdrop-blur-2xl border-2 shadow-2xl p-5"
+              className="lg:hidden mt-2 max-w-7xl mx-auto rounded-3xl card-flow-multi backdrop-blur-2xl border-2 shadow-2xl p-5"
             >
               <div className="grid grid-cols-2 gap-2">
                 {navItems.map((item) => (
