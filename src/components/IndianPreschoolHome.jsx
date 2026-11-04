@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WavingChildStickFigure from './WavingChildStickFigure';
+import PeekingChildFigure from './PeekingChildFigure';
 import {
   Sparkles, Phone, ArrowRight, ArrowUpRight, CheckCircle2, Heart, Star,
   BookOpen, Compass, Palette, Music, Leaf, Globe2, Users, Brain,
@@ -952,6 +953,9 @@ export default function IndianPreschoolHome({
       {/* SECTION 01 — HOMEPAGE HERO SLIDER (FLOWY GLASSMORPHIC 3-SLIDE HERO)   */}
       {/* ===================================================================== */}
       <section className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]">
+        {/* Background Peeking & Waving Child Stick Figure (Left Edge) */}
+        <PeekingChildFigure />
+
         {/* Soft feather vignette at very top for ultra-smooth transition from pre-header */}
         <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#091E3A]/[0.06] to-transparent pointer-events-none z-[1]" />
 
@@ -969,14 +973,7 @@ export default function IndianPreschoolHome({
           style={{ background: 'radial-gradient(circle, rgba(254,206,19,0.32) 0%, rgba(254,206,19,0.1) 40%, transparent 70%)', animationDelay: '-9s' }}
         />
 
-        {/* Floating Animated Preschool Badges (Cloud / Star / Flower) */}
-        <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 4, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden xl:flex absolute top-44 left-6 2xl:left-12 z-10 w-14 h-14 rounded-3xl glass-panel-elevated items-center justify-center text-2xl border-2 border-white shadow-lg will-change-transform select-none"
-        >
-          🌸
-        </motion.div>
+        {/* Floating Animated Preschool Badge */}
         <motion.div
           animate={{ y: [0, 12, 0], rotate: [0, -5, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}

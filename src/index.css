@@ -556,3 +556,49 @@ body {
   animation: loaderOrbitCounterSpin 5.5s linear infinite;
   will-change: transform;
 }
+
+/* ========================================================================= */
+/* PEEKING CHILD STICK FIGURE ELBOW & ROPE ANIMATIONS                        */
+/* ========================================================================= */
+@keyframes childElbowWave {
+  0% {
+    transform: rotate(0deg);
+  }
+  16% {
+    transform: rotate(-28deg);
+  }
+  34% {
+    transform: rotate(16deg);
+  }
+  52% {
+    transform: rotate(-28deg);
+  }
+  70% {
+    transform: rotate(15deg);
+  }
+  86% {
+    transform: rotate(-22deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes childElbowIdle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.animate-child-elbow-wave {
+  transform-origin: 0px 0px;
+  animation: childElbowWave 2.2s ease-in-out infinite;
+}
+
+.animate-child-elbow-idle {
+  transform-origin: 0px 0px;
+  animation: childElbowIdle 3.6s ease-in-out infinite;
+}
