@@ -10,11 +10,13 @@ import FranchisePage from './components/pages/FranchisePage';
 import ContactPage from './components/pages/ContactPage';
 import TourBookingModal from './components/TourBookingModal';
 import ScrollProgressBar from './components/ScrollProgressBar';
+import LoadingScreen from './components/LoadingScreen';
 import { Sparkles, ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function App() {
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   
   // Parse initial page from hash (#about, #curriculum, #assessment, #admissions, #franchise, #contact)
   const [currentPage, setCurrentPage] = useState(() => {
@@ -55,7 +57,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F4F9FB] text-[#091E3A] relative selection:bg-[#8ed727] selection:text-[#091E3A] flex flex-col justify-between">
-      
+      {/* Orbital Logo Loading Screen */}
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+
       {/* Top Scroll Progress Indicator */}
       <ScrollProgressBar />
 

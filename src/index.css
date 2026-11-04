@@ -515,3 +515,44 @@ body {
   border-color: rgba(96, 200, 212, 0.35);
   box-shadow: 0 20px 48px -12px rgba(9, 30, 58, 0.10);
 }
+
+/* ========================================================================= */
+/* LOADING SCREEN ORBIT ANIMATIONS                                           */
+/* ========================================================================= */
+@keyframes loaderOrbitSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loaderOrbitCounterSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.loader-orbit-stage {
+  --orbit-radius: 132px;
+}
+
+@media (min-width: 640px) {
+  .loader-orbit-stage {
+    --orbit-radius: 175px;
+  }
+}
+
+.animate-loader-orbit {
+  animation: loaderOrbitSpin 5.5s linear infinite;
+  will-change: transform;
+}
+
+.animate-loader-counter-orbit {
+  animation: loaderOrbitCounterSpin 5.5s linear infinite;
+  will-change: transform;
+}
