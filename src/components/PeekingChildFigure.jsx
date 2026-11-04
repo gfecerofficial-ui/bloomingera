@@ -31,7 +31,7 @@ export default function PeekingChildFigure() {
   return (
     <div
       aria-hidden="true"
-      className="hidden md:block pointer-events-none select-none fixed left-1 lg:left-2 top-[48%] -translate-y-1/2 z-[2]"
+      className="hidden md:block pointer-events-none select-none absolute left-1 lg:left-2 top-[52%] -translate-y-1/2 z-[2]"
     >
       <motion.div
         initial={{ x: -180, rotate: -6, opacity: 0 }}
@@ -81,19 +81,19 @@ export default function PeekingChildFigure() {
           <g>
             {/* Main Braided Rope Body hanging from top of viewport down to knot */}
             <path
-              d="M 18 -120 L 18 174"
+              d="M 18 -320 L 18 174"
               stroke="#091E3A"
               strokeWidth="6.2"
               strokeLinecap="round"
             />
             <path
-              d="M 18 -120 L 18 174"
+              d="M 18 -320 L 18 174"
               stroke="#E5A95C"
               strokeWidth="3.4"
               strokeLinecap="round"
             />
             {/* Diagonal Rope Twist Texture Marks */}
-            {[-40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160].map((yPos) => (
+            {[-300, -280, -260, -240, -220, -200, -180, -160, -140, -120, -100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100, 120, 140, 160].map((yPos) => (
               <line
                 key={yPos}
                 x1="15.5"
