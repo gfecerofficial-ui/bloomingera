@@ -191,18 +191,19 @@ export default function ContactPage({ onOpenTourModal }) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {INQUIRY_TYPES.map((type) => {
+            {INQUIRY_TYPES.map((type, idx) => {
               const Icon = type.icon;
               const isSelected = inquiryType === type.id;
+              const unselectedClasses = ['card-flow-lime', 'card-flow-cyan', 'card-flow-gold', 'card-flow-coral'];
               return (
                 <motion.div
                   key={type.id}
                   whileHover={{ y: -6 }}
                   onClick={() => handleInquiryChange(type.id)}
-                  className={`p-7 rounded-[32px] cursor-pointer transition-all border-2 flex flex-col justify-between ${
+                  className={`p-7 rounded-[32px] cursor-pointer transition-all flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-[#091E3A] text-white border-[#8ed727] shadow-xl scale-105 ring-2 ring-[#8ed727]/30'
-                      : 'bg-[#F4F9FB] text-[#091E3A] border-slate-200/80 hover:border-[#60C8D4]'
+                      ? 'bg-[#091E3A] text-white border-2 border-[#8ed727] shadow-xl scale-105 ring-2 ring-[#8ed727]/30'
+                      : `${unselectedClasses[idx % 4]} text-[#091E3A] hover:shadow-lg`
                   }`}
                 >
                   <div>
@@ -249,7 +250,7 @@ export default function ContactPage({ onOpenTourModal }) {
             
             {/* Contact Details Column */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="p-8 sm:p-10 rounded-[36px] bg-white border-2 border-white shadow-xl space-y-6">
+              <div className="p-8 sm:p-10 rounded-[36px] card-flow-cyan shadow-xl space-y-6">
                 <span className="px-3.5 py-1 rounded-full bg-[#60C8D4]/20 text-[#091E3A] font-extrabold text-xs uppercase tracking-wider">
                   DIRECT CONTACT INFO
                 </span>
@@ -321,7 +322,7 @@ export default function ContactPage({ onOpenTourModal }) {
 
             {/* Dynamic Form Column (Consistent with Actual Pages) */}
             <div className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-[36px] bg-white border-2 border-white shadow-xl">
+              <div className="p-8 sm:p-10 rounded-[36px] card-flow-multi shadow-xl">
                 
                 {/* Header with Channel Identifier */}
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-200">

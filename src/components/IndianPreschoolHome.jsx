@@ -153,8 +153,8 @@ const WHY_PARENTS_CARDS = [
     badge: "Experiential Discovery",
     color: "#8ed727",
     bgGradient: "linear-gradient(135deg, #d8f792 0%, #ebfaaf 25%, #ffffff 50%, #d8f792 75%, #cef578 100%)",
-    borderColor: "#8ed727",
-    shadow: "0 20px 50px -10px rgba(142,215,39,0.5)",
+    borderColor: "rgba(142, 215, 39, 0.38)",
+    shadow: "0 20px 50px -10px rgba(142,215,39,0.32)",
   },
   {
     id: 2,
@@ -163,10 +163,10 @@ const WHY_PARENTS_CARDS = [
     image: CHILD_PHOTOS.woodenBlocksChild,
     icon: Rocket,
     badge: "21st-Century Play",
-    color: "#60C8D4",
-    bgGradient: "linear-gradient(135deg, #b2eef5 0%, #cbf5f9 25%, #ffffff 50%, #a2ebf4 75%, #88e4ef 100%)",
-    borderColor: "#60C8D4",
-    shadow: "0 20px 50px -10px rgba(96,200,212,0.5)",
+    color: "#9B51E0",
+    bgGradient: "linear-gradient(135deg, #dcb7ff 0%, #ecd5ff 25%, #ffffff 50%, #dcb7ff 75%, #ca9aff 100%)",
+    borderColor: "rgba(155, 81, 224, 0.38)",
+    shadow: "0 20px 50px -10px rgba(155,81,224,0.3)",
   },
   {
     id: 3,
@@ -177,8 +177,8 @@ const WHY_PARENTS_CARDS = [
     badge: "360° Whole Child",
     color: "#fece13",
     bgGradient: "linear-gradient(135deg, #fee575 0%, #fef0a4 25%, #ffffff 50%, #fee575 75%, #fddb4c 100%)",
-    borderColor: "#fece13",
-    shadow: "0 20px 50px -10px rgba(254,206,19,0.5)",
+    borderColor: "rgba(254, 206, 19, 0.42)",
+    shadow: "0 20px 50px -10px rgba(254,206,19,0.3)",
   },
   {
     id: 4,
@@ -189,8 +189,8 @@ const WHY_PARENTS_CARDS = [
     badge: "Research-Informed FLN",
     color: "#FF6B8B",
     bgGradient: "linear-gradient(135deg, #ffb8c9 0%, #ffd4df 25%, #ffffff 50%, #ffb8c9 75%, #ffa1b8 100%)",
-    borderColor: "#FF6B8B",
-    shadow: "0 20px 50px -10px rgba(255,107,139,0.48)",
+    borderColor: "rgba(255, 107, 139, 0.38)",
+    shadow: "0 20px 50px -10px rgba(255,107,139,0.3)",
   },
   {
     id: 5,
@@ -199,10 +199,10 @@ const WHY_PARENTS_CARDS = [
     image: CHILD_PHOTOS.toddlerLaughingBook,
     icon: Globe2,
     badge: "Sanskar + Global Vision",
-    color: "#9B51E0",
-    bgGradient: "linear-gradient(135deg, #dcb7ff 0%, #ecd5ff 25%, #ffffff 50%, #dcb7ff 75%, #ca9aff 100%)",
-    borderColor: "#9B51E0",
-    shadow: "0 20px 50px -10px rgba(155,81,224,0.48)",
+    color: "#60C8D4",
+    bgGradient: "linear-gradient(135deg, #b2eef5 0%, #cbf5f9 25%, #ffffff 50%, #a2ebf4 75%, #88e4ef 100%)",
+    borderColor: "rgba(96, 200, 212, 0.38)",
+    shadow: "0 20px 50px -10px rgba(96,200,212,0.32)",
   }
 ];
 
@@ -301,8 +301,8 @@ const ACTIVITIES = [
     icon: Flame,
     accent: "#02C9FE",
     cardBg: "linear-gradient(135deg, #dcf7fb 0%, #ffffff 35%, #ebfbfd 70%, #c4f3fa 100%)",
-    borderColor: "#02C9FE",
-    glowColor: "rgba(2, 201, 254, 0.4)",
+    borderColor: "rgba(2, 201, 254, 0.38)",
+    glowColor: "rgba(2, 201, 254, 0.25)",
   },
   {
     id: "storyverse",
@@ -313,8 +313,8 @@ const ACTIVITIES = [
     icon: BookOpen,
     accent: "#8ed727",
     cardBg: "linear-gradient(135deg, #ecfad0 0%, #ffffff 35%, #f4fce5 70%, #d8f792 100%)",
-    borderColor: "#8ed727",
-    glowColor: "rgba(142, 215, 39, 0.4)",
+    borderColor: "rgba(142, 215, 39, 0.38)",
+    glowColor: "rgba(142, 215, 39, 0.25)",
   },
   {
     id: "maker-studio",
@@ -325,8 +325,8 @@ const ACTIVITIES = [
     icon: Palette,
     accent: "#FECE13",
     cardBg: "linear-gradient(135deg, #fef6cc 0%, #ffffff 35%, #fffbe6 70%, #fede54 100%)",
-    borderColor: "#FECE13",
-    glowColor: "rgba(254, 206, 19, 0.45)",
+    borderColor: "rgba(254, 206, 19, 0.42)",
+    glowColor: "rgba(254, 206, 19, 0.25)",
   },
   {
     id: "rhythm-motion",
@@ -337,8 +337,8 @@ const ACTIVITIES = [
     icon: Music,
     accent: "#FA0672",
     cardBg: "linear-gradient(135deg, #ffd9e8 0%, #ffffff 35%, #ffeaf1 70%, #ffb8c9 100%)",
-    borderColor: "#FA0672",
-    glowColor: "rgba(250, 6, 114, 0.4)",
+    borderColor: "rgba(250, 6, 114, 0.38)",
+    glowColor: "rgba(250, 6, 114, 0.25)",
   },
   {
     id: "nature-explorers",
@@ -349,8 +349,8 @@ const ACTIVITIES = [
     icon: Leaf,
     accent: "#22c55e",
     cardBg: "linear-gradient(135deg, #ddf7e4 0%, #ffffff 35%, #effbf2 70%, #bbf0ca 100%)",
-    borderColor: "#22c55e",
-    glowColor: "rgba(34, 197, 94, 0.4)",
+    borderColor: "rgba(34, 197, 94, 0.38)",
+    glowColor: "rgba(34, 197, 94, 0.25)",
   },
   {
     id: "roots-wings",
@@ -361,8 +361,8 @@ const ACTIVITIES = [
     icon: Globe2,
     accent: "#9B51E0",
     cardBg: "linear-gradient(135deg, #f3e6ff 0%, #ffffff 35%, #faf2ff 70%, #dcb7ff 100%)",
-    borderColor: "#9B51E0",
-    glowColor: "rgba(155, 81, 224, 0.4)",
+    borderColor: "rgba(155, 81, 224, 0.38)",
+    glowColor: "rgba(155, 81, 224, 0.25)",
   }
 ];
 
@@ -1040,9 +1040,9 @@ export default function IndianPreschoolHome({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
             {/* Left Narrative Column - Locked Heights for Text to eliminate vertical shift */}
-            <div className="lg:col-span-6 flex flex-col justify-between">
+            <div className="lg:col-span-5 flex flex-col justify-between">
               
               <div className="space-y-4">
                 {/* Dynamic Slide Content (Badge + Headline + Description) */}
@@ -1109,7 +1109,7 @@ export default function IndianPreschoolHome({
                 {/* MOBILE ONLY: Image Slideshow right under heading & content, with slide arrows and title below it */}
                 <div className="block lg:hidden my-6">
                   {/* Organic Preschool Hero Showcase - Melting Frame & Ambient Glow */}
-                  <div className="relative mx-auto max-w-lg">
+                  <div className="relative mx-auto max-w-xl">
                     {/* Deep melting glow wash dissolving seamlessly into hero background */}
                     <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#8ed727]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
 
@@ -1118,7 +1118,7 @@ export default function IndianPreschoolHome({
 
                     {/* Image Showcase Frame with fluid organic border melting directly into background */}
                     <div
-                      className="relative overflow-hidden h-[340px] sm:h-[420px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
+                      className="relative overflow-hidden h-[390px] sm:h-[460px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
                       style={{
                         WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                         transform: 'translateZ(0)',
@@ -1276,21 +1276,38 @@ export default function IndianPreschoolHome({
               <div className="pt-6 grid grid-cols-3 gap-3 max-w-lg">
                 <motion.div
                   whileHover={{ y: -3, scale: 1.02 }}
-                  className="p-3.5 rounded-2xl border-2 border-[#f5b800] bg-gradient-to-br from-[#fee575] via-[#fede54] to-[#fcd33f] text-center shadow-md"
+                  className="p-3.5 rounded-2xl border-2 border-[#f5b800] text-center shadow-md relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, #fee575 0%, #fff0a8 35%, #fede54 70%, #fcd33f 100%)',
+                    backgroundSize: '220% 220%',
+                    animation: 'flowyColorDrift 8s ease-in-out infinite',
+                  }}
                 >
                   <p className="text-xs font-black text-[#091E3A]">No-Book Model</p>
                   <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">Experiential FLN</p>
                 </motion.div>
                 <motion.div
                   whileHover={{ y: -3, scale: 1.02 }}
-                  className="p-3.5 rounded-2xl border-2 border-[#76be13] bg-gradient-to-br from-[#d4f884] via-[#c4f466] to-[#b3ed45] text-center shadow-md"
+                  className="p-3.5 rounded-2xl border-2 border-[#76be13] text-center shadow-md relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, #d4f884 0%, #e7fcb4 35%, #c4f466 70%, #b3ed45 100%)',
+                    backgroundSize: '220% 220%',
+                    animation: 'flowyColorDrift 8s ease-in-out infinite',
+                    animationDelay: '1.3s',
+                  }}
                 >
                   <p className="text-xs font-black text-[#091E3A]">2+ to 5+ Years</p>
                   <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">Playgroup to Sr. KG</p>
                 </motion.div>
                 <motion.div
                   whileHover={{ y: -3, scale: 1.02 }}
-                  className="p-3.5 rounded-2xl border-2 border-[#20b2c4] bg-gradient-to-br from-[#b2f0f7] via-[#9eeaf3] to-[#7be1ed] text-center shadow-md"
+                  className="p-3.5 rounded-2xl border-2 border-[#20b2c4] text-center shadow-md relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, #b2f0f7 0%, #d4f7fb 35%, #9eeaf3 70%, #7be1ed 100%)',
+                    backgroundSize: '220% 220%',
+                    animation: 'flowyColorDrift 8s ease-in-out infinite',
+                    animationDelay: '2.6s',
+                  }}
                 >
                   <p className="text-xs font-black text-[#091E3A]">360° Growth</p>
                   <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">8 Dimensions</p>
@@ -1299,7 +1316,7 @@ export default function IndianPreschoolHome({
             </div>
 
             {/* Right Organic Preschool Hero Showcase - Desktop with Melting Frame & Ambient Glow */}
-            <div className="hidden lg:block lg:col-span-6 relative">
+            <div className="hidden lg:block lg:col-span-7 relative">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 {/* Deep melting glow wash dissolving seamlessly into hero background */}
                 <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#8ed727]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
@@ -1309,7 +1326,7 @@ export default function IndianPreschoolHome({
 
                 {/* Image Showcase Frame with fluid organic border melting directly into background */}
                 <div
-                  className="relative overflow-hidden h-[380px] sm:h-[450px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
+                  className="relative overflow-hidden h-[440px] sm:h-[500px] lg:h-[530px] xl:h-[560px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
                   style={{
                     WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                     transform: 'translateZ(0)',
@@ -1492,7 +1509,7 @@ export default function IndianPreschoolHome({
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
                   whileHover={{ y: -8, scale: 1.01 }}
-                  className={`rounded-[32px] overflow-hidden border-2 shadow-xl flex flex-col justify-between group transition-all duration-300 ${
+                  className={`rounded-[32px] overflow-hidden border-[1.5px] shadow-xl flex flex-col justify-between group transition-all duration-300 ${
                     index === 3 ? 'lg:col-span-1' : index === 4 ? 'md:col-span-2 lg:col-span-2' : ''
                   }`}
                   style={{
@@ -1580,7 +1597,7 @@ export default function IndianPreschoolHome({
                 </div>
 
                 {/* Satellite Circular Child Photo 1 */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#8ed727] shadow-xl z-20 bg-white">
+                <div className="absolute -top-4 -right-4 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#8ed727] shadow-xl z-20 bg-white animate-float-gentle">
                   <img
                     src={CHILD_PHOTOS.toddlerLaughingBook}
                     alt="Happy child reading"
@@ -1589,7 +1606,7 @@ export default function IndianPreschoolHome({
                 </div>
 
                 {/* Satellite Circular Child Photo 2 */}
-                <div className="absolute -bottom-4 -left-4 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#60C8D4] shadow-xl z-20 bg-white">
+                <div className="absolute -bottom-4 -left-4 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#60C8D4] shadow-xl z-20 bg-white animate-float-gentle" style={{ animationDelay: '1.8s' }}>
                   <img
                     src={CHILD_PHOTOS.fingerPaintingGirl}
                     alt="Creative child painting"
@@ -1598,9 +1615,9 @@ export default function IndianPreschoolHome({
                 </div>
 
                 {/* Floating Pill Badge */}
-                <div className="absolute bottom-3 -right-6 z-30 glass-panel-elevated px-4 py-2 rounded-full border-2 border-white shadow-lg bg-white/95">
+                <div className="absolute bottom-3 -right-6 z-30 card-flow-gold px-4 py-2 rounded-full border-2 shadow-lg animate-float-gentle" style={{ animationDelay: '0.9s' }}>
                   <span className="text-xs font-black text-[#091E3A] flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#60C8D4]" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#091E3A]" />
                     Childhood First
                   </span>
                 </div>
@@ -1815,7 +1832,7 @@ export default function IndianPreschoolHome({
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.08 }}
                   whileHover={{ y: -8 }}
-                  className="rounded-[34px] overflow-hidden border-2 shadow-xl group flex flex-col justify-between transition-all duration-300"
+                  className="rounded-[34px] overflow-hidden border-[1.5px] shadow-xl group flex flex-col justify-between transition-all duration-300"
                   style={{
                     background: act.cardBg,
                     backgroundSize: '240% 240%',
@@ -2976,33 +2993,47 @@ export default function IndianPreschoolHome({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 auto-rows-[210px]">
-            {filteredGallery.map((item) => (
-              <motion.div
-                key={item.id}
-                layout
-                whileHover={{ scale: 1.02 }}
-                onClick={() => setLightboxImage(item)}
-                className={`relative rounded-[28px] overflow-hidden border-4 border-white shadow-xl cursor-pointer group ${item.span}`}
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A]/75 via-transparent to-transparent opacity-85 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
-                  <div>
-                    <span className="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full bg-[#8ed727] text-[#091E3A]">
-                      {item.category}
-                    </span>
-                    <p className="text-sm font-extrabold mt-1">{item.title}</p>
+            {filteredGallery.map((item, gIdx) => {
+              const galleryColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0'];
+              const gColor = galleryColors[gIdx % galleryColors.length];
+              return (
+                <motion.div
+                  key={item.id}
+                  layout
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  onClick={() => setLightboxImage(item)}
+                  className={`relative rounded-[28px] overflow-hidden border-2 shadow-xl cursor-pointer group transition-all duration-300 ${item.span}`}
+                  style={{
+                    borderColor: `${gColor}80`,
+                    boxShadow: `0 16px 36px -10px ${gColor}45`,
+                  }}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A]/80 via-transparent to-transparent opacity-85 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                    <div>
+                      <span
+                        className="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full text-[#091E3A] shadow-sm"
+                        style={{ backgroundColor: gColor }}
+                      >
+                        {item.category}
+                      </span>
+                      <p className="text-sm font-extrabold mt-1 drop-shadow-xs">{item.title}</p>
+                    </div>
+                    <div
+                      className="w-9 h-9 rounded-full flex items-center justify-center shadow-md border border-white/60 transition-transform group-hover:scale-110"
+                      style={{ backgroundColor: `${gColor}cc` }}
+                    >
+                      <Eye className="w-4 h-4 text-[#091E3A]" />
+                    </div>
                   </div>
-                  <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
-                    <Eye className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -127,7 +127,7 @@ export default function FranchisePage({ onOpenTourModal }) {
                 <p>
                   We believe visionary educational leadership should not be gated by prohibitive upfront costs. Our tiered franchise framework is designed for passionate edu-preneurs, women leaders, and educational trusts.
                 </p>
-                <div className="p-6 rounded-3xl bg-[#F4F9FB] border-2 border-slate-200">
+                <div className="p-6 rounded-3xl card-flow-cyan shadow-md">
                   <div className="text-3xl sm:text-4xl font-black text-[#091E3A] mb-1">
                     Starting from ₹2.50 Lakh <span className="text-base font-normal text-slate-600">Onwards</span>
                   </div>
@@ -135,7 +135,7 @@ export default function FranchisePage({ onOpenTourModal }) {
                     Franchise Licensing Fee (Tier-based depending on city classification).
                   </p>
                 </div>
-                <div className="p-6 rounded-3xl bg-emerald-50/70 border-2 border-emerald-200">
+                <div className="p-6 rounded-3xl card-flow-lime shadow-md">
                   <div className="text-2xl font-black text-emerald-950 mb-1">
                     ₹5 Lakh to ₹25 Lakh <span className="text-base font-normal text-emerald-800">Estimated Setup Cost</span>
                   </div>
@@ -194,25 +194,37 @@ export default function FranchisePage({ onOpenTourModal }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {FOUR_PILLARS.map((p, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -6 }}
-                className="p-8 rounded-[36px] bg-white border-2 border-white shadow-xl flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#091E3A] bg-[#8ed727] px-3 py-1 rounded-full">
-                    {p.tag}
-                  </span>
-                  <h3 className="text-2xl font-black text-[#091E3A] mt-4 mb-3">
-                    {p.title}
-                  </h3>
-                  <p className="text-base text-slate-700 font-medium leading-relaxed">
-                    {p.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+            {FOUR_PILLARS.map((p, idx) => {
+              const cardClasses = ['card-flow-lime', 'card-flow-cyan', 'card-flow-gold', 'card-flow-coral'];
+              const badgeColors = [
+                { bg: '#8ed727', text: '#091E3A' },
+                { bg: '#60C8D4', text: '#091E3A' },
+                { bg: '#fece13', text: '#091E3A' },
+                { bg: '#FF6B8B', text: '#FFFFFF' },
+              ][idx % 4];
+              return (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className={`p-8 rounded-[36px] ${cardClasses[idx % 4]} shadow-xl flex flex-col justify-between transition-all`}
+                >
+                  <div>
+                    <span
+                      className="text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm"
+                      style={{ backgroundColor: badgeColors.bg, color: badgeColors.text }}
+                    >
+                      {p.tag}
+                    </span>
+                    <h3 className="text-2xl font-black text-[#091E3A] mt-4 mb-3">
+                      {p.title}
+                    </h3>
+                    <p className="text-base text-slate-700 font-medium leading-relaxed">
+                      {p.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -236,30 +248,44 @@ export default function FranchisePage({ onOpenTourModal }) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {TWELVE_SUPPORT.map((item, idx) => (
-              <motion.div
-                key={item.step}
-                whileHover={{ y: -6 }}
-                className="p-6 rounded-[28px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xl font-black font-mono text-[#8ed727]">
-                      {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
-                    </span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-white/20 text-[#60C8D4]">
-                      Support Pillar
-                    </span>
+            {TWELVE_SUPPORT.map((item, idx) => {
+              const darkPalettes = [
+                { bg: 'linear-gradient(135deg, rgba(142,215,39,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(96,200,212,0.12) 100%)', border: 'rgba(142,215,39,0.35)', num: '#8ed727' },
+                { bg: 'linear-gradient(135deg, rgba(96,200,212,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(155,81,224,0.12) 100%)', border: 'rgba(96,200,212,0.35)', num: '#60C8D4' },
+                { bg: 'linear-gradient(135deg, rgba(254,206,19,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(255,107,139,0.12) 100%)', border: 'rgba(254,206,19,0.35)', num: '#fece13' },
+                { bg: 'linear-gradient(135deg, rgba(255,107,139,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(254,206,19,0.12) 100%)', border: 'rgba(255,107,139,0.35)', num: '#FF6B8B' },
+              ][idx % 4];
+              return (
+                <motion.div
+                  key={item.step}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  className="p-6 rounded-[28px] backdrop-blur-xl shadow-lg flex flex-col justify-between transition-all"
+                  style={{
+                    background: darkPalettes.bg,
+                    backgroundSize: '240% 240%',
+                    animation: `flowyColorDrift ${8 + (idx % 3) * 1.5}s ease-in-out infinite`,
+                    border: `1.5px solid ${darkPalettes.border}`,
+                  }}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xl font-black font-mono" style={{ color: darkPalettes.num }}>
+                        {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                      </span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-white/15 text-white/90 border border-white/20">
+                        Support Pillar
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-black text-white mb-2">
+                      {item.step}
+                    </h3>
+                    <p className="text-xs text-white/80 leading-relaxed font-medium">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-black text-white mb-2">
-                    {item.step}
-                  </h3>
-                  <p className="text-xs text-white/80 leading-relaxed font-medium">
-                    {item.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -280,7 +306,7 @@ export default function FranchisePage({ onOpenTourModal }) {
             </p>
           </div>
 
-          <div className="p-8 sm:p-12 rounded-[40px] bg-[#F4F9FB] border-2 border-slate-200/80 shadow-2xl">
+          <div className="p-8 sm:p-12 rounded-[40px] card-flow-multi shadow-2xl">
             {submitted ? (
               <div className="text-center py-10 space-y-4">
                 <div className="w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center mx-auto text-2xl font-black">

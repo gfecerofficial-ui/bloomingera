@@ -13,36 +13,40 @@ const ADMISSION_STEPS = [
     title: "Discover",
     desc: "Explore our educational philosophy, no-book approach, signature discovery spaces and age-appropriate programmes.",
     icon: Compass,
-    color: "#60C8D4"
+    color: "#60C8D4",
+    cardClass: "card-flow-cyan"
   },
   {
     step: "02",
     title: "Visit",
     desc: "Experience the vibrant campus environment in person, observe active children, and meet our passionate educators.",
     icon: Calendar,
-    color: "#8ed727"
+    color: "#8ed727",
+    cardClass: "card-flow-lime"
   },
   {
     step: "03",
     title: "Connect",
     desc: "A warm, informal conversation to discuss your child's age, unique personality, interests and programme suitability.",
     icon: Heart,
-    color: "#60C8D4"
+    color: "#fece13",
+    cardClass: "card-flow-gold"
   },
   {
     step: "04",
     title: "Begin",
     desc: "Complete the simple enrolment documentation, receive the Welcome Discovery Kit, and start your child's joyful journey.",
     icon: Sparkles,
-    color: "#8ed727"
+    color: "#FF6B8B",
+    cardClass: "card-flow-coral"
   }
 ];
 
 const PROGRAMMES = [
-  { name: "Playgroup", age: "2+ to 3 Years", focus: "Sensory discovery, gentle social transition & self-expression", photo: CHILD_PHOTOS.playgroupFloorToddler },
-  { name: "Nursery", age: "3+ to 4 Years", focus: "Language fluency, foundational numeracy & curiosity projects", photo: CHILD_PHOTOS.toddlerLaughingBook },
-  { name: "Junior KG", age: "4+ to 5 Years", focus: "Scientific inquiry, pre-coding logic & collaborative teamwork", photo: CHILD_PHOTOS.natureExplorerChild },
-  { name: "Senior KG", age: "5+ to 6 Years", focus: "School readiness, creative problem-solving & confidence", photo: CHILD_PHOTOS.seniorKgFocusedChild }
+  { name: "Playgroup", age: "2+ to 3 Years", focus: "Sensory discovery, gentle social transition & self-expression", photo: CHILD_PHOTOS.playgroupFloorToddler, cardClass: "card-flow-lime", badgeBg: "#8ed727", badgeText: "#091E3A" },
+  { name: "Nursery", age: "3+ to 4 Years", focus: "Language fluency, foundational numeracy & curiosity projects", photo: CHILD_PHOTOS.toddlerLaughingBook, cardClass: "card-flow-cyan", badgeBg: "#60C8D4", badgeText: "#091E3A" },
+  { name: "Junior KG", age: "4+ to 5 Years", focus: "Scientific inquiry, pre-coding logic & collaborative teamwork", photo: CHILD_PHOTOS.natureExplorerChild, cardClass: "card-flow-gold", badgeBg: "#fece13", badgeText: "#091E3A" },
+  { name: "Senior KG", age: "5+ to 6 Years", focus: "School readiness, creative problem-solving & confidence", photo: CHILD_PHOTOS.seniorKgFocusedChild, cardClass: "card-flow-coral", badgeBg: "#FF6B8B", badgeText: "#FFFFFF" }
 ];
 
 export default function AdmissionsPage({ onOpenTourModal }) {
@@ -131,15 +135,15 @@ export default function AdmissionsPage({ onOpenTourModal }) {
               return (
                 <motion.div
                   key={st.step}
-                  whileHover={{ y: -8 }}
-                  className="p-8 rounded-[36px] bg-[#F4F9FB] border-2 border-slate-200/80 shadow-lg flex flex-col justify-between"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className={`p-8 rounded-[36px] ${st.cardClass} shadow-lg flex flex-col justify-between transition-all`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-6">
                       <span className="text-3xl font-black font-mono text-[#091E3A]">
                         {st.step}
                       </span>
-                      <div className="w-12 h-12 rounded-2xl bg-[#091E3A] text-[#8ed727] flex items-center justify-center shadow-md">
+                      <div className="w-12 h-12 rounded-2xl bg-[#091E3A] flex items-center justify-center shadow-md border border-white/20">
                         <Icon className="w-6 h-6" style={{ color: st.color }} />
                       </div>
                     </div>
@@ -176,14 +180,17 @@ export default function AdmissionsPage({ onOpenTourModal }) {
             {PROGRAMMES.map((p, idx) => (
               <motion.div
                 key={idx}
-                whileHover={{ y: -6 }}
-                className="rounded-[32px] bg-white border-2 border-white shadow-xl overflow-hidden flex flex-col justify-between p-4"
+                whileHover={{ y: -6, scale: 1.02 }}
+                className={`rounded-[32px] ${p.cardClass} shadow-xl overflow-hidden flex flex-col justify-between p-4 group transition-all`}
               >
                 <div>
-                  <div className="h-44 rounded-2xl overflow-hidden mb-4">
-                    <img src={p.photo} alt={p.name} className="w-full h-full object-cover" />
+                  <div className="h-44 rounded-2xl overflow-hidden mb-4 border border-white/60 shadow-sm">
+                    <img src={p.photo} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
-                  <span className="px-3 py-1 rounded-full bg-[#091E3A] text-[#8ed727] text-xs font-black">
+                  <span
+                    className="inline-block px-3 py-1 rounded-full text-xs font-black shadow-sm"
+                    style={{ backgroundColor: p.badgeBg, color: p.badgeText }}
+                  >
                     Age: {p.age}
                   </span>
                   <h3 className="text-xl font-extrabold text-[#091E3A] mt-2 mb-1">

@@ -56,12 +56,12 @@ export default function AssessmentPage({ onOpenTourModal }) {
               <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
                 Traditional preschools often rely on paper tests and comparative grading that can damage a 4-year-old's self-esteem. Blooming Era implements a 360-degree observational portfolio framework aligned with the Ministry of Education’s PARAKH Holistic Progress Card (HPC).
               </p>
-              <div className="p-6 rounded-3xl bg-[#F4F9FB] border-2 border-slate-200">
+              <div className="p-6 rounded-3xl card-flow-lime border-2 shadow-lg">
                 <div className="flex items-center gap-3 text-sm font-black text-[#091E3A] mb-2">
                   <ShieldCheck className="w-5 h-5 text-emerald-600" />
                   <span>360° Non-Diagnostic Growth Observation</span>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
                   Educators observe how a child solves a block puzzle, shares paints with a peer, expresses a story, or handles minor frustrations. This rich qualitative context helps parents truly understand their child's holistic growth.
                 </p>
               </div>
@@ -75,7 +75,7 @@ export default function AssessmentPage({ onOpenTourModal }) {
                   className="w-full h-[420px] object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 p-5 rounded-3xl bg-[#091E3A] text-white shadow-xl max-w-xs border-2 border-[#8ed727]">
+              <div className="absolute -bottom-6 -right-6 p-5 rounded-3xl bg-[#091E3A] text-white shadow-xl max-w-xs border-2 border-[#8ed727] animate-float-gentle">
                 <div className="text-xs font-mono font-bold text-[#8ed727] uppercase">
                   Our Philosophy
                 </div>
@@ -105,31 +105,44 @@ export default function AssessmentPage({ onOpenTourModal }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {NINE_AREAS.map((area, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -6 }}
-                onClick={() => setSelectedArea(idx)}
-                className={`p-6 rounded-[32px] cursor-pointer transition-all border-2 ${
-                  selectedArea === idx
-                    ? 'bg-white border-[#091E3A] shadow-xl scale-[1.02]'
-                    : 'bg-white/80 border-white hover:bg-white shadow-md'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono font-bold text-[#60C8D4] bg-[#091E3A] px-2.5 py-0.5 rounded-full">
-                    Area 0{idx + 1}
-                  </span>
-                  <CheckCircle2 className={`w-5 h-5 ${selectedArea === idx ? 'text-[#091E3A]' : 'text-slate-300'}`} />
-                </div>
-                <h3 className="text-lg font-bold text-[#091E3A] mb-2">
-                  {area.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                  {area.desc}
-                </p>
-              </motion.div>
-            ))}
+            {NINE_AREAS.map((area, idx) => {
+              const areaColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0'];
+              const aColor = areaColors[idx % areaColors.length];
+              return (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  onClick={() => setSelectedArea(idx)}
+                  className={`p-6 rounded-[32px] cursor-pointer transition-all duration-300 border-2 ${
+                    selectedArea === idx ? 'scale-[1.02] ring-4 ring-[#091E3A]/15' : ''
+                  }`}
+                  style={{
+                    background: `linear-gradient(135deg, ${aColor}24 0%, ${aColor}0d 25%, #ffffff 50%, ${aColor}16 75%, ${aColor}28 100%)`,
+                    backgroundSize: '250% 250%',
+                    animation: 'flowyColorDrift 10s ease-in-out infinite',
+                    animationDelay: `${idx * 1.2}s`,
+                    borderColor: selectedArea === idx ? '#091E3A' : `${aColor}65`,
+                    boxShadow: `0 16px 36px -8px ${aColor}35`,
+                  }}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span
+                      className="text-xs font-mono font-black text-[#091E3A] px-2.5 py-0.5 rounded-full shadow-xs"
+                      style={{ backgroundColor: aColor }}
+                    >
+                      Area 0{idx + 1}
+                    </span>
+                    <CheckCircle2 className={`w-5 h-5 ${selectedArea === idx ? 'text-[#091E3A]' : 'text-slate-400'}`} />
+                  </div>
+                  <h3 className="text-lg font-extrabold text-[#091E3A] mb-2">
+                    {area.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                    {area.desc}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -153,20 +166,33 @@ export default function AssessmentPage({ onOpenTourModal }) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SIX_STEPS.map((item) => {
+            {SIX_STEPS.map((item, sIdx) => {
               const Icon = item.icon;
+              const stepColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0', '#8ed727'];
+              const sColor = stepColors[sIdx % stepColors.length];
               return (
                 <motion.div
                   key={item.step}
-                  whileHover={{ y: -8 }}
-                  className="p-8 rounded-[36px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl flex flex-col justify-between"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="p-8 rounded-[36px] backdrop-blur-xl border-2 shadow-xl flex flex-col justify-between transition-all duration-300"
+                  style={{
+                    background: `linear-gradient(145deg, ${sColor}2e 0%, rgba(9,30,58,0.92) 45%, ${sColor}1e 100%)`,
+                    backgroundSize: '240% 240%',
+                    animation: 'flowyColorDrift 10s ease-in-out infinite',
+                    animationDelay: `${sIdx * 1.4}s`,
+                    borderColor: `${sColor}65`,
+                    boxShadow: `0 18px 40px -10px ${sColor}35`,
+                  }}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <span className="text-2xl font-black font-mono text-[#8ed727]">
+                      <span className="text-2xl font-black font-mono" style={{ color: sColor }}>
                         {item.step}
                       </span>
-                      <div className="w-12 h-12 rounded-2xl bg-white/15 text-[#60C8D4] flex items-center justify-center">
+                      <div
+                        className="w-12 h-12 rounded-2xl text-[#091E3A] flex items-center justify-center shadow-md border-2 border-white/40"
+                        style={{ backgroundColor: sColor }}
+                      >
                         <Icon className="w-6 h-6" />
                       </div>
                     </div>

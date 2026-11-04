@@ -82,7 +82,14 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
 
       {/* Main Sticky Glass Navigation Header */}
       <header className="sticky top-1 sm:top-1.5 z-40 px-3 sm:px-6 mt-2.5 sm:mt-3">
-        <div className="max-w-7xl mx-auto glass-panel-elevated rounded-full py-2 px-4 sm:px-6 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.1)] bg-white/85 backdrop-blur-2xl">
+        <div
+          className="max-w-7xl mx-auto rounded-full py-2 px-4 sm:px-6 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.12)] backdrop-blur-2xl transition-all duration-300"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(226,249,184,0.48) 25%, rgba(208,244,249,0.48) 50%, rgba(255,246,196,0.45) 75%, rgba(255,255,255,0.94) 100%)',
+            backgroundSize: '250% 250%',
+            animation: 'flowyColorDrift 12s ease-in-out infinite',
+          }}
+        >
           <div className="flex items-center justify-between gap-3">
             
             {/* Logo & Brand */}
@@ -122,13 +129,14 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-300 ease-out ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-300 ease-out inline-flex items-center gap-1.5 ${
                       isActive
-                        ? 'bg-[#091E3A] text-white shadow-sm'
-                        : 'text-[#091E3A]/80 hover:text-[#091E3A] hover:bg-[#60C8D4]/20'
+                        ? 'bg-[#091E3A] text-white shadow-md'
+                        : 'text-[#091E3A]/85 hover:text-[#091E3A] hover:bg-[#8ed727]/25'
                     }`}
                   >
-                    {item.label}
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#8ed727]" />}
+                    <span>{item.label}</span>
                   </button>
                 );
               })}
@@ -178,7 +186,7 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="xl:hidden mt-2 max-w-7xl mx-auto rounded-3xl bg-white/95 backdrop-blur-2xl border-2 border-[#60C8D4]/40 shadow-2xl p-5"
+              className="xl:hidden mt-2 max-w-7xl mx-auto rounded-3xl card-flow-multi backdrop-blur-2xl border-2 shadow-2xl p-5"
             >
               <div className="grid grid-cols-2 gap-2">
                 {navItems.map((item) => (

@@ -46,7 +46,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               </div>
 
               {/* Callout Quote Box */}
-              <div className="p-6 rounded-3xl bg-gradient-to-r from-[#8ed727]/20 via-[#60C8D4]/15 to-white border-2 border-[#8ed727] shadow-lg">
+              <div className="p-6 rounded-3xl card-flow-lime border-2 shadow-lg">
                 <p className="text-lg sm:text-xl font-black text-[#091E3A] italic">
                   “We don't want children to learn more things sooner. We want them to understand, experience and love what they learn.”
                 </p>
@@ -77,7 +77,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               </div>
 
               {/* Orbiting Badge */}
-              <div className="absolute -bottom-6 -left-6 p-4 rounded-3xl bg-white/95 backdrop-blur-xl border-2 border-[#60C8D4] shadow-xl max-w-xs">
+              <div className="absolute -bottom-6 -left-6 p-4 rounded-3xl card-flow-cyan backdrop-blur-xl border-2 shadow-xl max-w-xs animate-float-gentle">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-2xl bg-[#091E3A] flex items-center justify-center text-[#8ed727]">
                     <Sparkles className="w-5 h-5" />
@@ -101,10 +101,10 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
             
             {/* Vision Card */}
             <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 sm:p-10 rounded-[36px] bg-white border-2 border-white shadow-xl relative overflow-hidden"
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="p-8 sm:p-10 rounded-[36px] card-flow-cyan border-2 shadow-xl relative overflow-hidden transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#60C8D4]/20 border border-[#60C8D4] text-[#091E3A] flex items-center justify-center mb-6 shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-[#60C8D4] border-2 border-white text-[#091E3A] flex items-center justify-center mb-6 shadow-md">
                 <Compass className="w-7 h-7 text-[#091E3A]" />
               </div>
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#60C8D4] bg-[#091E3A] px-3 py-1 rounded-full">
@@ -120,10 +120,10 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
 
             {/* Mission Card */}
             <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 sm:p-10 rounded-[36px] bg-white border-2 border-white shadow-xl relative overflow-hidden"
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="p-8 sm:p-10 rounded-[36px] card-flow-lime border-2 shadow-xl relative overflow-hidden transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#8ed727]/30 border border-[#8ed727] text-[#091E3A] flex items-center justify-center mb-6 shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-[#8ed727] border-2 border-white text-[#091E3A] flex items-center justify-center mb-6 shadow-md">
                 <Heart className="w-7 h-7 text-[#091E3A]" />
               </div>
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#091E3A] bg-[#8ed727] px-3 py-1 rounded-full">
@@ -162,8 +162,14 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* 1. Proudly Indian */}
             <motion.div
-              whileHover={{ y: -8 }}
-              className="p-8 rounded-[36px] bg-white/10 backdrop-blur-xl border-2 border-white/20 shadow-2xl flex flex-col justify-between"
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="p-8 rounded-[36px] backdrop-blur-xl border-2 border-[#8ed727]/60 shadow-2xl flex flex-col justify-between transition-all duration-300"
+              style={{
+                background: 'linear-gradient(145deg, rgba(142,215,39,0.28) 0%, rgba(9,30,58,0.92) 45%, rgba(142,215,39,0.20) 100%)',
+                backgroundSize: '240% 240%',
+                animation: 'flowyColorDrift 10s ease-in-out infinite',
+                boxShadow: '0 20px 45px -10px rgba(142,215,39,0.35)',
+              }}
             >
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#8ed727] text-[#091E3A] flex items-center justify-center font-black text-xl mb-6 shadow-md">
@@ -176,15 +182,22 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
                   We embrace India's rich cultural heritage, languages, traditions, stories, community values and educational wisdom, instilling deep roots and ethical grounding from the early years.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-white/10 text-xs text-[#60C8D4] font-bold">
+              <div className="mt-6 pt-4 border-t border-white/15 text-xs text-[#8ed727] font-bold">
                 Cultural Roots & Shared Heritage
               </div>
             </motion.div>
 
             {/* 2. Powerfully Global */}
             <motion.div
-              whileHover={{ y: -8 }}
-              className="p-8 rounded-[36px] bg-white/10 backdrop-blur-xl border-2 border-white/20 shadow-2xl flex flex-col justify-between"
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="p-8 rounded-[36px] backdrop-blur-xl border-2 border-[#60C8D4]/60 shadow-2xl flex flex-col justify-between transition-all duration-300"
+              style={{
+                background: 'linear-gradient(145deg, rgba(96,200,212,0.28) 0%, rgba(9,30,58,0.92) 45%, rgba(96,200,212,0.20) 100%)',
+                backgroundSize: '240% 240%',
+                animation: 'flowyColorDrift 11s ease-in-out infinite',
+                animationDelay: '1.5s',
+                boxShadow: '0 20px 45px -10px rgba(96,200,212,0.35)',
+              }}
             >
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#60C8D4] text-[#091E3A] flex items-center justify-center font-black text-xl mb-6 shadow-md">
@@ -197,28 +210,35 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
                   We draw from global educational ideas, research-informed pedagogy, creative thinking and the skills children need in a rapidly evolving, connected world.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-white/10 text-xs text-[#8ed727] font-bold">
+              <div className="mt-6 pt-4 border-t border-white/15 text-xs text-[#60C8D4] font-bold">
                 21st-Century Scientific Inquiry & Tech Fluency
               </div>
             </motion.div>
 
             {/* 3. Beautifully Child-Centred */}
             <motion.div
-              whileHover={{ y: -8 }}
-              className="p-8 rounded-[36px] bg-white/10 backdrop-blur-xl border-2 border-white/20 shadow-2xl flex flex-col justify-between"
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="p-8 rounded-[36px] backdrop-blur-xl border-2 border-[#fece13]/60 shadow-2xl flex flex-col justify-between transition-all duration-300"
+              style={{
+                background: 'linear-gradient(145deg, rgba(254,206,19,0.28) 0%, rgba(9,30,58,0.92) 45%, rgba(254,206,19,0.20) 100%)',
+                backgroundSize: '240% 240%',
+                animation: 'flowyColorDrift 10.5s ease-in-out infinite',
+                animationDelay: '3s',
+                boxShadow: '0 20px 45px -10px rgba(254,206,19,0.35)',
+              }}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-white text-[#091E3A] flex items-center justify-center font-black text-xl mb-6 shadow-md">
+                <div className="w-12 h-12 rounded-2xl bg-[#fece13] text-[#091E3A] flex items-center justify-center font-black text-xl mb-6 shadow-md">
                   🌸
                 </div>
-                <h3 className="text-2xl font-extrabold text-white mb-3">
+                <h3 className="text-2xl font-extrabold text-[#fece13] mb-3">
                   Beautifully Child-Centred
                 </h3>
                 <p className="text-sm sm:text-base text-white/85 leading-relaxed font-medium">
                   Our teaching respects children's developmental needs, individuality, imagination, emotional wellbeing and fundamental right to joyful, stress-free childhood experiences.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-white/10 text-xs text-white/90 font-bold">
+              <div className="mt-6 pt-4 border-t border-white/15 text-xs text-[#fece13] font-bold">
                 Unconditional Regard for Every Child
               </div>
             </motion.div>
@@ -241,7 +261,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
             </h2>
           </div>
 
-          <div className="rounded-[40px] bg-gradient-to-br from-[#F4F9FB] to-white border-2 border-[#091E3A]/10 p-8 sm:p-12 shadow-2xl relative">
+          <div className="rounded-[40px] card-flow-multi border-2 p-8 sm:p-12 shadow-2xl relative">
             <Quote className="w-16 h-16 text-[#60C8D4]/30 absolute top-8 right-8 pointer-events-none" />
 
             {/* Founder Byline */}

@@ -77,7 +77,7 @@ export default function TourBookingModal({ isOpen, onClose }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-navy/60 backdrop-blur-md animate-in fade-in duration-200">
       
       {/* Modal Card */}
-      <div className="glass-panel-elevated w-full max-w-xl bg-white/95 rounded-3xl border border-white shadow-2xl p-6 sm:p-8 relative max-h-[92vh] overflow-y-auto">
+      <div className="glass-panel-elevated card-flow-multi w-full max-w-xl rounded-3xl shadow-2xl p-6 sm:p-8 relative max-h-[92vh] overflow-y-auto">
         
         {/* Close Button */}
         <motion.button

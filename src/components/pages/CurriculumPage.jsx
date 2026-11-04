@@ -184,31 +184,36 @@ export default function CurriculumPage({ onOpenTourModal }) {
                     instead: "Instead of only learning about plants...",
                     real: "Children grow them.",
                     desc: "Touching soil, measuring sprout heights, and noting sunlight changes with their own hands.",
-                    color: "#8ed727"
+                    color: "#8ed727",
+                    flowClass: "card-flow-lime"
                   },
                   {
                     instead: "Instead of only identifying shapes...",
                     real: "Children build with them.",
                     desc: "Constructing bridges, towers, and patterns with solid 3D geometric forms.",
-                    color: "#60C8D4"
+                    color: "#60C8D4",
+                    flowClass: "card-flow-cyan"
                   },
                   {
                     instead: "Instead of only memorising numbers...",
                     real: "Children use them in meaningful situations.",
                     desc: "Running play grocery stalls, sorting bead quantities, and balancing scales.",
-                    color: "#8ed727"
+                    color: "#fece13",
+                    flowClass: "card-flow-gold"
                   },
                   {
                     instead: "Instead of only reading about the world...",
                     real: "Children experience it.",
                     desc: "Conducting tactile experiments, listening to guest storytellers, and sensory explorations.",
-                    color: "#60C8D4"
+                    color: "#FF6B8B",
+                    flowClass: "card-flow-coral"
                   }
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
-                    whileHover={{ y: -6 }}
-                    className="p-7 rounded-[32px] bg-[#F4F9FB] border-2 border-slate-200/80 shadow-lg flex flex-col justify-between"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    className={`p-7 rounded-[32px] border-2 shadow-lg flex flex-col justify-between transition-all duration-300 ${item.flowClass}`}
+                    style={{ animationDelay: `${idx * 1.4}s` }}
                   >
                     <div>
                       <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 line-through">
@@ -220,7 +225,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
                       >
                         {item.real}
                       </h3>
-                      <p className="text-sm text-slate-600 font-medium leading-relaxed">
+                      <p className="text-sm text-slate-700 font-medium leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -253,31 +258,41 @@ export default function CurriculumPage({ onOpenTourModal }) {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {EIGHT_DIMENSIONS.map((dim) => {
+                {EIGHT_DIMENSIONS.map((dim, dIdx) => {
                   const Icon = dim.icon;
+                  const paletteColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0', '#8ed727', '#60C8D4', '#fece13'];
+                  const dColor = paletteColors[dIdx % paletteColors.length];
                   return (
                     <motion.div
                       key={dim.num}
-                      whileHover={{ y: -8 }}
-                      className="p-6 rounded-[32px] bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl flex flex-col justify-between"
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="p-6 rounded-[32px] backdrop-blur-xl border-2 shadow-xl flex flex-col justify-between transition-all duration-300"
+                      style={{
+                        background: `linear-gradient(145deg, ${dColor}30 0%, rgba(9,30,58,0.92) 45%, ${dColor}20 100%)`,
+                        backgroundSize: '240% 240%',
+                        animation: 'flowyColorDrift 10s ease-in-out infinite',
+                        animationDelay: `${dIdx * 1.2}s`,
+                        borderColor: `${dColor}65`,
+                        boxShadow: `0 18px 40px -10px ${dColor}35`,
+                      }}
                     >
                       <div>
                         <div className="flex items-center justify-between mb-4">
-                          <span className="text-xs font-mono font-bold text-[#8ed727]">
+                          <span className="text-xs font-mono font-bold" style={{ color: dColor }}>
                             DIMENSION {dim.num}
                           </span>
-                          <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-white">
-                            <Icon className="w-5 h-5" style={{ color: dim.accent }} />
+                          <div className="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center text-white border border-white/20">
+                            <Icon className="w-5 h-5" style={{ color: dColor }} />
                           </div>
                         </div>
                         <h3 className="text-lg font-bold text-white mb-2">
                           {dim.title}
                         </h3>
-                        <p className="text-xs text-white/80 leading-relaxed font-medium">
+                        <p className="text-xs text-white/85 leading-relaxed font-medium">
                           {dim.desc}
                         </p>
                       </div>
-                      <div className="mt-5 pt-3 border-t border-white/10 text-[11px] font-bold text-[#60C8D4]">
+                      <div className="mt-5 pt-3 border-t border-white/15 text-[11px] font-bold" style={{ color: dColor }}>
                         NCF-FS Foundational Stage
                       </div>
                     </motion.div>
@@ -295,8 +310,11 @@ export default function CurriculumPage({ onOpenTourModal }) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 {/* 1. Letters Beyond Alphabet Chart */}
-                <div className="p-8 rounded-[36px] bg-[#F4F9FB] border-2 border-slate-200/80 shadow-lg">
-                  <div className="w-12 h-12 rounded-2xl bg-[#60C8D4]/20 border border-[#60C8D4] text-[#091E3A] flex items-center justify-center font-black mb-6">
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="p-8 rounded-[36px] card-flow-cyan border-2 shadow-lg transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-[#60C8D4] border-2 border-white text-[#091E3A] flex items-center justify-center font-black mb-6 shadow-md">
                     Aa
                   </div>
                   <h3 className="text-2xl font-black text-[#091E3A] mb-3">
@@ -305,11 +323,14 @@ export default function CurriculumPage({ onOpenTourModal }) {
                   <p className="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
                     Children explore sounds through stories, rhymes, puppets, picture walks, sound hunts and meaningful early writing experiences rather than mechanical copying.
                   </p>
-                </div>
+                </motion.div>
 
                 {/* 2. Numbers Beyond the Worksheet */}
-                <div className="p-8 rounded-[36px] bg-[#F4F9FB] border-2 border-slate-200/80 shadow-lg">
-                  <div className="w-12 h-12 rounded-2xl bg-[#8ed727]/30 border border-[#8ed727] text-[#091E3A] flex items-center justify-center font-black mb-6">
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="p-8 rounded-[36px] card-flow-lime border-2 shadow-lg transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-[#8ed727] border-2 border-white text-[#091E3A] flex items-center justify-center font-black mb-6 shadow-md">
                     123
                   </div>
                   <h3 className="text-2xl font-black text-[#091E3A] mb-3">
@@ -318,11 +339,14 @@ export default function CurriculumPage({ onOpenTourModal }) {
                   <p className="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
                     Children develop number sense through pretend markets, block towers, sorting, construction, counting games and practical problem-solving in real-life contexts.
                   </p>
-                </div>
+                </motion.div>
 
                 {/* 3. Worksheets With Purpose */}
-                <div className="p-8 rounded-[36px] bg-[#F4F9FB] border-2 border-slate-200/80 shadow-lg">
-                  <div className="w-12 h-12 rounded-2xl bg-[#091E3A] text-[#8ed727] flex items-center justify-center font-black mb-6">
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="p-8 rounded-[36px] card-flow-gold border-2 shadow-lg transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-[#fece13] border-2 border-white text-[#091E3A] flex items-center justify-center font-black mb-6 shadow-md">
                     ✍️
                   </div>
                   <h3 className="text-2xl font-black text-[#091E3A] mb-3">
@@ -331,7 +355,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
                   <p className="text-sm sm:text-base text-slate-700 font-medium leading-relaxed">
                     Age-appropriate worksheets are introduced when they help children practise, apply, document or reinforce concepts they have already experienced. They support learning — they do not define it.
                   </p>
-                </div>
+                </motion.div>
 
               </div>
             </div>
@@ -353,34 +377,49 @@ export default function CurriculumPage({ onOpenTourModal }) {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {DISCOVERY_SPACES.map((space, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ y: -8 }}
-                    className="rounded-[36px] bg-white border-2 border-white shadow-xl overflow-hidden flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="h-48 overflow-hidden relative">
-                        <img
-                          src={space.photo}
-                          alt={space.name}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                        />
-                        <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-[#091E3A]/90 text-white text-[11px] font-bold backdrop-blur-md">
-                          {space.focus}
-                        </span>
+                {DISCOVERY_SPACES.map((space, idx) => {
+                  const spaceColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0', '#8ed727'];
+                  const sColor = spaceColors[idx % spaceColors.length];
+                  return (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="rounded-[36px] border-2 shadow-xl overflow-hidden flex flex-col justify-between transition-all duration-300"
+                      style={{
+                        background: `linear-gradient(135deg, ${sColor}24 0%, ${sColor}0d 25%, #ffffff 50%, ${sColor}16 75%, ${sColor}28 100%)`,
+                        backgroundSize: '250% 250%',
+                        animation: 'flowyColorDrift 10s ease-in-out infinite',
+                        animationDelay: `${idx * 1.5}s`,
+                        borderColor: `${sColor}65`,
+                        boxShadow: `0 18px 40px -10px ${sColor}35`,
+                      }}
+                    >
+                      <div>
+                        <div className="h-48 overflow-hidden relative">
+                          <img
+                            src={space.photo}
+                            alt={space.name}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                          />
+                          <span
+                            className="absolute bottom-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-[11px] font-black shadow-md"
+                            style={{ backgroundColor: sColor }}
+                          >
+                            {space.focus}
+                          </span>
+                        </div>
+                        <div className="p-6">
+                          <h3 className="text-xl font-extrabold text-[#091E3A] mb-2">
+                            {space.name}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                            {space.desc}
+                          </p>
+                        </div>
                       </div>
-                      <div className="p-6">
-                        <h3 className="text-xl font-extrabold text-[#091E3A] mb-2">
-                          {space.name}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                          {space.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  );
+                })}
               </div>
 
               <div className="text-center mt-12">
@@ -417,26 +456,39 @@ export default function CurriculumPage({ onOpenTourModal }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {TWELVE_THEMES.map((theme, idx) => {
                 const Icon = theme.icon;
+                const themeColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0'];
+                const tColor = themeColors[idx % themeColors.length];
                 return (
                   <motion.div
                     key={idx}
-                    whileHover={{ y: -6 }}
-                    className="p-6 rounded-[32px] bg-[#F4F9FB] border-2 border-slate-200/80 shadow-md hover:border-[#60C8D4] transition-all"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    className="p-6 rounded-[32px] border-2 shadow-md transition-all duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, ${tColor}22 0%, ${tColor}0c 25%, #ffffff 50%, ${tColor}16 75%, ${tColor}26 100%)`,
+                      backgroundSize: '250% 250%',
+                      animation: 'flowyColorDrift 10s ease-in-out infinite',
+                      animationDelay: `${idx * 1.1}s`,
+                      borderColor: `${tColor}65`,
+                      boxShadow: `0 16px 36px -8px ${tColor}30`,
+                    }}
                   >
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-2xl bg-[#091E3A] text-[#8ed727] flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <div
+                        className="w-12 h-12 rounded-2xl text-[#091E3A] flex items-center justify-center flex-shrink-0 shadow-md border-2 border-white"
+                        style={{ backgroundColor: tColor }}
+                      >
                         <Icon className="w-6 h-6" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#60C8D4] bg-[#091E3A] px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-white bg-[#091E3A] px-2.5 py-0.5 rounded-full">
                           Theme 0{idx + 1}
                         </span>
-                        <h3 className="text-lg font-bold text-[#091E3A] mt-0.5">
+                        <h3 className="text-lg font-extrabold text-[#091E3A] mt-0.5">
                           {theme.title}
                         </h3>
                       </div>
                     </div>
-                    <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
                       {theme.desc}
                     </p>
                   </motion.div>
