@@ -225,10 +225,11 @@ function BloomingEraBannerPlane() {
   return (
     <div className="absolute top-[98px] sm:top-[106px] lg:top-[112px] inset-x-0 h-[72px] overflow-hidden pointer-events-none select-none z-[3]">
       <motion.div
-        initial={{ x: '108vw', y: 0 }}
+        initial={{ x: '108vw', y: 0, opacity: 0 }}
         animate={{
-          x: ['108vw', '-35vw'],
+          x: ['108vw', '-440px'],
           y: [0, -6, 3, -5, 2, 0],
+          opacity: [0, 1, 1, 0],
         }}
         transition={{
           x: {
@@ -244,6 +245,13 @@ function BloomingEraBannerPlane() {
             repeat: Infinity,
             repeatDelay: 14,
             ease: 'easeInOut',
+          },
+          opacity: {
+            duration: 16,
+            times: [0, 0.04, 0.94, 1],
+            delay: 2.2,
+            repeat: Infinity,
+            repeatDelay: 14,
           },
         }}
         className="relative w-[330px] h-[64px]"
