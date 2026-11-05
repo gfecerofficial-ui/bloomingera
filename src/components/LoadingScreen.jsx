@@ -41,6 +41,20 @@ const ORBIT_IMAGES = [
   },
 ];
 
+const LEADERSHIP_PHOTOS = [
+  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
+];
+
+// Persistent module-level cache so decoded Image bitmaps are never garbage-collected
+// or evicted when sections scroll off-screen on mobile browsers.
+const PINNED_IMAGES = [];
+if (typeof window !== 'undefined') {
+  window.__BLOOMINGERA_PINNED_IMAGES__ = PINNED_IMAGES;
+}
+
 export default function LoadingScreen({ onComplete }) {
   // Phases: 'init' -> 'revolve' -> 'collapse' -> 'done'
   const [phase, setPhase] = useState('init');
@@ -56,29 +70,40 @@ export default function LoadingScreen({ onComplete }) {
       if (isMounted) setPhase('revolve');
     }, 100);
 
-    // Preload & decode every hero asset and satellite image in memory behind loading screen
-    const heroAssets = [
-      '/hero/slide_1.png',
-      '/hero/slide_2.png',
-      '/hero/slide_3.png',
+    // Preload & decode every hero asset and all website images in memory behind loading screen,
+    // pinning each decoded Image reference in PINNED_IMAGES to prevent mobile off-screen eviction.
+    const criticalHeroAssets = [
+      '/hero/slide_1.jpg',
+      '/hero/slide_2.jpg',
+      '/hero/slide_3.jpg',
       '/logo.jpeg',
-      ...ORBIT_IMAGES.map((img) => img.src),
+      ...Object.values(CHILD_PHOTOS),
     ];
 
-    const preloadAssetsPromise = Promise.all(
-      heroAssets.map((src) => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.src = src;
-          if (img.decode) {
-            img.decode().then(resolve).catch(resolve);
-          } else {
-            img.onload = resolve;
-            img.onerror = resolve;
-          }
-        });
-      })
-    );
+    const secondaryAssets = [...LEADERSHIP_PHOTOS];
+
+    const preloadAndPin = (src, priority = 'auto') => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.decoding = 'sync';
+        if ('fetchPriority' in img) {
+          img.fetchPriority = priority;
+        }
+        img.src = src;
+        PINNED_IMAGES.push(img);
+        if (img.decode) {
+          img.decode().then(resolve).catch(resolve);
+        } else {
+          img.onload = resolve;
+          img.onerror = resolve;
+        }
+      });
+    };
+
+    const preloadAssetsPromise = Promise.all([
+      ...criticalHeroAssets.map((src) => preloadAndPin(src, 'high')),
+      ...secondaryAssets.map((src) => preloadAndPin(src, 'auto')),
+    ]);
 
     // Wait for both minimum 3.1s revolve duration, window load, AND all hero assets decoded (capped at 3.5s max)
     const minDurationPromise = new Promise((resolve) => setTimeout(resolve, 3100));

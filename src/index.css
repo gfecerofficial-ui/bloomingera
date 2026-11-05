@@ -456,14 +456,30 @@ body {
 }
 
 @media (max-width: 1023px) {
+  .glass-panel,
+  .glass-panel-elevated,
+  .glass-pill,
+  .btn-lime,
+  .btn-turquoise,
   .card-flow-lime,
   .card-flow-cyan,
   .card-flow-gold,
   .card-flow-coral,
   .card-flow-purple,
-  .card-flow-multi {
+  .card-flow-multi,
+  [style*="flowyColorDrift"],
+  [style*="subtleBoxColorShift"] {
     animation: none !important;
     background-size: 100% 100% !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .animate-sand-shimmer,
+  .animate-sand-forward,
+  .animate-sand-reverse,
+  .animate-sand-drift {
+    animation: none !important;
   }
 
   /* Disable heavy GPU-taxing filters and continuous layer animations on mobile screens */
@@ -473,13 +489,11 @@ body {
 
   .animate-glow-melt-deep,
   .animate-glow-melt-core {
-    animation: none !important;
-    filter: blur(18px) !important;
-    opacity: 0.6 !important;
+    display: none !important;
   }
 
   .sparkle-border-ring {
-    animation: none !important;
+    display: none !important;
   }
 
   .animate-sparkle-star-1,

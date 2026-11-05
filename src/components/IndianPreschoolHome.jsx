@@ -93,7 +93,7 @@ const HERO_SLIDES = [
     primaryBtn: "Explore Blooming Era",
     primaryHref: "#welcome",
     secondaryBtn: "Book a School Tour",
-    mainImage: "/hero/slide_1.png",
+    mainImage: "/hero/slide_1.jpg",
     secondaryImage: CHILD_PHOTOS.fingerPaintingGirl,
     tertiaryImage: CHILD_PHOTOS.toddlerLaughingBook,
     badgeTitle: "Proudly Indian, Powerfully Global",
@@ -114,7 +114,7 @@ const HERO_SLIDES = [
     primaryBtn: "Discover Our Learning Philosophy",
     primaryHref: "#philosophy",
     secondaryBtn: "Book a School Tour",
-    mainImage: "/hero/slide_2.png",
+    mainImage: "/hero/slide_2.jpg",
     secondaryImage: CHILD_PHOTOS.woodenBlocksChild,
     tertiaryImage: CHILD_PHOTOS.natureExplorerChild,
     badgeTitle: "Kindermagic PrimeX™ Curriculum",
@@ -135,7 +135,7 @@ const HERO_SLIDES = [
     primaryBtn: "Explore Franchise Opportunities",
     primaryHref: "#franchise-opportunity",
     secondaryBtn: "Enquire for Partnership",
-    mainImage: "/hero/slide_3.png",
+    mainImage: "/hero/slide_3.jpg",
     secondaryImage: CHILD_PHOTOS.classroomDrawing,
     tertiaryImage: CHILD_PHOTOS.playgroupFloorToddler,
     badgeTitle: "Franchise Starting at ₹2.50 Lakh",
@@ -809,6 +809,8 @@ export default function IndianPreschoolHome({
 
   // Refs & state for responsive Hero child/branch & flower visibility rules.
   // Initialized synchronously at t = 0ms while the loading screen is up, and refined via useLayoutEffect.
+  const heroSectionRef = useRef(null);
+  const [isHeroInView, setIsHeroInView] = useState(true);
   const heroHeadingRef = useRef(null);
   const desktopSlideshowRef = useRef(null);
   const [heroLayout, setHeroLayout] = useState(() => {
@@ -924,13 +926,28 @@ export default function IndianPreschoolHome({
     };
   }, [activeSlide]);
 
-  // Auto-advance Hero Slider every 6.5 seconds
+  // Track whether Hero section is within viewport so off-screen slide swaps never dirty mobile GPU tiles
   useEffect(() => {
+    const el = heroSectionRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroInView(entry.isIntersecting);
+      },
+      { rootMargin: '150px 0px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // Auto-advance Hero Slider every 6.5 seconds (only while Hero is in view)
+  useEffect(() => {
+    if (!isHeroInView) return;
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 6500);
     return () => clearInterval(timer);
-  }, []);
+  }, [isHeroInView]);
 
   // Auto-advance Beyond Academics (8 Dimensions) every 5 seconds on desktop only
   useEffect(() => {
@@ -1001,7 +1018,7 @@ export default function IndianPreschoolHome({
 
           {/* Main Sticky Glass Navigation */}
           <header className="sticky top-3 z-40 px-3 sm:px-6">
-            <div className="max-w-7xl mx-auto glass-panel-elevated rounded-full py-2.5 px-4 sm:px-7 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.1)] bg-white/85 backdrop-blur-2xl">
+            <div className="max-w-7xl mx-auto glass-panel-elevated rounded-full py-2.5 px-4 sm:px-7 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.1)] bg-white/95 lg:bg-white/85 lg:backdrop-blur-2xl">
               <div className="flex items-center justify-between gap-4">
                 <a href="#" className="flex items-center gap-3 group">
                   <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#ADF802] shadow-md bg-white p-0.5 group-hover:scale-105 transition-transform">
@@ -1071,7 +1088,10 @@ export default function IndianPreschoolHome({
       {/* ===================================================================== */}
       {/* SECTION 01 — HOMEPAGE HERO SLIDER (FLOWY GLASSMORPHIC 3-SLIDE HERO)   */}
       {/* ===================================================================== */}
-      <section className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]">
+      <section
+        ref={heroSectionRef}
+        className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]"
+      >
         {/* Background Peeking & Waving Child Stick Figure (or Dangling Tree Branch with Blooming Flower Buds on smaller screens) */}
         <PeekingChildFigure
           isPageLoaded={isPageLoaded}
@@ -1176,9 +1196,9 @@ export default function IndianPreschoolHome({
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentSlide.id}
-                      initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
-                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                       className="space-y-4"
                     >
@@ -1249,13 +1269,14 @@ export default function IndianPreschoolHome({
                     <div
                       className="relative overflow-hidden h-[390px] sm:h-[460px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
                       style={{
-                        WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                         transform: 'translateZ(0)',
+                        WebkitTransform: 'translateZ(0)',
+                        backfaceVisibility: 'hidden',
                       }}
                     >
                       {/* Subtly Sparkling Rim Border */}
                       <div
-                        className="absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
+                        className="hidden lg:block absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
                         style={{
                           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                           WebkitMaskComposite: 'xor',
@@ -1286,21 +1307,28 @@ export default function IndianPreschoolHome({
                         </svg>
                       </div>
 
-                      {/* Silky Pure Opacity Crossfade (No Resizing or Zooming) */}
-                      <AnimatePresence initial={false}>
-                        <motion.img
-                          key={currentSlide.mainImage}
-                          src={currentSlide.mainImage}
-                          alt={currentSlide.headline}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.6, ease: "easeInOut" }}
-                          className="absolute inset-0 w-full h-full object-cover object-center"
-                          loading="eager"
-                          decoding="async"
-                        />
-                      </AnimatePresence>
+                      {/* Permanently Mounted GPU-Composited Slideshow Images (Zero Unmount/Remount Texture Stalls) */}
+                      {HERO_SLIDES.map((slide, idx) => {
+                        const isCurrent = activeSlide === idx;
+                        return (
+                          <img
+                            key={slide.id}
+                            src={slide.mainImage}
+                            alt={slide.headline}
+                            loading="eager"
+                            decoding="sync"
+                            fetchPriority="high"
+                            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 ease-in-out will-change-[opacity] ${
+                              isCurrent ? 'opacity-100 z-[2]' : 'opacity-0 z-[1] pointer-events-none'
+                            }`}
+                            style={{
+                              transform: 'translateZ(0)',
+                              WebkitTransform: 'translateZ(0)',
+                              backfaceVisibility: 'hidden',
+                            }}
+                          />
+                        );
+                      })}
 
                       {/* Compact Floating Glass Badge */}
                       <AnimatePresence mode="wait">
@@ -1310,7 +1338,7 @@ export default function IndianPreschoolHome({
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -6 }}
                           transition={{ duration: 0.3, ease: 'easeOut' }}
-                          className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
+                          className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/95 lg:bg-white/90 lg:backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
                         >
                           <div
                             className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
@@ -1495,21 +1523,28 @@ export default function IndianPreschoolHome({
                     </svg>
                   </div>
 
-                  {/* Silky Pure Opacity Crossfade (No Resizing or Zooming) */}
-                  <AnimatePresence initial={false}>
-                    <motion.img
-                      key={currentSlide.mainImage}
-                      src={currentSlide.mainImage}
-                      alt={currentSlide.headline}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.6, ease: "easeInOut" }}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </AnimatePresence>
+                  {/* Permanently Mounted GPU-Composited Slideshow Images (Zero Unmount/Remount Texture Stalls) */}
+                  {HERO_SLIDES.map((slide, idx) => {
+                    const isCurrent = activeSlide === idx;
+                    return (
+                      <img
+                        key={slide.id}
+                        src={slide.mainImage}
+                        alt={slide.headline}
+                        loading="eager"
+                        decoding="sync"
+                        fetchPriority="high"
+                        className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 ease-in-out will-change-[opacity] ${
+                          isCurrent ? 'opacity-100 z-[2]' : 'opacity-0 z-[1] pointer-events-none'
+                        }`}
+                        style={{
+                          transform: 'translateZ(0)',
+                          WebkitTransform: 'translateZ(0)',
+                          backfaceVisibility: 'hidden',
+                        }}
+                      />
+                    );
+                  })}
 
                   {/* Compact Floating Glass Badge */}
                   <AnimatePresence mode="wait">
@@ -1561,9 +1596,9 @@ export default function IndianPreschoolHome({
             }}
           >
             {/* Decorative Glows */}
-            <div className="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-[#ADF802]/25 blur-3xl pointer-events-none animate-pulse" />
-            <div className="absolute left-1/3 -bottom-16 w-72 h-72 rounded-full bg-[#60C8D4]/25 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
-            <div className="absolute left-4 top-1/2 w-48 h-48 rounded-full bg-[#fece13]/15 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '4s' }} />
+            <div className="hidden lg:block absolute -right-12 -top-12 w-64 h-64 rounded-full bg-[#ADF802]/25 blur-3xl pointer-events-none animate-pulse" />
+            <div className="hidden lg:block absolute left-1/3 -bottom-16 w-72 h-72 rounded-full bg-[#60C8D4]/25 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="hidden lg:block absolute left-4 top-1/2 w-48 h-48 rounded-full bg-[#fece13]/15 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '4s' }} />
 
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
               <div className="flex flex-col sm:flex-row items-center gap-4">

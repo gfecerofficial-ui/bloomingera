@@ -192,6 +192,18 @@ export default function PeekingChildFigure({
 }) {
   const [isWaving, setIsWaving] = useState(false);
   const [hasBloomed, setHasBloomed] = useState(false);
+  const [isMobileScreen, setIsMobileScreen] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
+
+  useEffect(() => {
+    const onResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobileScreen((prev) => (prev === mobile ? prev : mobile));
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   // Soft translucent tint for limbs & joints so they stay gently in the background
   // and never conflict with or distract from the bold hero heading typography
@@ -201,7 +213,7 @@ export default function PeekingChildFigure({
 
   // Trigger flower buds on the dangling branch to bloom into flowers right after the loading screen finishes
   useEffect(() => {
-    if (!isPageLoaded) {
+    if (!isPageLoaded || isMobileScreen) {
       setHasBloomed(false);
       return;
     }
@@ -209,10 +221,10 @@ export default function PeekingChildFigure({
       setHasBloomed(true);
     }, 220);
     return () => clearTimeout(bloomTimer);
-  }, [isPageLoaded]);
+  }, [isPageLoaded, isMobileScreen]);
 
   useEffect(() => {
-    if (!showChild || !isPageLoaded) return;
+    if (!showChild || !isPageLoaded || isMobileScreen) return;
     // First friendly wave shortly after appearing
     const startWave = setTimeout(() => setIsWaving(true), 900);
     const endWave = setTimeout(() => setIsWaving(false), 3500);
@@ -228,7 +240,11 @@ export default function PeekingChildFigure({
       clearTimeout(endWave);
       clearInterval(interval);
     };
-  }, [showChild, isPageLoaded]);
+  }, [showChild, isPageLoaded, isMobileScreen]);
+
+  if (isMobileScreen) {
+    return null;
+  }
 
   // When the child's waving hand would cross the first word of the heading (or on smaller
   // aspect ratio screens), render the Dangling Tree Branch Filled with Flower Buds in place of the rope.

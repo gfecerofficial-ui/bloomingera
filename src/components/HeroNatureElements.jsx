@@ -33,7 +33,7 @@ function ClassicFlyingBird({ scale = 1, delay = 0, flapDuration = 0.58, classNam
         viewBox="-28 -28 62 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="overflow-visible drop-shadow-[0_2px_4px_rgba(9,30,58,0.10)]"
+        className="overflow-visible lg:drop-shadow-[0_2px_4px_rgba(9,30,58,0.10)]"
       >
         {/* ================= FAR WING (Back Wing) ================= */}
         <motion.g
@@ -219,7 +219,7 @@ function FlutteringButterfly({
  * BloomingEraBannerPlane
  * Cute airplane flying from right to left towing a fluttering "Blooming Era" banner behind it.
  */
-function BloomingEraBannerPlane({ isPageLoaded = true }) {
+function BloomingEraBannerPlane({ isPageLoaded = true, isMobile = false }) {
   const STROKE = 'rgba(9, 30, 58, 0.52)';
 
   return (
@@ -230,7 +230,7 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
           isPageLoaded
             ? {
                 x: ['108vw', '-440px'],
-                y: [0, -6, 3, -5, 2, 0],
+                y: isMobile ? 0 : [0, -6, 3, -5, 2, 0],
                 opacity: [0, 1, 1, 0],
               }
             : { x: '108vw', y: 0, opacity: 0 }
@@ -243,13 +243,15 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
             repeatDelay: 14,
             ease: 'linear',
           },
-          y: {
-            duration: 16,
-            delay: 1.2,
-            repeat: Infinity,
-            repeatDelay: 14,
-            ease: 'easeInOut',
-          },
+          y: isMobile
+            ? { duration: 0 }
+            : {
+                duration: 16,
+                delay: 1.2,
+                repeat: Infinity,
+                repeatDelay: 14,
+                ease: 'easeInOut',
+              },
           opacity: {
             duration: 16,
             times: [0, 0.04, 0.94, 1],
@@ -258,7 +260,7 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
             repeatDelay: 14,
           },
         }}
-        className="relative w-[330px] h-[64px]"
+        className="relative w-[330px] h-[64px] will-change-transform"
       >
         <svg
           width="330"
@@ -266,21 +268,31 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
           viewBox="0 0 330 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="overflow-visible drop-shadow-[0_6px_14px_rgba(9,30,58,0.08)]"
+          className="overflow-visible lg:drop-shadow-[0_6px_14px_rgba(9,30,58,0.08)]"
         >
           {/* ================= AIRPLANE (Facing Left) ================= */}
           <g transform="translate(8, 10)">
             {/* Spinning Nose Propeller at (2, 22) */}
-            <motion.ellipse
-              cx="2"
-              cy="22"
-              rx="1.8"
-              ry="11"
-              fill="rgba(9, 30, 58, 0.35)"
-              animate={{ scaleY: [1, 0.2, 1], opacity: [0.7, 0.35, 0.7] }}
-              transition={{ duration: 0.12, repeat: Infinity, ease: 'linear' }}
-              style={{ transformOrigin: '2px 22px' }}
-            />
+            {isMobile ? (
+              <ellipse
+                cx="2"
+                cy="22"
+                rx="1.8"
+                ry="11"
+                fill="rgba(9, 30, 58, 0.35)"
+              />
+            ) : (
+              <motion.ellipse
+                cx="2"
+                cy="22"
+                rx="1.8"
+                ry="11"
+                fill="rgba(9, 30, 58, 0.35)"
+                animate={{ scaleY: [1, 0.2, 1], opacity: [0.7, 0.35, 0.7] }}
+                transition={{ duration: 0.12, repeat: Infinity, ease: 'linear' }}
+                style={{ transformOrigin: '2px 22px' }}
+              />
+            )}
 
             {/* Golden Propeller Spinner Cone */}
             <path
@@ -345,15 +357,23 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
           {/* ================= FLUTTERING "BLOOMING ERA" BANNER ================= */}
           <motion.g
             style={{ transformOrigin: '114px 31px' }}
-            animate={{
-              rotate: [-0.9, 0.9, -0.9],
-              y: [0, -1.2, 0, 1.2, 0],
-            }}
-            transition={{
-              duration: 1.8,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
+            animate={
+              isMobile
+                ? { rotate: 0, y: 0 }
+                : {
+                    rotate: [-0.9, 0.9, -0.9],
+                    y: [0, -1.2, 0, 1.2, 0],
+                  }
+            }
+            transition={
+              isMobile
+                ? { duration: 0 }
+                : {
+                    duration: 1.8,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }
+            }
           >
             {/* Swallowtail Banner Ribbon Body */}
             <path
@@ -426,7 +446,7 @@ function SoftDriftingCloud({
         repeat: Infinity,
         ease: 'linear',
       }}
-      className={`absolute ${topClass} pointer-events-none select-none`}
+      className={`absolute ${topClass} pointer-events-none select-none will-change-transform`}
     >
       <svg
         width="190"
@@ -434,7 +454,7 @@ function SoftDriftingCloud({
         viewBox="0 0 190 72"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="overflow-visible drop-shadow-[0_8px_16px_rgba(96,200,212,0.12)]"
+        className="overflow-visible lg:drop-shadow-[0_8px_16px_rgba(96,200,212,0.12)]"
       >
         <defs>
           <linearGradient id={gradientId} x1="50%" y1="0%" x2="50%" y2="100%">
@@ -467,6 +487,18 @@ function SoftDriftingCloud({
  */
 export default function HeroNatureElements({ isPageLoaded = true, showFlower = true }) {
   const [sunIsUp, setSunIsUp] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth < 1024 : false
+  );
+
+  useEffect(() => {
+    const onResize = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile((prev) => (prev === mobile ? prev : mobile));
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   useEffect(() => {
     if (!isPageLoaded) {
@@ -575,7 +607,6 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
           style={{
             background:
               'radial-gradient(circle, rgba(255, 236, 130, 0.62) 0%, rgba(254, 206, 19, 0.34) 34%, rgba(255, 184, 0, 0.12) 60%, transparent 78%)',
-            filter: 'blur(16px)',
           }}
         />
 
@@ -603,43 +634,53 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
           </defs>
 
           {/* Volumetric Radiating Light Cones / Sun Shafts */}
-          <motion.polygon
-            points="320,0 165,0 45,105 125,185"
-            fill="url(#sunlightShaftGrad)"
-            animate={{ opacity: [0.45, 0.82, 0.45] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.polygon
-            points="320,0 115,155 215,245 320,145"
-            fill="url(#sunlightShaftGrad)"
-            animate={{ opacity: [0.78, 0.42, 0.78] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-          />
+          {isMobile ? (
+            <>
+              <polygon points="320,0 165,0 45,105 125,185" fill="url(#sunlightShaftGrad)" opacity="0.62" />
+              <polygon points="320,0 115,155 215,245 320,145" fill="url(#sunlightShaftGrad)" opacity="0.58" />
+            </>
+          ) : (
+            <>
+              <motion.polygon
+                points="320,0 165,0 45,105 125,185"
+                fill="url(#sunlightShaftGrad)"
+                animate={{ opacity: [0.45, 0.82, 0.45] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.polygon
+                points="320,0 115,155 215,245 320,145"
+                fill="url(#sunlightShaftGrad)"
+                animate={{ opacity: [0.78, 0.42, 0.78] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </>
+          )}
 
           {/* Flicker-Free Concentric Expanding Sunlight Waves (starts at opacity 0 and ends at opacity 0) */}
-          {[0, 1.5, 3.0].map((waveDelay, i) => (
-            <motion.circle
-              key={i}
-              cx={sunCx}
-              cy={sunCy}
-              r={sunR}
-              stroke="rgba(254, 206, 19, 0.42)"
-              strokeWidth="2.8"
-              fill="none"
-              animate={{
-                scale: [1, 1.18, 1.36],
-                opacity: [0, 0.42, 0],
-              }}
-              transition={{
-                duration: 4.5,
-                times: [0, 0.38, 1],
-                delay: waveDelay,
-                repeat: Infinity,
-                ease: 'easeOut',
-              }}
-              style={{ transformOrigin: `${sunCx}px ${sunCy}px` }}
-            />
-          ))}
+          {!isMobile &&
+            [0, 1.5, 3.0].map((waveDelay, i) => (
+              <motion.circle
+                key={i}
+                cx={sunCx}
+                cy={sunCy}
+                r={sunR}
+                stroke="rgba(254, 206, 19, 0.42)"
+                strokeWidth="2.8"
+                fill="none"
+                animate={{
+                  scale: [1, 1.18, 1.36],
+                  opacity: [0, 0.42, 0],
+                }}
+                transition={{
+                  duration: 4.5,
+                  times: [0, 0.38, 1],
+                  delay: waveDelay,
+                  repeat: Infinity,
+                  ease: 'easeOut',
+                }}
+                style={{ transformOrigin: `${sunCx}px ${sunCy}px` }}
+              />
+            ))}
 
           {/* Main Wide-Curvature Sun Body (~30% of circle visible) */}
           <circle
@@ -672,24 +713,37 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
             return (
               <g key={idx}>
                 {/* Warm radiating golden beam halo */}
-                <motion.line
-                  x1={x1}
-                  y1={y1}
-                  x2={x2}
-                  y2={y2}
-                  stroke="rgba(254, 206, 19, 0.62)"
-                  strokeWidth={ray.secondary ? '5' : '7.5'}
-                  strokeLinecap="round"
-                  animate={{
-                    opacity: [0.38, 0.9, 0.38],
-                  }}
-                  transition={{
-                    duration: 3.2,
-                    delay: ray.delay,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                />
+                {isMobile ? (
+                  <line
+                    x1={x1}
+                    y1={y1}
+                    x2={x2}
+                    y2={y2}
+                    stroke="rgba(254, 206, 19, 0.62)"
+                    strokeWidth={ray.secondary ? '5' : '7.5'}
+                    strokeLinecap="round"
+                    opacity="0.65"
+                  />
+                ) : (
+                  <motion.line
+                    x1={x1}
+                    y1={y1}
+                    x2={x2}
+                    y2={y2}
+                    stroke="rgba(254, 206, 19, 0.62)"
+                    strokeWidth={ray.secondary ? '5' : '7.5'}
+                    strokeLinecap="round"
+                    animate={{
+                      opacity: [0.38, 0.9, 0.38],
+                    }}
+                    transition={{
+                      duration: 3.2,
+                      delay: ray.delay,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  />
+                )}
                 {/* Crisp ray core line */}
                 <line
                   x1={x1}
@@ -747,7 +801,7 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
               repeatDelay: 0.6,
             },
           }}
-          className="relative w-[195px] h-[80px]"
+          className="relative w-[195px] h-[80px] will-change-transform"
         >
           {/* Bird 1 (Trailing left, middle height) */}
           <div className="absolute left-0 top-6">
@@ -769,7 +823,7 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
       {/* =================================================================== */}
       {/* 3. OCCASIONAL AIRPLANE FLYING RIGHT -> LEFT WITH BLOOMING ERA BANNER*/}
       {/* =================================================================== */}
-      <BloomingEraBannerPlane isPageLoaded={isPageLoaded} />
+      <BloomingEraBannerPlane isPageLoaded={isPageLoaded} isMobile={isMobile} />
 
       {/* =================================================================== */}
       {/* 4. BOTTOM-RIGHT BLOOMING PLANT (Enlarged Flower Head + Butterflies, */}
