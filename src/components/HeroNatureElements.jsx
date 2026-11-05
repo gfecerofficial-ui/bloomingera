@@ -223,7 +223,7 @@ function BloomingEraBannerPlane() {
   const STROKE = 'rgba(9, 30, 58, 0.52)';
 
   return (
-    <div className="absolute top-[194px] sm:top-[200px] lg:top-[204px] inset-x-0 h-[72px] overflow-hidden pointer-events-none select-none z-[3]">
+    <div className="absolute top-[98px] sm:top-[106px] lg:top-[112px] inset-x-0 h-[72px] overflow-hidden pointer-events-none select-none z-[3]">
       <motion.div
         initial={{ x: '108vw', y: 0 }}
         animate={{
@@ -459,9 +459,10 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       setSunIsUp(false);
       return;
     }
+    // Sun finishes growing out ~1.05s after page load; plant blooms right as the sun reaches full form
     const timer = setTimeout(() => {
       setSunIsUp(true);
-    }, 800);
+    }, 1050);
 
     return () => clearTimeout(timer);
   }, [isPageLoaded]);
@@ -532,12 +533,17 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       </div>
 
       {/* =================================================================== */}
-      {/* 1. TOP-RIGHT RADIATING SUN (Flicker-free, ~30% visible wide arc)    */}
+      {/* 1. TOP-RIGHT RADIATING SUN (Grows out on page load, ~30% visible)   */}
       {/* =================================================================== */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isPageLoaded ? 1 : 0 }}
-        transition={{ duration: 1.1, ease: 'easeOut' }}
+        style={{ transformOrigin: 'top right' }}
+        initial={{ opacity: 0, scale: 0.15 }}
+        animate={
+          isPageLoaded
+            ? { opacity: 1, scale: 1 }
+            : { opacity: 0, scale: 0.15 }
+        }
+        transition={{ duration: 1.35, ease: [0.16, 1, 0.3, 1] }}
         className="absolute top-[36px] right-0 w-[300px] h-[270px] sm:w-[350px] sm:h-[300px] lg:w-[410px] lg:h-[340px]"
       >
         {/* Deep Ambient Sunlight Atmosphere — smooth sine breathing with zero state reset */}
