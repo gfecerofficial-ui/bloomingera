@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WavingChildStickFigure from './WavingChildStickFigure';
 import PeekingChildFigure from './PeekingChildFigure';
+import HeroNatureElements from './HeroNatureElements';
 import {
   Sparkles, Phone, ArrowRight, ArrowUpRight, CheckCircle2, Heart, Star,
   BookOpen, Compass, Palette, Music, Leaf, Globe2, Users, Brain,
@@ -795,6 +796,7 @@ export default function IndianPreschoolHome({
   onSwitchToSimulatorView,
   showHeader = true,
   showFooter = true,
+  isPageLoaded = true,
   onNavigate
 }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -955,6 +957,9 @@ export default function IndianPreschoolHome({
       <section className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]">
         {/* Background Peeking & Waving Child Stick Figure (Left Edge) */}
         <PeekingChildFigure />
+
+        {/* Background Glowing Sun (Top-Right), Flying Birds (Left->Right), & Blooming Plant (Bottom-Right) */}
+        <HeroNatureElements isPageLoaded={isPageLoaded} />
 
         {/* Soft feather vignette at very top for ultra-smooth transition from pre-header */}
         <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#091E3A]/[0.06] to-transparent pointer-events-none z-[1]" />

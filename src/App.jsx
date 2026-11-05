@@ -84,6 +84,7 @@ export default function App() {
               <IndianPreschoolHome
                 showHeader={false}
                 showFooter={false}
+                isPageLoaded={!isLoading}
                 onOpenTourModal={() => setIsTourModalOpen(true)}
                 onNavigate={navigateTo}
               />
