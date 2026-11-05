@@ -616,7 +616,7 @@ const LEADERSHIP_TEAM = [
     initials: "MY",
     badge: "Visionary Founder",
     accent: "#ADF802",
-    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+    photo: "/leadership/masuda-yasmin.jpeg"
   },
   {
     name: "Dr. Shelly Bisht",
@@ -625,7 +625,7 @@ const LEADERSHIP_TEAM = [
     initials: "SB",
     badge: "Academic Excellence",
     accent: "#60C8D4",
-    photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
+    photo: "/leadership/shelly-bisht.jpeg"
   },
   {
     name: "Ayaan Hossain",
@@ -634,7 +634,7 @@ const LEADERSHIP_TEAM = [
     initials: "AH",
     badge: "Operational Scale",
     accent: "#fece13",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+    photo: "/leadership/ayaan-hossain.jpeg"
   },
   {
     name: "Mohd. Neyaz Alam",
@@ -643,7 +643,7 @@ const LEADERSHIP_TEAM = [
     initials: "NA",
     badge: "Strategic Growth",
     accent: "#091E3A",
-    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
+    photo: "/leadership/mohd-neyaz-alam.jpeg"
   }
 ];
 
@@ -1824,8 +1824,12 @@ export default function IndianPreschoolHome({
                 }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-[#091E3A] text-[#ADF802] flex items-center justify-center font-extrabold text-lg shadow-md flex-shrink-0">
-                    MY
+                  <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-[#ADF802] shadow-md flex-shrink-0 bg-white">
+                    <img
+                      src="/leadership/masuda-yasmin.jpeg"
+                      alt="Dr. Masuda Yasmin"
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                   <div>
                     <p className="font-serif italic text-xl text-[#091E3A] font-bold">
@@ -2705,13 +2709,14 @@ export default function IndianPreschoolHome({
                     <div>
                       <div className="flex items-center justify-between mb-3 sm:mb-4">
                         <div
-                          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center text-base sm:text-lg font-black shadow-md border-2 border-white"
-                          style={{
-                            backgroundColor: leader.accent,
-                            color: leader.accent === '#091E3A' ? '#FFFFFF' : '#091E3A'
-                          }}
+                          className="w-12 h-12 rounded-2xl overflow-hidden border-2 shadow-md flex-shrink-0 bg-white"
+                          style={{ borderColor: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
                         >
-                          {leader.initials}
+                          <img
+                            src={leader.photo}
+                            alt={leader.name}
+                            className="w-full h-full object-cover object-top"
+                          />
                         </div>
                         <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#091E3A]/5 text-[#091E3A] border border-[#091E3A]/10">
                           {leader.badge}
@@ -2756,18 +2761,20 @@ export default function IndianPreschoolHome({
                     <img
                       src={leader.photo}
                       alt={leader.name}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
 
                     {/* Top Badge */}
                     <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-20">
-                      <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-black uppercase text-[#091E3A] shadow-md border border-white">
+                      <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[10px] font-black uppercase text-[#091E3A] shadow-md border border-white">
                         {leader.badge}
                       </span>
                     </div>
 
-                    {/* Subtle Gradient Vignette at Bottom */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/60 to-transparent z-10" />
+                    {/* Targeted Bottom Gradient Vignette for clear typography without obscuring face */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/75 via-28% to-transparent to-60% z-10 pointer-events-none" />
 
                     {/* Bottom Info: Just Name and Designation + Bio Pill */}
                     <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-20">

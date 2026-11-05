@@ -266,11 +266,11 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
 
             {/* Founder Byline */}
             <div className="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-slate-200 mb-8">
-              <div className="w-20 h-20 rounded-full border-4 border-[#ADF802] shadow-xl overflow-hidden bg-white p-1 flex-shrink-0">
+              <div className="w-20 h-20 rounded-full border-4 border-[#ADF802] shadow-xl overflow-hidden bg-white flex-shrink-0">
                 <img
-                  src="/logo.jpeg"
+                  src="/leadership/masuda-yasmin.jpeg"
                   alt="Dr. Masuda Yasmin"
-                  className="w-full h-full object-contain rounded-full"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <div className="text-center sm:text-left">

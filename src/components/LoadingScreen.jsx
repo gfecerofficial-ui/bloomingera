@@ -42,10 +42,10 @@ const ORBIT_IMAGES = [
 ];
 
 const LEADERSHIP_PHOTOS = [
-  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
+  '/leadership/masuda-yasmin.jpeg',
+  '/leadership/shelly-bisht.jpeg',
+  '/leadership/ayaan-hossain.jpeg',
+  '/leadership/mohd-neyaz-alam.jpeg',
 ];
 
 // Persistent module-level cache so decoded Image bitmaps are never garbage-collected
