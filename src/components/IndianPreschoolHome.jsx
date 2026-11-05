@@ -1426,9 +1426,10 @@ export default function IndianPreschoolHome({
             viewport={{ once: true }}
             className="rounded-[34px] p-6 sm:p-8 lg:px-12 text-white shadow-2xl border-2 border-[#60C8D4]/60 relative overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, #091E3A 0%, #0d2c55 25%, #091E3A 50%, #10386b 75%, #091E3A 100%)',
-              backgroundSize: '240% 240%',
-              animation: 'flowyColorDrift 12s ease-in-out infinite',
+              background: 'linear-gradient(135deg, #091E3A 0%, #0d2c55 35%, #10386b 70%, #091E3A 100%)',
+              transform: 'translateZ(0)',
+              WebkitTransform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
             }}
           >
             {/* Decorative Glows */}

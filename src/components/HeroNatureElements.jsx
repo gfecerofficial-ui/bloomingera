@@ -703,59 +703,60 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       {/* =================================================================== */}
       {/* 2. NATURAL SOARING BIRDS FLYING FROM LEFT OF SCREEN TO RIGHT        */}
       {/* =================================================================== */}
-      {isPageLoaded && (
-        <div className="absolute top-[192px] sm:top-[202px] lg:top-[210px] inset-x-0 h-[95px] overflow-hidden">
-          <motion.div
-            initial={{ x: '-12vw', y: 6, opacity: 0 }}
-            animate={{
-              x: ['-12vw', '106vw'],
-              y: [6, -7, 4, -8, 3, -2],
-              opacity: [0, 1, 1, 1, 0],
-            }}
-            transition={{
-              x: {
-                duration: 14,
-                repeat: Infinity,
-                repeatDelay: 0.6,
-                ease: 'linear',
-              },
-              y: {
-                duration: 14,
-                repeat: Infinity,
-                repeatDelay: 0.6,
-                ease: 'easeInOut',
-              },
-              opacity: {
-                duration: 14,
-                times: [0, 0.04, 0.5, 0.95, 1],
-                repeat: Infinity,
-                repeatDelay: 0.6,
-              },
-            }}
-            className="relative w-[195px] h-[80px]"
-          >
-            {/* Bird 1 (Trailing left, middle height) */}
-            <div className="absolute left-0 top-6">
-              <ClassicFlyingBird scale={0.92} delay={0} flapDuration={0.62} />
-            </div>
+      <div
+        className="absolute top-[192px] sm:top-[202px] lg:top-[210px] inset-x-0 h-[95px] overflow-hidden pointer-events-none"
+        style={{ transform: 'translateZ(0)' }}
+      >
+        <motion.div
+          initial={{ x: '-12vw', y: 6, opacity: 0 }}
+          animate={{
+            x: ['-12vw', '106vw'],
+            y: [6, -7, 4, -8, 3, -2],
+            opacity: [0, 1, 1, 1, 0],
+          }}
+          transition={{
+            x: {
+              duration: 14,
+              repeat: Infinity,
+              repeatDelay: 0.6,
+              ease: 'linear',
+            },
+            y: {
+              duration: 14,
+              repeat: Infinity,
+              repeatDelay: 0.6,
+              ease: 'easeInOut',
+            },
+            opacity: {
+              duration: 14,
+              times: [0, 0.04, 0.5, 0.95, 1],
+              repeat: Infinity,
+              repeatDelay: 0.6,
+            },
+          }}
+          className="relative w-[195px] h-[80px]"
+        >
+          {/* Bird 1 (Trailing left, middle height) */}
+          <div className="absolute left-0 top-6">
+            <ClassicFlyingBird scale={0.92} delay={0} flapDuration={0.62} />
+          </div>
 
-            {/* Bird 2 (Middle leader, higher) */}
-            <div className="absolute left-18 top-0">
-              <ClassicFlyingBird scale={1.08} delay={0.2} flapDuration={0.56} />
-            </div>
+          {/* Bird 2 (Middle leader, higher) */}
+          <div className="absolute left-18 top-0">
+            <ClassicFlyingBird scale={1.08} delay={0.2} flapDuration={0.56} />
+          </div>
 
-            {/* Bird 3 (Front-right bird, slightly lower) */}
-            <div className="absolute left-38 top-8">
-              <ClassicFlyingBird scale={0.84} delay={0.38} flapDuration={0.65} />
-            </div>
-          </motion.div>
-        </div>
-      )}
+          {/* Bird 3 (Front-right bird, slightly lower) */}
+          <div className="absolute left-38 top-8">
+            <ClassicFlyingBird scale={0.84} delay={0.38} flapDuration={0.65} />
+          </div>
+        </motion.div>
+      </div>
 
       {/* =================================================================== */}
       {/* 3. OCCASIONAL AIRPLANE FLYING RIGHT -> LEFT WITH BLOOMING ERA BANNER*/}
       {/* =================================================================== */}
-      {isPageLoaded && <BloomingEraBannerPlane />}
+      <BloomingEraBannerPlane />
 
       {/* =================================================================== */}
       {/* 4. BOTTOM-RIGHT BLOOMING PLANT (Enlarged Flower Head + Butterflies, */}

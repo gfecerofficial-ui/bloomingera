@@ -339,51 +339,43 @@ body {
   }
 }
 
-/* Subtle glowing & melting ambient aura for hero slideshow background */
+/* Optimized GPU-composited glowing & melting ambient aura for hero slideshow background */
 @keyframes glowMeltDeep {
   0%, 100% {
-    opacity: 0.6;
-    border-radius: 64px 44px 68px 48px;
-    filter: blur(48px);
+    opacity: 0.62;
+    transform: scale(0.98) translateZ(0);
   }
-  33% {
-    opacity: 0.82;
-    border-radius: 48px 68px 44px 64px;
-    filter: blur(56px);
-  }
-  66% {
-    opacity: 0.7;
-    border-radius: 66px 50px 62px 46px;
-    filter: blur(52px);
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04) translateZ(0);
   }
 }
 
 @keyframes glowMeltCore {
   0%, 100% {
-    opacity: 0.65;
-    border-radius: 54px 40px 56px 42px;
-    filter: blur(26px);
+    opacity: 0.68;
+    transform: scale(0.99) translateZ(0);
   }
-  33% {
-    opacity: 0.85;
-    border-radius: 42px 56px 40px 54px;
-    filter: blur(32px);
-  }
-  66% {
-    opacity: 0.72;
-    border-radius: 56px 44px 52px 40px;
-    filter: blur(28px);
+  50% {
+    opacity: 0.88;
+    transform: scale(1.03) translateZ(0);
   }
 }
 
 .animate-glow-melt-deep {
+  filter: blur(44px);
   animation: glowMeltDeep 7s ease-in-out infinite;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .animate-glow-melt-core {
+  filter: blur(26px);
   animation: glowMeltCore 7s ease-in-out infinite;
-  will-change: opacity, filter;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 @keyframes meltAuraSpread {
@@ -451,8 +443,28 @@ body {
 }
 
 .animate-melt-frame {
-  animation: meltBorderMorph 6s ease-in-out infinite;
-  will-change: border-radius, box-shadow, transform;
+  border-radius: 44px;
+  box-shadow:
+    0 0 0 2px rgba(142, 215, 39, 0.75),
+    0 0 22px 3px rgba(142, 215, 39, 0.45),
+    0 18px 46px 2px rgba(96, 200, 212, 0.35),
+    0 34px 80px -6px rgba(254, 206, 19, 0.35);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+@media (max-width: 1023px) {
+  .card-flow-lime,
+  .card-flow-cyan,
+  .card-flow-gold,
+  .card-flow-coral,
+  .card-flow-purple,
+  .card-flow-multi {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
 }
 
 .animate-melt-inner {

@@ -78,14 +78,15 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
         </div>
       </div>
 
-      {/* Main Sticky Glass Navigation Header */}
+      {/* Main Sticky Glass Navigation Header (GPU-composited with zero repaint jitter) */}
       <header className="sticky top-1 sm:top-1.5 z-40 px-3 sm:px-6 mt-2.5 sm:mt-3">
         <div
-          className="max-w-7xl mx-auto rounded-full py-2 px-4 sm:px-6 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.12)] backdrop-blur-2xl transition-all duration-300"
+          className="max-w-7xl mx-auto rounded-full py-2 px-4 sm:px-6 border-2 border-white shadow-[0_16px_45px_rgba(9,30,58,0.10)] backdrop-blur-xl sm:backdrop-blur-2xl transition-all duration-300 relative overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(226,249,184,0.48) 25%, rgba(208,244,249,0.48) 50%, rgba(255,246,196,0.45) 75%, rgba(255,255,255,0.94) 100%)',
-            backgroundSize: '250% 250%',
-            animation: 'flowyColorDrift 12s ease-in-out infinite',
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.94) 0%, rgba(226,249,184,0.50) 25%, rgba(208,244,249,0.50) 50%, rgba(255,246,196,0.48) 75%, rgba(255,255,255,0.95) 100%)',
+            transform: 'translateZ(0)',
+            WebkitTransform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
           }}
         >
           <div className="flex items-center justify-between gap-3">

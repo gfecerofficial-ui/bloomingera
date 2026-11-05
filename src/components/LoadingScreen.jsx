@@ -56,7 +56,31 @@ export default function LoadingScreen({ onComplete }) {
       if (isMounted) setPhase('revolve');
     }, 100);
 
-    // Wait for both minimum 3.1s revolve duration AND window load (capped at 3.5s max)
+    // Preload & decode every hero asset and satellite image in memory behind loading screen
+    const heroAssets = [
+      '/hero/slide_1.png',
+      '/hero/slide_2.png',
+      '/hero/slide_3.png',
+      '/logo.jpeg',
+      ...ORBIT_IMAGES.map((img) => img.src),
+    ];
+
+    const preloadAssetsPromise = Promise.all(
+      heroAssets.map((src) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = src;
+          if (img.decode) {
+            img.decode().then(resolve).catch(resolve);
+          } else {
+            img.onload = resolve;
+            img.onerror = resolve;
+          }
+        });
+      })
+    );
+
+    // Wait for both minimum 3.1s revolve duration, window load, AND all hero assets decoded (capped at 3.5s max)
     const minDurationPromise = new Promise((resolve) => setTimeout(resolve, 3100));
     const pageLoadPromise = new Promise((resolve) => {
       if (document.readyState === 'complete') {
@@ -75,7 +99,7 @@ export default function LoadingScreen({ onComplete }) {
       }
     });
 
-    Promise.all([minDurationPromise, pageLoadPromise]).then(() => {
+    Promise.all([minDurationPromise, pageLoadPromise, preloadAssetsPromise]).then(() => {
       if (!isMounted) return;
       // Step 2: Collapse the 6 images back behind the central circular logo
       setPhase('collapse');
