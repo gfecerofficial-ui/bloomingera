@@ -2,20 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * RealFlappingBird
- * A recognizable, graceful flying bird silhouette facing right (direction of flight),
- * with a streamlined body, head, beak, fanned tail, and two arched wings that flap smoothly.
+ * NaturalSoaringBird
+ * Clean, recognizable bird silhouette with tapered crescent wings that pivot
+ * smoothly at the shoulder without twisting or inverting.
  */
-function RealFlappingBird({ scale = 1, delay = 0, flapDuration = 0.62, className = '' }) {
-  const BODY_FILL = 'rgba(9, 30, 58, 0.46)';
-  const WING_FILL = 'rgba(9, 30, 58, 0.34)';
-  const STROKE_COLOR = 'rgba(9, 30, 58, 0.52)';
+function NaturalSoaringBird({ scale = 1, delay = 0, flapDuration = 0.68, className = '' }) {
+  const WING_FILL = 'rgba(9, 30, 58, 0.48)';
+  const WING_STROKE = 'rgba(9, 30, 58, 0.56)';
 
   return (
     <motion.div
       style={{ scale }}
       animate={{
-        y: [0, -4, 1, -3, 0],
+        y: [0, -5, 1, -4, 0],
       }}
       transition={{
         duration: flapDuration * 3,
@@ -26,54 +25,23 @@ function RealFlappingBird({ scale = 1, delay = 0, flapDuration = 0.62, className
       className={className}
     >
       <svg
-        width="56"
-        height="38"
-        viewBox="-26 -24 54 42"
+        width="54"
+        height="34"
+        viewBox="-28 -20 56 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="overflow-visible"
       >
-        {/* Far (Back) Wing — slightly lighter, flapping with a subtle phase offset */}
+        {/* Left Tapered Crescent Wing pivoting smoothly at shoulder (-1, 1) */}
         <motion.path
-          d="M -2 -2 C -1 -14, 8 -21, 16 -19 C 11 -12, 8 -6, 5 -2 Z"
+          d="M -0.5 1.5 C -7 -10, -16 -13, -25 -5 C -16 -5, -8 -2, -0.5 3.5 Z"
           fill={WING_FILL}
-          stroke={STROKE_COLOR}
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-          style={{ transformOrigin: '2px -2px' }}
-          animate={{
-            scaleY: [1, 0.25, -0.55, 0.25, 1],
-            rotate: [-6, 8, 18, 8, -6],
-          }}
-          transition={{
-            duration: flapDuration,
-            delay: delay + 0.05,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-
-        {/* Streamlined Bird Body, Head, Beak & Tail (facing right) */}
-        <path
-          d="M -19 2 L -11 -1 C -5 -4, 4 -4, 10 -3 C 13 -5, 17 -4, 18 -1 L 23 -1 L 18 1 C 16 3, 12 4, 8 3 C 1 5, -6 4, -12 2 L -18 5 L -16 2 Z"
-          fill={BODY_FILL}
-          stroke={STROKE_COLOR}
+          stroke={WING_STROKE}
           strokeWidth="1.4"
+          strokeLinecap="round"
           strokeLinejoin="round"
-        />
-
-        {/* Near (Front) Sweeping Gull/Swallow Wing */}
-        <motion.path
-          d="M -5 -1 C -9 -15, -1 -22, 8 -21 C 4 -12, 3 -5, 3 0 Z"
-          fill={BODY_FILL}
-          stroke={STROKE_COLOR}
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-          style={{ transformOrigin: '-1px -1px' }}
-          animate={{
-            scaleY: [1, 0.15, -0.75, 0.15, 1],
-            rotate: [-4, 10, 22, 10, -4],
-          }}
+          style={{ transformOrigin: '-0.5px 2px' }}
+          animate={{ rotate: [-22, 24, -22] }}
           transition={{
             duration: flapDuration,
             delay,
@@ -81,8 +49,292 @@ function RealFlappingBird({ scale = 1, delay = 0, flapDuration = 0.62, className
             ease: 'easeInOut',
           }}
         />
+
+        {/* Right Tapered Crescent Wing pivoting smoothly at shoulder (1, 1) */}
+        <motion.path
+          d="M 0.5 1.5 C 7 -10, 16 -13, 25 -5 C 16 -5, 8 -2, 0.5 3.5 Z"
+          fill={WING_FILL}
+          stroke={WING_STROKE}
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{ transformOrigin: '0.5px 2px' }}
+          animate={{ rotate: [22, -24, 22] }}
+          transition={{
+            duration: flapDuration,
+            delay,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Sleek Central Bird Body, Head & Tail */}
+        <path
+          d="M 0 -1.5 C 2.2 -1.5, 3 0.8, 2.2 3.2 L 4 5.5 L 0 4.2 L -4 5.5 L -2.2 3.2 C -3 0.8, -2.2 -1.5, 0 -1.5 Z"
+          fill={WING_STROKE}
+        />
       </svg>
     </motion.div>
+  );
+}
+
+/**
+ * FlutteringButterfly
+ * Delicate butterfly that flutters around the bloomed flower in the bottom-right.
+ */
+function FlutteringButterfly({
+  wingColor = 'rgba(254, 206, 19, 0.78)',
+  accentColor = 'rgba(255, 107, 139, 0.65)',
+  strokeColor = 'rgba(9, 30, 58, 0.42)',
+  xKeyframes = [0, -18, -6, 14, 0],
+  yKeyframes = [0, -14, -26, -10, 0],
+  rotateKeyframes = [-12, 8, -6, 14, -12],
+  flightDuration = 7.5,
+  delay = 1.2,
+  scale = 1,
+}) {
+  return (
+    <motion.g
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{
+        opacity: 1,
+        scale,
+        x: xKeyframes,
+        y: yKeyframes,
+        rotate: rotateKeyframes,
+      }}
+      transition={{
+        opacity: { duration: 0.6, delay },
+        scale: { duration: 0.6, delay },
+        x: { duration: flightDuration, delay, repeat: Infinity, ease: 'easeInOut' },
+        y: { duration: flightDuration, delay, repeat: Infinity, ease: 'easeInOut' },
+        rotate: { duration: flightDuration, delay, repeat: Infinity, ease: 'easeInOut' },
+      }}
+    >
+      {/* Left Forewing & Hindwing */}
+      <motion.g
+        style={{ transformOrigin: '0px 0px' }}
+        animate={{ scaleX: [1, 0.28, 1] }}
+        transition={{ duration: 0.32, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <path
+          d="M 0 -1 C -9 -12, -17 -9, -14 -1 C -12 3, -5 2, 0 0 Z"
+          fill={wingColor}
+          stroke={strokeColor}
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M 0 0 C -8 2, -13 9, -8 12 C -4 14, -1 7, 0 2 Z"
+          fill={accentColor}
+          stroke={strokeColor}
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+        />
+      </motion.g>
+
+      {/* Right Forewing & Hindwing */}
+      <motion.g
+        style={{ transformOrigin: '0px 0px' }}
+        animate={{ scaleX: [1, 0.28, 1] }}
+        transition={{ duration: 0.32, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <path
+          d="M 0 -1 C 9 -12, 17 -9, 14 -1 C 12 3, 5 2, 0 0 Z"
+          fill={wingColor}
+          stroke={strokeColor}
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M 0 0 C 8 2, 13 9, 8 12 C 4 14, 1 7, 0 2 Z"
+          fill={accentColor}
+          stroke={strokeColor}
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+        />
+      </motion.g>
+
+      {/* Butterfly Body & Antennae */}
+      <ellipse cx="0" cy="1" rx="1.3" ry="5.5" fill={strokeColor} />
+      <path
+        d="M -0.5 -4 Q -3 -8 -5 -7 M 0.5 -4 Q 3 -8 5 -7"
+        stroke={strokeColor}
+        strokeWidth="1.1"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </motion.g>
+  );
+}
+
+/**
+ * BloomingEraBannerPlane
+ * Cute airplane flying from right to left towing a fluttering "Blooming Era" banner behind it.
+ */
+function BloomingEraBannerPlane() {
+  const STROKE = 'rgba(9, 30, 58, 0.52)';
+
+  return (
+    <div className="absolute top-[194px] sm:top-[200px] lg:top-[204px] inset-x-0 h-[72px] overflow-hidden pointer-events-none select-none z-[3]">
+      <motion.div
+        initial={{ x: '108vw', y: 0 }}
+        animate={{
+          x: ['108vw', '-35vw'],
+          y: [0, -6, 3, -5, 2, 0],
+        }}
+        transition={{
+          x: {
+            duration: 16,
+            delay: 2.2,
+            repeat: Infinity,
+            repeatDelay: 14,
+            ease: 'linear',
+          },
+          y: {
+            duration: 16,
+            delay: 2.2,
+            repeat: Infinity,
+            repeatDelay: 14,
+            ease: 'easeInOut',
+          },
+        }}
+        className="relative w-[330px] h-[64px]"
+      >
+        <svg
+          width="330"
+          height="64"
+          viewBox="0 0 330 64"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="overflow-visible drop-shadow-[0_6px_14px_rgba(9,30,58,0.08)]"
+        >
+          {/* ================= AIRPLANE (Facing Left) ================= */}
+          <g transform="translate(8, 10)">
+            {/* Spinning Nose Propeller at (2, 22) */}
+            <motion.ellipse
+              cx="2"
+              cy="22"
+              rx="1.8"
+              ry="11"
+              fill="rgba(9, 30, 58, 0.35)"
+              animate={{ scaleY: [1, 0.2, 1], opacity: [0.7, 0.35, 0.7] }}
+              transition={{ duration: 0.12, repeat: Infinity, ease: 'linear' }}
+              style={{ transformOrigin: '2px 22px' }}
+            />
+
+            {/* Golden Propeller Spinner Cone */}
+            <path
+              d="M 2 22 L 8 18 L 8 26 Z"
+              fill="#fece13"
+              stroke={STROKE}
+              strokeWidth="1.6"
+              strokeLinejoin="round"
+            />
+
+            {/* Tail Vertical Stabilizer Fin at the back (right end of fuselage) */}
+            <path
+              d="M 64 19 L 76 6 L 81 6 L 77 21 Z"
+              fill="#8ed727"
+              stroke={STROKE}
+              strokeWidth="1.8"
+              strokeLinejoin="round"
+            />
+
+            {/* Main Fuselage Body */}
+            <path
+              d="M 8 17 C 18 12, 42 12, 74 18 L 78 21 L 74 25 C 44 29, 18 29, 8 26 Z"
+              fill="#FFFDF5"
+              stroke={STROKE}
+              strokeWidth="2"
+              strokeLinejoin="round"
+            />
+
+            {/* Decorative Lime & Cyan Racing Stripe along Fuselage */}
+            <path
+              d="M 10 22 L 73 22"
+              stroke="#60C8D4"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+
+            {/* Cockpit Canopy Window (Facing Left) */}
+            <path
+              d="M 22 15 C 26 9, 39 9, 44 15 Z"
+              fill="rgba(96, 200, 212, 0.55)"
+              stroke={STROKE}
+              strokeWidth="1.6"
+              strokeLinejoin="round"
+            />
+
+            {/* Swept Main Wing */}
+            <path
+              d="M 28 21 L 46 21 L 52 29 L 33 29 Z"
+              fill="#8ed727"
+              stroke={STROKE}
+              strokeWidth="1.8"
+              strokeLinejoin="round"
+            />
+          </g>
+
+          {/* ================= TOW CABLES ================= */}
+          <line x1="85" y1="31" x2="114" y2="18" stroke={STROKE} strokeWidth="1.4" strokeDasharray="3 2" />
+          <line x1="85" y1="31" x2="114" y2="44" stroke={STROKE} strokeWidth="1.4" strokeDasharray="3 2" />
+          {/* Leading Spreader Bar */}
+          <line x1="114" y1="15" x2="114" y2="47" stroke={STROKE} strokeWidth="2.4" strokeLinecap="round" />
+
+          {/* ================= FLUTTERING "BLOOMING ERA" BANNER ================= */}
+          <motion.g
+            style={{ transformOrigin: '114px 31px' }}
+            animate={{
+              rotate: [-0.9, 0.9, -0.9],
+              y: [0, -1.2, 0, 1.2, 0],
+            }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            {/* Swallowtail Banner Ribbon Body */}
+            <path
+              d="M 114 16 Q 165 13 216 17 Q 266 20 318 15 L 306 31 L 318 47 Q 266 51 216 47 Q 165 43 114 46 Z"
+              fill="rgba(255, 253, 245, 0.94)"
+              stroke="#8ed727"
+              strokeWidth="2.2"
+              strokeLinejoin="round"
+            />
+
+            {/* Subtle inner gold accent border */}
+            <path
+              d="M 118 20 Q 165 17 216 21 Q 262 24 308 19"
+              stroke="rgba(254, 206, 19, 0.7)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              fill="none"
+            />
+
+            {/* Brand Star Accent on Banner */}
+            <circle cx="128" cy="31" r="4.5" fill="#8ed727" />
+            <circle cx="128" cy="31" r="2" fill="#fece13" />
+
+            {/* Crisp "Blooming Era" Text on Banner */}
+            <text
+              x="215"
+              y="35"
+              textAnchor="middle"
+              fill="#091E3A"
+              fontSize="13.5"
+              fontWeight="800"
+              fontFamily="'Plus Jakarta Sans', sans-serif"
+              letterSpacing="0.06em"
+            >
+              BLOOMING ERA
+            </text>
+          </motion.g>
+        </svg>
+      </motion.div>
+    </div>
   );
 }
 
@@ -145,10 +397,12 @@ function SoftDriftingCloud({
 
 /**
  * HeroNatureElements
- * 1. Subtle smooth clouds behind & under the header moving slowly from right to left (starting near right end of header).
- * 2. Wide-curvature corner sun (~30% of circle visible) actively radiating warm sunlight waves & beams.
- * 3. Realistic birds appearing from the left of the screen and disappearing into the right.
- * 4. Larger, completely static blooming flower in the right whitespace with soil sweeping below the hero slideshow.
+ * 1. Subtle smooth clouds behind & under the header moving slowly from right to left.
+ * 2. Flicker-free wide-curvature corner sun (~30% visible) smoothly radiating warm sunlight.
+ * 3. Clean, natural-winged birds appearing from the left of the screen and disappearing into the right.
+ * 4. Occasional airplane flying right-to-left towing a "BLOOMING ERA" banner.
+ * 5. Enlarged, completely static flower head in the right whitespace with soil sweeping below the slideshow
+ *    and two butterflies fluttering around the flower.
  */
 export default function HeroNatureElements({ isPageLoaded = true }) {
   const [sunIsUp, setSunIsUp] = useState(false);
@@ -158,7 +412,6 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       setSunIsUp(false);
       return;
     }
-    // Sun finishes rising ~0.8s after page load; trigger plant bloom right after
     const timer = setTimeout(() => {
       setSunIsUp(true);
     }, 800);
@@ -170,7 +423,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
   const SUN_STROKE = 'rgba(9, 30, 58, 0.25)';
 
   // Sun center is placed outside the top-right corner at (385, -75) with large radius R=220
-  // so only ~28% of the circle peeks in with a wide, gentle curvature.
+  // so only ~28-30% of the circle peeks in with a wide curvature.
   const sunCx = 385;
   const sunCy = -75;
   const sunR = 220;
@@ -178,14 +431,14 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
   // Primary and secondary sunbeams radiating along the wider arc
   const sunRays = [
     { angle: 199, innerR: 226, outerR: 292, width: 2.6, delay: 0.2 },
-    { angle: 206, innerR: 225, outerR: 268, width: 1.8, delay: 0.26, secondary: true },
-    { angle: 213, innerR: 226, outerR: 306, width: 2.6, delay: 0.32 },
-    { angle: 220, innerR: 225, outerR: 274, width: 1.8, delay: 0.38, secondary: true },
-    { angle: 227, innerR: 226, outerR: 312, width: 2.6, delay: 0.44 },
-    { angle: 234, innerR: 225, outerR: 272, width: 1.8, delay: 0.5, secondary: true },
-    { angle: 241, innerR: 226, outerR: 302, width: 2.6, delay: 0.56 },
-    { angle: 248, innerR: 225, outerR: 266, width: 1.8, delay: 0.62, secondary: true },
-    { angle: 254, innerR: 226, outerR: 286, width: 2.6, delay: 0.68 },
+    { angle: 206, innerR: 225, outerR: 268, width: 1.8, delay: 0.4, secondary: true },
+    { angle: 213, innerR: 226, outerR: 306, width: 2.6, delay: 0.6 },
+    { angle: 220, innerR: 225, outerR: 274, width: 1.8, delay: 0.8, secondary: true },
+    { angle: 227, innerR: 226, outerR: 312, width: 2.6, delay: 1.0 },
+    { angle: 234, innerR: 225, outerR: 272, width: 1.8, delay: 1.2, secondary: true },
+    { angle: 241, innerR: 226, outerR: 302, width: 2.6, delay: 1.4 },
+    { angle: 248, innerR: 225, outerR: 266, width: 1.8, delay: 1.6, secondary: true },
+    { angle: 254, innerR: 226, outerR: 286, width: 2.6, delay: 1.8 },
   ];
 
   // 5 flower petals arranged radially around the flower center (0, 0)
@@ -197,7 +450,6 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       {/* 0. SUBTLE SMOOTH CLOUDS UNDER & BEHIND HEADER (Right -> Left)       */}
       {/* =================================================================== */}
       <div className="absolute inset-x-0 top-0 h-[210px] overflow-hidden z-[1]">
-        {/* Cloud 1: Starts right at the right end of the header, tucked just under the navbar */}
         <SoftDriftingCloud
           topClass="top-[96px] sm:top-[108px] lg:top-[114px]"
           startRightPercent={6}
@@ -206,7 +458,6 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
           opacity={0.78}
           delay={0}
         />
-        {/* Cloud 2: Partially behind the right-center of the glass navbar */}
         <SoftDriftingCloud
           topClass="top-[52px] sm:top-[58px] lg:top-[62px]"
           startRightPercent={18}
@@ -215,7 +466,6 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
           opacity={0.62}
           delay={0}
         />
-        {/* Cloud 3: Follows from the far right edge under the header */}
         <SoftDriftingCloud
           topClass="top-[112px] sm:top-[122px] lg:top-[128px]"
           startRightPercent={-8}
@@ -224,7 +474,6 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
           opacity={0.7}
           delay={14}
         />
-        {/* Cloud 4: Gentle mid-sky cloud drifting behind header */}
         <SoftDriftingCloud
           topClass="top-[74px] sm:top-[82px] lg:top-[86px]"
           startRightPercent={42}
@@ -236,22 +485,22 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       </div>
 
       {/* =================================================================== */}
-      {/* 1. TOP-RIGHT RADIATING SUN (~30% visible, wider curvature)          */}
+      {/* 1. TOP-RIGHT RADIATING SUN (Flicker-free, ~30% visible wide arc)    */}
       {/* =================================================================== */}
-      <div className="absolute top-[36px] right-0 w-[300px] h-[270px] sm:w-[350px] sm:h-[300px] lg:w-[410px] lg:h-[340px]">
-        {/* Deep Ambient Sunlight Atmosphere */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isPageLoaded ? 1 : 0 }}
+        transition={{ duration: 1.1, ease: 'easeOut' }}
+        className="absolute top-[36px] right-0 w-[300px] h-[270px] sm:w-[350px] sm:h-[300px] lg:w-[410px] lg:h-[340px]"
+      >
+        {/* Deep Ambient Sunlight Atmosphere — smooth sine breathing with zero state reset */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={
-            isPageLoaded
-              ? {
-                  opacity: [0.75, 1, 0.75],
-                  scale: [0.98, 1.08, 0.98],
-                }
-              : { opacity: 0, scale: 0.6 }
-          }
+          animate={{
+            opacity: [0.78, 1, 0.78],
+            scale: [0.98, 1.07, 0.98],
+          }}
           transition={{
-            duration: 4.5,
+            duration: 5,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -263,18 +512,11 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
           }}
         />
 
-        {/* Wide-Curvature Sun & Actively Radiating Sunlight Waves + Beams */}
-        <motion.svg
+        {/* Wide-Curvature Sun & Smoothly Radiating Sunlight Waves + Beams */}
+        <svg
           viewBox="0 0 320 280"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          initial={{ opacity: 0, x: 40, y: -40, scale: 0.82 }}
-          animate={
-            isPageLoaded
-              ? { opacity: 1, x: 0, y: 0, scale: 1 }
-              : { opacity: 0, x: 40, y: -40, scale: 0.82 }
-          }
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="w-full h-full overflow-visible"
         >
           <defs>
@@ -287,57 +529,52 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
 
             {/* Volumetric Sunlight Shaft Gradient */}
             <linearGradient id="sunlightShaftGrad" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#FFF59D" stopOpacity="0.42" />
-              <stop offset="55%" stopColor="#fece13" stopOpacity="0.16" />
+              <stop offset="0%" stopColor="#FFF59D" stopOpacity="0.40" />
+              <stop offset="55%" stopColor="#fece13" stopOpacity="0.15" />
               <stop offset="100%" stopColor="#fece13" stopOpacity="0" />
             </linearGradient>
           </defs>
 
           {/* Volumetric Radiating Light Cones / Sun Shafts */}
-          {isPageLoaded && (
-            <g>
-              <motion.polygon
-                points="320,0 165,0 45,105 125,185"
-                fill="url(#sunlightShaftGrad)"
-                animate={{ opacity: [0.45, 0.85, 0.45] }}
-                transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <motion.polygon
-                points="320,0 115,155 215,245 320,145"
-                fill="url(#sunlightShaftGrad)"
-                animate={{ opacity: [0.75, 0.4, 0.75] }}
-                transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
-              />
-            </g>
-          )}
+          <motion.polygon
+            points="320,0 165,0 45,105 125,185"
+            fill="url(#sunlightShaftGrad)"
+            animate={{ opacity: [0.45, 0.82, 0.45] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.polygon
+            points="320,0 115,155 215,245 320,145"
+            fill="url(#sunlightShaftGrad)"
+            animate={{ opacity: [0.78, 0.42, 0.78] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
 
-          {/* Concentric Expanding Sunlight Pulse Rings (Radiating Sunlight Waves) */}
-          {isPageLoaded &&
-            [0, 1.3, 2.6].map((waveDelay, i) => (
-              <motion.circle
-                key={i}
-                cx={sunCx}
-                cy={sunCy}
-                r={sunR}
-                stroke="rgba(254, 206, 19, 0.45)"
-                strokeWidth="3"
-                fill="none"
-                initial={{ scale: 1, opacity: 0.55 }}
-                animate={{
-                  scale: [1, 1.38],
-                  opacity: [0.5, 0],
-                }}
-                transition={{
-                  duration: 3.9,
-                  delay: waveDelay,
-                  repeat: Infinity,
-                  ease: 'easeOut',
-                }}
-                style={{ transformOrigin: `${sunCx}px ${sunCy}px` }}
-              />
-            ))}
+          {/* Flicker-Free Concentric Expanding Sunlight Waves (starts at opacity 0 and ends at opacity 0) */}
+          {[0, 1.5, 3.0].map((waveDelay, i) => (
+            <motion.circle
+              key={i}
+              cx={sunCx}
+              cy={sunCy}
+              r={sunR}
+              stroke="rgba(254, 206, 19, 0.42)"
+              strokeWidth="2.8"
+              fill="none"
+              animate={{
+                scale: [1, 1.18, 1.36],
+                opacity: [0, 0.42, 0],
+              }}
+              transition={{
+                duration: 4.5,
+                times: [0, 0.38, 1],
+                delay: waveDelay,
+                repeat: Infinity,
+                ease: 'easeOut',
+              }}
+              style={{ transformOrigin: `${sunCx}px ${sunCy}px` }}
+            />
+          ))}
 
-          {/* Main Wide-Curvature Sun Body (only ~30% of the circle is inside the viewport) */}
+          {/* Main Wide-Curvature Sun Body (~30% of circle visible) */}
           <circle
             cx={sunCx}
             cy={sunCy}
@@ -357,7 +594,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             strokeDasharray="8 6"
           />
 
-          {/* Radiating Sunbeams along the wide arc */}
+          {/* Smoothly Shimmering Sunbeams along the wide arc (no pathLength wrap flicker) */}
           {sunRays.map((ray, idx) => {
             const rad = (ray.angle * Math.PI) / 180;
             const x1 = sunCx + Math.cos(rad) * ray.innerR;
@@ -373,35 +610,21 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                   y1={y1}
                   x2={x2}
                   y2={y2}
-                  stroke="rgba(254, 206, 19, 0.65)"
+                  stroke="rgba(254, 206, 19, 0.62)"
                   strokeWidth={ray.secondary ? '5' : '7.5'}
                   strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={
-                    isPageLoaded
-                      ? {
-                          pathLength: [0.75, 1.06, 0.75],
-                          opacity: [0.45, 0.95, 0.45],
-                        }
-                      : { pathLength: 0, opacity: 0 }
-                  }
+                  animate={{
+                    opacity: [0.38, 0.9, 0.38],
+                  }}
                   transition={{
-                    pathLength: {
-                      duration: 2.6,
-                      delay: ray.delay,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    },
-                    opacity: {
-                      duration: 2.6,
-                      delay: ray.delay,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    },
+                    duration: 3.2,
+                    delay: ray.delay,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
                   }}
                 />
                 {/* Crisp ray core line */}
-                <motion.line
+                <line
                   x1={x1}
                   y1={y1}
                   x2={x2}
@@ -409,25 +632,18 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                   stroke={ray.secondary ? 'rgba(245, 158, 11, 0.45)' : SUN_STROKE}
                   strokeWidth={ray.width}
                   strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={
-                    isPageLoaded
-                      ? { pathLength: 1, opacity: 1 }
-                      : { pathLength: 0, opacity: 0 }
-                  }
-                  transition={{ duration: 0.55, delay: ray.delay, ease: 'easeOut' }}
                 />
               </g>
             );
           })}
-        </motion.svg>
-      </div>
+        </svg>
+      </motion.div>
 
       {/* =================================================================== */}
-      {/* 2. REALISTIC BIRDS FLYING FROM LEFT OF SCREEN TO RIGHT              */}
+      {/* 2. NATURAL SOARING BIRDS FLYING FROM LEFT OF SCREEN TO RIGHT        */}
       {/* =================================================================== */}
       {isPageLoaded && (
-        <div className="absolute top-[188px] sm:top-[198px] lg:top-[206px] inset-x-0 h-[95px] overflow-hidden">
+        <div className="absolute top-[192px] sm:top-[202px] lg:top-[210px] inset-x-0 h-[95px] overflow-hidden">
           <motion.div
             initial={{ x: '-12vw', y: 6, opacity: 0 }}
             animate={{
@@ -437,47 +653,52 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             }}
             transition={{
               x: {
-                duration: 13.5,
+                duration: 14,
                 repeat: Infinity,
-                repeatDelay: 0.5,
+                repeatDelay: 0.6,
                 ease: 'linear',
               },
               y: {
-                duration: 13.5,
+                duration: 14,
                 repeat: Infinity,
-                repeatDelay: 0.5,
+                repeatDelay: 0.6,
                 ease: 'easeInOut',
               },
               opacity: {
-                duration: 13.5,
+                duration: 14,
                 times: [0, 0.04, 0.5, 0.95, 1],
                 repeat: Infinity,
-                repeatDelay: 0.5,
+                repeatDelay: 0.6,
               },
             }}
             className="relative w-[195px] h-[80px]"
           >
             {/* Bird 1 (Trailing left, middle height) */}
             <div className="absolute left-0 top-6">
-              <RealFlappingBird scale={0.92} delay={0} flapDuration={0.58} />
+              <NaturalSoaringBird scale={0.94} delay={0} flapDuration={0.64} />
             </div>
 
             {/* Bird 2 (Middle leader, higher) */}
             <div className="absolute left-16 top-0">
-              <RealFlappingBird scale={1.08} delay={0.18} flapDuration={0.54} />
+              <NaturalSoaringBird scale={1.1} delay={0.2} flapDuration={0.58} />
             </div>
 
             {/* Bird 3 (Front-right bird, slightly lower) */}
             <div className="absolute left-36 top-8">
-              <RealFlappingBird scale={0.86} delay={0.34} flapDuration={0.62} />
+              <NaturalSoaringBird scale={0.86} delay={0.38} flapDuration={0.68} />
             </div>
           </motion.div>
         </div>
       )}
 
       {/* =================================================================== */}
-      {/* 3. BOTTOM-RIGHT BLOOMING PLANT (Bigger, Static, in Right Whitespace,*/}
-      {/*    with Soil sweeping below the Hero Image Slideshow)               */}
+      {/* 3. OCCASIONAL AIRPLANE FLYING RIGHT -> LEFT WITH BLOOMING ERA BANNER*/}
+      {/* =================================================================== */}
+      {isPageLoaded && <BloomingEraBannerPlane />}
+
+      {/* =================================================================== */}
+      {/* 4. BOTTOM-RIGHT BLOOMING PLANT (Enlarged Flower Head + Butterflies, */}
+      {/*    Static Stem/Leaves, Soil sweeping below Hero Image Slideshow)    */}
       {/* =================================================================== */}
       <div className="hidden md:block absolute bottom-[44px] lg:bottom-[48px] right-0 w-[440px] h-[290px] lg:w-[540px] lg:h-[330px]">
         <svg
@@ -486,11 +707,11 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full overflow-visible"
         >
-          {/* Soft static pastel aura behind the flower head in the right whitespace */}
+          {/* Soft static pastel aura behind the larger flower head */}
           <motion.circle
-            cx="484"
-            cy="92"
-            r="58"
+            cx="478"
+            cy="84"
+            r="68"
             fill="#8ed727"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={
@@ -533,11 +754,11 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}
           />
 
-          {/* Static Plant Group rooted at (482, 258) strictly inside the right whitespace */}
+          {/* Static Plant Group rooted at (478, 258) strictly inside the right whitespace */}
           <g>
-            {/* Main Curved Green Stem growing upward (completely static once grown) */}
+            {/* Main Curved Green Stem growing upward (unchanged size, completely static once grown) */}
             <motion.path
-              d="M 482 258 C 476 210, 496 156, 484 92"
+              d="M 478 258 C 472 210, 492 156, 478 86"
               stroke="rgba(142, 215, 39, 0.65)"
               strokeWidth="6.2"
               strokeLinecap="round"
@@ -551,7 +772,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
               transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
             />
             <motion.path
-              d="M 482 258 C 476 210, 496 156, 484 92"
+              d="M 478 258 C 472 210, 492 156, 478 86"
               stroke={LINE_STROKE}
               strokeWidth="2.8"
               strokeLinecap="round"
@@ -565,9 +786,9 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
               transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
             />
 
-            {/* Left Leaf unfurling smoothly and remaining static at (482, 194) */}
+            {/* Left Leaf (unchanged size, static) */}
             <motion.g
-              style={{ transformOrigin: '482px 194px' }}
+              style={{ transformOrigin: '478px 194px' }}
               initial={{ scale: 0, opacity: 0, rotate: -25 }}
               animate={
                 sunIsUp
@@ -577,23 +798,23 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
               transition={{ duration: 0.45, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
             >
               <path
-                d="M 482 194 C 450 192, 436 166, 454 154 C 468 144, 484 170, 482 194 Z"
+                d="M 478 194 C 446 192, 432 166, 450 154 C 464 144, 480 170, 478 194 Z"
                 fill="rgba(142, 215, 39, 0.52)"
                 stroke={LINE_STROKE}
                 strokeWidth="2.4"
                 strokeLinejoin="round"
               />
               <path
-                d="M 480 190 Q 465 175 456 161"
+                d="M 476 190 Q 461 175 452 161"
                 stroke={LINE_STROKE}
                 strokeWidth="1.7"
                 strokeLinecap="round"
               />
             </motion.g>
 
-            {/* Right Leaf unfurling smoothly and remaining static at (489, 166) */}
+            {/* Right Leaf (unchanged size, static) */}
             <motion.g
-              style={{ transformOrigin: '489px 166px' }}
+              style={{ transformOrigin: '485px 166px' }}
               initial={{ scale: 0, opacity: 0, rotate: 25 }}
               animate={
                 sunIsUp
@@ -603,32 +824,32 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
               transition={{ duration: 0.45, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
               <path
-                d="M 489 166 C 520 164, 532 138, 514 126 C 500 116, 487 142, 489 166 Z"
+                d="M 485 166 C 516 164, 528 138, 510 126 C 496 116, 483 142, 485 166 Z"
                 fill="rgba(142, 215, 39, 0.52)"
                 stroke={LINE_STROKE}
                 strokeWidth="2.4"
                 strokeLinejoin="round"
               />
               <path
-                d="M 491 162 Q 505 147 513 133"
+                d="M 487 162 Q 501 147 509 133"
                 stroke={LINE_STROKE}
                 strokeWidth="1.7"
                 strokeLinecap="round"
               />
             </motion.g>
 
-            {/* ================= LARGER, STATIC BLOOMING FLOWER AT (484, 86) ================= */}
-            <g transform="translate(484, 86)">
-              {/* 5 Larger Rounded Petals unfolding smoothly and staying static */}
+            {/* ================= ENLARGED, STATIC BLOOMING FLOWER HEAD AT (478, 78) ================= */}
+            <g transform="translate(478, 78)">
+              {/* 5 Larger Rounded Petals (enlarged ~26% while stem & leaves stay same size) */}
               {petalAngles.map((angle, idx) => (
                 <g key={angle} transform={`rotate(${angle})`}>
                   <motion.path
-                    d="M 0 -8 C -23 -20, -28 -53, 0 -56 C 28 -53, 23 -20, 0 -8 Z"
-                    fill={idx % 2 === 0 ? 'rgba(255, 107, 139, 0.46)' : 'rgba(255, 148, 172, 0.40)'}
+                    d="M 0 -10 C -29 -25, -35 -66, 0 -70 C 35 -66, 29 -25, 0 -10 Z"
+                    fill={idx % 2 === 0 ? 'rgba(255, 107, 139, 0.48)' : 'rgba(255, 148, 172, 0.42)'}
                     stroke={LINE_STROKE}
-                    strokeWidth="2.5"
+                    strokeWidth="2.6"
                     strokeLinejoin="round"
-                    style={{ transformOrigin: '0px -6px' }}
+                    style={{ transformOrigin: '0px -8px' }}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={
                       sunIsUp
@@ -643,9 +864,9 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                   />
                   {/* Delicate inner petal crease line */}
                   <motion.path
-                    d="M 0 -15 L 0 -37"
-                    stroke="rgba(255, 107, 139, 0.48)"
-                    strokeWidth="1.7"
+                    d="M 0 -19 L 0 -46"
+                    stroke="rgba(255, 107, 139, 0.50)"
+                    strokeWidth="1.8"
                     strokeLinecap="round"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={
@@ -662,7 +883,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                 </g>
               ))}
 
-              {/* Larger Central Golden Flower Core with Spiral detail */}
+              {/* Enlarged Central Golden Flower Core with Spiral detail */}
               <motion.g
                 initial={{ scale: 0, opacity: 0 }}
                 animate={
@@ -679,20 +900,53 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                 <circle
                   cx="0"
                   cy="0"
-                  r="17.5"
-                  fill="rgba(254, 206, 19, 0.85)"
+                  r="22"
+                  fill="rgba(254, 206, 19, 0.86)"
                   stroke={LINE_STROKE}
-                  strokeWidth="2.5"
+                  strokeWidth="2.6"
                 />
-                {/* Inner botanical swirl matching the flower center sketch */}
+                {/* Inner botanical swirl */}
                 <path
-                  d="M -5.5 -3 C -2.5 -9.5, 8 -7.5, 6.5 1.5 C 5.5 7.5, -4.5 9, -8 2.5"
+                  d="M -7 -4 C -3 -12, 10 -9.5, 8 2 C 7 9.5, -5.5 11, -10 3"
                   stroke={LINE_STROKE}
-                  strokeWidth="2.2"
+                  strokeWidth="2.3"
                   strokeLinecap="round"
                   fill="none"
                 />
               </motion.g>
+
+              {/* ================= TWO BUTTERFLIES FLUTTERING AROUND THE FLOWER ================= */}
+              {sunIsUp && (
+                <>
+                  {/* Butterfly 1: Golden & Coral fluttering around upper-left of flower */}
+                  <g transform="translate(-48, -46)">
+                    <FlutteringButterfly
+                      wingColor="rgba(254, 206, 19, 0.82)"
+                      accentColor="rgba(255, 107, 139, 0.72)"
+                      xKeyframes={[0, 18, 32, 12, -8, 0]}
+                      yKeyframes={[0, -16, -4, 12, 6, 0]}
+                      rotateKeyframes={[15, 28, -10, -22, 8, 15]}
+                      flightDuration={7.2}
+                      delay={1.1}
+                      scale={0.95}
+                    />
+                  </g>
+
+                  {/* Butterfly 2: Sky-Cyan & Lime fluttering around upper-right / side of flower */}
+                  <g transform="translate(36, -58)">
+                    <FlutteringButterfly
+                      wingColor="rgba(96, 200, 212, 0.82)"
+                      accentColor="rgba(142, 215, 39, 0.75)"
+                      xKeyframes={[0, -20, -34, -12, 8, 0]}
+                      yKeyframes={[0, -12, 6, 18, -6, 0]}
+                      rotateKeyframes={[-18, -28, 12, 20, -8, -18]}
+                      flightDuration={8.4}
+                      delay={1.35}
+                      scale={0.85}
+                    />
+                  </g>
+                </>
+              )}
             </g>
           </g>
         </svg>
