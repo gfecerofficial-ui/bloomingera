@@ -834,6 +834,11 @@ export default function IndianPreschoolHome({
   });
 
   useLayoutEffect(() => {
+    // On mobile (<1024px), Hero child & flower are strictly hidden, so skip desktop DOM measurement
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      return;
+    }
+
     const evaluateHeroClearance = () => {
       if (typeof window === 'undefined') return;
       const vw = window.innerWidth;

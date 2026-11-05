@@ -465,6 +465,29 @@ body {
     animation: none !important;
     background-size: 100% 100% !important;
   }
+
+  /* Disable heavy GPU-taxing filters and continuous layer animations on mobile screens */
+  .ambient-orb {
+    display: none !important;
+  }
+
+  .animate-glow-melt-deep,
+  .animate-glow-melt-core {
+    animation: none !important;
+    filter: blur(18px) !important;
+    opacity: 0.6 !important;
+  }
+
+  .sparkle-border-ring {
+    animation: none !important;
+  }
+
+  .animate-sparkle-star-1,
+  .animate-sparkle-star-2,
+  .animate-sparkle-star-3,
+  .animate-sparkle-star-4 {
+    display: none !important;
+  }
 }
 
 .animate-melt-inner {
