@@ -2,22 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * NaturalSoaringBird
- * Clean, recognizable bird silhouette with tapered crescent wings that pivot
- * smoothly at the shoulder without twisting or inverting.
+ * ClassicFlyingBird
+ * An unmistakable, elegant bird silhouette in side-profile flying right:
+ * defined head, sharp golden beak, eye, sleek body, forked swallow tail,
+ * and arched feathered wings flapping naturally in perspective (never like a bat!).
  */
-function NaturalSoaringBird({ scale = 1, delay = 0, flapDuration = 0.68, className = '' }) {
-  const WING_FILL = 'rgba(9, 30, 58, 0.48)';
-  const WING_STROKE = 'rgba(9, 30, 58, 0.56)';
+function ClassicFlyingBird({ scale = 1, delay = 0, flapDuration = 0.58, className = '' }) {
+  const PLUMAGE_BODY = 'rgba(26, 54, 93, 0.72)';
+  const PLUMAGE_STROKE = 'rgba(9, 30, 58, 0.58)';
+  const NEAR_WING = 'rgba(15, 40, 75, 0.82)';
+  const FAR_WING = 'rgba(38, 70, 110, 0.58)';
 
   return (
     <motion.div
       style={{ scale }}
       animate={{
-        y: [0, -5, 1, -4, 0],
+        y: [0, -6, 2, -4, 0],
       }}
       transition={{
-        duration: flapDuration * 3,
+        duration: flapDuration * 3.2,
         delay,
         repeat: Infinity,
         ease: 'easeInOut',
@@ -25,54 +28,98 @@ function NaturalSoaringBird({ scale = 1, delay = 0, flapDuration = 0.68, classNa
       className={className}
     >
       <svg
-        width="54"
-        height="34"
-        viewBox="-28 -20 56 36"
+        width="62"
+        height="42"
+        viewBox="-28 -28 62 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="overflow-visible"
+        className="overflow-visible drop-shadow-[0_2px_4px_rgba(9,30,58,0.10)]"
       >
-        {/* Left Tapered Crescent Wing pivoting smoothly at shoulder (-1, 1) */}
-        <motion.path
-          d="M -0.5 1.5 C -7 -10, -16 -13, -25 -5 C -16 -5, -8 -2, -0.5 3.5 Z"
-          fill={WING_FILL}
-          stroke={WING_STROKE}
-          strokeWidth="1.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ transformOrigin: '-0.5px 2px' }}
-          animate={{ rotate: [-22, 24, -22] }}
+        {/* ================= FAR WING (Back Wing) ================= */}
+        <motion.g
+          style={{ transformOrigin: '3px -2px' }}
+          animate={{
+            rotate: [-24, 28, -24],
+            scaleY: [1, 0.65, 1],
+          }}
+          transition={{
+            duration: flapDuration,
+            delay: delay + 0.04,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        >
+          {/* Arched swallow wing extending up & back */}
+          <path
+            d="M 3 -2 C 6 -15, 0 -26, -9 -29 C -7 -18, -11 -10, -2 -3 Z"
+            fill={FAR_WING}
+            stroke={PLUMAGE_STROKE}
+            strokeWidth="1.2"
+            strokeLinejoin="round"
+          />
+        </motion.g>
+
+        {/* ================= BIRD BODY, HEAD, BEAK, FORKED TAIL ================= */}
+        <g>
+          {/* Main Bird Torso, Head, and Forked Swallow Tail (Facing Right) */}
+          <path
+            d="M 14 -1 C 14 -6, 9 -9, 4 -7 C -2 -5, -9 -1, -16 0 C -22 -1, -27 -4, -28 -5 C -26 -1, -22 1, -21 2 C -24 3, -27 6, -28 8 C -26 6, -20 4, -15 3 C -8 4, 1 5, 8 3 C 12 2, 14 1, 14 -1 Z"
+            fill={PLUMAGE_BODY}
+            stroke={PLUMAGE_STROKE}
+            strokeWidth="1.3"
+            strokeLinejoin="round"
+          />
+
+          {/* Soft Cream / Sky Breast Accent */}
+          <path
+            d="M 12 0 C 11 3, 7 4, 2 3 C 6 2, 10 1, 12 0 Z"
+            fill="rgba(255, 255, 255, 0.65)"
+          />
+
+          {/* Cute Sharp Bird Beak pointing right in the direction of flight */}
+          <polygon
+            points="14,-3.2 22,-0.5 14,1.8"
+            fill="#F59E0B"
+            stroke={PLUMAGE_STROKE}
+            strokeWidth="1"
+            strokeLinejoin="round"
+          />
+
+          {/* Bird Eye */}
+          <circle cx="10" cy="-3.5" r="1.3" fill="#FFFFFF" />
+          <circle cx="10.5" cy="-3.5" r="0.8" fill="#091E3A" />
+        </g>
+
+        {/* ================= NEAR WING (Front Wing) ================= */}
+        <motion.g
+          style={{ transformOrigin: '2px 0px' }}
+          animate={{
+            rotate: [-28, 32, -28],
+            scaleY: [1, 0.6, 1],
+          }}
           transition={{
             duration: flapDuration,
             delay,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-        />
-
-        {/* Right Tapered Crescent Wing pivoting smoothly at shoulder (1, 1) */}
-        <motion.path
-          d="M 0.5 1.5 C 7 -10, 16 -13, 25 -5 C 16 -5, 8 -2, 0.5 3.5 Z"
-          fill={WING_FILL}
-          stroke={WING_STROKE}
-          strokeWidth="1.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ transformOrigin: '0.5px 2px' }}
-          animate={{ rotate: [22, -24, 22] }}
-          transition={{
-            duration: flapDuration,
-            delay,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-
-        {/* Sleek Central Bird Body, Head & Tail */}
-        <path
-          d="M 0 -1.5 C 2.2 -1.5, 3 0.8, 2.2 3.2 L 4 5.5 L 0 4.2 L -4 5.5 L -2.2 3.2 C -3 0.8, -2.2 -1.5, 0 -1.5 Z"
-          fill={WING_STROKE}
-        />
+        >
+          {/* Sweeping primary and secondary flight feathers */}
+          <path
+            d="M 2 0 C 4 -16, -3 -29, -14 -32 C -10 -20, -16 -10, -5 -1 Z"
+            fill={NEAR_WING}
+            stroke={PLUMAGE_STROKE}
+            strokeWidth="1.4"
+            strokeLinejoin="round"
+          />
+          {/* Feather quill highlight line on wing */}
+          <path
+            d="M -1 -7 C -4 -17, -8 -23, -12 -28"
+            stroke="rgba(255, 255, 255, 0.40)"
+            strokeWidth="1.1"
+            strokeLinecap="round"
+          />
+        </motion.g>
       </svg>
     </motion.div>
   );
@@ -675,17 +722,17 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
           >
             {/* Bird 1 (Trailing left, middle height) */}
             <div className="absolute left-0 top-6">
-              <NaturalSoaringBird scale={0.94} delay={0} flapDuration={0.64} />
+              <ClassicFlyingBird scale={0.92} delay={0} flapDuration={0.62} />
             </div>
 
             {/* Bird 2 (Middle leader, higher) */}
-            <div className="absolute left-16 top-0">
-              <NaturalSoaringBird scale={1.1} delay={0.2} flapDuration={0.58} />
+            <div className="absolute left-18 top-0">
+              <ClassicFlyingBird scale={1.08} delay={0.2} flapDuration={0.56} />
             </div>
 
             {/* Bird 3 (Front-right bird, slightly lower) */}
-            <div className="absolute left-36 top-8">
-              <NaturalSoaringBird scale={0.86} delay={0.38} flapDuration={0.68} />
+            <div className="absolute left-38 top-8">
+              <ClassicFlyingBird scale={0.84} delay={0.38} flapDuration={0.65} />
             </div>
           </motion.div>
         </div>
