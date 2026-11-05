@@ -219,29 +219,33 @@ function FlutteringButterfly({
  * BloomingEraBannerPlane
  * Cute airplane flying from right to left towing a fluttering "Blooming Era" banner behind it.
  */
-function BloomingEraBannerPlane() {
+function BloomingEraBannerPlane({ isPageLoaded = true }) {
   const STROKE = 'rgba(9, 30, 58, 0.52)';
 
   return (
     <div className="absolute top-[98px] sm:top-[106px] lg:top-[112px] inset-x-0 h-[72px] overflow-hidden pointer-events-none select-none z-[3]">
       <motion.div
         initial={{ x: '108vw', y: 0, opacity: 0 }}
-        animate={{
-          x: ['108vw', '-440px'],
-          y: [0, -6, 3, -5, 2, 0],
-          opacity: [0, 1, 1, 0],
-        }}
+        animate={
+          isPageLoaded
+            ? {
+                x: ['108vw', '-440px'],
+                y: [0, -6, 3, -5, 2, 0],
+                opacity: [0, 1, 1, 0],
+              }
+            : { x: '108vw', y: 0, opacity: 0 }
+        }
         transition={{
           x: {
             duration: 16,
-            delay: 2.2,
+            delay: 1.2,
             repeat: Infinity,
             repeatDelay: 14,
             ease: 'linear',
           },
           y: {
             duration: 16,
-            delay: 2.2,
+            delay: 1.2,
             repeat: Infinity,
             repeatDelay: 14,
             ease: 'easeInOut',
@@ -249,7 +253,7 @@ function BloomingEraBannerPlane() {
           opacity: {
             duration: 16,
             times: [0, 0.04, 0.94, 1],
-            delay: 2.2,
+            delay: 1.2,
             repeat: Infinity,
             repeatDelay: 14,
           },
@@ -405,6 +409,8 @@ function SoftDriftingCloud({
   opacity = 0.72,
   delay = 0,
 }) {
+  const gradientId = `softCloudFill_${startRightPercent}_${String(scale).replace('.', '_')}`;
+
   return (
     <motion.div
       style={{
@@ -431,17 +437,17 @@ function SoftDriftingCloud({
         className="overflow-visible drop-shadow-[0_8px_16px_rgba(96,200,212,0.12)]"
       >
         <defs>
-          <linearGradient id="softCloudFill" x1="50%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.92" />
-            <stop offset="75%" stopColor="#F2FAFC" stopOpacity="0.68" />
-            <stop offset="100%" stopColor="#E4F5F9" stopOpacity="0.25" />
+          <linearGradient id={gradientId} x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
+            <stop offset="70%" stopColor="#F2FAFC" stopOpacity="0.80" />
+            <stop offset="100%" stopColor="#E4F5F9" stopOpacity="0.45" />
           </linearGradient>
         </defs>
         <path
           d="M 28 56 L 160 56 C 174 56, 182 46, 178 35 C 175 26, 165 22, 156 24 C 150 11, 134 4, 118 8 C 108 2, 92 2, 82 10 C 68 6, 52 13, 48 26 C 34 25, 20 34, 20 46 C 20 52, 23 56, 28 56 Z"
-          fill="url(#softCloudFill)"
-          stroke="rgba(9, 30, 58, 0.10)"
-          strokeWidth="1.5"
+          fill={`url(#${gradientId})`}
+          stroke="rgba(9, 30, 58, 0.16)"
+          strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -709,20 +715,26 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       >
         <motion.div
           initial={{ x: '-12vw', y: 6, opacity: 0 }}
-          animate={{
-            x: ['-12vw', '106vw'],
-            y: [6, -7, 4, -8, 3, -2],
-            opacity: [0, 1, 1, 1, 0],
-          }}
+          animate={
+            isPageLoaded
+              ? {
+                  x: ['-12vw', '106vw'],
+                  y: [6, -7, 4, -8, 3, -2],
+                  opacity: [0, 1, 1, 1, 0],
+                }
+              : { x: '-12vw', y: 6, opacity: 0 }
+          }
           transition={{
             x: {
               duration: 14,
+              delay: 0.2,
               repeat: Infinity,
               repeatDelay: 0.6,
               ease: 'linear',
             },
             y: {
               duration: 14,
+              delay: 0.2,
               repeat: Infinity,
               repeatDelay: 0.6,
               ease: 'easeInOut',
@@ -730,6 +742,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             opacity: {
               duration: 14,
               times: [0, 0.04, 0.5, 0.95, 1],
+              delay: 0.2,
               repeat: Infinity,
               repeatDelay: 0.6,
             },
@@ -756,7 +769,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       {/* =================================================================== */}
       {/* 3. OCCASIONAL AIRPLANE FLYING RIGHT -> LEFT WITH BLOOMING ERA BANNER*/}
       {/* =================================================================== */}
-      <BloomingEraBannerPlane />
+      <BloomingEraBannerPlane isPageLoaded={isPageLoaded} />
 
       {/* =================================================================== */}
       {/* 4. BOTTOM-RIGHT BLOOMING PLANT (Enlarged Flower Head + Butterflies, */}

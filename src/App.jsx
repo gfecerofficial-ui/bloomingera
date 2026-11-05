@@ -72,11 +72,11 @@ export default function App() {
 
       {/* Main Page Content Router */}
       <main className={`flex-grow ${currentPage === 'home' ? '-mt-[90px] sm:-mt-[98px]' : ''}`}>
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="wait">
           {currentPage === 'home' && (
             <motion.div
               key="home"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
