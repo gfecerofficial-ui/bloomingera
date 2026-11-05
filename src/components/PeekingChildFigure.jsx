@@ -10,6 +10,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function PeekingChildFigure() {
   const [isWaving, setIsWaving] = useState(false);
 
+  // Soft translucent tint for limbs & joints so they stay gently in the background
+  // and never conflict with or distract from the bold hero heading typography
+  const LIMB_STROKE = 'rgba(9, 30, 58, 0.20)';
+  const LIMB_FILL = 'rgba(255, 255, 255, 0.50)';
+  const BODY_STROKE = 'rgba(9, 30, 58, 0.36)';
+
   useEffect(() => {
     // First friendly wave shortly after appearing
     const startWave = setTimeout(() => setIsWaving(true), 1200);
@@ -31,7 +37,7 @@ export default function PeekingChildFigure() {
   return (
     <div
       aria-hidden="true"
-      className="hidden md:block pointer-events-none select-none absolute left-1 lg:left-2 top-[52%] -translate-y-1/2 z-[2]"
+      className="hidden md:block pointer-events-none select-none absolute left-0 lg:-left-1 top-[52%] -translate-y-1/2 z-[2]"
     >
       <motion.div
         initial={{ x: -180, rotate: -6, opacity: 0 }}
@@ -52,7 +58,7 @@ export default function PeekingChildFigure() {
         style={{ transformOrigin: '14% 0%' }}
         className="relative w-[260px] h-[420px] lg:w-[320px] lg:h-[515px] xl:w-[355px] xl:h-[570px]"
       >
-        {/* Subtle "Hi!" pill that pops up while waving */}
+        {/* Subtle "Hi!" pill that pops up while waving (snug above child's head, clear of heading text) */}
         <AnimatePresence>
           {isWaving && (
             <motion.div
@@ -60,7 +66,7 @@ export default function PeekingChildFigure() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.7, y: 6 }}
               transition={{ duration: 0.26, ease: 'backOut' }}
-              className="absolute top-3 left-32 lg:left-40 px-4 py-1.5 rounded-full bg-white/95 border-2 border-[#8ed727] shadow-lg text-sm lg:text-base font-black text-[#091E3A] whitespace-nowrap"
+              className="absolute top-0 left-20 lg:left-24 px-3.5 py-1 rounded-full bg-white/90 border-2 border-[#8ed727]/80 shadow-md text-xs lg:text-sm font-black text-[#091E3A]/85 whitespace-nowrap"
             >
               Hi! 👋
             </motion.div>
@@ -126,11 +132,11 @@ export default function PeekingChildFigure() {
           </g>
 
           {/* ================= LEGS (Centered inside each shorts cuff) ================= */}
-          {/* Left Leg: emerges from center of left shorts cuff (33.5, 133) down to rope knot (19, 170) */}
+          {/* Left Leg: emerges from center of left shorts cuff down to rope knot */}
           <path
             d="M 35 125 L 27 149 L 20 168"
-            stroke="#091E3A"
-            strokeWidth="3.6"
+            stroke={LIMB_STROKE}
+            strokeWidth="3.4"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -141,16 +147,16 @@ export default function PeekingChildFigure() {
             rx="7"
             ry="4"
             transform="rotate(-8 20 170)"
-            fill="#8ed727"
-            stroke="#091E3A"
-            strokeWidth="2.3"
+            fill="rgba(142, 215, 39, 0.65)"
+            stroke={LIMB_STROKE}
+            strokeWidth="2.0"
           />
 
-          {/* Right Leg: emerges from center of right shorts cuff (47.5, 135) hanging naturally down */}
+          {/* Right Leg: emerges from center of right shorts cuff hanging naturally down */}
           <path
             d="M 48 127 L 46 152 L 44 172"
-            stroke="#091E3A"
-            strokeWidth="3.6"
+            stroke={LIMB_STROKE}
+            strokeWidth="3.4"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -161,17 +167,17 @@ export default function PeekingChildFigure() {
             rx="7.5"
             ry="4.2"
             transform="rotate(6 46 174)"
-            fill="#60C8D4"
-            stroke="#091E3A"
-            strokeWidth="2.3"
+            fill="rgba(96, 200, 212, 0.65)"
+            stroke={LIMB_STROKE}
+            strokeWidth="2.0"
           />
 
           {/* ================= LEFT ARM (Reaching up & holding the rope!) ================= */}
           {/* Arm from Left Shoulder (38, 80) up to Rope Grip at (18, 56) */}
           <path
             d="M 38 80 L 26 68 L 18 56"
-            stroke="#091E3A"
-            strokeWidth="3.6"
+            stroke={LIMB_STROKE}
+            strokeWidth="3.4"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -180,8 +186,8 @@ export default function PeekingChildFigure() {
           {/* Stick Spine */}
           <path
             d="M 52 76 L 42 128"
-            stroke="#091E3A"
-            strokeWidth="3.8"
+            stroke={LIMB_STROKE}
+            strokeWidth="3.4"
             strokeLinecap="round"
           />
 
@@ -189,24 +195,24 @@ export default function PeekingChildFigure() {
           <path
             d="M 37 78 L 65 82 L 58 120 L 29 116 Z"
             fill="#8ed727"
-            stroke="#091E3A"
-            strokeWidth="2.8"
+            stroke={BODY_STROKE}
+            strokeWidth="2.6"
             strokeLinejoin="round"
           />
           {/* Gold Collar Accent */}
           <path
             d="M 43 79 Q 51 86 59 81"
             fill="#fece13"
-            stroke="#091E3A"
-            strokeWidth="2.2"
+            stroke={BODY_STROKE}
+            strokeWidth="2.0"
             strokeLinecap="round"
           />
           {/* Cyan Shorts (overlaps top of both legs cleanly) */}
           <path
             d="M 30 116 L 57 120 L 53 136 L 42 134 L 41 126 L 39 134 L 28 132 Z"
             fill="#60C8D4"
-            stroke="#091E3A"
-            strokeWidth="2.6"
+            stroke={BODY_STROKE}
+            strokeWidth="2.4"
             strokeLinejoin="round"
           />
 
@@ -217,16 +223,16 @@ export default function PeekingChildFigure() {
               cy="56"
               rx="6"
               ry="5"
-              fill="#FFFDF5"
-              stroke="#091E3A"
-              strokeWidth="2.5"
+              fill={LIMB_FILL}
+              stroke={LIMB_STROKE}
+              strokeWidth="2.0"
             />
             {/* Gripping Knuckles / Fingers wrapped around rope */}
-            <line x1="14" y1="54" x2="21" y2="54" stroke="#091E3A" strokeWidth="1.8" strokeLinecap="round" />
-            <line x1="14" y1="57" x2="21" y2="57" stroke="#091E3A" strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="14" y1="54" x2="21" y2="54" stroke={LIMB_STROKE} strokeWidth="1.6" strokeLinecap="round" />
+            <line x1="14" y1="57" x2="21" y2="57" stroke={LIMB_STROKE} strokeWidth="1.6" strokeLinecap="round" />
           </g>
 
-          {/* ================= RIGHT ARM (Waving Arm — Locked Zero-Gap Elbow!) ================= */}
+          {/* ================= RIGHT ARM (Waving Arm — Soft Translucent Limb) ================= */}
           <g>
             {/* Upper Arm from Right Shoulder (63, 83) to Elbow (82, 76) */}
             <line
@@ -234,15 +240,15 @@ export default function PeekingChildFigure() {
               y1="83"
               x2="82"
               y2="76"
-              stroke="#091E3A"
-              strokeWidth="3.6"
+              stroke={LIMB_STROKE}
+              strokeWidth="3.4"
               strokeLinecap="round"
             />
 
             {/* Elbow Pivot Joint locked at exact coordinate (82, 76) */}
             <g transform="translate(82, 76)">
               {/* Seamless Elbow Joint Cap so line never shows a gap */}
-              <circle cx="0" cy="0" r="1.8" fill="#091E3A" />
+              <circle cx="0" cy="0" r="1.7" fill={LIMB_STROKE} />
 
               {/* Forearm & Hand rotating strictly around (0, 0) */}
               <g className={isWaving ? 'animate-child-elbow-wave' : 'animate-child-elbow-idle'}>
@@ -252,8 +258,8 @@ export default function PeekingChildFigure() {
                   y1="0"
                   x2="16"
                   y2="-28"
-                  stroke="#091E3A"
-                  strokeWidth="3.6"
+                  stroke={LIMB_STROKE}
+                  strokeWidth="3.4"
                   strokeLinecap="round"
                 />
 
@@ -262,30 +268,30 @@ export default function PeekingChildFigure() {
                   cx="18"
                   cy="-31"
                   r="6"
-                  fill="#FFFDF5"
-                  stroke="#091E3A"
-                  strokeWidth="2.5"
+                  fill={LIMB_FILL}
+                  stroke={LIMB_STROKE}
+                  strokeWidth="2.0"
                 />
 
                 {/* Cute Spread Waving Fingers */}
-                <line x1="16" y1="-37" x2="14" y2="-44" stroke="#091E3A" strokeWidth="2.3" strokeLinecap="round" />
-                <line x1="20" y1="-37" x2="22" y2="-44" stroke="#091E3A" strokeWidth="2.3" strokeLinecap="round" />
-                <line x1="23" y1="-34" x2="29" y2="-39" stroke="#091E3A" strokeWidth="2.3" strokeLinecap="round" />
-                <line x1="13" y1="-33" x2="7" y2="-37" stroke="#091E3A" strokeWidth="2.3" strokeLinecap="round" />
+                <line x1="16" y1="-37" x2="14" y2="-44" stroke={LIMB_STROKE} strokeWidth="2.0" strokeLinecap="round" />
+                <line x1="20" y1="-37" x2="22" y2="-44" stroke={LIMB_STROKE} strokeWidth="2.0" strokeLinecap="round" />
+                <line x1="23" y1="-34" x2="29" y2="-39" stroke={LIMB_STROKE} strokeWidth="2.0" strokeLinecap="round" />
+                <line x1="13" y1="-33" x2="7" y2="-37" stroke={LIMB_STROKE} strokeWidth="2.0" strokeLinecap="round" />
 
                 {/* Waving Motion Lines */}
                 {isWaving && (
                   <g>
                     <path
                       d="M 30 -45 Q 37 -38 34 -29"
-                      stroke="#8ed727"
-                      strokeWidth="2.4"
+                      stroke="rgba(142, 215, 39, 0.45)"
+                      strokeWidth="2.2"
                       strokeLinecap="round"
                     />
                     <path
                       d="M 5 -47 Q -2 -41 0 -32"
-                      stroke="#60C8D4"
-                      strokeWidth="2.4"
+                      stroke="rgba(96, 200, 212, 0.45)"
+                      strokeWidth="2.2"
                       strokeLinecap="round"
                     />
                   </g>
@@ -302,16 +308,16 @@ export default function PeekingChildFigure() {
               cy="2"
               r="5"
               fill="#FFFDF5"
-              stroke="#091E3A"
-              strokeWidth="2.5"
+              stroke={BODY_STROKE}
+              strokeWidth="2.2"
             />
             <circle
               cx="25"
               cy="2"
               r="5"
               fill="#FFFDF5"
-              stroke="#091E3A"
-              strokeWidth="2.5"
+              stroke={BODY_STROKE}
+              strokeWidth="2.2"
             />
 
             {/* Main Round Head */}
@@ -320,15 +326,15 @@ export default function PeekingChildFigure() {
               cy="0"
               r="25"
               fill="#FFFDF5"
-              stroke="#091E3A"
-              strokeWidth="3.2"
+              stroke={BODY_STROKE}
+              strokeWidth="2.8"
             />
 
             {/* Bouncy Hair Curls on Top */}
             <path
               d="M -10 -24 C -8 -34, 2 -34, 4 -25 C 8 -33, 18 -30, 14 -21"
-              stroke="#091E3A"
-              strokeWidth="3"
+              stroke={BODY_STROKE}
+              strokeWidth="2.6"
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
@@ -339,8 +345,8 @@ export default function PeekingChildFigure() {
               cy="-21"
               r="4.5"
               fill="#fece13"
-              stroke="#091E3A"
-              strokeWidth="2"
+              stroke={BODY_STROKE}
+              strokeWidth="1.8"
             />
 
             {/* Expressive Blinking Eyes */}
@@ -366,8 +372,8 @@ export default function PeekingChildFigure() {
             {/* Big Joyful Smile */}
             <path
               d="M -8 7 Q 0 16 8 7"
-              stroke="#091E3A"
-              strokeWidth="2.8"
+              stroke="rgba(9, 30, 58, 0.55)"
+              strokeWidth="2.6"
               strokeLinecap="round"
               fill="none"
             />
