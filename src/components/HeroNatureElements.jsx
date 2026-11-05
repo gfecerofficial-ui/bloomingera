@@ -507,7 +507,7 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
   const petalAngles = [0, 72, 144, 216, 288];
 
   return (
-    <div aria-hidden="true" className="pointer-events-none select-none inset-0 absolute overflow-hidden z-[2]">
+    <div aria-hidden="true" className="pointer-events-none select-none inset-0 absolute overflow-hidden">
       {/* =================================================================== */}
       {/* 0. SUBTLE SMOOTH CLOUDS UNDER & BEHIND HEADER (Right -> Left)       */}
       {/* =================================================================== */}
@@ -558,7 +558,7 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
             : { opacity: 0, scale: 0.15 }
         }
         transition={{ duration: 1.35, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute top-[36px] right-0 w-[300px] h-[270px] sm:w-[350px] sm:h-[300px] lg:w-[410px] lg:h-[340px]"
+        className="absolute top-[36px] right-0 w-[300px] h-[270px] sm:w-[350px] sm:h-[300px] lg:w-[410px] lg:h-[340px] z-[2]"
       >
         {/* Deep Ambient Sunlight Atmosphere — smooth sine breathing with zero state reset */}
         <motion.div
@@ -710,7 +710,7 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
       {/* 2. NATURAL SOARING BIRDS FLYING FROM LEFT OF SCREEN TO RIGHT        */}
       {/* =================================================================== */}
       <div
-        className="absolute top-[192px] sm:top-[202px] lg:top-[210px] inset-x-0 h-[95px] overflow-hidden pointer-events-none"
+        className="absolute top-[192px] sm:top-[202px] lg:top-[210px] inset-x-0 h-[95px] overflow-hidden pointer-events-none z-[2]"
         style={{ transform: 'translateZ(0)' }}
       >
         <motion.div
@@ -774,11 +774,11 @@ export default function HeroNatureElements({ isPageLoaded = true, showFlower = t
       {/* =================================================================== */}
       {/* 4. BOTTOM-RIGHT BLOOMING PLANT (Enlarged Flower Head + Butterflies, */}
       {/*    Static Stem/Leaves, Soil sweeping below Hero Image Slideshow)    */}
-      {/*    Hidden on smaller aspect ratio screens or if even 1px gets       */}
-      {/*    hidden behind the hero image slideshow.                          */}
+      {/*    Can overlap up to 30% over the image slideshow; hidden if more   */}
+      {/*    than 30% would overlap or on smaller aspect ratio screens.       */}
       {/* =================================================================== */}
       {showFlower && (
-        <div className="hidden md:block absolute bottom-[44px] lg:bottom-[48px] right-0 w-[440px] h-[290px] lg:w-[540px] lg:h-[330px]">
+        <div className="hidden md:block absolute bottom-[44px] lg:bottom-[48px] right-0 w-[440px] h-[290px] lg:w-[540px] lg:h-[330px] z-[12]">
         <svg
           viewBox="0 0 540 330"
           fill="none"

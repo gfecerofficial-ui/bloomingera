@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WavingChildStickFigure from './WavingChildStickFigure';
 import PeekingChildFigure from './PeekingChildFigure';
@@ -807,16 +807,33 @@ export default function IndianPreschoolHome({
   const [activeVideoModal, setActiveVideoModal] = useState(null);
   const [flippedLeader, setFlippedLeader] = useState(null);
 
-  // Refs & state for responsive Hero child/branch & flower visibility rules
+  // Refs & state for responsive Hero child/branch & flower visibility rules.
+  // Initialized synchronously at t = 0ms while the loading screen is up, and refined via useLayoutEffect.
   const heroHeadingRef = useRef(null);
   const desktopSlideshowRef = useRef(null);
-  const [heroLayout, setHeroLayout] = useState({
-    showChild: true,
-    showFlower: true,
-    branchCompact: false,
+  const [heroLayout, setHeroLayout] = useState(() => {
+    if (typeof window === 'undefined') {
+      return { showChild: true, showFlower: true, branchCompact: false };
+    }
+    const vw = window.innerWidth;
+    const vh = Math.max(window.innerHeight, 1);
+    const aspectRatio = vw / vh;
+    const isWideAspect = aspectRatio >= 1.45 && vw >= 1024;
+    // max-w-7xl is 1280px; account for ~16px organic inward curve of the melting slideshow frame
+    const estimatedRightSpace = Math.max(24, (vw - 1280) / 2) + 16;
+    const flowerOverlapRatio = Math.max(0, 132 - estimatedRightSpace) / 140;
+    const estimatedHeadingLeft = Math.max(24, (vw - 1280) / 2);
+    const firstWordRight = estimatedHeadingLeft + 60 * 2.15;
+    const childWidth = vw >= 1620 ? 350 : 320;
+    const wavingHandMaxRight = -4 + (111 / 135) * childWidth;
+    return {
+      showChild: isWideAspect && wavingHandMaxRight <= firstWordRight && estimatedHeadingLeft >= 115,
+      showFlower: isWideAspect && flowerOverlapRatio <= 0.30,
+      branchCompact: estimatedHeadingLeft < 72,
+    };
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const evaluateHeroClearance = () => {
       if (typeof window === 'undefined') return;
       const vw = window.innerWidth;
@@ -833,11 +850,14 @@ export default function IndianPreschoolHome({
 
       if (desktopSlideshowRef.current) {
         const slideRect = desktopSlideshowRef.current.getBoundingClientRect();
-        // In HeroNatureElements (540px wide SVG at right: 0), the flower petals & left butterfly
-        // extend 134px left from the right viewport edge. Hide the flower if rightClearance < 136px
-        // so it never gets even 1px hidden behind the image slideshow.
-        const rightClearance = vw - slideRect.right;
-        nextShowFlower = isWideAspect && slideRect.width > 0 && rightClearance >= 136;
+        // In HeroNatureElements (540px wide SVG at right: 0), the flower head has diameter 140px
+        // and its leftmost petal edge is 132px from the right viewport edge.
+        // Account for the ~16px organic inward curvature of the melting slideshow border.
+        // Allow up to 30% (0.30) of the flower to overlap over the image slideshow; if more than 30%, hide it.
+        const visualRightClearance = vw - slideRect.right + 16;
+        const overlapPx = Math.max(0, 132 - visualRightClearance);
+        const overlapRatio = overlapPx / 140;
+        nextShowFlower = isWideAspect && slideRect.width > 0 && overlapRatio <= 0.30;
       }
 
       if (heroHeadingRef.current) {
@@ -857,10 +877,10 @@ export default function IndianPreschoolHome({
           isWideAspect &&
           headingRect.width > 0 &&
           wavingHandMaxRight <= firstWordRight &&
-          headingRect.left >= 126;
+          headingRect.left >= 115;
 
-        // Compact higher placement for the dangling branch when the left margin beside the heading is narrow
-        nextBranchCompact = headingRect.left < 68;
+        // Compact placement for the dangling branch when the left margin beside the heading is narrow
+        nextBranchCompact = headingRect.left < 72;
       }
 
       setHeroLayout((prev) => {
@@ -879,7 +899,11 @@ export default function IndianPreschoolHome({
       });
     };
 
+    // Execute synchronously while the loading screen is up, and once fonts settle
     evaluateHeroClearance();
+    if (typeof document !== 'undefined' && document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(evaluateHeroClearance);
+    }
     window.addEventListener('resize', evaluateHeroClearance);
 
     let observer;
@@ -1043,8 +1067,9 @@ export default function IndianPreschoolHome({
       {/* SECTION 01 — HOMEPAGE HERO SLIDER (FLOWY GLASSMORPHIC 3-SLIDE HERO)   */}
       {/* ===================================================================== */}
       <section className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]">
-        {/* Background Peeking & Waving Child Stick Figure (or Dangling Tree Branch with Flower Buds on smaller screens) */}
+        {/* Background Peeking & Waving Child Stick Figure (or Dangling Tree Branch with Blooming Flower Buds on smaller screens) */}
         <PeekingChildFigure
+          isPageLoaded={isPageLoaded}
           showChild={heroLayout.showChild}
           branchCompact={heroLayout.branchCompact}
         />
