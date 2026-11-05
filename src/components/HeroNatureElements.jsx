@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * Single animated flapping bird SVG
+ * RealFlappingBird
+ * A recognizable, graceful flying bird silhouette facing right (direction of flight),
+ * with a streamlined body, head, beak, fanned tail, and two arched wings that flap smoothly.
  */
-function FlappingBird({ scale = 1, delay = 0, flapDuration = 0.55, className = '' }) {
-  const STROKE_COLOR = 'rgba(9, 30, 58, 0.48)';
+function RealFlappingBird({ scale = 1, delay = 0, flapDuration = 0.62, className = '' }) {
+  const BODY_FILL = 'rgba(9, 30, 58, 0.46)';
+  const WING_FILL = 'rgba(9, 30, 58, 0.34)';
+  const STROKE_COLOR = 'rgba(9, 30, 58, 0.52)';
 
   return (
     <motion.div
       style={{ scale }}
       animate={{
-        y: [0, -6, 1, -4, 0],
-        rotate: [-2, 3, -1, 2, -2],
+        y: [0, -4, 1, -3, 0],
       }}
       transition={{
         duration: flapDuration * 3,
@@ -23,22 +26,54 @@ function FlappingBird({ scale = 1, delay = 0, flapDuration = 0.55, className = '
       className={className}
     >
       <svg
-        width="50"
-        height="28"
-        viewBox="-26 -18 52 30"
+        width="56"
+        height="38"
+        viewBox="-26 -24 54 42"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="overflow-visible"
       >
-        {/* Left Wing flapping around center body (0, 0) */}
+        {/* Far (Back) Wing — slightly lighter, flapping with a subtle phase offset */}
         <motion.path
-          d="M 0 0 Q -10 -14 -22 -5"
+          d="M -2 -2 C -1 -14, 8 -21, 16 -19 C 11 -12, 8 -6, 5 -2 Z"
+          fill={WING_FILL}
           stroke={STROKE_COLOR}
-          strokeWidth="2.8"
-          strokeLinecap="round"
-          fill="none"
-          style={{ transformOrigin: '0px 0px' }}
-          animate={{ rotate: [-22, 24, -22] }}
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+          style={{ transformOrigin: '2px -2px' }}
+          animate={{
+            scaleY: [1, 0.25, -0.55, 0.25, 1],
+            rotate: [-6, 8, 18, 8, -6],
+          }}
+          transition={{
+            duration: flapDuration,
+            delay: delay + 0.05,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Streamlined Bird Body, Head, Beak & Tail (facing right) */}
+        <path
+          d="M -19 2 L -11 -1 C -5 -4, 4 -4, 10 -3 C 13 -5, 17 -4, 18 -1 L 23 -1 L 18 1 C 16 3, 12 4, 8 3 C 1 5, -6 4, -12 2 L -18 5 L -16 2 Z"
+          fill={BODY_FILL}
+          stroke={STROKE_COLOR}
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+        />
+
+        {/* Near (Front) Sweeping Gull/Swallow Wing */}
+        <motion.path
+          d="M -5 -1 C -9 -15, -1 -22, 8 -21 C 4 -12, 3 -5, 3 0 Z"
+          fill={BODY_FILL}
+          stroke={STROKE_COLOR}
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+          style={{ transformOrigin: '-1px -1px' }}
+          animate={{
+            scaleY: [1, 0.15, -0.75, 0.15, 1],
+            rotate: [-4, 10, 22, 10, -4],
+          }}
           transition={{
             duration: flapDuration,
             delay,
@@ -46,24 +81,63 @@ function FlappingBird({ scale = 1, delay = 0, flapDuration = 0.55, className = '
             ease: 'easeInOut',
           }}
         />
-        {/* Right Wing flapping symmetrically around center body (0, 0) */}
-        <motion.path
-          d="M 0 0 Q 10 -14 22 -5"
-          stroke={STROKE_COLOR}
-          strokeWidth="2.8"
+      </svg>
+    </motion.div>
+  );
+}
+
+/**
+ * SoftDriftingCloud
+ * Smooth, subtle cumulus cloud drifting slowly from right to left under and behind the header.
+ */
+function SoftDriftingCloud({
+  topClass,
+  startRightPercent,
+  duration = 56,
+  scale = 1,
+  opacity = 0.72,
+  delay = 0,
+}) {
+  return (
+    <motion.div
+      style={{
+        right: `${startRightPercent}%`,
+        scale,
+        opacity,
+      }}
+      initial={{ x: '0vw' }}
+      animate={{ x: ['0vw', '-110vw'] }}
+      transition={{
+        duration,
+        delay,
+        repeat: Infinity,
+        ease: 'linear',
+      }}
+      className={`absolute ${topClass} pointer-events-none select-none`}
+    >
+      <svg
+        width="190"
+        height="72"
+        viewBox="0 0 190 72"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="overflow-visible drop-shadow-[0_8px_16px_rgba(96,200,212,0.12)]"
+      >
+        <defs>
+          <linearGradient id="softCloudFill" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.92" />
+            <stop offset="75%" stopColor="#F2FAFC" stopOpacity="0.68" />
+            <stop offset="100%" stopColor="#E4F5F9" stopOpacity="0.25" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M 28 56 L 160 56 C 174 56, 182 46, 178 35 C 175 26, 165 22, 156 24 C 150 11, 134 4, 118 8 C 108 2, 92 2, 82 10 C 68 6, 52 13, 48 26 C 34 25, 20 34, 20 46 C 20 52, 23 56, 28 56 Z"
+          fill="url(#softCloudFill)"
+          stroke="rgba(9, 30, 58, 0.10)"
+          strokeWidth="1.5"
           strokeLinecap="round"
-          fill="none"
-          style={{ transformOrigin: '0px 0px' }}
-          animate={{ rotate: [22, -24, 22] }}
-          transition={{
-            duration: flapDuration,
-            delay,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
+          strokeLinejoin="round"
         />
-        {/* Subtle center bird body */}
-        <circle cx="0" cy="0" r="1.8" fill={STROKE_COLOR} />
       </svg>
     </motion.div>
   );
@@ -71,9 +145,10 @@ function FlappingBird({ scale = 1, delay = 0, flapDuration = 0.55, className = '
 
 /**
  * HeroNatureElements
- * 1. Glowing Sun in the top-right corner of the hero section (rises first once page is loaded).
- * 2. Flock of birds appearing from the far left of the screen and disappearing into the right.
- * 3. Blooming plant/flower in the bottom-right corner that grows and blooms once the page is loaded and the sun is up.
+ * 1. Subtle smooth clouds behind & under the header moving slowly from right to left (starting near right end of header).
+ * 2. Wide-curvature corner sun (~30% of circle visible) actively radiating warm sunlight waves & beams.
+ * 3. Realistic birds appearing from the left of the screen and disappearing into the right.
+ * 4. Larger, completely static blooming flower in the right whitespace with soil sweeping below the hero slideshow.
  */
 export default function HeroNatureElements({ isPageLoaded = true }) {
   const [sunIsUp, setSunIsUp] = useState(false);
@@ -91,16 +166,26 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
     return () => clearTimeout(timer);
   }, [isPageLoaded]);
 
-  const LINE_STROKE = 'rgba(9, 30, 58, 0.38)';
-  const SUN_STROKE = 'rgba(9, 30, 58, 0.26)';
+  const LINE_STROKE = 'rgba(9, 30, 58, 0.36)';
+  const SUN_STROKE = 'rgba(9, 30, 58, 0.25)';
 
-  // 5 sunbeams radiating from the top-right quarter sun (matching the sketch angles)
+  // Sun center is placed outside the top-right corner at (385, -75) with large radius R=220
+  // so only ~28% of the circle peeks in with a wide, gentle curvature.
+  const sunCx = 385;
+  const sunCy = -75;
+  const sunR = 220;
+
+  // Primary and secondary sunbeams radiating along the wider arc
   const sunRays = [
-    { angle: 194, innerR: 98, outerR: 152, delay: 0.2 },
-    { angle: 211, innerR: 98, outerR: 168, delay: 0.3 },
-    { angle: 228, innerR: 98, outerR: 174, delay: 0.4 },
-    { angle: 245, innerR: 98, outerR: 164, delay: 0.5 },
-    { angle: 261, innerR: 98, outerR: 148, delay: 0.6 },
+    { angle: 199, innerR: 226, outerR: 292, width: 2.6, delay: 0.2 },
+    { angle: 206, innerR: 225, outerR: 268, width: 1.8, delay: 0.26, secondary: true },
+    { angle: 213, innerR: 226, outerR: 306, width: 2.6, delay: 0.32 },
+    { angle: 220, innerR: 225, outerR: 274, width: 1.8, delay: 0.38, secondary: true },
+    { angle: 227, innerR: 226, outerR: 312, width: 2.6, delay: 0.44 },
+    { angle: 234, innerR: 225, outerR: 272, width: 1.8, delay: 0.5, secondary: true },
+    { angle: 241, innerR: 226, outerR: 302, width: 2.6, delay: 0.56 },
+    { angle: 248, innerR: 225, outerR: 266, width: 1.8, delay: 0.62, secondary: true },
+    { angle: 254, innerR: 226, outerR: 286, width: 2.6, delay: 0.68 },
   ];
 
   // 5 flower petals arranged radially around the flower center (0, 0)
@@ -109,146 +194,220 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
   return (
     <div aria-hidden="true" className="pointer-events-none select-none inset-0 absolute overflow-hidden z-[2]">
       {/* =================================================================== */}
-      {/* 1. TOP-RIGHT GLOWING SUN                                            */}
+      {/* 0. SUBTLE SMOOTH CLOUDS UNDER & BEHIND HEADER (Right -> Left)       */}
       {/* =================================================================== */}
-      <div className="absolute top-[36px] right-0 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px]">
-        {/* Outer Diffused Warm Sun Glow Aura */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={
-            isPageLoaded
-              ? {
-                  opacity: [0.7, 1, 0.7],
-                  scale: [0.96, 1.1, 0.96],
-                }
-              : { opacity: 0, scale: 0.5 }
-          }
-          transition={{
-            opacity: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-            scale: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-          }}
-          className="absolute -top-24 -right-24 w-[400px] h-[400px] sm:w-[480px] sm:h-[480px] rounded-full"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(254, 206, 19, 0.50) 0%, rgba(255, 184, 0, 0.26) 36%, rgba(254, 206, 19, 0.09) 64%, transparent 80%)',
-            filter: 'blur(14px)',
-          }}
+      <div className="absolute inset-x-0 top-0 h-[210px] overflow-hidden z-[1]">
+        {/* Cloud 1: Starts right at the right end of the header, tucked just under the navbar */}
+        <SoftDriftingCloud
+          topClass="top-[96px] sm:top-[108px] lg:top-[114px]"
+          startRightPercent={6}
+          duration={58}
+          scale={0.95}
+          opacity={0.78}
+          delay={0}
         />
+        {/* Cloud 2: Partially behind the right-center of the glass navbar */}
+        <SoftDriftingCloud
+          topClass="top-[52px] sm:top-[58px] lg:top-[62px]"
+          startRightPercent={18}
+          duration={68}
+          scale={0.76}
+          opacity={0.62}
+          delay={0}
+        />
+        {/* Cloud 3: Follows from the far right edge under the header */}
+        <SoftDriftingCloud
+          topClass="top-[112px] sm:top-[122px] lg:top-[128px]"
+          startRightPercent={-8}
+          duration={58}
+          scale={0.85}
+          opacity={0.7}
+          delay={14}
+        />
+        {/* Cloud 4: Gentle mid-sky cloud drifting behind header */}
+        <SoftDriftingCloud
+          topClass="top-[74px] sm:top-[82px] lg:top-[86px]"
+          startRightPercent={42}
+          duration={64}
+          scale={0.7}
+          opacity={0.55}
+          delay={0}
+        />
+      </div>
 
-        {/* Inner Golden Core Shimmer */}
+      {/* =================================================================== */}
+      {/* 1. TOP-RIGHT RADIATING SUN (~30% visible, wider curvature)          */}
+      {/* =================================================================== */}
+      <div className="absolute top-[36px] right-0 w-[300px] h-[270px] sm:w-[350px] sm:h-[300px] lg:w-[410px] lg:h-[340px]">
+        {/* Deep Ambient Sunlight Atmosphere */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.4 }}
+          initial={{ opacity: 0, scale: 0.6 }}
           animate={
             isPageLoaded
               ? {
-                  opacity: [0.8, 1, 0.8],
-                  scale: [0.95, 1.06, 0.95],
+                  opacity: [0.75, 1, 0.75],
+                  scale: [0.98, 1.08, 0.98],
                 }
-              : { opacity: 0, scale: 0.4 }
+              : { opacity: 0, scale: 0.6 }
           }
           transition={{
-            duration: 3,
+            duration: 4.5,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute -top-12 -right-12 w-[230px] h-[230px] sm:w-[270px] sm:h-[270px] rounded-full"
+          className="absolute -top-28 -right-28 w-[440px] h-[440px] sm:w-[540px] sm:h-[540px] rounded-full"
           style={{
             background:
-              'radial-gradient(circle, rgba(255, 248, 185, 0.90) 0%, rgba(254, 206, 19, 0.48) 50%, transparent 78%)',
-            filter: 'blur(6px)',
+              'radial-gradient(circle, rgba(255, 236, 130, 0.62) 0%, rgba(254, 206, 19, 0.34) 34%, rgba(255, 184, 0, 0.12) 60%, transparent 78%)',
+            filter: 'blur(16px)',
           }}
         />
 
-        {/* Quarter-Sun Illustration & Radiant Sunbeams */}
+        {/* Wide-Curvature Sun & Actively Radiating Sunlight Waves + Beams */}
         <motion.svg
-          viewBox="0 0 240 240"
+          viewBox="0 0 320 280"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          initial={{ opacity: 0, x: 45, y: -45, scale: 0.7 }}
+          initial={{ opacity: 0, x: 40, y: -40, scale: 0.82 }}
           animate={
             isPageLoaded
               ? { opacity: 1, x: 0, y: 0, scale: 1 }
-              : { opacity: 0, x: 45, y: -45, scale: 0.7 }
+              : { opacity: 0, x: 40, y: -40, scale: 0.82 }
           }
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="w-full h-full overflow-visible"
         >
           <defs>
-            <radialGradient id="heroCornerSunGrad" cx="88%" cy="8%" r="75%">
-              <stop offset="0%" stopColor="#FFF9C4" stopOpacity="0.92" />
-              <stop offset="55%" stopColor="#fece13" stopOpacity="0.62" />
+            <radialGradient id="heroWideSunGrad" cx="85%" cy="10%" r="80%">
+              <stop offset="0%" stopColor="#FFFDE0" stopOpacity="0.96" />
+              <stop offset="50%" stopColor="#FEE066" stopOpacity="0.76" />
+              <stop offset="85%" stopColor="#fece13" stopOpacity="0.55" />
               <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.35" />
             </radialGradient>
+
+            {/* Volumetric Sunlight Shaft Gradient */}
+            <linearGradient id="sunlightShaftGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FFF59D" stopOpacity="0.42" />
+              <stop offset="55%" stopColor="#fece13" stopOpacity="0.16" />
+              <stop offset="100%" stopColor="#fece13" stopOpacity="0" />
+            </linearGradient>
           </defs>
 
-          {/* Main Corner Sun Disc centered near top-right corner (226, 12) */}
+          {/* Volumetric Radiating Light Cones / Sun Shafts */}
+          {isPageLoaded && (
+            <g>
+              <motion.polygon
+                points="320,0 165,0 45,105 125,185"
+                fill="url(#sunlightShaftGrad)"
+                animate={{ opacity: [0.45, 0.85, 0.45] }}
+                transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.polygon
+                points="320,0 115,155 215,245 320,145"
+                fill="url(#sunlightShaftGrad)"
+                animate={{ opacity: [0.75, 0.4, 0.75] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </g>
+          )}
+
+          {/* Concentric Expanding Sunlight Pulse Rings (Radiating Sunlight Waves) */}
+          {isPageLoaded &&
+            [0, 1.3, 2.6].map((waveDelay, i) => (
+              <motion.circle
+                key={i}
+                cx={sunCx}
+                cy={sunCy}
+                r={sunR}
+                stroke="rgba(254, 206, 19, 0.45)"
+                strokeWidth="3"
+                fill="none"
+                initial={{ scale: 1, opacity: 0.55 }}
+                animate={{
+                  scale: [1, 1.38],
+                  opacity: [0.5, 0],
+                }}
+                transition={{
+                  duration: 3.9,
+                  delay: waveDelay,
+                  repeat: Infinity,
+                  ease: 'easeOut',
+                }}
+                style={{ transformOrigin: `${sunCx}px ${sunCy}px` }}
+              />
+            ))}
+
+          {/* Main Wide-Curvature Sun Body (only ~30% of the circle is inside the viewport) */}
           <circle
-            cx="226"
-            cy="12"
-            r="90"
-            fill="url(#heroCornerSunGrad)"
+            cx={sunCx}
+            cy={sunCy}
+            r={sunR}
+            fill="url(#heroWideSunGrad)"
             stroke={SUN_STROKE}
             strokeWidth="2.6"
           />
 
-          {/* Soft inner warm ring */}
+          {/* Inner warm corona arc */}
           <circle
-            cx="226"
-            cy="12"
-            r="74"
-            stroke="rgba(254, 206, 19, 0.5)"
+            cx={sunCx}
+            cy={sunCy}
+            r={sunR - 16}
+            stroke="rgba(254, 206, 19, 0.55)"
             strokeWidth="2"
-            strokeDasharray="6 6"
+            strokeDasharray="8 6"
           />
 
-          {/* Animated Sunbeams extending outward from the quarter-sun arc */}
+          {/* Radiating Sunbeams along the wide arc */}
           {sunRays.map((ray, idx) => {
             const rad = (ray.angle * Math.PI) / 180;
-            const cx = 226;
-            const cy = 12;
-            const x1 = cx + Math.cos(rad) * ray.innerR;
-            const y1 = cy - Math.sin(rad) * ray.innerR;
-            const x2 = cx + Math.cos(rad) * ray.outerR;
-            const y2 = cy - Math.sin(rad) * ray.outerR;
+            const x1 = sunCx + Math.cos(rad) * ray.innerR;
+            const y1 = sunCy - Math.sin(rad) * ray.innerR;
+            const x2 = sunCx + Math.cos(rad) * ray.outerR;
+            const y2 = sunCy - Math.sin(rad) * ray.outerR;
 
             return (
               <g key={idx}>
-                {/* Soft golden glow behind each ray */}
+                {/* Warm radiating golden beam halo */}
                 <motion.line
                   x1={x1}
                   y1={y1}
                   x2={x2}
                   y2={y2}
-                  stroke="rgba(254, 206, 19, 0.6)"
-                  strokeWidth="6.5"
+                  stroke="rgba(254, 206, 19, 0.65)"
+                  strokeWidth={ray.secondary ? '5' : '7.5'}
                   strokeLinecap="round"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={
                     isPageLoaded
                       ? {
-                          pathLength: 1,
-                          opacity: [0.45, 0.9, 0.45],
+                          pathLength: [0.75, 1.06, 0.75],
+                          opacity: [0.45, 0.95, 0.45],
                         }
                       : { pathLength: 0, opacity: 0 }
                   }
                   transition={{
-                    pathLength: { duration: 0.55, delay: ray.delay, ease: 'easeOut' },
+                    pathLength: {
+                      duration: 2.6,
+                      delay: ray.delay,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    },
                     opacity: {
-                      duration: 2.8,
-                      delay: ray.delay + 0.55,
+                      duration: 2.6,
+                      delay: ray.delay,
                       repeat: Infinity,
                       ease: 'easeInOut',
                     },
                   }}
                 />
-                {/* Crisp sketch ray line */}
+                {/* Crisp ray core line */}
                 <motion.line
                   x1={x1}
                   y1={y1}
                   x2={x2}
                   y2={y2}
-                  stroke={SUN_STROKE}
-                  strokeWidth="2.4"
+                  stroke={ray.secondary ? 'rgba(245, 158, 11, 0.45)' : SUN_STROKE}
+                  strokeWidth={ray.width}
                   strokeLinecap="round"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={
@@ -265,90 +424,88 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       </div>
 
       {/* =================================================================== */}
-      {/* 2. FLOCK OF BIRDS FLYING FROM LEFT OF SCREEN TO RIGHT               */}
+      {/* 2. REALISTIC BIRDS FLYING FROM LEFT OF SCREEN TO RIGHT              */}
       {/* =================================================================== */}
       {isPageLoaded && (
-        <div className="absolute top-[192px] sm:top-[202px] lg:top-[212px] inset-x-0 h-[90px] overflow-hidden">
+        <div className="absolute top-[188px] sm:top-[198px] lg:top-[206px] inset-x-0 h-[95px] overflow-hidden">
           <motion.div
             initial={{ x: '-12vw', y: 6, opacity: 0 }}
             animate={{
               x: ['-12vw', '106vw'],
-              y: [6, -8, 5, -9, 3, -3],
+              y: [6, -7, 4, -8, 3, -2],
               opacity: [0, 1, 1, 1, 0],
             }}
             transition={{
               x: {
-                duration: 12,
+                duration: 13.5,
                 repeat: Infinity,
                 repeatDelay: 0.5,
                 ease: 'linear',
               },
               y: {
-                duration: 12,
+                duration: 13.5,
                 repeat: Infinity,
                 repeatDelay: 0.5,
                 ease: 'easeInOut',
               },
               opacity: {
-                duration: 12,
+                duration: 13.5,
                 times: [0, 0.04, 0.5, 0.95, 1],
                 repeat: Infinity,
                 repeatDelay: 0.5,
               },
             }}
-            className="relative w-[180px] h-[75px]"
+            className="relative w-[195px] h-[80px]"
           >
             {/* Bird 1 (Trailing left, middle height) */}
-            <div className="absolute left-0 top-5">
-              <FlappingBird scale={0.96} delay={0} flapDuration={0.54} />
+            <div className="absolute left-0 top-6">
+              <RealFlappingBird scale={0.92} delay={0} flapDuration={0.58} />
             </div>
 
-            {/* Bird 2 (Middle, slightly higher — matches sketch formation) */}
+            {/* Bird 2 (Middle leader, higher) */}
             <div className="absolute left-16 top-0">
-              <FlappingBird scale={1.12} delay={0.18} flapDuration={0.5} />
+              <RealFlappingBird scale={1.08} delay={0.18} flapDuration={0.54} />
             </div>
 
-            {/* Bird 3 (Lead bird on the right, slightly lower) */}
-            <div className="absolute left-32 top-7">
-              <FlappingBird scale={0.88} delay={0.34} flapDuration={0.58} />
+            {/* Bird 3 (Front-right bird, slightly lower) */}
+            <div className="absolute left-36 top-8">
+              <RealFlappingBird scale={0.86} delay={0.34} flapDuration={0.62} />
             </div>
           </motion.div>
         </div>
       )}
 
       {/* =================================================================== */}
-      {/* 3. BOTTOM-RIGHT BLOOMING PLANT (Blooms once page loaded & sun is up)*/}
+      {/* 3. BOTTOM-RIGHT BLOOMING PLANT (Bigger, Static, in Right Whitespace,*/}
+      {/*    with Soil sweeping below the Hero Image Slideshow)               */}
       {/* =================================================================== */}
-      <div className="hidden md:block absolute bottom-[128px] lg:bottom-[142px] right-0 w-[185px] h-[235px] lg:w-[210px] lg:h-[265px]">
+      <div className="hidden md:block absolute bottom-[44px] lg:bottom-[48px] right-0 w-[440px] h-[290px] lg:w-[540px] lg:h-[330px]">
         <svg
-          viewBox="0 0 190 245"
+          viewBox="0 0 540 330"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full overflow-visible"
         >
-          {/* Soft ambient pastel glow behind the blooming flower */}
+          {/* Soft static pastel aura behind the flower head in the right whitespace */}
           <motion.circle
-            cx="144"
-            cy="84"
-            r="46"
+            cx="484"
+            cy="92"
+            r="58"
             fill="#8ed727"
-            initial={{ opacity: 0, scale: 0.4 }}
+            initial={{ opacity: 0, scale: 0.5 }}
             animate={
               sunIsUp
-                ? { opacity: 0.14, scale: [0.95, 1.08, 0.95] }
-                : { opacity: 0, scale: 0.4 }
+                ? { opacity: 0.13, scale: 1 }
+                : { opacity: 0, scale: 0.5 }
             }
-            transition={{
-              opacity: { duration: 0.7, delay: 0.5 },
-              scale: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-            }}
+            transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
           />
 
-          {/* Ground Mound Curve at the bottom right (matches sketch base line) */}
+          {/* Soil / Ground Curve sweeping below the right portion of the image slideshow up into the right whitespace */}
           <motion.path
-            d="M 20 228 Q 92 216 144 220 Q 170 222 190 215"
+            d="M 20 296 C 160 294, 290 286, 395 270 C 455 260, 505 256, 540 260"
             stroke={LINE_STROKE}
-            strokeWidth="2.8"
+            strokeWidth="3"
             strokeLinecap="round"
             fill="none"
             initial={{ pathLength: 0, opacity: 0 }}
@@ -357,14 +514,14 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                 ? { pathLength: 1, opacity: 1 }
                 : { pathLength: 0, opacity: 0 }
             }
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
           />
 
-          {/* Subtle grassy highlight under the ground line */}
+          {/* Soft grassy soil highlight sweeping below the slideshow */}
           <motion.path
-            d="M 48 232 Q 112 223 176 227"
-            stroke="rgba(142, 215, 39, 0.42)"
-            strokeWidth="3.5"
+            d="M 65 302 C 195 299, 315 290, 415 275 C 468 267, 510 264, 538 266"
+            stroke="rgba(142, 215, 39, 0.45)"
+            strokeWidth="4.2"
             strokeLinecap="round"
             fill="none"
             initial={{ pathLength: 0, opacity: 0 }}
@@ -373,29 +530,16 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                 ? { pathLength: 1, opacity: 1 }
                 : { pathLength: 0, opacity: 0 }
             }
-            transition={{ duration: 0.4, delay: 0.08, ease: 'easeOut' }}
+            transition={{ duration: 0.55, delay: 0.08, ease: 'easeOut' }}
           />
 
-          {/* Swaying Plant Group anchored at the soil root (138, 220) */}
-          <motion.g
-            style={{ transformOrigin: '138px 220px' }}
-            animate={
-              sunIsUp
-                ? { rotate: [-1.8, 2.2, -1.8] }
-                : { rotate: 0 }
-            }
-            transition={{
-              duration: 5,
-              delay: 1.0,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
-            {/* Main Curved Green Stem growing upward */}
+          {/* Static Plant Group rooted at (482, 258) strictly inside the right whitespace */}
+          <g>
+            {/* Main Curved Green Stem growing upward (completely static once grown) */}
             <motion.path
-              d="M 138 220 C 132 184, 152 142, 144 86"
+              d="M 482 258 C 476 210, 496 156, 484 92"
               stroke="rgba(142, 215, 39, 0.65)"
-              strokeWidth="5.2"
+              strokeWidth="6.2"
               strokeLinecap="round"
               fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
@@ -404,12 +548,12 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                   ? { pathLength: 1, opacity: 1 }
                   : { pathLength: 0, opacity: 0 }
               }
-              transition={{ duration: 0.55, delay: 0.12, ease: 'easeOut' }}
+              transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
             />
             <motion.path
-              d="M 138 220 C 132 184, 152 142, 144 86"
+              d="M 482 258 C 476 210, 496 156, 484 92"
               stroke={LINE_STROKE}
-              strokeWidth="2.6"
+              strokeWidth="2.8"
               strokeLinecap="round"
               fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
@@ -418,83 +562,73 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                   ? { pathLength: 1, opacity: 1 }
                   : { pathLength: 0, opacity: 0 }
               }
-              transition={{ duration: 0.55, delay: 0.12, ease: 'easeOut' }}
+              transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
             />
 
-            {/* Left Leaf unfurling from stem at (137, 168) */}
+            {/* Left Leaf unfurling smoothly and remaining static at (482, 194) */}
             <motion.g
-              style={{ transformOrigin: '137px 168px' }}
-              initial={{ scale: 0, opacity: 0, rotate: -35 }}
+              style={{ transformOrigin: '482px 194px' }}
+              initial={{ scale: 0, opacity: 0, rotate: -25 }}
               animate={
                 sunIsUp
                   ? { scale: 1, opacity: 1, rotate: 0 }
-                  : { scale: 0, opacity: 0, rotate: -35 }
+                  : { scale: 0, opacity: 0, rotate: -25 }
               }
-              transition={{
-                type: 'spring',
-                stiffness: 230,
-                damping: 14,
-                delay: 0.42,
-              }}
+              transition={{ duration: 0.45, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
             >
               <path
-                d="M 137 168 C 112 166, 100 146, 116 136 C 128 128, 139 150, 137 168 Z"
+                d="M 482 194 C 450 192, 436 166, 454 154 C 468 144, 484 170, 482 194 Z"
                 fill="rgba(142, 215, 39, 0.52)"
                 stroke={LINE_STROKE}
-                strokeWidth="2.3"
+                strokeWidth="2.4"
                 strokeLinejoin="round"
               />
               <path
-                d="M 135 165 Q 122 153 116 142"
+                d="M 480 190 Q 465 175 456 161"
                 stroke={LINE_STROKE}
-                strokeWidth="1.6"
+                strokeWidth="1.7"
                 strokeLinecap="round"
               />
             </motion.g>
 
-            {/* Right Leaf unfurling from stem at (145, 144) */}
+            {/* Right Leaf unfurling smoothly and remaining static at (489, 166) */}
             <motion.g
-              style={{ transformOrigin: '145px 144px' }}
-              initial={{ scale: 0, opacity: 0, rotate: 35 }}
+              style={{ transformOrigin: '489px 166px' }}
+              initial={{ scale: 0, opacity: 0, rotate: 25 }}
               animate={
                 sunIsUp
                   ? { scale: 1, opacity: 1, rotate: 0 }
-                  : { scale: 0, opacity: 0, rotate: 35 }
+                  : { scale: 0, opacity: 0, rotate: 25 }
               }
-              transition={{
-                type: 'spring',
-                stiffness: 230,
-                damping: 14,
-                delay: 0.54,
-              }}
+              transition={{ duration: 0.45, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
               <path
-                d="M 145 144 C 170 142, 180 122, 166 112 C 154 104, 143 126, 145 144 Z"
+                d="M 489 166 C 520 164, 532 138, 514 126 C 500 116, 487 142, 489 166 Z"
                 fill="rgba(142, 215, 39, 0.52)"
                 stroke={LINE_STROKE}
-                strokeWidth="2.3"
+                strokeWidth="2.4"
                 strokeLinejoin="round"
               />
               <path
-                d="M 147 141 Q 158 129 165 118"
+                d="M 491 162 Q 505 147 513 133"
                 stroke={LINE_STROKE}
-                strokeWidth="1.6"
+                strokeWidth="1.7"
                 strokeLinecap="round"
               />
             </motion.g>
 
-            {/* ================= BLOOMING FLOWER HEAD AT (144, 80) ================= */}
-            <g transform="translate(144, 80)">
-              {/* 5 Large Rounded Petals unfolding one by one */}
+            {/* ================= LARGER, STATIC BLOOMING FLOWER AT (484, 86) ================= */}
+            <g transform="translate(484, 86)">
+              {/* 5 Larger Rounded Petals unfolding smoothly and staying static */}
               {petalAngles.map((angle, idx) => (
                 <g key={angle} transform={`rotate(${angle})`}>
                   <motion.path
-                    d="M 0 -7 C -17 -16, -21 -42, 0 -44 C 21 -42, 17 -16, 0 -7 Z"
-                    fill={idx % 2 === 0 ? 'rgba(255, 107, 139, 0.45)' : 'rgba(255, 148, 172, 0.40)'}
+                    d="M 0 -8 C -23 -20, -28 -53, 0 -56 C 28 -53, 23 -20, 0 -8 Z"
+                    fill={idx % 2 === 0 ? 'rgba(255, 107, 139, 0.46)' : 'rgba(255, 148, 172, 0.40)'}
                     stroke={LINE_STROKE}
-                    strokeWidth="2.4"
+                    strokeWidth="2.5"
                     strokeLinejoin="round"
-                    style={{ transformOrigin: '0px -5px' }}
+                    style={{ transformOrigin: '0px -6px' }}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={
                       sunIsUp
@@ -502,17 +636,16 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                         : { scale: 0, opacity: 0 }
                     }
                     transition={{
-                      type: 'spring',
-                      stiffness: 220,
-                      damping: 13,
-                      delay: 0.65 + idx * 0.1,
+                      duration: 0.48,
+                      delay: 0.65 + idx * 0.09,
+                      ease: [0.22, 1, 0.36, 1],
                     }}
                   />
                   {/* Delicate inner petal crease line */}
                   <motion.path
-                    d="M 0 -13 L 0 -29"
+                    d="M 0 -15 L 0 -37"
                     stroke="rgba(255, 107, 139, 0.48)"
-                    strokeWidth="1.6"
+                    strokeWidth="1.7"
                     strokeLinecap="round"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={
@@ -521,14 +654,15 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                         : { pathLength: 0, opacity: 0 }
                     }
                     transition={{
-                      duration: 0.3,
-                      delay: 0.8 + idx * 0.1,
+                      duration: 0.35,
+                      delay: 0.8 + idx * 0.09,
+                      ease: 'easeOut',
                     }}
                   />
                 </g>
               ))}
 
-              {/* Central Golden Flower Core with Spiral / Bud detail (matching sketch) */}
+              {/* Larger Central Golden Flower Core with Spiral detail */}
               <motion.g
                 initial={{ scale: 0, opacity: 0 }}
                 animate={
@@ -537,63 +671,30 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                     : { scale: 0, opacity: 0 }
                 }
                 transition={{
-                  type: 'spring',
-                  stiffness: 260,
-                  damping: 15,
+                  duration: 0.45,
                   delay: 0.6,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
               >
                 <circle
                   cx="0"
                   cy="0"
-                  r="14"
-                  fill="rgba(254, 206, 19, 0.82)"
+                  r="17.5"
+                  fill="rgba(254, 206, 19, 0.85)"
                   stroke={LINE_STROKE}
-                  strokeWidth="2.4"
+                  strokeWidth="2.5"
                 />
-                {/* Inner botanical swirl matching the user's flower center sketch */}
+                {/* Inner botanical swirl matching the flower center sketch */}
                 <path
-                  d="M -4.5 -2.5 C -2 -8, 6.5 -6.5, 5.5 1 C 4.5 6.5, -3.5 7.5, -6.5 2"
+                  d="M -5.5 -3 C -2.5 -9.5, 8 -7.5, 6.5 1.5 C 5.5 7.5, -4.5 9, -8 2.5"
                   stroke={LINE_STROKE}
-                  strokeWidth="2.0"
+                  strokeWidth="2.2"
                   strokeLinecap="round"
                   fill="none"
                 />
               </motion.g>
-
-              {/* Subtle Blooming Pollen / Sunlight Sparkles rising once flower opens */}
-              {sunIsUp && (
-                <g>
-                  {[
-                    { cx: -30, cy: -38, color: '#fece13', delay: 1.25 },
-                    { cx: 30, cy: -34, color: '#8ed727', delay: 1.45 },
-                    { cx: 0, cy: -52, color: '#60C8D4', delay: 1.65 },
-                  ].map((sp, i) => (
-                    <motion.circle
-                      key={i}
-                      cx={sp.cx}
-                      cy={sp.cy}
-                      r="2.8"
-                      fill={sp.color}
-                      initial={{ opacity: 0, scale: 0, y: 8 }}
-                      animate={{
-                        opacity: [0, 0.85, 0],
-                        scale: [0.4, 1.15, 0.5],
-                        y: [8, -10, -18],
-                      }}
-                      transition={{
-                        duration: 2.8,
-                        delay: sp.delay,
-                        repeat: Infinity,
-                        repeatDelay: 1.5,
-                        ease: 'easeOut',
-                      }}
-                    />
-                  ))}
-                </g>
-              )}
             </g>
-          </motion.g>
+          </g>
         </svg>
       </div>
     </div>
