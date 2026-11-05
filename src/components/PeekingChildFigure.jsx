@@ -66,7 +66,7 @@ export default function PeekingChildFigure() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.7, y: 6 }}
               transition={{ duration: 0.26, ease: 'backOut' }}
-              className="absolute top-0 left-20 lg:left-24 px-3.5 py-1 rounded-full bg-white/90 border-2 border-[#8ed727]/80 shadow-md text-xs lg:text-sm font-black text-[#091E3A]/85 whitespace-nowrap"
+              className="absolute top-0 left-20 lg:left-24 px-3.5 py-1 rounded-full bg-white/90 border-2 border-[#ADF802]/80 shadow-md text-xs lg:text-sm font-black text-[#091E3A]/85 whitespace-nowrap"
             >
               Hi! 👋
             </motion.div>
@@ -80,7 +80,7 @@ export default function PeekingChildFigure() {
           className="w-full h-full overflow-visible drop-shadow-[0_12px_26px_rgba(9,30,58,0.10)]"
         >
           {/* Soft pastel aura behind the child */}
-          <circle cx="56" cy="82" r="44" fill="#8ed727" fillOpacity="0.11" />
+          <circle cx="56" cy="82" r="44" fill="#ADF802" fillOpacity="0.11" />
           <circle cx="66" cy="108" r="38" fill="#60C8D4" fillOpacity="0.11" />
 
           {/* ================= HANGING PLAYGROUND ROPE (Left Side) ================= */}
@@ -147,7 +147,7 @@ export default function PeekingChildFigure() {
             rx="7"
             ry="4"
             transform="rotate(-8 20 170)"
-            fill="rgba(142, 215, 39, 0.65)"
+            fill="rgba(173, 248, 2, 0.65)"
             stroke={LIMB_STROKE}
             strokeWidth="2.0"
           />
@@ -194,7 +194,7 @@ export default function PeekingChildFigure() {
           {/* Blooming Era Preschool Tee */}
           <path
             d="M 37 78 L 65 82 L 58 120 L 29 116 Z"
-            fill="#8ed727"
+            fill="#ADF802"
             stroke={BODY_STROKE}
             strokeWidth="2.6"
             strokeLinejoin="round"
@@ -284,7 +284,7 @@ export default function PeekingChildFigure() {
                   <g>
                     <path
                       d="M 30 -45 Q 37 -38 34 -29"
-                      stroke="rgba(142, 215, 39, 0.45)"
+                      stroke="rgba(173, 248, 2, 0.45)"
                       strokeWidth="2.2"
                       strokeLinecap="round"
                     />

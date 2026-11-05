@@ -20,7 +20,7 @@ const EIGHT_DIMENSIONS = [
     title: "Experiential Foundational Numeracy",
     desc: "Counting, natural patterns, geometric shapes, hands-on measurement, logical thinking and mathematical problem-solving.",
     icon: Brain,
-    accent: "#8ed727"
+    accent: "#ADF802"
   },
   {
     num: "03",
@@ -34,7 +34,7 @@ const EIGHT_DIMENSIONS = [
     title: "Physical & Sensory Development",
     desc: "Gross motor coordination, fine-finger dexterity, practical-life skills, spatial navigation and rich multisensory exploration.",
     icon: Compass,
-    accent: "#8ed727"
+    accent: "#ADF802"
   },
   {
     num: "05",
@@ -48,7 +48,7 @@ const EIGHT_DIMENSIONS = [
     title: "Creative & Cultural Expression",
     desc: "Open-ended art, rhythm, music, drama, boundless imagination, living Indian heritage, and global cultural awareness.",
     icon: Palette,
-    accent: "#8ed727"
+    accent: "#ADF802"
   },
   {
     num: "07",
@@ -62,7 +62,7 @@ const EIGHT_DIMENSIONS = [
     title: "Future-Ready Capabilities",
     desc: "Human-centric design thinking, early scientific inquiry, logical sequencing, and collaborative problem-solving.",
     icon: Rocket,
-    accent: "#8ed727"
+    accent: "#ADF802"
   }
 ];
 
@@ -151,7 +151,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
             onClick={() => setActiveTab('future-skills')}
             className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all ${
               activeTab === 'future-skills'
-                ? 'bg-[#8ed727] text-[#091E3A] shadow-lg'
+                ? 'bg-[#ADF802] text-[#091E3A] shadow-lg'
                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
@@ -166,7 +166,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
           <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white relative">
             <div className="max-w-7xl mx-auto">
               <div className="text-center max-w-3xl mx-auto mb-14">
-                <span className="px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+                <span className="px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
                   THE PEDAGOGICAL SHIFT
                 </span>
                 <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3 mb-4">
@@ -184,7 +184,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
                     instead: "Instead of only learning about plants...",
                     real: "Children grow them.",
                     desc: "Touching soil, measuring sprout heights, and noting sunlight changes with their own hands.",
-                    color: "#8ed727",
+                    color: "#ADF802",
                     flowClass: "card-flow-lime"
                   },
                   {
@@ -242,11 +242,11 @@ export default function CurriculumPage({ onOpenTourModal }) {
           {/* Section: The Eight Learning Dimensions */}
           <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#091E3A] text-white relative overflow-hidden">
             <div className="ambient-orb w-96 h-96 top-0 left-0 opacity-20" style={{ background: '#60C8D4' }} />
-            <div className="ambient-orb w-96 h-96 bottom-0 right-0 opacity-20" style={{ background: '#8ed727' }} />
+            <div className="ambient-orb w-96 h-96 bottom-0 right-0 opacity-20" style={{ background: '#ADF802' }} />
 
             <div className="max-w-7xl mx-auto relative z-10">
               <div className="text-center max-w-3xl mx-auto mb-14">
-                <span className="px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+                <span className="px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
                   360° DEVELOPMENTAL SPECTRUM
                 </span>
                 <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-4">
@@ -260,7 +260,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {EIGHT_DIMENSIONS.map((dim, dIdx) => {
                   const Icon = dim.icon;
-                  const paletteColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0', '#8ed727', '#60C8D4', '#fece13'];
+                  const paletteColors = ['#ADF802', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0', '#ADF802', '#60C8D4', '#fece13'];
                   const dColor = paletteColors[dIdx % paletteColors.length];
                   return (
                     <motion.div
@@ -302,7 +302,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
             </div>
           </section>
 
-          <FlowyWaveDivider flip={true} fill="#FFFFFF" accentColor="#8ed727" />
+          <FlowyWaveDivider flip={true} fill="#FFFFFF" accentColor="#ADF802" />
 
           {/* Section: Experiential FLN & Worksheets With Purpose */}
           <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
@@ -330,7 +330,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
                   whileHover={{ y: -6, scale: 1.01 }}
                   className="p-8 rounded-[36px] card-flow-lime border-2 shadow-lg transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-[#8ed727] border-2 border-white text-[#091E3A] flex items-center justify-center font-black mb-6 shadow-md">
+                  <div className="w-12 h-12 rounded-2xl bg-[#ADF802] border-2 border-white text-[#091E3A] flex items-center justify-center font-black mb-6 shadow-md">
                     123
                   </div>
                   <h3 className="text-2xl font-black text-[#091E3A] mb-3">
@@ -378,7 +378,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {DISCOVERY_SPACES.map((space, idx) => {
-                  const spaceColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0', '#8ed727'];
+                  const spaceColors = ['#ADF802', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0', '#ADF802'];
                   const sColor = spaceColors[idx % spaceColors.length];
                   return (
                     <motion.div
@@ -441,7 +441,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
         <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <span className="px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+              <span className="px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
                 FUTURE-READY LEARNING
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3 mb-4">
@@ -456,7 +456,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {TWELVE_THEMES.map((theme, idx) => {
                 const Icon = theme.icon;
-                const themeColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0'];
+                const themeColors = ['#ADF802', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0'];
                 const tColor = themeColors[idx % themeColors.length];
                 return (
                   <motion.div
@@ -497,8 +497,8 @@ export default function CurriculumPage({ onOpenTourModal }) {
             </div>
 
             {/* Closing Headline Callout */}
-            <div className="mt-16 p-8 sm:p-10 rounded-[36px] bg-[#091E3A] text-white border-2 border-[#8ed727] shadow-2xl text-center max-w-4xl mx-auto">
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#8ed727] mb-3 block">
+            <div className="mt-16 p-8 sm:p-10 rounded-[36px] bg-[#091E3A] text-white border-2 border-[#ADF802] shadow-2xl text-center max-w-4xl mx-auto">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#ADF802] mb-3 block">
                 OUR CORE PROMISE TO PARENTS
               </span>
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight">

@@ -6,7 +6,7 @@ const ORBIT_IMAGES = [
   {
     src: CHILD_PHOTOS.toddlerBeadMaze,
     label: 'Discovery',
-    color: '#8ed727',
+    color: '#ADF802',
     angleDeg: -90,
   },
   {
@@ -145,7 +145,7 @@ export default function LoadingScreen({ onComplete }) {
         className="absolute w-80 h-80 sm:w-[440px] sm:h-[440px] rounded-full blur-3xl opacity-45 pointer-events-none transition-transform duration-1000"
         style={{
           background:
-            'conic-gradient(from 0deg, rgba(142,215,39,0.35), rgba(96,200,212,0.35), rgba(254,206,19,0.35), rgba(255,107,139,0.3), rgba(155,81,224,0.3), rgba(142,215,39,0.35))',
+            'conic-gradient(from 0deg, rgba(173, 248, 2,0.35), rgba(96,200,212,0.35), rgba(254,206,19,0.35), rgba(255,107,139,0.3), rgba(155,81,224,0.3), rgba(173, 248, 2,0.35))',
           transform: isExpanded ? 'scale(1.12)' : 'scale(0.65)',
         }}
       />
@@ -218,14 +218,14 @@ export default function LoadingScreen({ onComplete }) {
             repeat: phase === 'collapse' ? 0 : Infinity,
             ease: 'easeInOut',
           }}
-          className="relative z-30 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-white p-2 border-4 border-[#8ed727] shadow-[0_16px_48px_rgba(9,30,58,0.18),0_0_36px_rgba(142,215,39,0.45)] flex items-center justify-center"
+          className="relative z-30 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-white p-2 border-4 border-[#ADF802] shadow-[0_16px_48px_rgba(9,30,58,0.18),0_0_36px_rgba(173, 248, 2,0.45)] flex items-center justify-center"
         >
           {/* Spinning multicolor halo ring on the logo */}
           <div
             className="absolute -inset-1.5 rounded-full opacity-75 pointer-events-none animate-loader-orbit"
             style={{
               background:
-                'conic-gradient(from 0deg, #8ed727, #60C8D4, #fece13, #FF6B8B, #9B51E0, #8ed727)',
+                'conic-gradient(from 0deg, #ADF802, #60C8D4, #fece13, #FF6B8B, #9B51E0, #ADF802)',
               WebkitMask:
                 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
               WebkitMaskComposite: 'xor',
@@ -246,7 +246,7 @@ export default function LoadingScreen({ onComplete }) {
       <div className="relative z-30 mt-3 text-center px-4">
         <p className="text-lg sm:text-xl font-extrabold text-[#091E3A] tracking-tight">
           Blooming Era{' '}
-          <span className="px-2 py-0.5 text-[10px] sm:text-xs font-black uppercase tracking-wider bg-[#8ed727] text-[#091E3A] rounded-full align-middle ml-1">
+          <span className="px-2 py-0.5 text-[10px] sm:text-xs font-black uppercase tracking-wider bg-[#ADF802] text-[#091E3A] rounded-full align-middle ml-1">
             Preschools
           </span>
         </p>
@@ -263,7 +263,7 @@ export default function LoadingScreen({ onComplete }) {
             className="h-full rounded-full"
             style={{
               background:
-                'linear-gradient(90deg, #8ed727 0%, #60C8D4 35%, #fece13 70%, #FF6B8B 100%)',
+                'linear-gradient(90deg, #ADF802 0%, #60C8D4 35%, #fece13 70%, #FF6B8B 100%)',
             }}
           />
         </div>

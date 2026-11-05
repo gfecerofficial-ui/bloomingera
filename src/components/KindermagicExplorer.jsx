@@ -59,7 +59,7 @@ export default function KindermagicExplorer() {
                   <div className="flex items-center justify-between mb-2.5">
                     <div 
                       className="w-10 h-10 rounded-xl flex items-center justify-center shadow-xs"
-                      style={{ backgroundColor: `${world.color}25`, color: world.color === '#8ed727' ? '#091E3A' : world.color }}
+                      style={{ backgroundColor: `${world.color}25`, color: world.color === '#ADF802' ? '#091E3A' : world.color }}
                     >
                       {getIcon(world.icon)}
                     </div>
@@ -81,7 +81,7 @@ export default function KindermagicExplorer() {
                     <motion.div 
                       layoutId="activeWorldIndicator"
                       className="absolute -bottom-1 left-4 right-4 h-1.5 rounded-full"
-                      style={{ backgroundColor: world.color === '#8ed727' ? '#8ed727' : world.color }}
+                      style={{ backgroundColor: world.color === '#ADF802' ? '#ADF802' : world.color }}
                     />
                   )}
                 </motion.button>

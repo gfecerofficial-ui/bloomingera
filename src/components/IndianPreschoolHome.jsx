@@ -98,7 +98,7 @@ const HERO_SLIDES = [
     tertiaryImage: CHILD_PHOTOS.toddlerLaughingBook,
     badgeTitle: "Proudly Indian, Powerfully Global",
     badgeSub: "Futuristic by Design • Childhood First",
-    accent: "#8ed727"
+    accent: "#ADF802"
   },
   {
     id: 2,
@@ -140,7 +140,7 @@ const HERO_SLIDES = [
     tertiaryImage: CHILD_PHOTOS.playgroupFloorToddler,
     badgeTitle: "Franchise Starting at ₹2.50 Lakh",
     badgeSub: "360° Setup, Training & Admissions Support",
-    accent: "#8ed727"
+    accent: "#ADF802"
   }
 ];
 
@@ -153,10 +153,10 @@ const WHY_PARENTS_CARDS = [
     image: CHILD_PHOTOS.toddlerBeadMaze,
     icon: Sparkles,
     badge: "Experiential Discovery",
-    color: "#8ed727",
+    color: "#ADF802",
     bgGradient: "linear-gradient(135deg, #d8f792 0%, #ebfaaf 25%, #ffffff 50%, #d8f792 75%, #cef578 100%)",
-    borderColor: "rgba(142, 215, 39, 0.38)",
-    shadow: "0 20px 50px -10px rgba(142,215,39,0.32)",
+    borderColor: "rgba(173, 248, 2, 0.38)",
+    shadow: "0 20px 50px -10px rgba(173, 248, 2,0.32)",
   },
   {
     id: 2,
@@ -217,17 +217,17 @@ const STATS_ITEMS = [
     icon: GraduationCap,
     theme: {
       id: "lime",
-      bgGradient: "linear-gradient(135deg, #8ed727 0%, #7ec71e 50%, #99e22f 100%)",
+      bgGradient: "linear-gradient(135deg, #ADF802 0%, #9fe000 50%, #bbf926 100%)",
       waveColor1: "rgba(255, 255, 255, 0.32)",
       waveColor2: "rgba(105, 175, 18, 0.28)",
       waveColor3: "rgba(255, 255, 255, 0.20)",
       sandShimmer: "rgba(235, 255, 190, 0.45)",
       borderColor: "rgba(255, 255, 255, 0.65)",
-      shadow: "0 22px 55px rgba(142, 215, 39, 0.35)",
+      shadow: "0 22px 55px rgba(173, 248, 2, 0.35)",
       textColor: "#091E3A",
       subTextColor: "rgba(9, 30, 58, 0.82)",
       iconBg: "#091E3A",
-      iconColor: "#8ed727",
+      iconColor: "#ADF802",
     }
   },
   {
@@ -313,10 +313,10 @@ const ACTIVITIES = [
     description: "Storytelling, phonics games, puppetry and role-play nurture communication, imagination and early literacy.",
     image: CHILD_PHOTOS.toddlerLaughingBook,
     icon: BookOpen,
-    accent: "#8ed727",
+    accent: "#ADF802",
     cardBg: "linear-gradient(135deg, #ecfad0 0%, #ffffff 35%, #f4fce5 70%, #d8f792 100%)",
-    borderColor: "rgba(142, 215, 39, 0.38)",
-    glowColor: "rgba(142, 215, 39, 0.25)",
+    borderColor: "rgba(173, 248, 2, 0.38)",
+    glowColor: "rgba(173, 248, 2, 0.25)",
   },
   {
     id: "maker-studio",
@@ -392,10 +392,10 @@ const PROGRAMMES_LIST = [
     description: "Language, early concepts, imagination and independence blossom through stories, exploration and purposeful play.",
     btnText: "Explore Nursery",
     image: CHILD_PHOTOS.fingerPaintingGirl,
-    color: "#8ed727",
-    cardBg: "linear-gradient(180deg, rgba(142,215,39,0.38) 0%, rgba(9,30,58,0.95) 80%)",
-    accentBorder: "#8ed727",
-    glowColor: "rgba(142,215,39,0.55)",
+    color: "#ADF802",
+    cardBg: "linear-gradient(180deg, rgba(173, 248, 2,0.38) 0%, rgba(9,30,58,0.95) 80%)",
+    accentBorder: "#ADF802",
+    glowColor: "rgba(173, 248, 2,0.55)",
     badge: "3+ Years"
   },
   {
@@ -436,18 +436,18 @@ const PRIMEX_STEPS = [
     summary: "Discover ideas through hands-on experiences.",
     detail: "Children touch, manipulate and investigate real-world sensory materials, wooden blocks, magnifiers and story props to spark natural curiosity.",
     image: CHILD_PHOTOS.toddlerBeadMaze,
-    color: "#8ed727",
+    color: "#ADF802",
     theme: {
-      bgGradient: "linear-gradient(135deg, #8ed727 0%, #7ec71e 50%, #99e22f 100%)",
+      bgGradient: "linear-gradient(135deg, #ADF802 0%, #9fe000 50%, #bbf926 100%)",
       waveColor1: "rgba(255, 255, 255, 0.32)",
       waveColor2: "rgba(105, 175, 18, 0.28)",
       sandShimmer: "rgba(235, 255, 190, 0.45)",
       borderColor: "rgba(255, 255, 255, 0.65)",
-      shadow: "0 14px 35px rgba(142, 215, 39, 0.28)",
+      shadow: "0 14px 35px rgba(173, 248, 2, 0.28)",
       textColor: "#091E3A",
       subTextColor: "rgba(9, 30, 58, 0.82)",
       pillBg: "#091E3A",
-      pillText: "#8ed727",
+      pillText: "#ADF802",
       arrowColor: "#091E3A",
     }
   },
@@ -544,9 +544,9 @@ const FUTURE_SKILLS = [
     description: "Asking questions, observing, comparing and exploring solutions.",
     image: CHILD_PHOTOS.woodenBlocksChild,
     icon: Brain,
-    accent: "#8ed727",
+    accent: "#ADF802",
     bgGradient: "linear-gradient(135deg, #d8f792 0%, #ffffff 35%, #eefcd5 70%, #c4f364 100%)",
-    borderColor: "#8ed727",
+    borderColor: "#ADF802",
   },
   {
     title: "Creativity",
@@ -615,7 +615,7 @@ const LEADERSHIP_TEAM = [
     bio: "The vision behind Blooming Era's distinctive, child-centred and future-ready educational philosophy.",
     initials: "MY",
     badge: "Visionary Founder",
-    accent: "#8ed727",
+    accent: "#ADF802",
     photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -655,7 +655,7 @@ const PARENT_STORIES = [
     narrative: "From shy first mornings to eagerly sharing stories at home, parents celebrate how story circles, puppetry and warm encouragement nurture expressive, self-assured young communicators.",
     image: CHILD_PHOTOS.toddlerLaughingBook,
     tag: "Playgroup & Nursery Families",
-    color: "#8ed727"
+    color: "#ADF802"
   },
   {
     title: "Learning With Excitement",
@@ -671,7 +671,7 @@ const PARENT_STORIES = [
     narrative: "Parents value our warm educator-child bonds, transparent holistic progress observations and a nurturing campus that feels like a second home.",
     image: CHILD_PHOTOS.classroomDrawing,
     tag: "Junior & Senior KG Families",
-    color: "#8ed727"
+    color: "#ADF802"
   }
 ];
 
@@ -699,7 +699,7 @@ const EVENTS_LIST = [
     description: "Nature activities and early environmental responsibility.",
     image: CHILD_PHOTOS.natureExplorerChild,
     badge: "Eco Explorers",
-    color: "#8ed727"
+    color: "#ADF802"
   },
   {
     title: "Blooming Together",
@@ -719,7 +719,7 @@ const BLOG_POSTS = [
     category: "Learning Philosophy",
     readTime: "4 Min Read",
     image: CHILD_PHOTOS.toddlerBeadMaze,
-    color: "#8ed727"
+    color: "#ADF802"
   },
   {
     title: "Why Future Skills Begin Before School.",
@@ -758,7 +758,7 @@ const VIDEO_BYTES = [
     title: "Love Is the Language of Childhood",
     duration: "01:45",
     tag: "Warm Relationships",
-    color: "#8ed727",
+    color: "#ADF802",
     image: CHILD_PHOTOS.toddlerLaughingBook,
     caption: "Every morning begins with warm smiles, reassuring hugs and a classroom where every child feels cherished."
   },
@@ -831,7 +831,7 @@ export default function IndianPreschoolHome({
     : GALLERY_ITEMS.filter((item) => item.category === galleryFilter);
 
   return (
-    <div className="min-h-screen bg-[#F3FAFC] text-[#091E3A] relative overflow-x-hidden selection:bg-[#8ed727] selection:text-[#091E3A]">
+    <div className="min-h-screen bg-[#F3FAFC] text-[#091E3A] relative overflow-x-hidden selection:bg-[#ADF802] selection:text-[#091E3A]">
 
       {/* ===================================================================== */}
       {/* TOP ANNOUNCEMENT BAR & GLASSMORPHIC FLOATING INDIAN PRESCHOOL NAVBAR  */}
@@ -841,7 +841,7 @@ export default function IndianPreschoolHome({
           <div className="bg-[#091E3A] text-white text-xs py-2.5 px-4 border-b border-white/10 relative z-50">
             <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2.5 flex-wrap">
-                <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#8ed727] text-[#091E3A] font-extrabold text-[11px] shadow-sm">
+                <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#ADF802] text-[#091E3A] font-extrabold text-[11px] shadow-sm">
                   <Flower2 className="w-3.5 h-3.5 text-[#091E3A] animate-spin" style={{ animationDuration: '10s' }} />
                   THE FUTURE BLOOMS HERE
                 </span>
@@ -856,7 +856,7 @@ export default function IndianPreschoolHome({
               <div className="flex items-center gap-3">
                 <a
                   href="tel:+919647974093"
-                  className="inline-flex items-center gap-1.5 text-white hover:text-[#8ed727] font-bold transition-colors"
+                  className="inline-flex items-center gap-1.5 text-white hover:text-[#ADF802] font-bold transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#60C8D4]" />
                   <span>+91 96479 74093</span>
@@ -865,7 +865,7 @@ export default function IndianPreschoolHome({
                 {onSwitchToSimulatorView && (
                   <button
                     onClick={onSwitchToSimulatorView}
-                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#60C8D4]/20 hover:bg-[#60C8D4]/35 text-[#8ed727] font-bold text-[11px] border border-[#60C8D4]/40 transition-all"
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#60C8D4]/20 hover:bg-[#60C8D4]/35 text-[#ADF802] font-bold text-[11px] border border-[#60C8D4]/40 transition-all"
                   >
                     <span>Switch to Interactive Lab View (Preview 7)</span>
                     <ArrowUpRight className="w-3 h-3" />
@@ -876,7 +876,7 @@ export default function IndianPreschoolHome({
                   className="hidden md:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-[11px] border border-white/20 transition-all"
                 >
                   <span>All Design Previews (1–8)</span>
-                  <ArrowUpRight className="w-3 h-3 text-[#8ed727]" />
+                  <ArrowUpRight className="w-3 h-3 text-[#ADF802]" />
                 </a>
               </div>
             </div>
@@ -887,7 +887,7 @@ export default function IndianPreschoolHome({
             <div className="max-w-7xl mx-auto glass-panel-elevated rounded-full py-2.5 px-4 sm:px-7 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.1)] bg-white/85 backdrop-blur-2xl">
               <div className="flex items-center justify-between gap-4">
                 <a href="#" className="flex items-center gap-3 group">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#8ed727] shadow-md bg-white p-0.5 group-hover:scale-105 transition-transform">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#ADF802] shadow-md bg-white p-0.5 group-hover:scale-105 transition-transform">
                     <img
                       src="/logo.jpeg"
                       alt="Blooming Era Preschools"
@@ -899,7 +899,7 @@ export default function IndianPreschoolHome({
                       <span className="font-extrabold text-lg sm:text-xl text-[#091E3A] tracking-tight">
                         Blooming Era
                       </span>
-                      <span className="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-[#8ed727] text-[#091E3A] rounded-full">
+                      <span className="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-[#ADF802] text-[#091E3A] rounded-full">
                         Preschools
                       </span>
                     </div>
@@ -971,7 +971,7 @@ export default function IndianPreschoolHome({
         />
         <div
           className="ambient-orb w-[580px] h-[580px] -top-32 -right-16 opacity-40"
-          style={{ background: 'radial-gradient(circle, rgba(142,215,39,0.38) 0%, rgba(142,215,39,0.16) 38%, rgba(142,215,39,0.04) 60%, transparent 75%)', animationDelay: '-5s' }}
+          style={{ background: 'radial-gradient(circle, rgba(173, 248, 2,0.38) 0%, rgba(173, 248, 2,0.16) 38%, rgba(173, 248, 2,0.04) 60%, transparent 75%)', animationDelay: '-5s' }}
         />
         <div
           className="ambient-orb w-[500px] h-[500px] -top-40 left-1/3 opacity-30"
@@ -1025,7 +1025,7 @@ export default function IndianPreschoolHome({
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-xs"
                 aria-label="Previous Hero Slide"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -1034,7 +1034,7 @@ export default function IndianPreschoolHome({
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-xs"
                 aria-label="Next Hero Slide"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -1113,10 +1113,10 @@ export default function IndianPreschoolHome({
                   {/* Organic Preschool Hero Showcase - Melting Frame & Ambient Glow */}
                   <div className="relative mx-auto max-w-xl">
                     {/* Deep melting glow wash dissolving seamlessly into hero background */}
-                    <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#8ed727]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
+                    <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#ADF802]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
 
                     {/* Luminous core aura subtly glowing around the frame */}
-                    <div className="absolute -inset-4 sm:-inset-6 rounded-[50px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#8ed727]/35 animate-glow-melt-core pointer-events-none" />
+                    <div className="absolute -inset-4 sm:-inset-6 rounded-[50px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#ADF802]/35 animate-glow-melt-core pointer-events-none" />
 
                     {/* Image Showcase Frame with fluid organic border melting directly into background */}
                     <div
@@ -1154,7 +1154,7 @@ export default function IndianPreschoolHome({
                         </svg>
                       </div>
                       <div className="absolute bottom-1/3 left-3 z-30 pointer-events-none animate-sparkle-star-4">
-                        <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#8ed727] drop-shadow-[0_0_8px_rgba(142,215,39,0.95)]">
+                        <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#ADF802] drop-shadow-[0_0_8px_rgba(173, 248, 2,0.95)]">
                           <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
                         </svg>
                       </div>
@@ -1195,7 +1195,7 @@ export default function IndianPreschoolHome({
                             <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
                             <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
                           </div>
-                          <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#8ed727] flex-shrink-0">
+                          <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] flex-shrink-0">
                             Admissions Open
                           </span>
                         </motion.div>
@@ -1210,7 +1210,7 @@ export default function IndianPreschoolHome({
                         whileHover={{ scale: 1.08 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-                        className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-sm"
+                        className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-sm"
                         aria-label="Previous Hero Slide"
                       >
                         <ChevronLeft className="w-4 h-4" />
@@ -1219,7 +1219,7 @@ export default function IndianPreschoolHome({
                         whileHover={{ scale: 1.08 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-                        className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#8ed727] transition-colors shadow-sm"
+                        className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-sm"
                         aria-label="Next Hero Slide"
                       >
                         <ChevronRight className="w-4 h-4" />
@@ -1321,10 +1321,10 @@ export default function IndianPreschoolHome({
             <div className="hidden lg:block lg:col-span-7 relative">
               <div className="relative mx-auto max-w-lg lg:max-w-none">
                 {/* Deep melting glow wash dissolving seamlessly into hero background */}
-                <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#8ed727]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
+                <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#ADF802]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
 
                 {/* Luminous core aura subtly glowing around the frame */}
-                <div className="absolute -inset-4 sm:-inset-6 rounded-[50px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#8ed727]/35 animate-glow-melt-core pointer-events-none" />
+                <div className="absolute -inset-4 sm:-inset-6 rounded-[50px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#ADF802]/35 animate-glow-melt-core pointer-events-none" />
 
                 {/* Image Showcase Frame with fluid organic border melting directly into background */}
                 <div
@@ -1362,7 +1362,7 @@ export default function IndianPreschoolHome({
                     </svg>
                   </div>
                   <div className="absolute bottom-1/3 left-3 z-30 pointer-events-none animate-sparkle-star-4">
-                    <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#8ed727] drop-shadow-[0_0_8px_rgba(142,215,39,0.95)]">
+                    <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#ADF802] drop-shadow-[0_0_8px_rgba(173, 248, 2,0.95)]">
                       <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
                     </svg>
                   </div>
@@ -1403,7 +1403,7 @@ export default function IndianPreschoolHome({
                         <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
                         <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
                       </div>
-                      <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#8ed727] flex-shrink-0">
+                      <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] flex-shrink-0">
                         Admissions Open
                       </span>
                     </motion.div>
@@ -1433,18 +1433,18 @@ export default function IndianPreschoolHome({
             }}
           >
             {/* Decorative Glows */}
-            <div className="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-[#8ed727]/25 blur-3xl pointer-events-none animate-pulse" />
+            <div className="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-[#ADF802]/25 blur-3xl pointer-events-none animate-pulse" />
             <div className="absolute left-1/3 -bottom-16 w-72 h-72 rounded-full bg-[#60C8D4]/25 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
             <div className="absolute left-4 top-1/2 w-48 h-48 rounded-full bg-[#fece13]/15 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '4s' }} />
 
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
               <div className="flex flex-col sm:flex-row items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-[#8ed727] text-[#091E3A] flex items-center justify-center font-black text-2xl shadow-lg flex-shrink-0">
+                <div className="w-14 h-14 rounded-2xl bg-[#ADF802] text-[#091E3A] flex items-center justify-center font-black text-2xl shadow-lg flex-shrink-0">
                   🌱
                 </div>
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#60C8D4]/25 text-[#8ed727] text-[11px] font-extrabold uppercase tracking-wider mb-1">
-                    <span className="w-2 h-2 rounded-full bg-[#8ed727] animate-ping" />
+                  <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#60C8D4]/25 text-[#ADF802] text-[11px] font-extrabold uppercase tracking-wider mb-1">
+                    <span className="w-2 h-2 rounded-full bg-[#ADF802] animate-ping" />
                     <span>2026–2027 Academic Session</span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
@@ -1472,7 +1472,7 @@ export default function IndianPreschoolHome({
                   href="tel:+919647974093"
                   className="px-5 py-3.5 rounded-full text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/25 transition-all flex items-center gap-2 shadow-sm"
                 >
-                  <Phone className="w-3.5 h-3.5 text-[#8ed727]" />
+                  <Phone className="w-3.5 h-3.5 text-[#ADF802]" />
                   <span>+91 96479 74093</span>
                 </motion.a>
               </div>
@@ -1495,7 +1495,7 @@ export default function IndianPreschoolHome({
               Not Just Different.{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">Thoughtfully Different.</span>
-                <span className="absolute bottom-1 left-0 right-0 h-3.5 bg-[#8ed727] -z-0 rounded-full" />
+                <span className="absolute bottom-1 left-0 right-0 h-3.5 bg-[#ADF802] -z-0 rounded-full" />
               </span>
             </h2>
           </div>
@@ -1562,7 +1562,7 @@ export default function IndianPreschoolHome({
         </div>
       </section>
 
-      <FlowyWaveDivider fill="#FFFFFF" accentColor="#8ed727" />
+      <FlowyWaveDivider fill="#FFFFFF" accentColor="#ADF802" />
 
       {/* ===================================================================== */}
       {/* SECTION 04 — WELCOME TO BLOOMING ERA (CIRCULAR PHOTO + FOUNDER)       */}
@@ -1587,7 +1587,7 @@ export default function IndianPreschoolHome({
                 <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
-                  className="absolute -inset-10 rounded-full border-2 border-dashed border-[#8ed727] pointer-events-none hidden sm:block"
+                  className="absolute -inset-10 rounded-full border-2 border-dashed border-[#ADF802] pointer-events-none hidden sm:block"
                 />
 
                 {/* Main Circular Children's Photograph */}
@@ -1600,7 +1600,7 @@ export default function IndianPreschoolHome({
                 </div>
 
                 {/* Satellite Circular Child Photo 1 */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#8ed727] shadow-xl z-20 bg-white animate-float-gentle">
+                <div className="absolute -top-4 -right-4 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#ADF802] shadow-xl z-20 bg-white animate-float-gentle">
                   <img
                     src={CHILD_PHOTOS.toddlerLaughingBook}
                     alt="Happy child reading"
@@ -1635,7 +1635,7 @@ export default function IndianPreschoolHome({
               className="lg:col-span-7 space-y-6"
             >
               <div>
-                <span className="inline-block px-4 py-1 rounded-full bg-[#8ed727]/40 text-[#091E3A] font-extrabold text-xs uppercase tracking-widest mb-2">
+                <span className="inline-block px-4 py-1 rounded-full bg-[#ADF802]/40 text-[#091E3A] font-extrabold text-xs uppercase tracking-widest mb-2">
                   Welcome to
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight">
@@ -1655,13 +1655,13 @@ export default function IndianPreschoolHome({
               <div
                 className="rounded-3xl p-6 border-2 border-[#60C8D4]/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative overflow-hidden"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(243,250,252,0.95) 0%, rgba(96,200,212,0.20) 25%, rgba(255,255,255,0.95) 50%, rgba(142,215,39,0.22) 75%, rgba(254,206,19,0.20) 100%)',
+                  background: 'linear-gradient(135deg, rgba(243,250,252,0.95) 0%, rgba(96,200,212,0.20) 25%, rgba(255,255,255,0.95) 50%, rgba(173, 248, 2,0.22) 75%, rgba(254,206,19,0.20) 100%)',
                   backgroundSize: '240% 240%',
                   animation: 'flowyColorDrift 12s ease-in-out infinite',
                 }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-[#091E3A] text-[#8ed727] flex items-center justify-center font-extrabold text-lg shadow-md flex-shrink-0">
+                  <div className="w-14 h-14 rounded-2xl bg-[#091E3A] text-[#ADF802] flex items-center justify-center font-extrabold text-lg shadow-md flex-shrink-0">
                     MY
                   </div>
                   <div>
@@ -1674,7 +1674,7 @@ export default function IndianPreschoolHome({
                   </div>
                 </div>
                 <div className="sm:text-right">
-                  <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black shadow-xs">
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black shadow-xs">
                     Proudly Indian, Powerfully Global Preschool.
                   </span>
                 </div>
@@ -1903,7 +1903,7 @@ export default function IndianPreschoolHome({
       {/* ===================================================================== */}
       <section id="programmes-india" className="py-16 sm:py-24 px-4 sm:px-6 bg-[#091E3A] text-white relative overflow-hidden">
         <div className="ambient-orb w-96 h-96 top-10 left-10 opacity-20" style={{ background: '#60C8D4' }} />
-        <div className="ambient-orb w-96 h-96 bottom-10 right-10 opacity-20" style={{ background: '#8ed727' }} />
+        <div className="ambient-orb w-96 h-96 bottom-10 right-10 opacity-20" style={{ background: '#ADF802' }} />
 
         {/* Waving Stick Figure Child (STRICTLY HIDDEN ON MOBILE: hidden md:block) */}
         <div className="hidden md:block absolute right-4 sm:right-8 lg:right-16 top-28 sm:top-32 lg:top-36 z-30 pointer-events-auto">
@@ -1912,7 +1912,7 @@ export default function IndianPreschoolHome({
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
               EVERY AGE. A NEW ADVENTURE.
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
@@ -2004,7 +2004,7 @@ export default function IndianPreschoolHome({
         </div>
       </section>
 
-      <FlowyWaveDivider flip={true} fill="#091E3A" accentColor="#8ed727" />
+      <FlowyWaveDivider flip={true} fill="#091E3A" accentColor="#ADF802" />
 
       {/* ===================================================================== */}
       {/* SECTION 08 — OUR SIGNATURE LEARNING PHILOSOPHY (KINDERMAGIC PRIMEX)   */}
@@ -2012,7 +2012,7 @@ export default function IndianPreschoolHome({
       <section id="philosophy" className="py-16 sm:py-24 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
               THE KINDERMAGIC PRIMEX EXPERIENCE
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
@@ -2034,7 +2034,7 @@ export default function IndianPreschoolHome({
                   onClick={() => setActivePrimexStep(i)}
                   className={`p-4 sm:p-5 rounded-3xl text-left transition-all duration-300 relative overflow-hidden group cursor-pointer ${
                     isActive
-                      ? 'bg-[#091E3A] text-white border-2 border-[#8ed727] shadow-2xl scale-105 ring-4 ring-[#8ed727]/30 z-10'
+                      ? 'bg-[#091E3A] text-white border-2 border-[#ADF802] shadow-2xl scale-105 ring-4 ring-[#ADF802]/30 z-10'
                       : 'border-2 hover:scale-[1.03]'
                   }`}
                   style={
@@ -2106,7 +2106,7 @@ export default function IndianPreschoolHome({
                       </span>
                       <ArrowRight
                         className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${
-                          isActive ? 'text-[#8ed727]' : ''
+                          isActive ? 'text-[#ADF802]' : ''
                         }`}
                         style={!isActive ? { color: t.arrowColor } : {}}
                       />
@@ -2262,7 +2262,7 @@ export default function IndianPreschoolHome({
       <section id="holistic" className="py-16 sm:py-24 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
               BEYOND ACADEMICS
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
@@ -2277,7 +2277,7 @@ export default function IndianPreschoolHome({
           <div className="block lg:hidden space-y-3">
             {HOLISTIC_DIMENSIONS.map((dim, idx) => {
               const isActive = activeDimension === idx;
-              const dimColors = ['#8ed727', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
+              const dimColors = ['#ADF802', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
               const dimColor = dimColors[idx % dimColors.length];
               return (
                 <div key={dim.id} className="space-y-3">
@@ -2306,7 +2306,7 @@ export default function IndianPreschoolHome({
                     </div>
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-300 flex-shrink-0 ${
-                        isActive ? 'rotate-180 text-[#8ed727]' : 'text-[#091E3A]/50'
+                        isActive ? 'rotate-180 text-[#ADF802]' : 'text-[#091E3A]/50'
                       }`}
                     />
                   </motion.button>
@@ -2379,7 +2379,7 @@ export default function IndianPreschoolHome({
             {/* 8 Dimension Pills */}
             <div className="col-span-7 grid grid-cols-2 gap-3.5">
               {HOLISTIC_DIMENSIONS.map((dim, idx) => {
-                const dimColors = ['#8ed727', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
+                const dimColors = ['#ADF802', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
                 const dimColor = dimColors[idx % dimColors.length];
                 const isSelected = activeDimension === idx;
                 return (
@@ -2414,7 +2414,7 @@ export default function IndianPreschoolHome({
             {/* Active Dimension Photo Card */}
             <div className="col-span-5">
               {(() => {
-                const activeDimColors = ['#8ed727', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
+                const activeDimColors = ['#ADF802', '#02C9FE', '#FECE13', '#FA0672', '#9B51E0', '#FF8A3D', '#22c55e', '#3B82F6'];
                 const activeDimColor = activeDimColors[activeDimension % activeDimColors.length];
                 return (
                   <div
@@ -2526,7 +2526,7 @@ export default function IndianPreschoolHome({
                         : 'opacity-0 scale-95 pointer-events-none z-0 group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto group-hover:z-20'
                     }`}
                     style={{
-                      background: `linear-gradient(135deg, ${leader.accent === '#091E3A' ? '#60C8D4' : leader.accent}20 0%, #ffffff 40%, #ffffff 60%, ${leader.accent === '#091E3A' ? '#8ed727' : leader.accent}18 100%)`,
+                      background: `linear-gradient(135deg, ${leader.accent === '#091E3A' ? '#60C8D4' : leader.accent}20 0%, #ffffff 40%, #ffffff 60%, ${leader.accent === '#091E3A' ? '#ADF802' : leader.accent}18 100%)`,
                       backgroundSize: '220% 220%',
                       animation: 'flowyColorDrift 9s ease-in-out infinite',
                       borderColor: `${leader.accent === '#091E3A' ? '#60C8D4' : leader.accent}55`,
@@ -2644,17 +2644,17 @@ export default function IndianPreschoolHome({
       <section id="franchise-opportunity" className="py-16 sm:py-24 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="rounded-[40px] bg-gradient-to-br from-[#091E3A] via-[#0D2B52] to-[#091E3A] text-white p-8 sm:p-12 lg:p-16 shadow-2xl border-4 border-white relative overflow-hidden">
-            <div className="ambient-orb w-96 h-96 -top-20 -right-20 opacity-30" style={{ background: '#8ed727' }} />
+            <div className="ambient-orb w-96 h-96 -top-20 -right-20 opacity-30" style={{ background: '#ADF802' }} />
             <div className="ambient-orb w-96 h-96 -bottom-20 -left-20 opacity-25" style={{ background: '#60C8D4' }} />
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               <div className="lg:col-span-7 space-y-6">
-                <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
                   BUILD A BUSINESS THAT BUILDS THE FUTURE
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
                   A Preschool With Purpose.{" "}
-                  <span className="text-[#8ed727]">A Business With Possibilities.</span>
+                  <span className="text-[#ADF802]">A Business With Possibilities.</span>
                 </h2>
                 <p className="text-base sm:text-lg text-white/85 font-medium leading-relaxed">
                   Why open just another preschool when you can introduce a distinctive learning experience to your city? Blooming Era brings together an innovative No-Book curriculum, strong academic foundations, structured franchise support and a cost-conscious school development model — helping entrepreneurs build meaningful educational enterprises.
@@ -2673,9 +2673,9 @@ export default function IndianPreschoolHome({
                     <motion.div
                       key={item}
                       whileHover={{ scale: 1.03, x: 2 }}
-                      className="flex items-center gap-2.5 bg-gradient-to-r from-white/15 via-white/10 to-[#8ed727]/15 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/20 hover:border-[#8ed727]/60 transition-all shadow-sm"
+                      className="flex items-center gap-2.5 bg-gradient-to-r from-white/15 via-white/10 to-[#ADF802]/15 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/20 hover:border-[#ADF802]/60 transition-all shadow-sm"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#8ed727] flex-shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#ADF802] flex-shrink-0" />
                       <span className="text-xs sm:text-sm font-bold text-white">{item}</span>
                     </motion.div>
                   ))}
@@ -2700,13 +2700,13 @@ export default function IndianPreschoolHome({
                 <div
                   className="rounded-[32px] border-2 border-white/40 p-7 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden backdrop-blur-2xl"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(142,215,39,0.14) 35%, rgba(96,200,212,0.14) 70%, rgba(255,255,255,0.16) 100%)',
+                    background: 'linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(173, 248, 2,0.14) 35%, rgba(96,200,212,0.14) 70%, rgba(255,255,255,0.16) 100%)',
                     backgroundSize: '240% 240%',
                     animation: 'flowyColorDrift 11s ease-in-out infinite',
                   }}
                 >
                   {/* Subtle brand glow orbs */}
-                  <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-[#8ed727]/25 blur-3xl pointer-events-none animate-pulse" />
+                  <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-[#ADF802]/25 blur-3xl pointer-events-none animate-pulse" />
                   <div className="absolute -bottom-10 -left-10 w-44 h-44 rounded-full bg-[#60C8D4]/25 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
 
                   <div className="rounded-2xl overflow-hidden h-44 border-2 border-white/80 shadow-md relative z-10">
@@ -2716,7 +2716,7 @@ export default function IndianPreschoolHome({
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-5 rounded-2xl bg-gradient-to-r from-[#8ed727] to-[#a3e83b] text-[#091E3A] shadow-lg border border-white/40 relative z-10">
+                  <div className="p-5 rounded-2xl bg-gradient-to-r from-[#ADF802] to-[#a3e83b] text-[#091E3A] shadow-lg border border-white/40 relative z-10">
                     <p className="text-xs font-extrabold uppercase tracking-wider opacity-85">
                       Investment Highlight
                     </p>
@@ -2761,7 +2761,7 @@ export default function IndianPreschoolHome({
       <section className="py-16 sm:py-20 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
               REAL VOICES. MEANINGFUL EXPERIENCES.
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
@@ -2894,7 +2894,7 @@ export default function IndianPreschoolHome({
       <section className="py-16 sm:py-20 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
               THE BLOOMING JOURNAL
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
@@ -2985,8 +2985,8 @@ export default function IndianPreschoolHome({
                   onClick={() => setGalleryFilter(cat)}
                   className={`px-4 py-2 rounded-full text-xs font-extrabold transition-all ${
                     galleryFilter === cat
-                      ? 'bg-[#091E3A] text-[#8ed727] shadow-md'
-                      : 'glass-pill text-[#091E3A] hover:bg-[#8ed727]/30'
+                      ? 'bg-[#091E3A] text-[#ADF802] shadow-md'
+                      : 'glass-pill text-[#091E3A] hover:bg-[#ADF802]/30'
                   }`}
                 >
                   {cat}
@@ -2997,7 +2997,7 @@ export default function IndianPreschoolHome({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 auto-rows-[210px]">
             {filteredGallery.map((item, gIdx) => {
-              const galleryColors = ['#8ed727', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0'];
+              const galleryColors = ['#ADF802', '#60C8D4', '#fece13', '#FF6B8B', '#9B51E0'];
               const gColor = galleryColors[gIdx % galleryColors.length];
               return (
                 <motion.div
@@ -3042,7 +3042,7 @@ export default function IndianPreschoolHome({
       </section>
 
       {/* Flowy Wave Divider into Section 17 */}
-      <FlowyWaveDivider flip={true} fill="#FFFFFF" accentColor="#8ed727" />
+      <FlowyWaveDivider flip={true} fill="#FFFFFF" accentColor="#ADF802" />
 
       {/* ===================================================================== */}
       {/* SECTION 17 — VIDEO BYTES (CHILDHOOD IN MOTION)                        */}
@@ -3050,7 +3050,7 @@ export default function IndianPreschoolHome({
       <section className="py-16 sm:py-24 px-4 sm:px-6 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-3">
               CHILDHOOD IN MOTION
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
@@ -3123,7 +3123,7 @@ export default function IndianPreschoolHome({
           <div
             className="rounded-[44px] p-8 sm:p-14 text-[#091E3A] shadow-2xl border-4 border-white relative overflow-hidden text-center"
             style={{
-              background: 'linear-gradient(135deg, #8ed727 0%, #fae244 25%, #60C8D4 50%, #8ed727 75%, #fae244 100%)',
+              background: 'linear-gradient(135deg, #ADF802 0%, #fae244 25%, #60C8D4 50%, #ADF802 75%, #fae244 100%)',
               backgroundSize: '240% 240%',
               animation: 'flowyColorDrift 10s ease-in-out infinite',
             }}
@@ -3131,7 +3131,7 @@ export default function IndianPreschoolHome({
             {/* Ambient Floating Orbs inside Final CTA */}
             <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-white/35 blur-3xl pointer-events-none animate-pulse" />
             <div className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-[#60C8D4]/30 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#091E3A] text-[#8ed727] text-xs font-black uppercase tracking-widest mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#091E3A] text-[#ADF802] text-xs font-black uppercase tracking-widest mb-4">
               THEIR FIRST SCHOOL. A BIG DECISION.
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#091E3A] tracking-tight mb-4">
@@ -3147,7 +3147,7 @@ export default function IndianPreschoolHome({
                 onClick={onOpenTourModal}
                 className="px-8 py-4 rounded-full bg-[#091E3A] text-white hover:bg-[#13325C] text-sm font-black inline-flex items-center gap-2 shadow-xl transition-all group"
               >
-                <Calendar className="w-4 h-4 text-[#8ed727] group-hover:rotate-6 transition-transform" />
+                <Calendar className="w-4 h-4 text-[#ADF802] group-hover:rotate-6 transition-transform" />
                 <span>Book a School Visit</span>
               </motion.button>
               <motion.button
@@ -3168,7 +3168,7 @@ export default function IndianPreschoolHome({
       {/* SECTION 19 — WEBSITE FOOTER                                           */}
       {/* ===================================================================== */}
       {showFooter && (
-        <footer className="bg-[#091E3A] text-white pt-16 pb-12 px-4 sm:px-6 border-t-4 border-[#8ed727]">
+        <footer className="bg-[#091E3A] text-white pt-16 pb-12 px-4 sm:px-6 border-t-4 border-[#ADF802]">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/15">
               <div className="lg:col-span-5 space-y-4">
@@ -3178,13 +3178,13 @@ export default function IndianPreschoolHome({
                   </div>
                   <div>
                     <h3 className="text-xl font-extrabold text-white">Blooming Era Preschools</h3>
-                    <p className="text-xs font-bold text-[#8ed727]">Proudly Indian, Powerfully Global Preschool.</p>
+                    <p className="text-xs font-bold text-[#ADF802]">Proudly Indian, Powerfully Global Preschool.</p>
                   </div>
                 </div>
                 <p className="text-sm text-white/75 leading-relaxed max-w-md">
                   Where joyful childhood experiences meet meaningful learning, strong foundations and possibilities for the future.
                 </p>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#8ed727] text-xs font-black tracking-wider">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#ADF802] text-xs font-black tracking-wider">
                   <span>🌸 The Future Blooms Here.</span>
                 </div>
               </div>
@@ -3195,7 +3195,7 @@ export default function IndianPreschoolHome({
                 </h4>
                 <div className="grid grid-cols-2 gap-2.5 text-sm text-white/80 font-medium">
                   {["Home", "About Us", "Our Programmes", "Curriculum", "Admissions", "Gallery", "Franchise", "Blog", "Careers", "Contact"].map((link) => (
-                    <a key={link} href="#welcome" className="hover:text-[#8ed727] transition-colors">
+                    <a key={link} href="#welcome" className="hover:text-[#ADF802] transition-colors">
                       {link}
                     </a>
                   ))}
@@ -3206,11 +3206,11 @@ export default function IndianPreschoolHome({
                 <h4 className="text-xs font-black uppercase tracking-widest text-[#60C8D4] mb-4">
                   Connect With Us
                 </h4>
-                <a href="tel:+919647974093" className="flex items-center gap-2.5 text-sm text-white hover:text-[#8ed727] font-bold">
-                  <Phone className="w-4 h-4 text-[#8ed727]" />
+                <a href="tel:+919647974093" className="flex items-center gap-2.5 text-sm text-white hover:text-[#ADF802] font-bold">
+                  <Phone className="w-4 h-4 text-[#ADF802]" />
                   <span>+91 96479 74093</span>
                 </a>
-                <a href="mailto:info@bloomingera.com" className="flex items-center gap-2.5 text-sm text-white/80 hover:text-[#8ed727]">
+                <a href="mailto:info@bloomingera.com" className="flex items-center gap-2.5 text-sm text-white/80 hover:text-[#ADF802]">
                   <Mail className="w-4 h-4 text-[#60C8D4]" />
                   <span>info@bloomingera.com</span>
                 </a>
@@ -3222,7 +3222,7 @@ export default function IndianPreschoolHome({
 
             <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
               <p>© 2026 Blooming Era Preschools. All rights reserved. • Proudly Indian, Powerfully Global.</p>
-              <p className="text-[#8ed727] font-bold">The Future Blooms Here.</p>
+              <p className="text-[#ADF802] font-bold">The Future Blooms Here.</p>
             </div>
           </div>
         </footer>
@@ -3258,7 +3258,7 @@ export default function IndianPreschoolHome({
               </div>
               <div className="p-6 flex items-center justify-between">
                 <div>
-                  <span className="text-xs font-black uppercase px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A]">
+                  <span className="text-xs font-black uppercase px-3 py-1 rounded-full bg-[#ADF802] text-[#091E3A]">
                     {lightboxImage.category}
                   </span>
                   <h4 className="text-xl font-extrabold text-[#091E3A] mt-2">{lightboxImage.title}</h4>
@@ -3300,7 +3300,7 @@ export default function IndianPreschoolHome({
               <div className="relative h-80 overflow-hidden">
                 <img src={activeVideoModal.image} alt={activeVideoModal.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/30 to-transparent flex flex-col justify-end p-6 text-white">
-                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black mb-2 shadow-xs">
+                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black mb-2 shadow-xs">
                     {activeVideoModal.tag} • {activeVideoModal.duration}
                   </span>
                   <h3 className="text-2xl font-extrabold">{activeVideoModal.title}</h3>

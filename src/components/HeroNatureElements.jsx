@@ -294,7 +294,7 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
             {/* Tail Vertical Stabilizer Fin at the back (right end of fuselage) */}
             <path
               d="M 64 19 L 76 6 L 81 6 L 77 21 Z"
-              fill="#8ed727"
+              fill="#ADF802"
               stroke={STROKE}
               strokeWidth="1.8"
               strokeLinejoin="round"
@@ -329,7 +329,7 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
             {/* Swept Main Wing */}
             <path
               d="M 28 21 L 46 21 L 52 29 L 33 29 Z"
-              fill="#8ed727"
+              fill="#ADF802"
               stroke={STROKE}
               strokeWidth="1.8"
               strokeLinejoin="round"
@@ -359,7 +359,7 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
             <path
               d="M 114 16 Q 165 13 216 17 Q 266 20 318 15 L 306 31 L 318 47 Q 266 51 216 47 Q 165 43 114 46 Z"
               fill="rgba(255, 253, 245, 0.94)"
-              stroke="#8ed727"
+              stroke="#ADF802"
               strokeWidth="2.2"
               strokeLinejoin="round"
             />
@@ -374,7 +374,7 @@ function BloomingEraBannerPlane({ isPageLoaded = true }) {
             />
 
             {/* Brand Star Accent on Banner */}
-            <circle cx="128" cy="31" r="4.5" fill="#8ed727" />
+            <circle cx="128" cy="31" r="4.5" fill="#ADF802" />
             <circle cx="128" cy="31" r="2" fill="#fece13" />
 
             {/* Crisp "Blooming Era" Text on Banner */}
@@ -787,7 +787,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             cx="478"
             cy="84"
             r="68"
-            fill="#8ed727"
+            fill="#ADF802"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={
               sunIsUp
@@ -816,7 +816,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
           {/* Soft grassy soil highlight sweeping below the slideshow */}
           <motion.path
             d="M 65 302 C 195 299, 315 290, 415 275 C 468 267, 510 264, 538 266"
-            stroke="rgba(142, 215, 39, 0.45)"
+            stroke="rgba(173, 248, 2, 0.45)"
             strokeWidth="4.2"
             strokeLinecap="round"
             fill="none"
@@ -834,7 +834,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             {/* Main Curved Green Stem growing upward (unchanged size, completely static once grown) */}
             <motion.path
               d="M 478 258 C 472 210, 492 156, 478 86"
-              stroke="rgba(142, 215, 39, 0.65)"
+              stroke="rgba(173, 248, 2, 0.65)"
               strokeWidth="6.2"
               strokeLinecap="round"
               fill="none"
@@ -874,7 +874,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             >
               <path
                 d="M 478 194 C 446 192, 432 166, 450 154 C 464 144, 480 170, 478 194 Z"
-                fill="rgba(142, 215, 39, 0.52)"
+                fill="rgba(173, 248, 2, 0.52)"
                 stroke={LINE_STROKE}
                 strokeWidth="2.4"
                 strokeLinejoin="round"
@@ -900,7 +900,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             >
               <path
                 d="M 485 166 C 516 164, 528 138, 510 126 C 496 116, 483 142, 485 166 Z"
-                fill="rgba(142, 215, 39, 0.52)"
+                fill="rgba(173, 248, 2, 0.52)"
                 stroke={LINE_STROKE}
                 strokeWidth="2.4"
                 strokeLinejoin="round"
@@ -1011,7 +1011,7 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
                   <g transform="translate(36, -58)">
                     <FlutteringButterfly
                       wingColor="rgba(96, 200, 212, 0.82)"
-                      accentColor="rgba(142, 215, 39, 0.75)"
+                      accentColor="rgba(173, 248, 2, 0.75)"
                       xKeyframes={[0, -20, -34, -12, 8, 0]}
                       yKeyframes={[0, -12, 6, 18, -6, 0]}
                       rotateKeyframes={[-18, -28, 12, 20, -8, -18]}

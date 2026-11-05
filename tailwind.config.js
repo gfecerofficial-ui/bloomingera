@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         brand: {
-          lime: '#8ed727',
+          lime: '#ADF802',
           'lime-light': '#F6F9C8',
           'lime-dark': '#B5BF23',
           turquoise: '#60C8D4',
