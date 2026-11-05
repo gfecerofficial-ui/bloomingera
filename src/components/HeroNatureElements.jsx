@@ -465,7 +465,7 @@ function SoftDriftingCloud({
  * 5. Enlarged, completely static flower head in the right whitespace with soil sweeping below the slideshow
  *    and two butterflies fluttering around the flower.
  */
-export default function HeroNatureElements({ isPageLoaded = true }) {
+export default function HeroNatureElements({ isPageLoaded = true, showFlower = true }) {
   const [sunIsUp, setSunIsUp] = useState(false);
 
   useEffect(() => {
@@ -774,8 +774,11 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
       {/* =================================================================== */}
       {/* 4. BOTTOM-RIGHT BLOOMING PLANT (Enlarged Flower Head + Butterflies, */}
       {/*    Static Stem/Leaves, Soil sweeping below Hero Image Slideshow)    */}
+      {/*    Hidden on smaller aspect ratio screens or if even 1px gets       */}
+      {/*    hidden behind the hero image slideshow.                          */}
       {/* =================================================================== */}
-      <div className="hidden md:block absolute bottom-[44px] lg:bottom-[48px] right-0 w-[440px] h-[290px] lg:w-[540px] lg:h-[330px]">
+      {showFlower && (
+        <div className="hidden md:block absolute bottom-[44px] lg:bottom-[48px] right-0 w-[440px] h-[290px] lg:w-[540px] lg:h-[330px]">
         <svg
           viewBox="0 0 540 330"
           fill="none"
@@ -1025,7 +1028,8 @@ export default function HeroNatureElements({ isPageLoaded = true }) {
             </g>
           </g>
         </svg>
-      </div>
+        </div>
+      )}
     </div>
   );
 }

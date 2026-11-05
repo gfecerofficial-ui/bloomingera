@@ -2,12 +2,105 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /**
- * PeekingChildFigure
- * A large, clean, adorable preschool stick-figure child holding onto a hanging
- * rope with their left hand on the left edge of the screen and occasionally
- * waving at the user with their right hand (with a locked zero-gap elbow pivot).
+ * Single plump botanical flower bud with a green calyx cup, overlapping petals,
+ * and delicate inner crease lines.
  */
-export default function PeekingChildFigure() {
+function BranchFlowerBud({
+  x,
+  y,
+  rotate = 0,
+  scale = 1,
+  petalColor = 'rgba(255, 107, 139, 0.76)',
+  innerColor = 'rgba(255, 148, 172, 0.82)',
+  tipColor = '#fece13',
+  delay = 0,
+}) {
+  const STROKE = 'rgba(9, 30, 58, 0.42)';
+
+  return (
+    <g transform={`translate(${x}, ${y}) rotate(${rotate})`}>
+      <motion.g
+        style={{ transformOrigin: '0px 0px' }}
+        animate={{
+          rotate: [-2.5, 2.5, -2.5],
+          scale: [scale * 0.97, scale * 1.04, scale * 0.97],
+        }}
+        transition={{
+          duration: 3.8,
+          delay,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      >
+        {/* Plump Tulip / Teardrop Unopened Flower Bud Petals */}
+        <path
+          d="M 0 0 C -5.2 -1.2, -6.2 -9.2, 0 -13.5 C 6.2 -9.2, 5.2 -1.2, 0 0 Z"
+          fill={petalColor}
+          stroke={STROKE}
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+        />
+        {/* Overlapping Central Bud Petal */}
+        <path
+          d="M 0 -0.5 C -3.2 -2.2, -3.5 -9.5, 0 -13.5 C 3.5 -9.5, 3.2 -2.2, 0 -0.5 Z"
+          fill={innerColor}
+          stroke={STROKE}
+          strokeWidth="1.1"
+          strokeLinejoin="round"
+        />
+        {/* Golden Peeking Bud Tip */}
+        <circle cx="0" cy="-12.2" r="1.2" fill={tipColor} />
+
+        {/* Green Calyx Sepal Cup at Base of Bud */}
+        <path
+          d="M -3.6 0.4 C -4.2 -2.2, -1.8 -3.8, 0 -2.6 C 1.8 -3.8, 4.2 -2.2, 3.6 0.4 C 2.0 2.0, -2.0 2.0, -3.6 0.4 Z"
+          fill="#ADF802"
+          stroke={STROKE}
+          strokeWidth="1.3"
+          strokeLinejoin="round"
+        />
+      </motion.g>
+    </g>
+  );
+}
+
+/**
+ * Small tender sprouting leaf along the dangling tree branch
+ */
+function BranchLeaf({ x, y, rotate = 0, scale = 1, fill = 'rgba(173, 248, 2, 0.72)' }) {
+  const STROKE = 'rgba(9, 30, 58, 0.40)';
+  return (
+    <g transform={`translate(${x}, ${y}) rotate(${rotate}) scale(${scale})`}>
+      <path
+        d="M 0 0 C -4.2 -2.5, -4.8 -8.2, 0 -11 C 4.8 -8.2, 4.2 -2.5, 0 0 Z"
+        fill={fill}
+        stroke={STROKE}
+        strokeWidth="1.3"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M 0 -1 L 0 -8.5"
+        stroke={STROKE}
+        strokeWidth="1.0"
+        strokeLinecap="round"
+      />
+    </g>
+  );
+}
+
+/**
+ * PeekingChildFigure
+ * - On wider widescreen viewports (where the child's waving hand does not cross past
+ *   the first word of the heading): renders the adorable preschool stick-figure child
+ *   holding onto a hanging rope and waving at the user.
+ * - On smaller or narrower aspect ratio screens (where the waving hand would start crossing
+ *   the first word of the heading): hides the child figure and transforms the rope into
+ *   a graceful dangling tree branch filled with colorful flower buds.
+ */
+export default function PeekingChildFigure({
+  showChild = true,
+  branchCompact = false,
+}) {
   const [isWaving, setIsWaving] = useState(false);
 
   // Soft translucent tint for limbs & joints so they stay gently in the background
@@ -17,6 +110,7 @@ export default function PeekingChildFigure() {
   const BODY_STROKE = 'rgba(9, 30, 58, 0.36)';
 
   useEffect(() => {
+    if (!showChild) return;
     // First friendly wave shortly after appearing
     const startWave = setTimeout(() => setIsWaving(true), 1200);
     const endWave = setTimeout(() => setIsWaving(false), 3800);
@@ -32,7 +126,268 @@ export default function PeekingChildFigure() {
       clearTimeout(endWave);
       clearInterval(interval);
     };
-  }, []);
+  }, [showChild]);
+
+  // When the child's waving hand would cross the first word of the heading (or on smaller
+  // aspect ratio screens), render the Dangling Tree Branch Filled with Flower Buds in place of the rope.
+  if (!showChild) {
+    return (
+      <div
+        aria-hidden="true"
+        className={`hidden md:block pointer-events-none select-none absolute top-[50%] -translate-y-1/2 z-[2] ${
+          branchCompact ? '-left-3.5' : 'left-0'
+        }`}
+      >
+        <motion.div
+          initial={{ y: -30, opacity: 0 }}
+          animate={{
+            y: 0,
+            rotate: [-1.1, 1.4, -1.1],
+            opacity: 0.92,
+          }}
+          transition={{
+            y: { duration: 0.7, ease: 'easeOut' },
+            opacity: { duration: 0.5 },
+            rotate: {
+              duration: 5.2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            },
+          }}
+          style={{ transformOrigin: '18% 0%' }}
+          className={
+            branchCompact
+              ? 'relative w-[135px] h-[430px]'
+              : 'relative w-[220px] h-[440px] lg:w-[250px] lg:h-[505px]'
+          }
+        >
+          <svg
+            viewBox="0 0 135 215"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full overflow-visible drop-shadow-[0_8px_18px_rgba(9,30,58,0.08)]"
+          >
+            {/* Soft ambient botanical glow along the dangling branch */}
+            <ellipse cx="18" cy="70" rx="18" ry="65" fill="#ADF802" fillOpacity="0.08" />
+            <ellipse cx="20" cy="135" rx="16" ry="48" fill="#FF6B8B" fillOpacity="0.07" />
+
+            {/* ================= DANGLING TREE BRANCH (In Place of the Rope) ================= */}
+            <g>
+              {/* Side Offshoot Twigs (Alternating Left & Right along the Main Branch) */}
+              <g stroke="#091E3A" strokeOpacity="0.48" strokeWidth="2.1" strokeLinecap="round" fill="none">
+                {/* Upper right twig */}
+                <path d="M 18 -26 Q 23 -23 26 -17" />
+                {/* Upper left twig */}
+                <path d="M 16 -4 Q 11 -1 9 5" />
+                {/* Mid-upper right forked twig */}
+                <path d="M 18 18 Q 24 22 27 29" />
+                <path d="M 22 20 Q 25 16 28 14" />
+                {/* Mid-upper left twig */}
+                <path d="M 18 44 Q 12 48 9 55" />
+                {/* Center right twig */}
+                <path d="M 17 70 Q 23 74 26 81" />
+                {/* Center left twig */}
+                <path d="M 16 96 Q 10 100 8 107" />
+                {/* Lower-mid right forked twig */}
+                <path d="M 16 122 Q 22 126 25 133" />
+                <path d="M 20 124 Q 24 120 26 117" />
+                {/* Lower left twig */}
+                <path d="M 18 148 Q 12 152 9 159" />
+                {/* Terminal bottom fork twigs */}
+                <path d="M 17 176 Q 12 182 10 189" />
+                <path d="M 17 176 Q 22 182 24 189" />
+              </g>
+
+              {/* Main Woody Tree Branch Hanging from Canopy (-320) down to Tip (188) */}
+              {/* Dark outer bark contour */}
+              <path
+                d="M 18 -320 C 15 -235, 22 -150, 17 -70 C 14 -15, 21 30, 16 82 C 13 122, 20 152, 17 188"
+                stroke="#091E3A"
+                strokeOpacity="0.52"
+                strokeWidth="6.0"
+                strokeLinecap="round"
+              />
+              {/* Warm natural wood bark fill */}
+              <path
+                d="M 18 -320 C 15 -235, 22 -150, 17 -70 C 14 -15, 21 30, 16 82 C 13 122, 20 152, 17 188"
+                stroke="#B87B48"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+              />
+              {/* Sunlit bark highlight ridge */}
+              <path
+                d="M 19 -320 C 16 -235, 23 -150, 18 -70 C 15 -15, 22 30, 17 82 C 14 122, 21 152, 18 186"
+                stroke="#E5A95C"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeOpacity="0.8"
+              />
+
+              {/* Subtle Bark Texture Notches */}
+              {[-180, -140, -100, -60, -20, 12, 40, 68, 94, 120, 146, 168].map((yPos, i) => (
+                <path
+                  key={yPos}
+                  d={i % 2 === 0 ? `M 15.5 ${yPos} Q 18 ${yPos + 3} 19.5 ${yPos + 1}` : `M 16 ${yPos} Q 17.5 ${yPos + 2} 19 ${yPos + 4}`}
+                  stroke="#091E3A"
+                  strokeOpacity="0.35"
+                  strokeWidth="1.1"
+                  strokeLinecap="round"
+                />
+              ))}
+
+              {/* ================= SPROUTING LEAVES ALONG THE BRANCH ================= */}
+              <BranchLeaf x={21} y={-23} rotate={48} scale={0.85} fill="rgba(173, 248, 2, 0.75)" />
+              <BranchLeaf x={13} y={-2} rotate={-52} scale={0.82} fill="rgba(96, 200, 212, 0.68)" />
+              <BranchLeaf x={21} y={22} rotate={55} scale={0.88} fill="rgba(173, 248, 2, 0.75)" />
+              <BranchLeaf x={14} y={46} rotate={-48} scale={0.85} fill="rgba(173, 248, 2, 0.72)" />
+              <BranchLeaf x={20} y={72} rotate={50} scale={0.84} fill="rgba(96, 200, 212, 0.68)" />
+              <BranchLeaf x={13} y={98} rotate={-52} scale={0.86} fill="rgba(173, 248, 2, 0.75)" />
+              <BranchLeaf x={19} y={124} rotate={52} scale={0.85} fill="rgba(173, 248, 2, 0.72)" />
+              <BranchLeaf x={14} y={150} rotate={-48} scale={0.82} fill="rgba(96, 200, 212, 0.68)" />
+              {/* Terminal pair of leaves cradling the bottom flower buds */}
+              <BranchLeaf x={15} y={178} rotate={-62} scale={0.92} fill="rgba(173, 248, 2, 0.78)" />
+              <BranchLeaf x={19} y={178} rotate={62} scale={0.92} fill="rgba(173, 248, 2, 0.78)" />
+
+              {/* ================= PLUMP FLOWER BUDS FILLING THE BRANCH ================= */}
+              {/* 1. Upper right coral bud */}
+              <BranchFlowerBud
+                x={26}
+                y={-17}
+                rotate={148}
+                scale={0.88}
+                petalColor="rgba(255, 107, 139, 0.78)"
+                innerColor="rgba(255, 148, 172, 0.85)"
+                delay={0.1}
+              />
+              {/* 2. Upper left golden bud */}
+              <BranchFlowerBud
+                x={9}
+                y={5}
+                rotate={-152}
+                scale={0.86}
+                petalColor="rgba(254, 206, 19, 0.84)"
+                innerColor="rgba(255, 226, 102, 0.90)"
+                tipColor="#FF6B8B"
+                delay={0.4}
+              />
+              {/* 3. Mid-upper right blush rose bud */}
+              <BranchFlowerBud
+                x={27}
+                y={29}
+                rotate={145}
+                scale={0.95}
+                petalColor="rgba(255, 148, 172, 0.80)"
+                innerColor="rgba(255, 107, 139, 0.82)"
+                delay={0.7}
+              />
+              {/* 4. Mid-upper right upward-peeking small coral bud */}
+              <BranchFlowerBud
+                x={28}
+                y={14}
+                rotate={58}
+                scale={0.76}
+                petalColor="rgba(255, 107, 139, 0.76)"
+                innerColor="rgba(255, 148, 172, 0.85)"
+                delay={1.0}
+              />
+              {/* 5. Mid-upper left coral bud */}
+              <BranchFlowerBud
+                x={9}
+                y={55}
+                rotate={-148}
+                scale={0.94}
+                petalColor="rgba(255, 107, 139, 0.80)"
+                innerColor="rgba(255, 148, 172, 0.88)"
+                delay={0.2}
+              />
+              {/* 6. Center right golden bud */}
+              <BranchFlowerBud
+                x={26}
+                y={81}
+                rotate={148}
+                scale={0.92}
+                petalColor="rgba(254, 206, 19, 0.85)"
+                innerColor="rgba(255, 226, 102, 0.90)"
+                tipColor="#FF6B8B"
+                delay={0.6}
+              />
+              {/* 7. Center left blush bud */}
+              <BranchFlowerBud
+                x={8}
+                y={107}
+                rotate={-152}
+                scale={0.92}
+                petalColor="rgba(255, 148, 172, 0.82)"
+                innerColor="rgba(255, 107, 139, 0.85)"
+                delay={0.9}
+              />
+              {/* 8. Lower-mid right coral bud */}
+              <BranchFlowerBud
+                x={25}
+                y={133}
+                rotate={146}
+                scale={0.95}
+                petalColor="rgba(255, 107, 139, 0.80)"
+                innerColor="rgba(255, 148, 172, 0.88)"
+                delay={0.3}
+              />
+              {/* 9. Lower-mid right small golden bud */}
+              <BranchFlowerBud
+                x={26}
+                y={117}
+                rotate={55}
+                scale={0.75}
+                petalColor="rgba(254, 206, 19, 0.84)"
+                innerColor="rgba(255, 226, 102, 0.90)"
+                tipColor="#FF6B8B"
+                delay={1.2}
+              />
+              {/* 10. Lower left coral bud */}
+              <BranchFlowerBud
+                x={9}
+                y={159}
+                rotate={-150}
+                scale={0.9}
+                petalColor="rgba(255, 107, 139, 0.78)"
+                innerColor="rgba(255, 148, 172, 0.86)"
+                delay={0.5}
+              />
+
+              {/* 11, 12, 13. Terminal Dangling Trio of Flower Buds at Bottom Tip of Branch */}
+              <BranchFlowerBud
+                x={10}
+                y={189}
+                rotate={-162}
+                scale={0.88}
+                petalColor="rgba(254, 206, 19, 0.86)"
+                innerColor="rgba(255, 226, 102, 0.92)"
+                tipColor="#FF6B8B"
+                delay={0.4}
+              />
+              <BranchFlowerBud
+                x={24}
+                y={189}
+                rotate={160}
+                scale={0.9}
+                petalColor="rgba(255, 148, 172, 0.82)"
+                innerColor="rgba(255, 107, 139, 0.86)"
+                delay={0.8}
+              />
+              <BranchFlowerBud
+                x={17}
+                y={188}
+                rotate={180}
+                scale={1.06}
+                petalColor="rgba(255, 107, 139, 0.84)"
+                innerColor="rgba(255, 148, 172, 0.90)"
+                delay={0.15}
+              />
+            </g>
+          </svg>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -56,7 +411,7 @@ export default function PeekingChildFigure() {
           },
         }}
         style={{ transformOrigin: '14% 0%' }}
-        className="relative w-[260px] h-[420px] lg:w-[320px] lg:h-[515px] xl:w-[355px] xl:h-[570px]"
+        className="relative w-[260px] h-[420px] lg:w-[320px] lg:h-[515px] min-[1620px]:w-[350px] min-[1620px]:h-[560px]"
       >
         {/* Subtle "Hi!" pill that pops up while waving (snug above child's head, clear of heading text) */}
         <AnimatePresence>

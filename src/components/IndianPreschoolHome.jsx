@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WavingChildStickFigure from './WavingChildStickFigure';
 import PeekingChildFigure from './PeekingChildFigure';
@@ -807,6 +807,94 @@ export default function IndianPreschoolHome({
   const [activeVideoModal, setActiveVideoModal] = useState(null);
   const [flippedLeader, setFlippedLeader] = useState(null);
 
+  // Refs & state for responsive Hero child/branch & flower visibility rules
+  const heroHeadingRef = useRef(null);
+  const desktopSlideshowRef = useRef(null);
+  const [heroLayout, setHeroLayout] = useState({
+    showChild: true,
+    showFlower: true,
+    branchCompact: false,
+  });
+
+  useEffect(() => {
+    const evaluateHeroClearance = () => {
+      if (typeof window === 'undefined') return;
+      const vw = window.innerWidth;
+      const vh = Math.max(window.innerHeight, 1);
+      const aspectRatio = vw / vh;
+
+      // Hide both the child figure and the flower on smaller aspect ratio screens (e.g. 4:3, 5:4, portrait, or < 1.45)
+      // as well as below desktop lg breakpoint.
+      const isWideAspect = aspectRatio >= 1.45 && vw >= 1024;
+
+      let nextShowFlower = false;
+      let nextShowChild = false;
+      let nextBranchCompact = false;
+
+      if (desktopSlideshowRef.current) {
+        const slideRect = desktopSlideshowRef.current.getBoundingClientRect();
+        // In HeroNatureElements (540px wide SVG at right: 0), the flower petals & left butterfly
+        // extend 134px left from the right viewport edge. Hide the flower if rightClearance < 136px
+        // so it never gets even 1px hidden behind the image slideshow.
+        const rightClearance = vw - slideRect.right;
+        nextShowFlower = isWideAspect && slideRect.width > 0 && rightClearance >= 136;
+      }
+
+      if (heroHeadingRef.current) {
+        const headingRect = heroHeadingRef.current.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(heroHeadingRef.current);
+        const fontSize = parseFloat(computedStyle.fontSize) || 60;
+        // Shortest first word across the hero slides ("Less" / "Little" / "Build") is ~2.15em wide.
+        const firstWordRight = headingRect.left + fontSize * 2.15;
+
+        // In PeekingChildFigure (viewBox 0..135), the waving hand fingertips reach x = 111
+        // with container at left: -4px and width 320px (or 350px at >=1620px).
+        const childWidth = vw >= 1620 ? 350 : 320;
+        const wavingHandMaxRight = -4 + (111 / 135) * childWidth;
+
+        // Show child only on wide aspect screens when its waving hand does not cross past the first word
+        nextShowChild =
+          isWideAspect &&
+          headingRect.width > 0 &&
+          wavingHandMaxRight <= firstWordRight &&
+          headingRect.left >= 126;
+
+        // Compact higher placement for the dangling branch when the left margin beside the heading is narrow
+        nextBranchCompact = headingRect.left < 68;
+      }
+
+      setHeroLayout((prev) => {
+        if (
+          prev.showChild === nextShowChild &&
+          prev.showFlower === nextShowFlower &&
+          prev.branchCompact === nextBranchCompact
+        ) {
+          return prev;
+        }
+        return {
+          showChild: nextShowChild,
+          showFlower: nextShowFlower,
+          branchCompact: nextBranchCompact,
+        };
+      });
+    };
+
+    evaluateHeroClearance();
+    window.addEventListener('resize', evaluateHeroClearance);
+
+    let observer;
+    if (typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(evaluateHeroClearance);
+      if (heroHeadingRef.current) observer.observe(heroHeadingRef.current);
+      if (desktopSlideshowRef.current) observer.observe(desktopSlideshowRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', evaluateHeroClearance);
+      if (observer) observer.disconnect();
+    };
+  }, [activeSlide]);
+
   // Auto-advance Hero Slider every 6.5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
@@ -955,11 +1043,17 @@ export default function IndianPreschoolHome({
       {/* SECTION 01 — HOMEPAGE HERO SLIDER (FLOWY GLASSMORPHIC 3-SLIDE HERO)   */}
       {/* ===================================================================== */}
       <section className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]">
-        {/* Background Peeking & Waving Child Stick Figure (Left Edge) */}
-        <PeekingChildFigure />
+        {/* Background Peeking & Waving Child Stick Figure (or Dangling Tree Branch with Flower Buds on smaller screens) */}
+        <PeekingChildFigure
+          showChild={heroLayout.showChild}
+          branchCompact={heroLayout.branchCompact}
+        />
 
         {/* Background Glowing Sun (Top-Right), Flying Birds (Left->Right), & Blooming Plant (Bottom-Right) */}
-        <HeroNatureElements isPageLoaded={isPageLoaded} />
+        <HeroNatureElements
+          isPageLoaded={isPageLoaded}
+          showFlower={heroLayout.showFlower}
+        />
 
         {/* Soft feather vignette at very top for ultra-smooth transition from pre-header */}
         <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#091E3A]/[0.06] to-transparent pointer-events-none z-[1]" />
@@ -1079,7 +1173,10 @@ export default function IndianPreschoolHome({
 
                       {/* Headline with locked min-height for 3-line headings across all slides */}
                       <div className="min-h-[125px] sm:min-h-[165px] lg:min-h-[205px] flex items-center">
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#091E3A] tracking-tight leading-[1.08]">
+                        <h1
+                          ref={heroHeadingRef}
+                          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#091E3A] tracking-tight leading-[1.08]"
+                        >
                           {(currentSlide.headlineLines || []).map((line, idx) => (
                             <span key={idx} className="block">
                               {line.highlight ? (
@@ -1328,6 +1425,7 @@ export default function IndianPreschoolHome({
 
                 {/* Image Showcase Frame with fluid organic border melting directly into background */}
                 <div
+                  ref={desktopSlideshowRef}
                   className="relative overflow-hidden h-[440px] sm:h-[500px] lg:h-[530px] xl:h-[560px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
                   style={{
                     WebkitMaskImage: '-webkit-radial-gradient(white, black)',
