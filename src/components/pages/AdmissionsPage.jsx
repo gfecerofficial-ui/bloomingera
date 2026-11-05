@@ -21,7 +21,7 @@ const ADMISSION_STEPS = [
     title: "Visit",
     desc: "Experience the vibrant campus environment in person, observe active children, and meet our passionate educators.",
     icon: Calendar,
-    color: "#8ed727",
+    color: "#ADF802",
     cardClass: "card-flow-lime"
   },
   {
@@ -43,7 +43,7 @@ const ADMISSION_STEPS = [
 ];
 
 const PROGRAMMES = [
-  { name: "Playgroup", age: "2+ to 3 Years", focus: "Sensory discovery, gentle social transition & self-expression", photo: CHILD_PHOTOS.playgroupFloorToddler, cardClass: "card-flow-lime", badgeBg: "#8ed727", badgeText: "#091E3A" },
+  { name: "Playgroup", age: "2+ to 3 Years", focus: "Sensory discovery, gentle social transition & self-expression", photo: CHILD_PHOTOS.playgroupFloorToddler, cardClass: "card-flow-lime", badgeBg: "#ADF802", badgeText: "#091E3A" },
   { name: "Nursery", age: "3+ to 4 Years", focus: "Language fluency, foundational numeracy & curiosity projects", photo: CHILD_PHOTOS.toddlerLaughingBook, cardClass: "card-flow-cyan", badgeBg: "#60C8D4", badgeText: "#091E3A" },
   { name: "Junior KG", age: "4+ to 5 Years", focus: "Scientific inquiry, pre-coding logic & collaborative teamwork", photo: CHILD_PHOTOS.natureExplorerChild, cardClass: "card-flow-gold", badgeBg: "#fece13", badgeText: "#091E3A" },
   { name: "Senior KG", age: "5+ to 6 Years", focus: "School readiness, creative problem-solving & confidence", photo: CHILD_PHOTOS.seniorKgFocusedChild, cardClass: "card-flow-coral", badgeBg: "#FF6B8B", badgeText: "#FFFFFF" }
@@ -118,7 +118,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
       <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+            <span className="px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
               SIMPLE 4-STEP ADMISSION PROCESS
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3 mb-4">
@@ -211,21 +211,21 @@ export default function AdmissionsPage({ onOpenTourModal }) {
         <div className="max-w-4xl mx-auto">
           
           <div className="text-center mb-10">
-            <span className="px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+            <span className="px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
               START THE CONVERSATION
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white mt-3 mb-2">
               Online Admission Enquiry
             </h2>
             <p className="text-sm sm:text-base text-white/80">
-              Submit your enquiry below or call our admissions desk directly at <a href="tel:+919647974093" className="text-[#8ed727] font-black underline">+91 96479 74093</a>
+              Submit your enquiry below or call our admissions desk directly at <a href="tel:+919647974093" className="text-[#ADF802] font-black underline">+91 96479 74093</a>
             </p>
           </div>
 
           <div className="p-8 sm:p-12 rounded-[40px] bg-white/10 backdrop-blur-2xl border-2 border-white/20 shadow-2xl">
             {submitted ? (
               <div className="text-center py-10 space-y-4">
-                <div className="w-16 h-16 rounded-full bg-[#8ed727] text-[#091E3A] flex items-center justify-center mx-auto text-2xl font-black">
+                <div className="w-16 h-16 rounded-full bg-[#ADF802] text-[#091E3A] flex items-center justify-center mx-auto text-2xl font-black">
                   ✓
                 </div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 border border-white/30">
@@ -238,7 +238,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                     title="Copy ID"
                     className="text-white/70 hover:text-white transition-colors"
                   >
-                    {copied ? <Check className="w-3.5 h-3.5 text-[#8ed727]" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copied ? <Check className="w-3.5 h-3.5 text-[#ADF802]" /> : <Copy className="w-3.5 h-3.5" />}
                   </button>
                 </div>
                 <h3 className="text-2xl font-extrabold text-white">Thank You, {formData.parentName}!</h3>
@@ -271,7 +271,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                       placeholder="e.g. Priya Sharma"
                       value={formData.parentName}
                       onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#8ed727]"
+                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#ADF802]"
                     />
                   </div>
                   <div>
@@ -282,7 +282,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                       placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#8ed727]"
+                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#ADF802]"
                     />
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                       placeholder="name@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#8ed727]"
+                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#ADF802]"
                     />
                   </div>
                   <div>
@@ -306,7 +306,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                       placeholder="e.g. Aarav Sharma"
                       value={formData.childName}
                       onChange={(e) => setFormData({ ...formData, childName: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#8ed727]"
+                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#ADF802]"
                     />
                   </div>
                   <div>
@@ -314,7 +314,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                     <select
                       value={formData.programme}
                       onChange={(e) => setFormData({ ...formData, programme: e.target.value })}
-                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#8ed727]"
+                      className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#ADF802]"
                     >
                       <option>Playgroup (Ages 2–3)</option>
                       <option>Nursery (Ages 3–4)</option>
@@ -331,7 +331,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                     placeholder="e.g. Bangalore, Mumbai, Delhi-NCR, Hyderabad"
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#8ed727]"
+                    className="w-full px-4 py-3 rounded-2xl bg-white/90 text-[#091E3A] font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-[#ADF802]"
                   />
                 </div>
 

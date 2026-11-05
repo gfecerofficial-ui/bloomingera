@@ -10,7 +10,7 @@ export default function IndianFooter({ onNavigate, onOpenTourModal }) {
   };
 
   return (
-    <footer className="bg-[#091E3A] text-white pt-16 pb-12 px-4 sm:px-6 border-t-4 border-[#8ed727] relative z-20">
+    <footer className="bg-[#091E3A] text-white pt-16 pb-12 px-4 sm:px-6 border-t-4 border-[#ADF802] relative z-20">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/15">
           
@@ -22,13 +22,13 @@ export default function IndianFooter({ onNavigate, onOpenTourModal }) {
               </div>
               <div>
                 <h3 className="text-xl font-extrabold text-white">Blooming Era Preschools</h3>
-                <p className="text-xs font-bold text-[#8ed727]">Proudly Indian, Powerfully Global Preschool.</p>
+                <p className="text-xs font-bold text-[#ADF802]">Proudly Indian, Powerfully Global Preschool.</p>
               </div>
             </div>
             <p className="text-sm text-white/75 leading-relaxed max-w-md">
               Where joyful childhood experiences meet meaningful learning, strong foundations and possibilities for the future.
             </p>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#8ed727] text-xs font-black tracking-wider border border-white/10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#ADF802] text-xs font-black tracking-wider border border-white/10">
               <span>🌸 The Future Blooms Here.</span>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function IndianFooter({ onNavigate, onOpenTourModal }) {
                 <button
                   key={link.label}
                   onClick={() => handleLink(link.page)}
-                  className="hover:text-[#8ed727] text-left transition-colors"
+                  className="hover:text-[#ADF802] text-left transition-colors"
                 >
                   {link.label}
                 </button>
@@ -64,11 +64,11 @@ export default function IndianFooter({ onNavigate, onOpenTourModal }) {
             <h4 className="text-xs font-black uppercase tracking-widest text-[#60C8D4] mb-4">
               Connect With Us
             </h4>
-            <a href="tel:+919647974093" className="flex items-center gap-2.5 text-sm text-white hover:text-[#8ed727] font-bold">
-              <Phone className="w-4 h-4 text-[#8ed727]" />
+            <a href="tel:+919647974093" className="flex items-center gap-2.5 text-sm text-white hover:text-[#ADF802] font-bold">
+              <Phone className="w-4 h-4 text-[#ADF802]" />
               <span>+91 96479 74093</span>
             </a>
-            <a href="mailto:contact@bloomingera.com" className="flex items-center gap-2.5 text-sm text-white/80 hover:text-[#8ed727]">
+            <a href="mailto:contact@bloomingera.com" className="flex items-center gap-2.5 text-sm text-white/80 hover:text-[#ADF802]">
               <Mail className="w-4 h-4 text-[#60C8D4]" />
               <span>contact@bloomingera.com</span>
             </a>
@@ -80,7 +80,7 @@ export default function IndianFooter({ onNavigate, onOpenTourModal }) {
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
           <p>© 2026 Blooming Era Preschools. All rights reserved. • Proudly Indian, Powerfully Global.</p>
-          <p className="text-[#8ed727] font-bold">THE FUTURE BLOOMS HERE.</p>
+          <p className="text-[#ADF802] font-bold">THE FUTURE BLOOMS HERE.</p>
         </div>
       </div>
     </footer>

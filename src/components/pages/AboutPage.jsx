@@ -68,7 +68,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A]/80 via-transparent to-transparent flex items-end p-6">
                   <div className="text-white">
-                    <span className="px-3 py-1 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase">
+                    <span className="px-3 py-1 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase">
                       Pure Wonder
                     </span>
                     <h3 className="text-xl font-bold mt-2">Active Discovery Over Rote Worksheets</h3>
@@ -79,7 +79,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               {/* Orbiting Badge */}
               <div className="absolute -bottom-6 -left-6 p-4 rounded-3xl card-flow-cyan backdrop-blur-xl border-2 shadow-xl max-w-xs animate-float-gentle">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-[#091E3A] flex items-center justify-center text-[#8ed727]">
+                  <div className="w-10 h-10 rounded-2xl bg-[#091E3A] flex items-center justify-center text-[#ADF802]">
                     <Sparkles className="w-5 h-5" />
                   </div>
                   <div>
@@ -123,10 +123,10 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               whileHover={{ y: -6, scale: 1.01 }}
               className="p-8 sm:p-10 rounded-[36px] card-flow-lime border-2 shadow-xl relative overflow-hidden transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#8ed727] border-2 border-white text-[#091E3A] flex items-center justify-center mb-6 shadow-md">
+              <div className="w-14 h-14 rounded-2xl bg-[#ADF802] border-2 border-white text-[#091E3A] flex items-center justify-center mb-6 shadow-md">
                 <Heart className="w-7 h-7 text-[#091E3A]" />
               </div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#091E3A] bg-[#8ed727] px-3 py-1 rounded-full">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#091E3A] bg-[#ADF802] px-3 py-1 rounded-full">
                 Core Purpose
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#091E3A] mt-4 mb-3">
@@ -143,12 +143,12 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
 
       {/* Our Triad Philosophy */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#091E3A] text-white relative overflow-hidden">
-        <div className="ambient-orb w-96 h-96 top-0 right-0 opacity-20" style={{ background: '#8ed727' }} />
+        <div className="ambient-orb w-96 h-96 top-0 right-0 opacity-20" style={{ background: '#ADF802' }} />
         <div className="ambient-orb w-96 h-96 bottom-0 left-0 opacity-20" style={{ background: '#60C8D4' }} />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+            <span className="px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
               OUR PHILOSOPHICAL PILLARS
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-4">
@@ -163,26 +163,26 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
             {/* 1. Proudly Indian */}
             <motion.div
               whileHover={{ y: -8, scale: 1.02 }}
-              className="p-8 rounded-[36px] backdrop-blur-xl border-2 border-[#8ed727]/60 shadow-2xl flex flex-col justify-between transition-all duration-300"
+              className="p-8 rounded-[36px] backdrop-blur-xl border-2 border-[#ADF802]/60 shadow-2xl flex flex-col justify-between transition-all duration-300"
               style={{
-                background: 'linear-gradient(145deg, rgba(142,215,39,0.28) 0%, rgba(9,30,58,0.92) 45%, rgba(142,215,39,0.20) 100%)',
+                background: 'linear-gradient(145deg, rgba(173, 248, 2,0.28) 0%, rgba(9,30,58,0.92) 45%, rgba(173, 248, 2,0.20) 100%)',
                 backgroundSize: '240% 240%',
                 animation: 'flowyColorDrift 10s ease-in-out infinite',
-                boxShadow: '0 20px 45px -10px rgba(142,215,39,0.35)',
+                boxShadow: '0 20px 45px -10px rgba(173, 248, 2,0.35)',
               }}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#8ed727] text-[#091E3A] flex items-center justify-center font-black text-xl mb-6 shadow-md">
+                <div className="w-12 h-12 rounded-2xl bg-[#ADF802] text-[#091E3A] flex items-center justify-center font-black text-xl mb-6 shadow-md">
                   🇮🇳
                 </div>
-                <h3 className="text-2xl font-extrabold text-[#8ed727] mb-3">
+                <h3 className="text-2xl font-extrabold text-[#ADF802] mb-3">
                   Proudly Indian
                 </h3>
                 <p className="text-sm sm:text-base text-white/85 leading-relaxed font-medium">
                   We embrace India's rich cultural heritage, languages, traditions, stories, community values and educational wisdom, instilling deep roots and ethical grounding from the early years.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-white/15 text-xs text-[#8ed727] font-bold">
+              <div className="mt-6 pt-4 border-t border-white/15 text-xs text-[#ADF802] font-bold">
                 Cultural Roots & Shared Heritage
               </div>
             </motion.div>
@@ -246,7 +246,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
         </div>
       </section>
 
-      <FlowyWaveDivider flip={true} fill="#FFFFFF" accentColor="#8ed727" />
+      <FlowyWaveDivider flip={true} fill="#FFFFFF" accentColor="#ADF802" />
 
       {/* PAGE 2: MESSAGE FROM THE FOUNDER */}
       <section id="founder-message" className="py-16 sm:py-24 px-4 sm:px-6 bg-white relative">
@@ -266,7 +266,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
 
             {/* Founder Byline */}
             <div className="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-slate-200 mb-8">
-              <div className="w-20 h-20 rounded-full border-4 border-[#8ed727] shadow-xl overflow-hidden bg-white p-1 flex-shrink-0">
+              <div className="w-20 h-20 rounded-full border-4 border-[#ADF802] shadow-xl overflow-hidden bg-white p-1 flex-shrink-0">
                 <img
                   src="/logo.jpeg"
                   alt="Dr. Masuda Yasmin"

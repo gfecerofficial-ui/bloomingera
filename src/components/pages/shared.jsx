@@ -81,12 +81,12 @@ export function PageHeader({ badge, title, subtitle }) {
         animate={{ scale: [1, 1.2, 1], opacity: [0.18, 0.3, 0.18] }}
         transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         className="ambient-orb w-96 h-96 bottom-0 right-10 blur-3xl pointer-events-none"
-        style={{ background: '#8ed727' }}
+        style={{ background: '#ADF802' }}
       />
       
       <div className="max-w-5xl mx-auto text-center relative z-10">
         {badge && (
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-4 shadow-md">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest mb-4 shadow-md">
             {badge}
           </span>
         )}

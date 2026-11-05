@@ -9,7 +9,7 @@ export const BRAND = {
   address: "Corporate HQ: New Delhi | Operational Hub: Ranchi, Jharkhand",
   hours: "Mon – Fri: 8:30 AM – 6:30 PM | Sat: 9:00 AM – 2:00 PM",
   colors: {
-    lime: "#8ed727",
+    lime: "#ADF802",
     turquoise: "#60C8D4",
     navy: "#091E3A",
   }
@@ -34,7 +34,7 @@ export const KINDERMAGIC_WORLDS = [
     id: "numbers",
     name: "Number Universe",
     subtitle: "Tactile Beads & Balance Scales",
-    color: "#8ed727",
+    color: "#ADF802",
     badge: "Math Intuition",
     icon: "Compass",
     // Toddler hands moving tactile colorful wooden beads on wire maze (zero adults)
@@ -278,7 +278,7 @@ export const TRACKER_SAMPLES = {
   },
   linguistic: {
     domain: "Language & Stories",
-    color: "#8ed727",
+    color: "#ADF802",
     status: "Emerging Joyfully",
     milestone: "Narrates 3-part event sequence during circle time using rich descriptive words.",
     observation: "Used descriptive words 'glistening' and 'pebbled' when sharing sensory mud discoveries.",

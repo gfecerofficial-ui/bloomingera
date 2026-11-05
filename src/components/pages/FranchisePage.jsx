@@ -117,7 +117,7 @@ export default function FranchisePage({ onOpenTourModal }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-6 space-y-6">
-              <span className="px-3.5 py-1 rounded-full bg-[#8ed727] text-[#091E3A] font-extrabold text-xs uppercase tracking-wider">
+              <span className="px-3.5 py-1 rounded-full bg-[#ADF802] text-[#091E3A] font-extrabold text-xs uppercase tracking-wider">
                 TRANSPARENT FRANCHISE INVESTMENT
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight">
@@ -147,26 +147,26 @@ export default function FranchisePage({ onOpenTourModal }) {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="p-8 sm:p-10 rounded-[40px] bg-[#091E3A] text-white shadow-2xl border-2 border-[#8ed727] relative">
-                <Sparkles className="w-10 h-10 text-[#8ed727] mb-4" />
+              <div className="p-8 sm:p-10 rounded-[40px] bg-[#091E3A] text-white shadow-2xl border-2 border-[#ADF802] relative">
+                <Sparkles className="w-10 h-10 text-[#ADF802] mb-4" />
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
                   Why Entrepreneurs Choose Blooming Era
                 </h3>
                 <ul className="space-y-3.5 text-sm sm:text-base text-white/85 font-medium">
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#8ed727] flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#ADF802] flex-shrink-0 mt-0.5" />
                     <span><b>Clear Market Differentiation:</b> India's standout No-Book experiential learning proposition.</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#8ed727] flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#ADF802] flex-shrink-0 mt-0.5" />
                     <span><b>Space-Optimised Setup:</b> Every square foot engineered for high learning utility.</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#8ed727] flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#ADF802] flex-shrink-0 mt-0.5" />
                     <span><b>Turnkey Educator Curriculum:</b> Day-by-day lesson roadmaps and multi-sensory kits.</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#8ed727] flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#ADF802] flex-shrink-0 mt-0.5" />
                     <span><b>Continuous Central Marketing:</b> High-converting digital lead generation support.</span>
                   </li>
                 </ul>
@@ -197,7 +197,7 @@ export default function FranchisePage({ onOpenTourModal }) {
             {FOUR_PILLARS.map((p, idx) => {
               const cardClasses = ['card-flow-lime', 'card-flow-cyan', 'card-flow-gold', 'card-flow-coral'];
               const badgeColors = [
-                { bg: '#8ed727', text: '#091E3A' },
+                { bg: '#ADF802', text: '#091E3A' },
                 { bg: '#60C8D4', text: '#091E3A' },
                 { bg: '#fece13', text: '#091E3A' },
                 { bg: '#FF6B8B', text: '#FFFFFF' },
@@ -231,12 +231,12 @@ export default function FranchisePage({ onOpenTourModal }) {
 
       {/* The 360° Support Ecosystem: 12 Pillars */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#091E3A] text-white relative overflow-hidden">
-        <div className="ambient-orb w-96 h-96 top-0 left-0 opacity-20" style={{ background: '#8ed727' }} />
+        <div className="ambient-orb w-96 h-96 top-0 left-0 opacity-20" style={{ background: '#ADF802' }} />
         <div className="ambient-orb w-96 h-96 bottom-0 right-0 opacity-20" style={{ background: '#60C8D4' }} />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+            <span className="px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
               END-TO-END SUPPORT
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-4">
@@ -250,7 +250,7 @@ export default function FranchisePage({ onOpenTourModal }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {TWELVE_SUPPORT.map((item, idx) => {
               const darkPalettes = [
-                { bg: 'linear-gradient(135deg, rgba(142,215,39,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(96,200,212,0.12) 100%)', border: 'rgba(142,215,39,0.35)', num: '#8ed727' },
+                { bg: 'linear-gradient(135deg, rgba(173, 248, 2,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(96,200,212,0.12) 100%)', border: 'rgba(173, 248, 2,0.35)', num: '#ADF802' },
                 { bg: 'linear-gradient(135deg, rgba(96,200,212,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(155,81,224,0.12) 100%)', border: 'rgba(96,200,212,0.35)', num: '#60C8D4' },
                 { bg: 'linear-gradient(135deg, rgba(254,206,19,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(255,107,139,0.12) 100%)', border: 'rgba(254,206,19,0.35)', num: '#fece13' },
                 { bg: 'linear-gradient(135deg, rgba(255,107,139,0.16) 0%, rgba(255,255,255,0.08) 50%, rgba(254,206,19,0.12) 100%)', border: 'rgba(255,107,139,0.35)', num: '#FF6B8B' },
@@ -295,7 +295,7 @@ export default function FranchisePage({ onOpenTourModal }) {
         <div className="max-w-4xl mx-auto">
           
           <div className="text-center mb-10">
-            <span className="px-4 py-1.5 rounded-full bg-[#8ed727] text-[#091E3A] text-xs font-black uppercase tracking-widest">
+            <span className="px-4 py-1.5 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase tracking-widest">
               BECOME A FRANCHISE PARTNER
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3 mb-3">

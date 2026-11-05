@@ -23,14 +23,14 @@ export default function WavingChildStickFigure({ className = "", darkMode = fals
         viewport={{ once: false, amount: 0.05 }}
         transition={{ delay: 0.4, duration: 0.4, type: 'spring' }}
         className={`absolute -top-12 -left-16 sm:-left-20 bg-white px-3 py-1.5 rounded-2xl shadow-xl border-2 ${
-          darkMode ? 'border-[#8ed727]' : 'border-brand-navy'
+          darkMode ? 'border-[#ADF802]' : 'border-brand-navy'
         } text-[11px] font-black text-brand-navy whitespace-nowrap z-50 animate-bounce`}
         style={{ animationDuration: '3s' }}
       >
         <span>{bubbleText}</span>
         {/* Little bubble arrow pointing down */}
         <div className={`absolute -bottom-1.5 right-6 w-3 h-3 bg-white border-r-2 border-b-2 ${
-          darkMode ? 'border-[#8ed727]' : 'border-brand-navy'
+          darkMode ? 'border-[#ADF802]' : 'border-brand-navy'
         } transform rotate-45`} />
       </motion.div>
 
@@ -116,7 +116,7 @@ export default function WavingChildStickFigure({ className = "", darkMode = fals
         {/* Preschool T-Shirt */}
         <path
           d="M32 66 L68 66 L62 96 L38 96 Z"
-          fill="#8ed727"
+          fill="#ADF802"
           stroke={strokeColor}
           strokeWidth="2.8"
           strokeLinejoin="round"
@@ -226,7 +226,7 @@ export default function WavingChildStickFigure({ className = "", darkMode = fals
         />
         <path
           d="M70 168 C74 168, 82 171, 82 174 L66 174 Z"
-          fill="#8ed727"
+          fill="#ADF802"
           stroke={strokeColor}
           strokeWidth="2.2"
         />
