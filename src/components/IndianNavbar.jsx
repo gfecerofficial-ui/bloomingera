@@ -79,7 +79,7 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
       </div>
 
       {/* Main Sticky Glass Navigation Header (GPU-composited with zero repaint jitter) */}
-      <header className="sticky top-1 sm:top-1.5 z-40 px-3 sm:px-6 mt-2.5 sm:mt-3">
+      <header className="sticky top-1 sm:top-1.5 z-50 px-3 sm:px-6 mt-2.5 sm:mt-3">
         <div
           className="max-w-7xl mx-auto rounded-full py-2 px-4 sm:px-6 border-2 border-white shadow-[0_16px_45px_rgba(9,30,58,0.10)] backdrop-blur-xl sm:backdrop-blur-2xl transition-all duration-300 relative overflow-hidden"
           style={{
@@ -181,43 +181,72 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
           </div>
         </div>
 
-        {/* Mobile Dropdown Drawer */}
+        {/* Mobile Dropdown Drawer - Positioned Absolutely OVER the page to prevent layout shifts & white repaint delays */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -12, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -8, scale: 0.98 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:hidden mt-2 max-w-7xl mx-auto rounded-3xl card-flow-multi backdrop-blur-2xl border-2 shadow-2xl p-5"
-            >
-              <div className="grid grid-cols-2 gap-2">
-                {navItems.map((item) => (
+            <>
+              {/* Backdrop Scrim - Clicking closes menu, isolates page */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="fixed inset-0 bg-[#091E3A]/25 backdrop-blur-xs z-40 lg:hidden"
+              />
+
+              {/* Mobile Menu Panel */}
+              <motion.div
+                initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                className="lg:hidden absolute top-full left-3 right-3 sm:left-6 sm:right-6 mt-2 max-w-lg mx-auto rounded-3xl card-flow-multi backdrop-blur-2xl border-2 shadow-2xl p-4 sm:p-5 z-50 pointer-events-auto"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(244,249,251,0.96) 100%)',
+                }}
+              >
+                <div className="grid grid-cols-2 gap-2">
+                  {navItems.map((item) => (
+                    <motion.button
+                      key={item.id}
+                      whileHover={{ scale: 1.02, x: 2 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`px-4 py-2.5 rounded-2xl text-xs font-bold text-left transition-all ${
+                        currentPage === item.id
+                          ? 'bg-[#091E3A] text-white font-black shadow-md'
+                          : 'bg-slate-100 text-slate-700 hover:bg-[#60C8D4]/20 hover:text-[#091E3A]'
+                      }`}
+                    >
+                      {item.label}
+                    </motion.button>
+                  ))}
+                </div>
+
+                <div className="mt-3.5 pt-3 border-t border-slate-200/80 flex flex-col gap-2">
+                  {/* Franchise Button in exact Desktop Style placed over the Contact action */}
                   <motion.button
-                    key={item.id}
-                    whileHover={{ scale: 1.02, x: 2 }}
-                    whileTap={{ scale: 0.97 }}
-                    onClick={() => handleNavClick(item.id)}
-                    className={`px-4 py-2.5 rounded-2xl text-xs font-bold text-left transition-all ${
-                      currentPage === item.id
-                        ? 'bg-[#091E3A] text-white font-black shadow-md'
-                        : 'bg-slate-100 text-slate-700 hover:bg-[#60C8D4]/20 hover:text-[#091E3A]'
-                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleNavClick('franchise')}
+                    className="w-full py-2.5 px-4 rounded-full text-xs font-extrabold text-[#091E3A] bg-[#60C8D4]/20 hover:bg-[#60C8D4]/35 border border-[#60C8D4]/50 flex items-center justify-center gap-2 transition-colors shadow-xs"
                   >
-                    {item.label}
+                    <span>Franchise</span>
                   </motion.button>
-                ))}
-              </div>
-              <div className="mt-4 pt-3 border-t border-slate-200 flex flex-col gap-2">
-                <a
-                  href="tel:+919647974093"
-                  className="px-4 py-2 rounded-xl bg-[#60C8D4]/20 text-[#091E3A] text-xs font-extrabold flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                  <span>Call +91 96479 74093</span>
-                </a>
-              </div>
-            </motion.div>
+
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    href="tel:+919647974093"
+                    className="w-full py-2.5 px-4 rounded-full bg-[#FA0672]/15 hover:bg-[#FA0672]/25 border border-[#FA0672]/40 text-[#091E3A] text-xs font-extrabold flex items-center justify-center gap-2 transition-colors shadow-xs"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-[#FA0672]" />
+                    <span>Call +91 96479 74093</span>
+                  </motion.a>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </header>
