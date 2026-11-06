@@ -8,7 +8,7 @@ import {
   BookOpen, Compass, Palette, Music, Leaf, Globe2, Users, Brain,
   MessageCircle, Smile, Rocket, ShieldCheck, Award, Calendar, Play,
   ChevronLeft, ChevronRight, ChevronDown, MapPin, Mail, Clock, Eye, X, GraduationCap,
-  Layers, Flame, Sun, Flower2
+  Layers, Flame, Sun, Flower2, Quote
 } from 'lucide-react';
 
 // All 13 photos have been visually verified via read_file to depict ONLY preschool children / toys and ZERO adults
@@ -644,6 +644,15 @@ const LEADERSHIP_TEAM = [
     badge: "Strategic Growth",
     accent: "#091E3A",
     photo: "/leadership/mohd-neyaz-alam.jpeg"
+  },
+  {
+    name: "Ms. Mou Chakraborty",
+    role: "Director, Franchise Coordination",
+    bio: "Guiding franchise partners with seamless center setup, educator mentorship and network growth.",
+    initials: "MC",
+    badge: "Franchise Leadership",
+    accent: "#FA0672",
+    photo: "/leadership/mou-chakraborty.jpeg"
   }
 ];
 
@@ -2671,7 +2680,7 @@ export default function IndianPreschoolHome({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-5 sm:gap-6">
             {LEADERSHIP_TEAM.map((leader, idx) => {
               const isFlipped = flippedLeader === idx;
               return (
@@ -2683,11 +2692,11 @@ export default function IndianPreschoolHome({
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                   whileHover={{ y: -8, transition: { duration: 0.25, delay: 0 } }}
                   onClick={() => setFlippedLeader(isFlipped ? null : idx)}
-                  className="group relative rounded-[28px] sm:rounded-[32px] aspect-square w-full max-w-[340px] sm:max-w-none mx-auto cursor-pointer"
+                  className="group relative rounded-[28px] sm:rounded-[32px] aspect-[3/4] min-h-[330px] w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-20px)] max-w-[320px] mx-auto sm:mx-0 cursor-pointer"
                 >
                   {/* CARD 2: Current Details Card (Hidden Behind, Revealed on Hover / Flip) */}
                   <div
-                    className={`absolute inset-0 w-full h-full backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-5 sm:p-5.5 border-2 shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
+                    className={`absolute inset-0 w-full h-full backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-4.5 sm:p-5 border-2 shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
                       isFlipped
                         ? 'opacity-100 scale-100 pointer-events-auto z-20'
                         : 'opacity-0 scale-95 pointer-events-none z-0 group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto group-hover:z-20'
@@ -2706,10 +2715,11 @@ export default function IndianPreschoolHome({
                       style={{ backgroundColor: leader.accent }}
                     />
 
-                    <div>
-                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    {/* TOP SECTION: Avatar, Badge, Name & Role */}
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-2">
                         <div
-                          className="w-12 h-12 rounded-2xl overflow-hidden border-2 shadow-md flex-shrink-0 bg-white"
+                          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl overflow-hidden border-2 shadow-sm flex-shrink-0 bg-white"
                           style={{ borderColor: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
                         >
                           <img
@@ -2718,33 +2728,46 @@ export default function IndianPreschoolHome({
                             className="w-full h-full object-cover object-top"
                           />
                         </div>
-                        <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#091E3A]/5 text-[#091E3A] border border-[#091E3A]/10">
+                        <span className="text-[9px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-full bg-[#091E3A]/5 text-[#091E3A] border border-[#091E3A]/10 shadow-2xs whitespace-nowrap">
                           {leader.badge}
                         </span>
                       </div>
-                      <h3 className="text-lg sm:text-xl font-extrabold text-[#091E3A] leading-tight">
-                        {leader.name}
-                      </h3>
-                      <p
-                        className="text-[11px] sm:text-xs font-bold uppercase tracking-wider mt-0.5 mb-2"
-                        style={{
-                          color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#091E3A' : leader.accent
-                        }}
-                      >
-                        {leader.role}
-                      </p>
-                      <p className="text-xs sm:text-[13px] text-[#091E3A]/80 font-medium leading-relaxed">
-                        {leader.bio}
+
+                      {/* Fixed height name & role block so every card's description starts at the exact same vertical plane */}
+                      <div className="h-[46px] sm:h-[48px] flex flex-col justify-center">
+                        <h3 className="text-sm sm:text-base font-extrabold text-[#091E3A] leading-tight truncate">
+                          {leader.name}
+                        </h3>
+                        <p
+                          className="text-[9px] sm:text-[9.5px] font-bold uppercase tracking-wide mt-0.5 leading-tight line-clamp-2"
+                          style={{
+                            color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#091E3A' : leader.accent
+                          }}
+                        >
+                          {leader.role}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* DESCRIPTION SECTION: Dedicated frosted container with quote accent, filling & centering vertically */}
+                    <div className="relative z-10 flex-1 min-h-0 flex flex-col justify-center my-1.5 p-2.5 sm:p-3 rounded-2xl bg-white/70 backdrop-blur-md border border-[#091E3A]/8 shadow-[0_2px_10px_rgba(9,30,58,0.03)]">
+                      <Quote
+                        className="w-3 h-3 mb-0.5 opacity-60 flex-shrink-0"
+                        style={{ color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
+                      />
+                      <p className="text-[10.5px] sm:text-[11.5px] text-[#091E3A]/85 font-medium leading-relaxed italic">
+                        "{leader.bio}"
                       </p>
                     </div>
 
-                    <div className="pt-2 sm:pt-2.5 border-t border-[#091E3A]/10 flex items-center justify-between">
+                    {/* FOOTER: Division bar and Brand signature */}
+                    <div className="relative z-10 pt-2 sm:pt-2.5 border-t border-[#091E3A]/10 flex items-center justify-between shrink-0">
                       <span className="text-[10px] sm:text-[11px] font-black text-[#091E3A]/70">
                         Blooming Era Leadership
                       </span>
                       <span
                         className="w-2.5 h-2.5 rounded-full"
-                        style={{ backgroundColor: leader.accent }}
+                        style={{ backgroundColor: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
                       />
                     </div>
                   </div>
@@ -2780,11 +2803,11 @@ export default function IndianPreschoolHome({
                     <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-20">
                       <div className="flex items-end justify-between gap-2.5">
                         <div className="min-w-0 pr-1">
-                          <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight leading-snug drop-shadow-md">
+                          <h3 className="text-base sm:text-lg font-extrabold text-white tracking-tight leading-snug drop-shadow-md">
                             {leader.name}
                           </h3>
                           <p
-                            className="text-[11px] sm:text-xs font-bold uppercase tracking-wider mt-0.5 drop-shadow-sm"
+                            className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mt-0.5 drop-shadow-sm"
                             style={{
                               color: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent
                             }}

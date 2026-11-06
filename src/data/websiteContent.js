@@ -267,6 +267,14 @@ export const LEADERSHIP = [
     bio: "Oversees child-safe infrastructure and educator bootcamps nationwide.",
     quote: "Child safety, non-toxic spaces, and world-class mentors are non-negotiable.",
     photo: "/leadership/mohd-neyaz-alam.jpeg"
+  },
+  {
+    name: "Ms. Mou Chakraborty",
+    role: "Director - Franchise Coordination",
+    qualifications: "Early Childhood Operations & Center Mentorship Lead",
+    bio: "Empowers franchise partners with comprehensive center setup, educator onboarding, operational alignment and sustained preschool growth.",
+    quote: "A preschool blossoms when educators, parents and leadership share one heartbeat for childhood.",
+    photo: "/leadership/mou-chakraborty.jpeg"
   }
 ];
 

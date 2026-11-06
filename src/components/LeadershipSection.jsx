@@ -84,7 +84,7 @@ export default function LeadershipSection() {
         </ScrollReveal>
 
         {/* Executive Board Cards with Staggered Entrance */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {LEADERSHIP.slice(1).map((leader, idx) => (
             <StaggerItem key={idx}>
               <motion.div 

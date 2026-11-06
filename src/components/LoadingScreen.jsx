@@ -46,6 +46,7 @@ const LEADERSHIP_PHOTOS = [
   '/leadership/shelly-bisht.jpeg',
   '/leadership/ayaan-hossain.jpeg',
   '/leadership/mohd-neyaz-alam.jpeg',
+  '/leadership/mou-chakraborty.jpeg',
 ];
 
 // Persistent module-level cache so decoded Image bitmaps are never garbage-collected
