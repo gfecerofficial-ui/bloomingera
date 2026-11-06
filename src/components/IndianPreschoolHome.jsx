@@ -2692,11 +2692,11 @@ export default function IndianPreschoolHome({
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                   whileHover={{ y: -8, transition: { duration: 0.25, delay: 0 } }}
                   onClick={() => setFlippedLeader(isFlipped ? null : idx)}
-                  className="group relative rounded-[28px] sm:rounded-[32px] aspect-[3/4] min-h-[330px] w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-20px)] max-w-[320px] mx-auto sm:mx-0 cursor-pointer"
+                  className="group relative rounded-[28px] sm:rounded-[32px] h-[305px] sm:h-auto sm:aspect-[3/4] sm:min-h-[330px] w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-20px)] max-w-[310px] mx-auto sm:mx-0 cursor-pointer"
                 >
                   {/* CARD 2: Current Details Card (Hidden Behind, Revealed on Hover / Flip) */}
                   <div
-                    className={`absolute inset-0 w-full h-full backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-4.5 sm:p-5 border-2 shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
+                    className={`absolute inset-0 w-full h-full backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-4 sm:p-4.5 xl:p-5 border-2 shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
                       isFlipped
                         ? 'opacity-100 scale-100 pointer-events-auto z-20'
                         : 'opacity-0 scale-95 pointer-events-none z-0 group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto group-hover:z-20'
@@ -2717,9 +2717,9 @@ export default function IndianPreschoolHome({
 
                     {/* TOP SECTION: Avatar, Badge, Name & Role */}
                     <div className="relative z-10">
-                      <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center justify-between mb-1.5">
                         <div
-                          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl overflow-hidden border-2 shadow-sm flex-shrink-0 bg-white"
+                          className="w-11 h-11 rounded-2xl overflow-hidden border-2 shadow-sm flex-shrink-0 bg-white"
                           style={{ borderColor: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
                         >
                           <img
@@ -2728,18 +2728,18 @@ export default function IndianPreschoolHome({
                             className="w-full h-full object-cover object-top"
                           />
                         </div>
-                        <span className="text-[9px] font-extrabold uppercase tracking-wide px-2.5 py-1 rounded-full bg-[#091E3A]/5 text-[#091E3A] border border-[#091E3A]/10 shadow-2xs whitespace-nowrap">
+                        <span className="text-[9.5px] sm:text-[9px] font-extrabold uppercase tracking-wide px-2.5 py-1 sm:py-0.5 rounded-full bg-[#091E3A]/5 text-[#091E3A] border border-[#091E3A]/10 shadow-2xs whitespace-nowrap">
                           {leader.badge}
                         </span>
                       </div>
 
                       {/* Fixed height name & role block so every card's description starts at the exact same vertical plane */}
-                      <div className="h-[46px] sm:h-[48px] flex flex-col justify-center">
-                        <h3 className="text-sm sm:text-base font-extrabold text-[#091E3A] leading-tight truncate">
+                      <div className="h-[44px] sm:h-[46px] flex flex-col justify-center">
+                        <h3 className="text-[15px] sm:text-sm lg:text-base font-extrabold text-[#091E3A] leading-tight truncate">
                           {leader.name}
                         </h3>
                         <p
-                          className="text-[9px] sm:text-[9.5px] font-bold uppercase tracking-wide mt-0.5 leading-tight line-clamp-2"
+                          className="text-[10px] sm:text-[9px] lg:text-[9.5px] font-bold uppercase tracking-wider mt-0.5 leading-tight line-clamp-2"
                           style={{
                             color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#091E3A' : leader.accent
                           }}
@@ -2749,20 +2749,25 @@ export default function IndianPreschoolHome({
                       </div>
                     </div>
 
-                    {/* DESCRIPTION SECTION: Dedicated frosted container with quote accent, filling & centering vertically */}
-                    <div className="relative z-10 flex-1 min-h-0 flex flex-col justify-center my-1.5 p-2.5 sm:p-3 rounded-2xl bg-white/70 backdrop-blur-md border border-[#091E3A]/8 shadow-[0_2px_10px_rgba(9,30,58,0.03)]">
-                      <Quote
-                        className="w-3 h-3 mb-0.5 opacity-60 flex-shrink-0"
-                        style={{ color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
-                      />
-                      <p className="text-[10.5px] sm:text-[11.5px] text-[#091E3A]/85 font-medium leading-relaxed italic">
+                    {/* DESCRIPTION SECTION: Dedicated frosted container with structured header and clean vertical alignment */}
+                    <div className="relative z-10 flex-1 min-h-0 flex flex-col justify-center my-1.5 p-2.5 sm:p-3 rounded-2xl bg-white/75 backdrop-blur-md border border-[#091E3A]/8 shadow-[0_2px_10px_rgba(9,30,58,0.03)]">
+                      <div className="flex items-center gap-1.5 mb-1 opacity-70">
+                        <Quote
+                          className="w-3 h-3 flex-shrink-0"
+                          style={{ color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
+                        />
+                        <span className="text-[8.5px] font-black uppercase tracking-widest text-[#091E3A]/50">
+                          Vision & Impact
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-[10.5px] lg:text-[11px] text-[#091E3A]/85 font-medium leading-relaxed italic">
                         "{leader.bio}"
                       </p>
                     </div>
 
                     {/* FOOTER: Division bar and Brand signature */}
-                    <div className="relative z-10 pt-2 sm:pt-2.5 border-t border-[#091E3A]/10 flex items-center justify-between shrink-0">
-                      <span className="text-[10px] sm:text-[11px] font-black text-[#091E3A]/70">
+                    <div className="relative z-10 pt-2 sm:pt-2.5 border-t border-[#091E3A]/10 flex items-center justify-between shrink-0 px-1">
+                      <span className="text-[10.5px] sm:text-[10px] font-black text-[#091E3A]/70">
                         Blooming Era Leadership
                       </span>
                       <span
