@@ -1095,77 +1095,12 @@ export default function IndianPreschoolHome({
       )}
 
       {/* ===================================================================== */}
-      {/* SECTION 01 — HOMEPAGE HERO SLIDER (FULL-BLEED BACKGROUND + OVERLAY)   */}
+      {/* SECTION 01 — HOMEPAGE HERO SLIDER (BOUNDED HERO FRAME + OVERLAY)      */}
       {/* ===================================================================== */}
       <section
         ref={heroSectionRef}
-        className="relative pt-[118px] sm:pt-[140px] lg:pt-[148px] pb-24 sm:pb-28 lg:pb-24 px-4 sm:px-6 overflow-hidden bg-[#E7F6FA]"
+        className="relative pt-[114px] sm:pt-[136px] lg:pt-[148px] pb-16 sm:pb-20 lg:pb-20 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]"
       >
-        {/* Full-Bleed Hero Background Slideshow covering entire hero viewport behind all hero content */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
-          style={{
-            transform: 'translateZ(0)',
-            WebkitTransform: 'translateZ(0)',
-          }}
-        >
-          {HERO_SLIDES.map((slide, idx) => {
-            const isCurrent = activeSlide === idx;
-            return (
-              <img
-                key={slide.id}
-                src={slide.mainImage}
-                alt={slide.headline}
-                loading="eager"
-                decoding="sync"
-                fetchPriority="high"
-                className={`absolute inset-0 w-full h-full object-cover object-[center_20%] transition-opacity duration-700 ease-in-out will-change-[opacity] ${
-                  isCurrent ? 'opacity-100 z-[2]' : 'opacity-0 z-[1]'
-                }`}
-                style={{
-                  transform: 'translateZ(0)',
-                  WebkitTransform: 'translateZ(0)',
-                  backfaceVisibility: 'hidden',
-                }}
-              />
-            );
-          })}
-
-          {/* Desktop left-to-right frosted gradient wash: keeps left typography razor-sharp while letting the full photo shine on the right */}
-          <div
-            className="hidden lg:block absolute inset-0 z-[3]"
-            style={{
-              background:
-                'linear-gradient(96deg, rgba(244,249,251,0.94) 0%, rgba(244,249,251,0.86) 30%, rgba(244,249,251,0.56) 46%, rgba(244,249,251,0.16) 62%, rgba(244,249,251,0.02) 78%, transparent 100%)',
-            }}
-          />
-
-          {/* Mobile soft translucent readability scrim across full hero image */}
-          <div
-            className="block lg:hidden absolute inset-0 z-[3]"
-            style={{
-              background:
-                'linear-gradient(180deg, rgba(244,249,251,0.86) 0%, rgba(244,249,251,0.72) 48%, rgba(244,249,251,0.88) 100%)',
-            }}
-          />
-
-          {/* Top & Bottom edge soft blends into navbar & Section 02 */}
-          <div
-            className="absolute inset-x-0 top-0 h-40 z-[4]"
-            style={{
-              background:
-                'linear-gradient(180deg, rgba(231,246,250,0.80) 0%, rgba(231,246,250,0.42) 55%, transparent 100%)',
-            }}
-          />
-          <div
-            className="absolute inset-x-0 bottom-0 h-20 z-[4]"
-            style={{
-              background:
-                'linear-gradient(0deg, rgba(244,249,251,0.88) 0%, rgba(244,249,251,0.35) 55%, transparent 100%)',
-            }}
-          />
-        </div>
-
         {/* Background Peeking & Waving Child Stick Figure (or Dangling Tree Branch with Blooming Flower Buds on smaller screens) */}
         <PeekingChildFigure
           isPageLoaded={isPageLoaded}
@@ -1179,9 +1114,92 @@ export default function IndianPreschoolHome({
           showFlower={heroLayout.showFlower}
         />
 
+        {/* Soft feather vignette at very top for ultra-smooth transition from pre-header */}
+        <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#091E3A]/[0.06] to-transparent pointer-events-none z-[1]" />
+
+        {/* Silky Flowy Ambient Orbs — Surrounding the bounded hero container */}
+        <div
+          className="ambient-orb w-[580px] h-[580px] -top-36 -left-16 opacity-45"
+          style={{ background: 'radial-gradient(circle, rgba(2,201,254,0.42) 0%, rgba(96,200,212,0.18) 38%, rgba(96,200,212,0.05) 60%, transparent 75%)' }}
+        />
+        <div
+          className="ambient-orb w-[580px] h-[580px] -top-32 -right-16 opacity-40"
+          style={{ background: 'radial-gradient(circle, rgba(173, 248, 2,0.38) 0%, rgba(173, 248, 2,0.16) 38%, rgba(173, 248, 2,0.04) 60%, transparent 75%)', animationDelay: '-5s' }}
+        />
+        <div
+          className="ambient-orb w-[500px] h-[500px] -top-40 left-1/3 opacity-30"
+          style={{ background: 'radial-gradient(circle, rgba(254,206,19,0.32) 0%, rgba(254,206,19,0.1) 40%, transparent 70%)', animationDelay: '-9s' }}
+        />
+
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* Ambient glow halo wrapping the bounded slideshow frame */}
+          <div className="hidden lg:block absolute -inset-6 rounded-[54px] bg-gradient-to-tr from-[#ADF802]/25 via-[#60C8D4]/25 to-[#fece13]/25 blur-2xl opacity-75 pointer-events-none" />
+
+          {/* Bounded Hero Slideshow Container: spans exact max-w-7xl content boundaries while keeping all hero content layered cleanly over the image */}
+          <div
+            ref={desktopSlideshowRef}
+            className="relative rounded-[30px] sm:rounded-[38px] lg:rounded-[44px] overflow-hidden border-2 border-white/95 shadow-[0_24px_60px_rgba(9,30,58,0.14)] bg-[#E7F6FA] p-5 sm:p-6 lg:p-7 xl:p-8"
+            style={{
+              transform: 'translateZ(0)',
+              WebkitTransform: 'translateZ(0)',
+            }}
+          >
+            {/* Bounded Slideshow Background Layer */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+              {HERO_SLIDES.map((slide, idx) => {
+                const isCurrent = activeSlide === idx;
+                return (
+                  <img
+                    key={slide.id}
+                    src={slide.mainImage}
+                    alt={slide.headline}
+                    loading="eager"
+                    decoding="sync"
+                    fetchPriority="high"
+                    className={`absolute inset-0 w-full h-full object-cover object-[center_20%] transition-opacity duration-700 ease-in-out will-change-[opacity] ${
+                      isCurrent ? 'opacity-100 z-[2]' : 'opacity-0 z-[1]'
+                    }`}
+                    style={{
+                      transform: 'translateZ(0)',
+                      WebkitTransform: 'translateZ(0)',
+                      backfaceVisibility: 'hidden',
+                    }}
+                  />
+                );
+              })}
+
+              {/* Desktop left-to-transparent frosted gradient wash */}
+              <div
+                className="hidden lg:block absolute inset-0 z-[3]"
+                style={{
+                  background:
+                    'linear-gradient(96deg, rgba(244,249,251,0.95) 0%, rgba(244,249,251,0.88) 32%, rgba(244,249,251,0.58) 47%, rgba(244,249,251,0.16) 63%, rgba(244,249,251,0.02) 78%, transparent 100%)',
+                }}
+              />
+
+              {/* Mobile soft readability scrim across bounded frame */}
+              <div
+                className="block lg:hidden absolute inset-0 z-[3]"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(244,249,251,0.86) 0%, rgba(244,249,251,0.72) 48%, rgba(244,249,251,0.88) 100%)',
+                }}
+              />
+
+              {/* Soft top edge wash inside card so selector pills stay crisp */}
+              <div
+                className="absolute inset-x-0 top-0 h-24 z-[4]"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(231,246,250,0.68) 0%, transparent 100%)',
+                }}
+              />
+            </div>
+
+            {/* Hero Foreground Content Layered Over the Bounded Slideshow */}
+            <div className="relative z-10">
           {/* Desktop Slide Selector Pills with Silky Sliding Layout Animation */}
-          <div className="hidden lg:flex items-center justify-between gap-3 mb-8">
+          <div className="hidden lg:flex items-center justify-between gap-3 mb-5">
             <div className="flex items-center gap-2 p-1 rounded-full glass-panel-elevated border border-white/80">
               {HERO_SLIDES.map((s, idx) => {
                 const isActive = activeSlide === idx;
@@ -1240,7 +1258,7 @@ export default function IndianPreschoolHome({
               
               <div className="space-y-4">
                 {/* Dynamic Slide Content (Badge + Headline + Description) */}
-                <div className="relative min-h-[290px] sm:min-h-[325px] lg:min-h-[365px]">
+                <div className="relative min-h-[280px] sm:min-h-[305px] lg:min-h-[325px]">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentSlide.id}
@@ -1270,7 +1288,7 @@ export default function IndianPreschoolHome({
                       </div>
 
                       {/* Headline with locked min-height for 3-line headings across all slides */}
-                      <div className="min-h-[125px] sm:min-h-[165px] lg:min-h-[205px] flex items-center">
+                      <div className="min-h-[120px] sm:min-h-[155px] lg:min-h-[185px] flex items-center">
                         <h1
                           ref={heroHeadingRef}
                           className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#091E3A] tracking-tight leading-[1.08] drop-shadow-[0_1px_12px_rgba(255,255,255,0.65)]"
@@ -1448,10 +1466,9 @@ export default function IndianPreschoolHome({
               </div>
             </div>
 
-            {/* Right Showcase Zone - Leaves full-bleed background image completely open with only the floating glass badge anchored clear of bottom-right controls */}
+            {/* Right Showcase Zone - Leaves the bounded slideshow image completely open with only the floating glass badge anchored at bottom-right */}
             <div
-              ref={desktopSlideshowRef}
-              className="hidden lg:flex lg:col-span-7 flex-col justify-end items-end min-h-[530px] xl:min-h-[560px] pb-3"
+              className="hidden lg:flex lg:col-span-7 flex-col justify-end items-end min-h-[420px] xl:min-h-[440px] pb-1"
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -1460,7 +1477,7 @@ export default function IndianPreschoolHome({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="glass-panel-elevated py-2.5 px-4 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-3 shadow-xl max-w-[92%] lg:mr-52 xl:mr-56"
+                  className="glass-panel-elevated py-2.5 px-4 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-3 shadow-xl max-w-[92%]"
                 >
                   <div
                     className="w-8 h-8 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
@@ -1477,6 +1494,8 @@ export default function IndianPreschoolHome({
                   </span>
                 </motion.div>
               </AnimatePresence>
+            </div>
+          </div>
             </div>
           </div>
         </div>
