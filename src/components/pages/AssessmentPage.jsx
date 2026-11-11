@@ -4,7 +4,7 @@ import {
   Eye, FileText, Brain, HeartHandshake, Share2, Award, CheckCircle2,
   Sparkles, ShieldCheck, ArrowRight, BookOpen, Compass
 } from 'lucide-react';
-import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
+import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS, ImageNumberBadge } from './shared';
 
 const NINE_AREAS = [
   { title: "Language and Communication", desc: "Expressive vocabulary, articulation, narrative confidence and active listening in group dialogue." },
@@ -68,12 +68,13 @@ export default function AssessmentPage({ onOpenTourModal }) {
             </div>
 
             <div className="lg:col-span-5 relative">
-              <div className="rounded-[40px] overflow-hidden border-4 border-white shadow-2xl">
+              <div className="relative rounded-[40px] overflow-hidden border-4 border-white shadow-2xl">
                 <img
                   src={CHILD_PHOTOS.toddlerAmazedBook}
                   alt="Child Observing and Discovering Joyfully"
                   className="w-full h-[420px] object-cover"
                 />
+                <ImageNumberBadge number={68} />
               </div>
               <div className="absolute -bottom-6 -right-6 p-5 rounded-3xl bg-[#091E3A] text-white shadow-xl max-w-xs border-2 border-[#ADF802] animate-float-gentle">
                 <div className="text-xs font-mono font-bold text-[#ADF802] uppercase">

@@ -5,7 +5,7 @@ import {
   Leaf, Globe2, Compass, Rocket, Code2, Bot, Coins, Lightbulb, Users,
   ArrowRight, ShieldCheck, Microscope
 } from 'lucide-react';
-import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
+import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS, ImageNumberBadge } from './shared';
 
 const EIGHT_DIMENSIONS = [
   {
@@ -401,6 +401,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
                             alt={space.name}
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                           />
+                          <ImageNumberBadge number={idx + 62} />
                           <span
                             className="absolute bottom-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-[11px] font-black shadow-md"
                             style={{ backgroundColor: sColor }}

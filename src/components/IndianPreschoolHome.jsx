@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import WavingChildStickFigure from './WavingChildStickFigure';
 import PeekingChildFigure from './PeekingChildFigure';
 import HeroNatureElements from './HeroNatureElements';
+import { ImageNumberBadge } from './pages/shared';
 import {
   Sparkles, Phone, ArrowRight, ArrowUpRight, CheckCircle2, Heart, Star,
   BookOpen, Compass, Palette, Music, Leaf, Globe2, Users, Brain,
@@ -1703,6 +1704,7 @@ export default function IndianPreschoolHome({
                         alt={card.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
+                      <ImageNumberBadge number={index + 1} />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A]/60 via-transparent to-transparent" />
                       <span
                         className="absolute top-4 left-4 px-3.5 py-1 rounded-full text-[11px] font-extrabold text-[#091E3A] shadow-md"
@@ -1769,6 +1771,7 @@ export default function IndianPreschoolHome({
                     alt="Welcome to Blooming Era Preschools children learning"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
+                  <ImageNumberBadge number={6} />
                 </div>
 
                 {/* Satellite Circular Child Photo 1 */}
@@ -1778,6 +1781,7 @@ export default function IndianPreschoolHome({
                     alt="Happy child reading"
                     className="w-full h-full object-cover"
                   />
+                  <ImageNumberBadge number={7} size="sm" />
                 </div>
 
                 {/* Satellite Circular Child Photo 2 */}
@@ -1787,6 +1791,7 @@ export default function IndianPreschoolHome({
                     alt="Creative child painting"
                     className="w-full h-full object-cover"
                   />
+                  <ImageNumberBadge number={8} size="sm" />
                 </div>
 
                 {/* Floating Pill Badge */}
@@ -2027,6 +2032,7 @@ export default function IndianPreschoolHome({
                         alt={act.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
+                      <ImageNumberBadge number={idx + 9} />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A]/70 via-transparent to-transparent" />
                       <div
                         className="absolute top-4 right-4 w-11 h-11 rounded-2xl flex items-center justify-center text-[#091E3A] shadow-lg border-2 border-white"
@@ -2126,6 +2132,7 @@ export default function IndianPreschoolHome({
                       alt={prog.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
+                    <ImageNumberBadge number={idx + 15} />
                     <span
                       className="absolute bottom-3 right-3 px-3.5 py-1 rounded-full text-xs font-black text-[#091E3A] shadow-md"
                       style={{ backgroundColor: prog.color }}
@@ -2348,12 +2355,13 @@ export default function IndianPreschoolHome({
                 </div>
               </div>
               <div className="lg:col-span-6">
-                <div className="rounded-3xl overflow-hidden h-64 sm:h-80 border-4 border-white shadow-xl">
+                <div className="relative rounded-3xl overflow-hidden h-64 sm:h-80 border-4 border-white shadow-xl">
                   <img
                     src={PRIMEX_STEPS[activePrimexStep].image}
                     alt={PRIMEX_STEPS[activePrimexStep].name}
                     className="w-full h-full object-cover"
                   />
+                  <ImageNumberBadge number={activePrimexStep + 19} />
                 </div>
               </div>
             </motion.div>
@@ -2400,6 +2408,7 @@ export default function IndianPreschoolHome({
                 >
                   <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 border-2 border-white shadow-md relative">
                     <img src={skill.image} alt={skill.title} className="w-full h-full object-cover" />
+                    <ImageNumberBadge number={idx + 24} size="sm" position="topLeft" />
                     <div
                       className="absolute bottom-1 right-1 w-6 h-6 rounded-lg flex items-center justify-center text-[#091E3A] shadow-xs"
                       style={{ backgroundColor: skill.accent }}
@@ -2513,6 +2522,7 @@ export default function IndianPreschoolHome({
                               alt={dim.title}
                               className="w-full h-full object-cover"
                             />
+                            <ImageNumberBadge number={idx + 30} />
                             <div
                               className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-xs font-black shadow-sm"
                               style={{ backgroundColor: dimColor }}
@@ -2617,6 +2627,7 @@ export default function IndianPreschoolHome({
                             className="w-full h-full object-cover"
                           />
                         </AnimatePresence>
+                        <ImageNumberBadge number={activeDimension + 30} />
                         <div
                           className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-xs font-black shadow-md z-10"
                           style={{ backgroundColor: activeDimColor }}
@@ -2913,6 +2924,7 @@ export default function IndianPreschoolHome({
                       alt="Blooming Era Preschool Franchise"
                       className="w-full h-full object-cover"
                     />
+                    <ImageNumberBadge number={38} />
                   </div>
                   <div className="p-5 rounded-2xl bg-gradient-to-r from-[#ADF802] to-[#a3e83b] text-[#091E3A] shadow-lg border border-white/40 relative z-10">
                     <p className="text-xs font-extrabold uppercase tracking-wider opacity-85">
@@ -2992,6 +3004,7 @@ export default function IndianPreschoolHome({
                 <div>
                   <div className="h-48 overflow-hidden relative">
                     <img src={story.image} alt={story.title} className="w-full h-full object-cover" />
+                    <ImageNumberBadge number={idx + 39} />
                     <span
                       className="absolute bottom-3 left-4 px-3 py-1 rounded-full text-[10px] font-black uppercase text-[#091E3A] shadow-md"
                       style={{ backgroundColor: story.color }}
@@ -3061,6 +3074,7 @@ export default function IndianPreschoolHome({
               >
                 <div className="h-48 overflow-hidden relative">
                   <img src={ev.image} alt={ev.title} className="w-full h-full object-cover" />
+                  <ImageNumberBadge number={idx + 42} />
                   <span
                     className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-[10px] font-black shadow-md"
                     style={{ backgroundColor: ev.color }}
@@ -3121,6 +3135,7 @@ export default function IndianPreschoolHome({
                 <div>
                   <div className="h-52 overflow-hidden relative">
                     <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+                    <ImageNumberBadge number={idx + 46} />
                     <span
                       className="absolute top-3 left-3 px-3 py-1 rounded-full text-[#091E3A] text-[10px] font-black shadow-md"
                       style={{ backgroundColor: post.color }}
@@ -3214,6 +3229,7 @@ export default function IndianPreschoolHome({
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <ImageNumberBadge number={item.id + 48} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A]/80 via-transparent to-transparent opacity-85 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
                     <div>
@@ -3281,6 +3297,7 @@ export default function IndianPreschoolHome({
                     alt={vid.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <ImageNumberBadge number={vid.id + 56} position="topRight" />
                   <div className="absolute inset-0 bg-[#091E3A]/35 group-hover:bg-[#091E3A]/20 transition-colors flex items-center justify-center">
                     <div
                       className="w-14 h-14 rounded-full text-[#091E3A] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform border-2 border-white"
@@ -3445,6 +3462,7 @@ export default function IndianPreschoolHome({
             >
               <div className="relative h-[420px]">
                 <img src={lightboxImage.image} alt={lightboxImage.title} className="w-full h-full object-cover" />
+                <ImageNumberBadge number={lightboxImage.id + 48} size="lg" />
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -3497,6 +3515,7 @@ export default function IndianPreschoolHome({
             >
               <div className="relative h-80 overflow-hidden">
                 <img src={activeVideoModal.image} alt={activeVideoModal.title} className="w-full h-full object-cover" />
+                <ImageNumberBadge number={activeVideoModal.id + 56} position="topRight" size="lg" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/30 to-transparent flex flex-col justify-end p-6 text-white">
                   <span className="inline-block w-fit px-3 py-1 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black mb-2 shadow-xs">
                     {activeVideoModal.tag} • {activeVideoModal.duration}

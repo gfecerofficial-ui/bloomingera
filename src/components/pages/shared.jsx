@@ -102,3 +102,29 @@ export function PageHeader({ badge, title, subtitle }) {
     </section>
   );
 }
+
+/**
+ * Prominent numbered badge overlay for image mapping by content editors.
+ */
+export function ImageNumberBadge({ number, size = 'md', position = 'center' }) {
+  const sizeClasses = {
+    sm: 'w-7 h-7 text-[11px] border-2',
+    md: 'w-11 h-11 sm:w-12 sm:h-12 text-base sm:text-lg border-2',
+    lg: 'w-14 h-14 text-xl border-[3px]',
+  }[size] || 'w-11 h-11 text-base border-2';
+
+  const posClasses = {
+    center: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+    topLeft: 'top-1.5 left-1.5',
+    topRight: 'top-3 right-3',
+  }[position] || 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2';
+
+  return (
+    <span
+      className={`absolute ${posClasses} ${sizeClasses} rounded-full bg-[#091E3A]/90 text-[#ADF802] border-[#ADF802] font-black flex items-center justify-center shadow-[0_6px_18px_rgba(9,30,58,0.6)] pointer-events-none select-none z-20 tabular-nums`}
+      aria-label={`Image ${number}`}
+    >
+      {number}
+    </span>
+  );
+}
