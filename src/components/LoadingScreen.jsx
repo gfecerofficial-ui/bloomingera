@@ -41,6 +41,21 @@ const ORBIT_IMAGES = [
   },
 ];
 
+const LEADERSHIP_PHOTOS = [
+  '/leadership/masuda-yasmin.jpeg',
+  '/leadership/shelly-bisht.jpeg',
+  '/leadership/ayaan-hossain.jpeg',
+  '/leadership/mohd-neyaz-alam.jpeg',
+  '/leadership/mou-chakraborty.jpeg',
+];
+
+// Persistent module-level cache so decoded Image bitmaps are never garbage-collected
+// or evicted when sections scroll off-screen on mobile browsers.
+const PINNED_IMAGES = [];
+if (typeof window !== 'undefined') {
+  window.__BLOOMINGERA_PINNED_IMAGES__ = PINNED_IMAGES;
+}
+
 export default function LoadingScreen({ onComplete }) {
   // Phases: 'init' -> 'revolve' -> 'collapse' -> 'done'
   const [phase, setPhase] = useState('init');
@@ -56,7 +71,42 @@ export default function LoadingScreen({ onComplete }) {
       if (isMounted) setPhase('revolve');
     }, 100);
 
-    // Wait for both minimum 3.1s revolve duration AND window load (capped at 3.5s max)
+    // Preload & decode every hero asset and all website images in memory behind loading screen,
+    // pinning each decoded Image reference in PINNED_IMAGES to prevent mobile off-screen eviction.
+    const criticalHeroAssets = [
+      '/hero/slide_1.jpg',
+      '/hero/slide_2.jpg',
+      '/hero/slide_3.jpg',
+      '/logo.jpeg',
+      ...Object.values(CHILD_PHOTOS),
+    ];
+
+    const secondaryAssets = [...LEADERSHIP_PHOTOS];
+
+    const preloadAndPin = (src, priority = 'auto') => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.decoding = 'sync';
+        if ('fetchPriority' in img) {
+          img.fetchPriority = priority;
+        }
+        img.src = src;
+        PINNED_IMAGES.push(img);
+        if (img.decode) {
+          img.decode().then(resolve).catch(resolve);
+        } else {
+          img.onload = resolve;
+          img.onerror = resolve;
+        }
+      });
+    };
+
+    const preloadAssetsPromise = Promise.all([
+      ...criticalHeroAssets.map((src) => preloadAndPin(src, 'high')),
+      ...secondaryAssets.map((src) => preloadAndPin(src, 'auto')),
+    ]);
+
+    // Wait for both minimum 3.1s revolve duration, window load, AND all hero assets decoded (capped at 3.5s max)
     const minDurationPromise = new Promise((resolve) => setTimeout(resolve, 3100));
     const pageLoadPromise = new Promise((resolve) => {
       if (document.readyState === 'complete') {
@@ -75,7 +125,7 @@ export default function LoadingScreen({ onComplete }) {
       }
     });
 
-    Promise.all([minDurationPromise, pageLoadPromise]).then(() => {
+    Promise.all([minDurationPromise, pageLoadPromise, preloadAssetsPromise]).then(() => {
       if (!isMounted) return;
       // Step 2: Collapse the 6 images back behind the central circular logo
       setPhase('collapse');

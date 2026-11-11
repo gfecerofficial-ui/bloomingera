@@ -241,28 +241,40 @@ export const LEADERSHIP = [
     role: "Founder & Chief Academic Officer",
     qualifications: "Ph.D. in Early Childhood Education, NCF-FS Specialist",
     bio: "Pioneer of the No-Book Experiential Framework that replaces rote copybooks with hands-on learning worlds.",
-    quote: "Children are not empty vessels to be filled with textbook print; they are blazing fires of natural curiosity."
+    quote: "Children are not empty vessels to be filled with textbook print; they are blazing fires of natural curiosity.",
+    photo: "/leadership/masuda-yasmin.jpeg"
   },
   {
     name: "Dr. Shelly Bisht",
     role: "Director of Curriculum & Pedagogy",
     qualifications: "M.Ed, Child Psychology Researcher",
     bio: "Architect behind the Kindermagic PrimeX 6-World framework, connecting neuroscience with hands-on play.",
-    quote: "True learning occurs through the hands. Touching reality builds permanent brain connections."
+    quote: "True learning occurs through the hands. Touching reality builds permanent brain connections.",
+    photo: "/leadership/shelly-bisht.jpeg"
   },
   {
     name: "Ayaan Hossain",
     role: "Director of Strategy & Brand Growth",
     qualifications: "B.Tech, MBA (Operations)",
     bio: "Steers franchise architecture and 360-degree support across expanding city networks.",
-    quote: "Our partners are academic stewards transforming early years across India."
+    quote: "Our partners are academic stewards transforming early years across India.",
+    photo: "/leadership/ayaan-hossain.jpeg"
   },
   {
     name: "Mohd. Neyaz Alam",
     role: "Director of Operations & Compliance",
     qualifications: "School Infrastructure Lead",
     bio: "Oversees child-safe infrastructure and educator bootcamps nationwide.",
-    quote: "Child safety, non-toxic spaces, and world-class mentors are non-negotiable."
+    quote: "Child safety, non-toxic spaces, and world-class mentors are non-negotiable.",
+    photo: "/leadership/mohd-neyaz-alam.jpeg"
+  },
+  {
+    name: "Ms. Mou Chakraborty",
+    role: "Director - Franchise Coordination",
+    qualifications: "Early Childhood Operations & Center Mentorship Lead",
+    bio: "Empowers franchise partners with comprehensive center setup, educator onboarding, operational alignment and sustained preschool growth.",
+    quote: "A preschool blossoms when educators, parents and leadership share one heartbeat for childhood.",
+    photo: "/leadership/mou-chakraborty.jpeg"
   }
 ];
 

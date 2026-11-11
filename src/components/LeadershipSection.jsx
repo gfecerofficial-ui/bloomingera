@@ -29,15 +29,19 @@ export default function LeadershipSection() {
           <div className="glass-panel p-6 sm:p-10 rounded-3xl border-white/95 shadow-2xl bg-white/90 max-w-5xl mx-auto mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
-              {/* Founder Avatar / Initials Tile */}
+              {/* Founder Avatar / Portrait Tile */}
               <div className="lg:col-span-4 flex flex-col items-center text-center">
                 <motion.div 
                   whileHover={{ scale: 1.05, rotate: 1 }}
-                  className="w-32 h-32 sm:w-40 sm:h-40 rounded-3xl bg-gradient-to-br from-brand-lime to-brand-turquoise p-1 shadow-xl flex items-center justify-center"
+                  className="w-32 h-32 sm:w-40 sm:h-40 rounded-3xl bg-gradient-to-br from-brand-lime to-brand-turquoise p-1 shadow-xl flex items-center justify-center overflow-hidden"
                 >
-                  <div className="w-full h-full bg-white rounded-[22px] flex flex-col items-center justify-center p-4">
-                    <span className="text-4xl sm:text-5xl font-black text-brand-navy font-display">MY</span>
-                    <span className="text-[10px] font-bold text-brand-turquoise-dark uppercase tracking-wider mt-1">
+                  <div className="w-full h-full bg-white rounded-[22px] overflow-hidden relative">
+                    <img
+                      src={LEADERSHIP[0].photo || "/leadership/masuda-yasmin.jpeg"}
+                      alt={LEADERSHIP[0].name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <span className="absolute bottom-1.5 inset-x-2 px-2 py-0.5 rounded-full bg-brand-navy/90 text-[9px] font-bold text-brand-lime uppercase tracking-wider text-center backdrop-blur-xs">
                       Founder
                     </span>
                   </div>
@@ -80,7 +84,7 @@ export default function LeadershipSection() {
         </ScrollReveal>
 
         {/* Executive Board Cards with Staggered Entrance */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {LEADERSHIP.slice(1).map((leader, idx) => (
             <StaggerItem key={idx}>
               <motion.div 
@@ -88,8 +92,12 @@ export default function LeadershipSection() {
                 className="glass-panel p-6 rounded-3xl border border-white/90 shadow-md bg-white/75 hover:bg-white/95 transition-all flex flex-col justify-between h-full"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-brand-navy/5 flex items-center justify-center font-black text-brand-navy mb-4">
-                    {leader.name.split(' ').map(n => n[0]).join('')}
+                  <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-brand-turquoise/40 shadow-md mb-4 bg-white flex-shrink-0">
+                    <img
+                      src={leader.photo}
+                      alt={leader.name}
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                   <h4 className="text-base font-extrabold text-brand-navy">{leader.name}</h4>
                   <p className="text-xs font-bold text-brand-turquoise-dark mb-1">{leader.role}</p>

@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import WavingChildStickFigure from './WavingChildStickFigure';
+import PeekingChildFigure from './PeekingChildFigure';
+import HeroNatureElements from './HeroNatureElements';
 import {
   Sparkles, Phone, ArrowRight, ArrowUpRight, CheckCircle2, Heart, Star,
   BookOpen, Compass, Palette, Music, Leaf, Globe2, Users, Brain,
   MessageCircle, Smile, Rocket, ShieldCheck, Award, Calendar, Play,
   ChevronLeft, ChevronRight, ChevronDown, MapPin, Mail, Clock, Eye, X, GraduationCap,
-  Layers, Flame, Sun, Flower2
+  Layers, Flame, Sun, Flower2, Quote
 } from 'lucide-react';
 
 // All 13 photos have been visually verified via read_file to depict ONLY preschool children / toys and ZERO adults
@@ -91,7 +93,7 @@ const HERO_SLIDES = [
     primaryBtn: "Explore Blooming Era",
     primaryHref: "#welcome",
     secondaryBtn: "Book a School Tour",
-    mainImage: "/hero/slide_1.png",
+    mainImage: "/hero/slide_1.jpg",
     secondaryImage: CHILD_PHOTOS.fingerPaintingGirl,
     tertiaryImage: CHILD_PHOTOS.toddlerLaughingBook,
     badgeTitle: "Proudly Indian, Powerfully Global",
@@ -112,7 +114,7 @@ const HERO_SLIDES = [
     primaryBtn: "Discover Our Learning Philosophy",
     primaryHref: "#philosophy",
     secondaryBtn: "Book a School Tour",
-    mainImage: "/hero/slide_2.png",
+    mainImage: "/hero/slide_2.jpg",
     secondaryImage: CHILD_PHOTOS.woodenBlocksChild,
     tertiaryImage: CHILD_PHOTOS.natureExplorerChild,
     badgeTitle: "Kindermagic PrimeX™ Curriculum",
@@ -133,7 +135,7 @@ const HERO_SLIDES = [
     primaryBtn: "Explore Franchise Opportunities",
     primaryHref: "#franchise-opportunity",
     secondaryBtn: "Enquire for Partnership",
-    mainImage: "/hero/slide_3.png",
+    mainImage: "/hero/slide_3.jpg",
     secondaryImage: CHILD_PHOTOS.classroomDrawing,
     tertiaryImage: CHILD_PHOTOS.playgroupFloorToddler,
     badgeTitle: "Franchise Starting at ₹2.50 Lakh",
@@ -614,7 +616,7 @@ const LEADERSHIP_TEAM = [
     initials: "MY",
     badge: "Visionary Founder",
     accent: "#ADF802",
-    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+    photo: "/leadership/masuda-yasmin.jpeg"
   },
   {
     name: "Dr. Shelly Bisht",
@@ -623,7 +625,7 @@ const LEADERSHIP_TEAM = [
     initials: "SB",
     badge: "Academic Excellence",
     accent: "#60C8D4",
-    photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
+    photo: "/leadership/shelly-bisht.jpeg"
   },
   {
     name: "Ayaan Hossain",
@@ -632,7 +634,7 @@ const LEADERSHIP_TEAM = [
     initials: "AH",
     badge: "Operational Scale",
     accent: "#fece13",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+    photo: "/leadership/ayaan-hossain.jpeg"
   },
   {
     name: "Mohd. Neyaz Alam",
@@ -641,7 +643,16 @@ const LEADERSHIP_TEAM = [
     initials: "NA",
     badge: "Strategic Growth",
     accent: "#091E3A",
-    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
+    photo: "/leadership/mohd-neyaz-alam.jpeg"
+  },
+  {
+    name: "Ms. Mou Chakraborty",
+    role: "Director, Franchise Coordination",
+    bio: "Guiding franchise partners with seamless center setup, educator mentorship and network growth.",
+    initials: "MC",
+    badge: "Franchise Leadership",
+    accent: "#FA0672",
+    photo: "/leadership/mou-chakraborty.jpeg"
   }
 ];
 
@@ -794,6 +805,7 @@ export default function IndianPreschoolHome({
   onSwitchToSimulatorView,
   showHeader = true,
   showFooter = true,
+  isPageLoaded = true,
   onNavigate
 }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -804,13 +816,147 @@ export default function IndianPreschoolHome({
   const [activeVideoModal, setActiveVideoModal] = useState(null);
   const [flippedLeader, setFlippedLeader] = useState(null);
 
-  // Auto-advance Hero Slider every 6.5 seconds
+  // Refs & state for responsive Hero child/branch & flower visibility rules.
+  // Initialized synchronously at t = 0ms while the loading screen is up, and refined via useLayoutEffect.
+  const heroSectionRef = useRef(null);
+  const [isHeroInView, setIsHeroInView] = useState(true);
+  const heroHeadingRef = useRef(null);
+  const desktopSlideshowRef = useRef(null);
+  const [heroLayout, setHeroLayout] = useState(() => {
+    if (typeof window === 'undefined') {
+      return { showChild: true, showFlower: true, branchCompact: false };
+    }
+    const vw = window.innerWidth;
+    const vh = Math.max(window.innerHeight, 1);
+    const aspectRatio = vw / vh;
+    const isWideAspect = aspectRatio >= 1.45 && vw >= 1024;
+    // max-w-7xl is 1280px; account for ~16px organic inward curve of the melting slideshow frame
+    const estimatedRightSpace = Math.max(24, (vw - 1280) / 2) + 16;
+    const flowerOverlapRatio = Math.max(0, 132 - estimatedRightSpace) / 140;
+    const estimatedHeadingLeft = Math.max(24, (vw - 1280) / 2);
+    const firstWordRight = estimatedHeadingLeft + 60 * 2.15;
+    const childWidth = vw >= 1620 ? 350 : 320;
+    const wavingHandMaxRight = -4 + (111 / 135) * childWidth;
+    return {
+      showChild: isWideAspect && wavingHandMaxRight <= firstWordRight && estimatedHeadingLeft >= 115,
+      showFlower: isWideAspect && flowerOverlapRatio <= 0.30,
+      branchCompact: estimatedHeadingLeft < 72,
+    };
+  });
+
+  useLayoutEffect(() => {
+    // On mobile (<1024px), Hero child & flower are strictly hidden, so skip desktop DOM measurement
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      return;
+    }
+
+    const evaluateHeroClearance = () => {
+      if (typeof window === 'undefined') return;
+      const vw = window.innerWidth;
+      const vh = Math.max(window.innerHeight, 1);
+      const aspectRatio = vw / vh;
+
+      // Hide both the child figure and the flower on smaller aspect ratio screens (e.g. 4:3, 5:4, portrait, or < 1.45)
+      // as well as below desktop lg breakpoint.
+      const isWideAspect = aspectRatio >= 1.45 && vw >= 1024;
+
+      let nextShowFlower = false;
+      let nextShowChild = false;
+      let nextBranchCompact = false;
+
+      if (desktopSlideshowRef.current) {
+        const slideRect = desktopSlideshowRef.current.getBoundingClientRect();
+        // In HeroNatureElements (540px wide SVG at right: 0), the flower head has diameter 140px
+        // and its leftmost petal edge is 132px from the right viewport edge.
+        // Account for the ~16px organic inward curvature of the melting slideshow border.
+        // Allow up to 30% (0.30) of the flower to overlap over the image slideshow; if more than 30%, hide it.
+        const visualRightClearance = vw - slideRect.right + 16;
+        const overlapPx = Math.max(0, 132 - visualRightClearance);
+        const overlapRatio = overlapPx / 140;
+        nextShowFlower = isWideAspect && slideRect.width > 0 && overlapRatio <= 0.30;
+      }
+
+      if (heroHeadingRef.current) {
+        const headingRect = heroHeadingRef.current.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(heroHeadingRef.current);
+        const fontSize = parseFloat(computedStyle.fontSize) || 60;
+        // Shortest first word across the hero slides ("Less" / "Little" / "Build") is ~2.15em wide.
+        const firstWordRight = headingRect.left + fontSize * 2.15;
+
+        // In PeekingChildFigure (viewBox 0..135), the waving hand fingertips reach x = 111
+        // with container at left: -4px and width 320px (or 350px at >=1620px).
+        const childWidth = vw >= 1620 ? 350 : 320;
+        const wavingHandMaxRight = -4 + (111 / 135) * childWidth;
+
+        // Show child only on wide aspect screens when its waving hand does not cross past the first word
+        nextShowChild =
+          isWideAspect &&
+          headingRect.width > 0 &&
+          wavingHandMaxRight <= firstWordRight &&
+          headingRect.left >= 115;
+
+        // Compact placement for the dangling branch when the left margin beside the heading is narrow
+        nextBranchCompact = headingRect.left < 72;
+      }
+
+      setHeroLayout((prev) => {
+        if (
+          prev.showChild === nextShowChild &&
+          prev.showFlower === nextShowFlower &&
+          prev.branchCompact === nextBranchCompact
+        ) {
+          return prev;
+        }
+        return {
+          showChild: nextShowChild,
+          showFlower: nextShowFlower,
+          branchCompact: nextBranchCompact,
+        };
+      });
+    };
+
+    // Execute synchronously while the loading screen is up, and once fonts settle
+    evaluateHeroClearance();
+    if (typeof document !== 'undefined' && document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(evaluateHeroClearance);
+    }
+    window.addEventListener('resize', evaluateHeroClearance);
+
+    let observer;
+    if (typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(evaluateHeroClearance);
+      if (heroHeadingRef.current) observer.observe(heroHeadingRef.current);
+      if (desktopSlideshowRef.current) observer.observe(desktopSlideshowRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', evaluateHeroClearance);
+      if (observer) observer.disconnect();
+    };
+  }, [activeSlide]);
+
+  // Track whether Hero section is within viewport so off-screen slide swaps never dirty mobile GPU tiles
   useEffect(() => {
+    const el = heroSectionRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroInView(entry.isIntersecting);
+      },
+      { rootMargin: '150px 0px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // Auto-advance Hero Slider every 6.5 seconds (only while Hero is in view)
+  useEffect(() => {
+    if (!isHeroInView) return;
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 6500);
     return () => clearInterval(timer);
-  }, []);
+  }, [isHeroInView]);
 
   // Auto-advance Beyond Academics (8 Dimensions) every 5 seconds on desktop only
   useEffect(() => {
@@ -881,7 +1027,7 @@ export default function IndianPreschoolHome({
 
           {/* Main Sticky Glass Navigation */}
           <header className="sticky top-3 z-40 px-3 sm:px-6">
-            <div className="max-w-7xl mx-auto glass-panel-elevated rounded-full py-2.5 px-4 sm:px-7 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.1)] bg-white/85 backdrop-blur-2xl">
+            <div className="max-w-7xl mx-auto glass-panel-elevated rounded-full py-2.5 px-4 sm:px-7 border-2 border-white shadow-[0_20px_50px_rgba(9,30,58,0.1)] bg-white/95 lg:bg-white/85 lg:backdrop-blur-2xl">
               <div className="flex items-center justify-between gap-4">
                 <a href="#" className="flex items-center gap-3 group">
                   <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#ADF802] shadow-md bg-white p-0.5 group-hover:scale-105 transition-transform">
@@ -951,7 +1097,23 @@ export default function IndianPreschoolHome({
       {/* ===================================================================== */}
       {/* SECTION 01 — HOMEPAGE HERO SLIDER (FLOWY GLASSMORPHIC 3-SLIDE HERO)   */}
       {/* ===================================================================== */}
-      <section className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]">
+      <section
+        ref={heroSectionRef}
+        className="relative pt-[124px] sm:pt-[140px] lg:pt-[148px] pb-16 sm:pb-24 lg:pb-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[#E7F6FA]/85 via-[#F2FAFC]/90 to-[#F4F9FB]"
+      >
+        {/* Background Peeking & Waving Child Stick Figure (or Dangling Tree Branch with Blooming Flower Buds on smaller screens) */}
+        <PeekingChildFigure
+          isPageLoaded={isPageLoaded}
+          showChild={heroLayout.showChild}
+          branchCompact={heroLayout.branchCompact}
+        />
+
+        {/* Background Glowing Sun (Top-Right), Flying Birds (Left->Right), & Blooming Plant (Bottom-Right) */}
+        <HeroNatureElements
+          isPageLoaded={isPageLoaded}
+          showFlower={heroLayout.showFlower}
+        />
+
         {/* Soft feather vignette at very top for ultra-smooth transition from pre-header */}
         <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#091E3A]/[0.06] to-transparent pointer-events-none z-[1]" />
 
@@ -969,14 +1131,7 @@ export default function IndianPreschoolHome({
           style={{ background: 'radial-gradient(circle, rgba(254,206,19,0.32) 0%, rgba(254,206,19,0.1) 40%, transparent 70%)', animationDelay: '-9s' }}
         />
 
-        {/* Floating Animated Preschool Badges (Cloud / Star / Flower) */}
-        <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 4, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden xl:flex absolute top-44 left-6 2xl:left-12 z-10 w-14 h-14 rounded-3xl glass-panel-elevated items-center justify-center text-2xl border-2 border-white shadow-lg will-change-transform select-none"
-        >
-          🌸
-        </motion.div>
+        {/* Floating Animated Preschool Badge */}
         <motion.div
           animate={{ y: [0, 12, 0], rotate: [0, -5, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
@@ -1050,9 +1205,9 @@ export default function IndianPreschoolHome({
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentSlide.id}
-                      initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
-                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                       className="space-y-4"
                     >
@@ -1077,7 +1232,10 @@ export default function IndianPreschoolHome({
 
                       {/* Headline with locked min-height for 3-line headings across all slides */}
                       <div className="min-h-[125px] sm:min-h-[165px] lg:min-h-[205px] flex items-center">
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#091E3A] tracking-tight leading-[1.08]">
+                        <h1
+                          ref={heroHeadingRef}
+                          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#091E3A] tracking-tight leading-[1.08]"
+                        >
                           {(currentSlide.headlineLines || []).map((line, idx) => (
                             <span key={idx} className="block">
                               {line.highlight ? (
@@ -1120,13 +1278,14 @@ export default function IndianPreschoolHome({
                     <div
                       className="relative overflow-hidden h-[390px] sm:h-[460px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
                       style={{
-                        WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                         transform: 'translateZ(0)',
+                        WebkitTransform: 'translateZ(0)',
+                        backfaceVisibility: 'hidden',
                       }}
                     >
                       {/* Subtly Sparkling Rim Border */}
                       <div
-                        className="absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
+                        className="hidden lg:block absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
                         style={{
                           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                           WebkitMaskComposite: 'xor',
@@ -1157,21 +1316,28 @@ export default function IndianPreschoolHome({
                         </svg>
                       </div>
 
-                      {/* Silky Pure Opacity Crossfade (No Resizing or Zooming) */}
-                      <AnimatePresence initial={false}>
-                        <motion.img
-                          key={currentSlide.mainImage}
-                          src={currentSlide.mainImage}
-                          alt={currentSlide.headline}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.6, ease: "easeInOut" }}
-                          className="absolute inset-0 w-full h-full object-cover object-center"
-                          loading="eager"
-                          decoding="async"
-                        />
-                      </AnimatePresence>
+                      {/* Permanently Mounted GPU-Composited Slideshow Images (Zero Unmount/Remount Texture Stalls) */}
+                      {HERO_SLIDES.map((slide, idx) => {
+                        const isCurrent = activeSlide === idx;
+                        return (
+                          <img
+                            key={slide.id}
+                            src={slide.mainImage}
+                            alt={slide.headline}
+                            loading="eager"
+                            decoding="sync"
+                            fetchPriority="high"
+                            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 ease-in-out will-change-[opacity] ${
+                              isCurrent ? 'opacity-100 z-[2]' : 'opacity-0 z-[1] pointer-events-none'
+                            }`}
+                            style={{
+                              transform: 'translateZ(0)',
+                              WebkitTransform: 'translateZ(0)',
+                              backfaceVisibility: 'hidden',
+                            }}
+                          />
+                        );
+                      })}
 
                       {/* Compact Floating Glass Badge */}
                       <AnimatePresence mode="wait">
@@ -1181,7 +1347,7 @@ export default function IndianPreschoolHome({
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -6 }}
                           transition={{ duration: 0.3, ease: 'easeOut' }}
-                          className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
+                          className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/95 lg:bg-white/90 lg:backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
                         >
                           <div
                             className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
@@ -1326,6 +1492,7 @@ export default function IndianPreschoolHome({
 
                 {/* Image Showcase Frame with fluid organic border melting directly into background */}
                 <div
+                  ref={desktopSlideshowRef}
                   className="relative overflow-hidden h-[440px] sm:h-[500px] lg:h-[530px] xl:h-[560px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
                   style={{
                     WebkitMaskImage: '-webkit-radial-gradient(white, black)',
@@ -1365,21 +1532,28 @@ export default function IndianPreschoolHome({
                     </svg>
                   </div>
 
-                  {/* Silky Pure Opacity Crossfade (No Resizing or Zooming) */}
-                  <AnimatePresence initial={false}>
-                    <motion.img
-                      key={currentSlide.mainImage}
-                      src={currentSlide.mainImage}
-                      alt={currentSlide.headline}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.6, ease: "easeInOut" }}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </AnimatePresence>
+                  {/* Permanently Mounted GPU-Composited Slideshow Images (Zero Unmount/Remount Texture Stalls) */}
+                  {HERO_SLIDES.map((slide, idx) => {
+                    const isCurrent = activeSlide === idx;
+                    return (
+                      <img
+                        key={slide.id}
+                        src={slide.mainImage}
+                        alt={slide.headline}
+                        loading="eager"
+                        decoding="sync"
+                        fetchPriority="high"
+                        className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 ease-in-out will-change-[opacity] ${
+                          isCurrent ? 'opacity-100 z-[2]' : 'opacity-0 z-[1] pointer-events-none'
+                        }`}
+                        style={{
+                          transform: 'translateZ(0)',
+                          WebkitTransform: 'translateZ(0)',
+                          backfaceVisibility: 'hidden',
+                        }}
+                      />
+                    );
+                  })}
 
                   {/* Compact Floating Glass Badge */}
                   <AnimatePresence mode="wait">
@@ -1424,15 +1598,16 @@ export default function IndianPreschoolHome({
             viewport={{ once: true }}
             className="rounded-[34px] p-6 sm:p-8 lg:px-12 text-white shadow-2xl border-2 border-[#60C8D4]/60 relative overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, #091E3A 0%, #0d2c55 25%, #091E3A 50%, #10386b 75%, #091E3A 100%)',
-              backgroundSize: '240% 240%',
-              animation: 'flowyColorDrift 12s ease-in-out infinite',
+              background: 'linear-gradient(135deg, #091E3A 0%, #0d2c55 35%, #10386b 70%, #091E3A 100%)',
+              transform: 'translateZ(0)',
+              WebkitTransform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
             }}
           >
             {/* Decorative Glows */}
-            <div className="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-[#ADF802]/25 blur-3xl pointer-events-none animate-pulse" />
-            <div className="absolute left-1/3 -bottom-16 w-72 h-72 rounded-full bg-[#60C8D4]/25 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
-            <div className="absolute left-4 top-1/2 w-48 h-48 rounded-full bg-[#fece13]/15 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '4s' }} />
+            <div className="hidden lg:block absolute -right-12 -top-12 w-64 h-64 rounded-full bg-[#ADF802]/25 blur-3xl pointer-events-none animate-pulse" />
+            <div className="hidden lg:block absolute left-1/3 -bottom-16 w-72 h-72 rounded-full bg-[#60C8D4]/25 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
+            <div className="hidden lg:block absolute left-4 top-1/2 w-48 h-48 rounded-full bg-[#fece13]/15 blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '4s' }} />
 
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
               <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -1658,8 +1833,12 @@ export default function IndianPreschoolHome({
                 }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-[#091E3A] text-[#ADF802] flex items-center justify-center font-extrabold text-lg shadow-md flex-shrink-0">
-                    MY
+                  <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-[#ADF802] shadow-md flex-shrink-0 bg-white">
+                    <img
+                      src="/leadership/masuda-yasmin.jpeg"
+                      alt="Dr. Masuda Yasmin"
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                   <div>
                     <p className="font-serif italic text-xl text-[#091E3A] font-bold">
@@ -2501,7 +2680,7 @@ export default function IndianPreschoolHome({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-5 sm:gap-6">
             {LEADERSHIP_TEAM.map((leader, idx) => {
               const isFlipped = flippedLeader === idx;
               return (
@@ -2513,11 +2692,11 @@ export default function IndianPreschoolHome({
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                   whileHover={{ y: -8, transition: { duration: 0.25, delay: 0 } }}
                   onClick={() => setFlippedLeader(isFlipped ? null : idx)}
-                  className="group relative rounded-[28px] sm:rounded-[32px] aspect-square w-full max-w-[340px] sm:max-w-none mx-auto cursor-pointer"
+                  className="group relative rounded-[28px] sm:rounded-[32px] h-[305px] sm:h-auto sm:aspect-[3/4] sm:min-h-[330px] w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-20px)] max-w-[310px] mx-auto sm:mx-0 cursor-pointer"
                 >
                   {/* CARD 2: Current Details Card (Hidden Behind, Revealed on Hover / Flip) */}
                   <div
-                    className={`absolute inset-0 w-full h-full backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-5 sm:p-5.5 border-2 shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
+                    className={`absolute inset-0 w-full h-full backdrop-blur-2xl rounded-[28px] sm:rounded-[32px] p-4 sm:p-4.5 xl:p-5 border-2 shadow-xl flex flex-col justify-between transition-all duration-300 ease-out overflow-hidden ${
                       isFlipped
                         ? 'opacity-100 scale-100 pointer-events-auto z-20'
                         : 'opacity-0 scale-95 pointer-events-none z-0 group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto group-hover:z-20'
@@ -2536,44 +2715,64 @@ export default function IndianPreschoolHome({
                       style={{ backgroundColor: leader.accent }}
                     />
 
-                    <div>
-                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    {/* TOP SECTION: Avatar, Badge, Name & Role */}
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-1.5">
                         <div
-                          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center text-base sm:text-lg font-black shadow-md border-2 border-white"
-                          style={{
-                            backgroundColor: leader.accent,
-                            color: leader.accent === '#091E3A' ? '#FFFFFF' : '#091E3A'
-                          }}
+                          className="w-11 h-11 rounded-2xl overflow-hidden border-2 shadow-sm flex-shrink-0 bg-white"
+                          style={{ borderColor: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
                         >
-                          {leader.initials}
+                          <img
+                            src={leader.photo}
+                            alt={leader.name}
+                            className="w-full h-full object-cover object-top"
+                          />
                         </div>
-                        <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#091E3A]/5 text-[#091E3A] border border-[#091E3A]/10">
+                        <span className="text-[9.5px] sm:text-[9px] font-extrabold uppercase tracking-wide px-2.5 py-1 sm:py-0.5 rounded-full bg-[#091E3A]/5 text-[#091E3A] border border-[#091E3A]/10 shadow-2xs whitespace-nowrap">
                           {leader.badge}
                         </span>
                       </div>
-                      <h3 className="text-lg sm:text-xl font-extrabold text-[#091E3A] leading-tight">
-                        {leader.name}
-                      </h3>
-                      <p
-                        className="text-[11px] sm:text-xs font-bold uppercase tracking-wider mt-0.5 mb-2"
-                        style={{
-                          color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#091E3A' : leader.accent
-                        }}
-                      >
-                        {leader.role}
-                      </p>
-                      <p className="text-xs sm:text-[13px] text-[#091E3A]/80 font-medium leading-relaxed">
-                        {leader.bio}
+
+                      {/* Fixed height name & role block so every card's description starts at the exact same vertical plane */}
+                      <div className="h-[44px] sm:h-[46px] flex flex-col justify-center">
+                        <h3 className="text-[15px] sm:text-sm lg:text-base font-extrabold text-[#091E3A] leading-tight truncate">
+                          {leader.name}
+                        </h3>
+                        <p
+                          className="text-[10px] sm:text-[9px] lg:text-[9.5px] font-bold uppercase tracking-wider mt-0.5 leading-tight line-clamp-2"
+                          style={{
+                            color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#091E3A' : leader.accent
+                          }}
+                        >
+                          {leader.role}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* DESCRIPTION SECTION: Dedicated frosted container with structured header and clean vertical alignment */}
+                    <div className="relative z-10 flex-1 min-h-0 flex flex-col justify-center my-1.5 p-2.5 sm:p-3 rounded-2xl bg-white/75 backdrop-blur-md border border-[#091E3A]/8 shadow-[0_2px_10px_rgba(9,30,58,0.03)]">
+                      <div className="flex items-center gap-1.5 mb-1 opacity-70">
+                        <Quote
+                          className="w-3 h-3 flex-shrink-0"
+                          style={{ color: leader.accent === '#fece13' ? '#B8860B' : leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
+                        />
+                        <span className="text-[8.5px] font-black uppercase tracking-widest text-[#091E3A]/50">
+                          Vision & Impact
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-[10.5px] lg:text-[11px] text-[#091E3A]/85 font-medium leading-relaxed italic">
+                        "{leader.bio}"
                       </p>
                     </div>
 
-                    <div className="pt-2 sm:pt-2.5 border-t border-[#091E3A]/10 flex items-center justify-between">
-                      <span className="text-[10px] sm:text-[11px] font-black text-[#091E3A]/70">
+                    {/* FOOTER: Division bar and Brand signature */}
+                    <div className="relative z-10 pt-2 sm:pt-2.5 border-t border-[#091E3A]/10 flex items-center justify-between shrink-0 px-1">
+                      <span className="text-[10.5px] sm:text-[10px] font-black text-[#091E3A]/70">
                         Blooming Era Leadership
                       </span>
                       <span
                         className="w-2.5 h-2.5 rounded-full"
-                        style={{ backgroundColor: leader.accent }}
+                        style={{ backgroundColor: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent }}
                       />
                     </div>
                   </div>
@@ -2590,28 +2789,30 @@ export default function IndianPreschoolHome({
                     <img
                       src={leader.photo}
                       alt={leader.name}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
 
                     {/* Top Badge */}
                     <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-20">
-                      <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-black uppercase text-[#091E3A] shadow-md border border-white">
+                      <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[10px] font-black uppercase text-[#091E3A] shadow-md border border-white">
                         {leader.badge}
                       </span>
                     </div>
 
-                    {/* Subtle Gradient Vignette at Bottom */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/60 to-transparent z-10" />
+                    {/* Targeted Bottom Gradient Vignette for clear typography without obscuring face */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/75 via-28% to-transparent to-60% z-10 pointer-events-none" />
 
                     {/* Bottom Info: Just Name and Designation + Bio Pill */}
                     <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 z-20">
                       <div className="flex items-end justify-between gap-2.5">
                         <div className="min-w-0 pr-1">
-                          <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight leading-snug drop-shadow-md">
+                          <h3 className="text-base sm:text-lg font-extrabold text-white tracking-tight leading-snug drop-shadow-md">
                             {leader.name}
                           </h3>
                           <p
-                            className="text-[11px] sm:text-xs font-bold uppercase tracking-wider mt-0.5 drop-shadow-sm"
+                            className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mt-0.5 drop-shadow-sm"
                             style={{
                               color: leader.accent === '#091E3A' ? '#60C8D4' : leader.accent
                             }}
