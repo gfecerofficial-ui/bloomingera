@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Compass, Sparkles, Globe2, BookOpen, ShieldCheck, Quote, ArrowRight, Award } from 'lucide-react';
 import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS, ImageNumberBadge } from './shared';
+import { CLOUDINARY_MEDIA } from '../../data/cloudinaryMedia';
 
 export default function AboutPage({ onOpenTourModal, onNavigate }) {
   return (
@@ -61,9 +62,14 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               className="lg:col-span-5 relative"
             >
               <div className="relative rounded-[40px] overflow-hidden border-4 border-white shadow-2xl bg-white">
-                <img
-                  src={CHILD_PHOTOS.classroomDrawing}
-                  alt="Preschool Children Discovering Hands-On Learning"
+                <video
+                  src={CLOUDINARY_MEDIA[61].url}
+                  poster={CLOUDINARY_MEDIA[61].poster}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Preschool Children Discovering Hands-On Learning"
                   className="w-full h-[440px] object-cover"
                 />
                 <ImageNumberBadge number={61} />

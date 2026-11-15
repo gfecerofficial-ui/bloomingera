@@ -4,6 +4,7 @@ import WavingChildStickFigure from './WavingChildStickFigure';
 import PeekingChildFigure from './PeekingChildFigure';
 import HeroNatureElements from './HeroNatureElements';
 import { ImageNumberBadge } from './pages/shared';
+import { CLOUDINARY_MEDIA } from '../data/cloudinaryMedia';
 import {
   Sparkles, Phone, ArrowRight, ArrowUpRight, CheckCircle2, Heart, Star,
   BookOpen, Compass, Palette, Music, Leaf, Globe2, Users, Brain,
@@ -94,7 +95,7 @@ const HERO_SLIDES = [
     primaryBtn: "Explore Blooming Era",
     primaryHref: "#welcome",
     secondaryBtn: "Book a School Tour",
-    mainImage: "/hero/slide_1.jpg",
+    mainImage: CLOUDINARY_MEDIA.s1,
     secondaryImage: CHILD_PHOTOS.fingerPaintingGirl,
     tertiaryImage: CHILD_PHOTOS.toddlerLaughingBook,
     badgeTitle: "Proudly Indian, Powerfully Global",
@@ -115,7 +116,7 @@ const HERO_SLIDES = [
     primaryBtn: "Discover Our Learning Philosophy",
     primaryHref: "#philosophy",
     secondaryBtn: "Book a School Tour",
-    mainImage: "/hero/slide_2.jpg",
+    mainImage: CLOUDINARY_MEDIA.s2,
     secondaryImage: CHILD_PHOTOS.woodenBlocksChild,
     tertiaryImage: CHILD_PHOTOS.natureExplorerChild,
     badgeTitle: "Kindermagic PrimeX™ Curriculum",
@@ -136,7 +137,7 @@ const HERO_SLIDES = [
     primaryBtn: "Explore Franchise Opportunities",
     primaryHref: "#franchise-opportunity",
     secondaryBtn: "Enquire for Partnership",
-    mainImage: "/hero/slide_3.jpg",
+    mainImage: CLOUDINARY_MEDIA.s3,
     secondaryImage: CHILD_PHOTOS.classroomDrawing,
     tertiaryImage: CHILD_PHOTOS.playgroupFloorToddler,
     badgeTitle: "Franchise Starting at ₹2.50 Lakh",
@@ -151,7 +152,7 @@ const WHY_PARENTS_CARDS = [
     id: 1,
     title: "NO-BOOK. REAL LEARNING.",
     description: "Less dependence on textbooks. More hands-on discovery, stories, projects, play and meaningful foundational learning.",
-    image: CHILD_PHOTOS.toddlerBeadMaze,
+    image: CLOUDINARY_MEDIA[1],
     icon: Sparkles,
     badge: "Experiential Discovery",
     color: "#ADF802",
@@ -175,7 +176,7 @@ const WHY_PARENTS_CARDS = [
     id: 3,
     title: "EVERY DIMENSION MATTERS.",
     description: "From emotional intelligence to physical wellbeing, we nurture the whole child, not merely academic performance.",
-    image: CHILD_PHOTOS.fingerPaintingGirl,
+    image: CLOUDINARY_MEDIA[3],
     icon: Heart,
     badge: "360° Whole Child",
     color: "#fece13",
@@ -187,7 +188,7 @@ const WHY_PARENTS_CARDS = [
     id: 4,
     title: "More Experiential Foundational Literacy & Numeracy",
     description: "Our research based curriculum helps make early learning more engaging, experiential, enjoyable and enlightening.",
-    image: CHILD_PHOTOS.classroomDrawing,
+    image: CLOUDINARY_MEDIA[4],
     icon: BookOpen,
     badge: "Research-Informed FLN",
     color: "#FF6B8B",
@@ -199,7 +200,7 @@ const WHY_PARENTS_CARDS = [
     id: 5,
     title: "INDIAN ROOTS. GLOBAL WINGS.",
     description: "Our approach celebrates Indian values while drawing on global perspectives and research-informed early-learning practices.",
-    image: CHILD_PHOTOS.toddlerLaughingBook,
+    image: CLOUDINARY_MEDIA[5],
     icon: Globe2,
     badge: "Sanskar + Global Vision",
     color: "#60C8D4",
@@ -300,7 +301,7 @@ const ACTIVITIES = [
     name: "Wonder Lab",
     tagline: "Little Scientists. Big Questions.",
     description: "Hands-on experiments, observation and playful investigations that bring science and everyday discoveries to life.",
-    image: CHILD_PHOTOS.toddlerAmazedBook,
+    image: CLOUDINARY_MEDIA[9],
     icon: Flame,
     accent: "#02C9FE",
     cardBg: "linear-gradient(135deg, #dcf7fb 0%, #ffffff 35%, #ebfbfd 70%, #c4f3fa 100%)",
@@ -312,7 +313,7 @@ const ACTIVITIES = [
     name: "Storyverse",
     tagline: "Where Every Story Opens a World.",
     description: "Storytelling, phonics games, puppetry and role-play nurture communication, imagination and early literacy.",
-    image: CHILD_PHOTOS.toddlerLaughingBook,
+    image: CLOUDINARY_MEDIA[10],
     icon: BookOpen,
     accent: "#ADF802",
     cardBg: "linear-gradient(135deg, #ecfad0 0%, #ffffff 35%, #f4fce5 70%, #d8f792 100%)",
@@ -324,7 +325,7 @@ const ACTIVITIES = [
     name: "Maker Studio",
     tagline: "Imagine It. Build It. Improve It.",
     description: "Construction, art, creative projects and design challenges inspire independent thinking and collaborative problem-solving.",
-    image: CHILD_PHOTOS.woodenBlocksChild,
+    image: CLOUDINARY_MEDIA[11],
     icon: Palette,
     accent: "#FECE13",
     cardBg: "linear-gradient(135deg, #fef6cc 0%, #ffffff 35%, #fffbe6 70%, #fede54 100%)",
@@ -336,7 +337,7 @@ const ACTIVITIES = [
     name: "Rhythm & Motion",
     tagline: "Move Freely. Express Joyfully.",
     description: "Music, dance, physical play and movement support coordination, expression, confidence and wellbeing.",
-    image: CHILD_PHOTOS.outdoorBallPlayKids,
+    image: CLOUDINARY_MEDIA[12],
     icon: Music,
     accent: "#FA0672",
     cardBg: "linear-gradient(135deg, #ffd9e8 0%, #ffffff 35%, #ffeaf1 70%, #ffb8c9 100%)",
@@ -348,7 +349,7 @@ const ACTIVITIES = [
     name: "Nature Explorers",
     tagline: "Learning Has No Classroom Walls.",
     description: "Gardening, sensory walks and outdoor exploration encourage environmental awareness and curiosity.",
-    image: CHILD_PHOTOS.natureExplorerChild,
+    image: CLOUDINARY_MEDIA[13],
     icon: Leaf,
     accent: "#22c55e",
     cardBg: "linear-gradient(135deg, #ddf7e4 0%, #ffffff 35%, #effbf2 70%, #bbf0ca 100%)",
@@ -360,7 +361,7 @@ const ACTIVITIES = [
     name: "Roots & Wings",
     tagline: "Indian at Heart. Global in Spirit.",
     description: "Stories, festivals, cultures and community experiences nurture belonging, empathy, respect and global awareness.",
-    image: CHILD_PHOTOS.classroomDrawing,
+    image: CLOUDINARY_MEDIA[14],
     icon: Globe2,
     accent: "#9B51E0",
     cardBg: "linear-gradient(135deg, #f3e6ff 0%, #ffffff 35%, #faf2ff 70%, #dcb7ff 100%)",
@@ -378,7 +379,7 @@ const PROGRAMMES_LIST = [
     tagline: "Tiny Steps. Beautiful Beginnings.",
     description: "Sensory discovery, warm relationships, movement and playful interactions make the first school experiences joyful and reassuring.",
     btnText: "Explore Playgroup",
-    image: CHILD_PHOTOS.playgroupFloorToddler,
+    image: CLOUDINARY_MEDIA[15],
     color: "#02C9FE",
     cardBg: "linear-gradient(180deg, rgba(2,201,254,0.38) 0%, rgba(9,30,58,0.95) 80%)",
     accentBorder: "#02C9FE",
@@ -392,7 +393,7 @@ const PROGRAMMES_LIST = [
     tagline: "Little Questions. Big Discoveries.",
     description: "Language, early concepts, imagination and independence blossom through stories, exploration and purposeful play.",
     btnText: "Explore Nursery",
-    image: CHILD_PHOTOS.fingerPaintingGirl,
+    image: CLOUDINARY_MEDIA[16],
     color: "#ADF802",
     cardBg: "linear-gradient(180deg, rgba(173, 248, 2,0.38) 0%, rgba(9,30,58,0.95) 80%)",
     accentBorder: "#ADF802",
@@ -406,7 +407,7 @@ const PROGRAMMES_LIST = [
     tagline: "Curious Minds. Strong Foundations.",
     description: "Experiential literacy, numeracy, early scientific thinking and creative challenges bring learning to life.",
     btnText: "Explore Junior KG",
-    image: CHILD_PHOTOS.woodenBlocksChild,
+    image: CLOUDINARY_MEDIA[17],
     color: "#FECE13",
     cardBg: "linear-gradient(180deg, rgba(254,206,19,0.40) 0%, rgba(9,30,58,0.95) 80%)",
     accentBorder: "#FECE13",
@@ -420,7 +421,7 @@ const PROGRAMMES_LIST = [
     tagline: "Confident Learners. Future-Ready Foundations.",
     description: "Foundational skills grow through inquiry, collaboration, projects, communication and meaningful school-readiness experiences.",
     btnText: "Explore Senior KG",
-    image: CHILD_PHOTOS.seniorKgFocusedChild,
+    image: CLOUDINARY_MEDIA[18],
     color: "#FA0672",
     cardBg: "linear-gradient(180deg, rgba(250,6,114,0.38) 0%, rgba(9,30,58,0.95) 80%)",
     accentBorder: "#FA0672",
@@ -436,7 +437,7 @@ const PRIMEX_STEPS = [
     name: "EXPLORE",
     summary: "Discover ideas through hands-on experiences.",
     detail: "Children touch, manipulate and investigate real-world sensory materials, wooden blocks, magnifiers and story props to spark natural curiosity.",
-    image: CHILD_PHOTOS.toddlerBeadMaze,
+    image: CLOUDINARY_MEDIA[19],
     color: "#ADF802",
     theme: {
       bgGradient: "linear-gradient(135deg, #ADF802 0%, #9fe000 50%, #bbf926 100%)",
@@ -543,7 +544,7 @@ const FUTURE_SKILLS = [
   {
     title: "Critical Thinking",
     description: "Asking questions, observing, comparing and exploring solutions.",
-    image: CHILD_PHOTOS.woodenBlocksChild,
+    image: CLOUDINARY_MEDIA[24],
     icon: Brain,
     accent: "#ADF802",
     bgGradient: "linear-gradient(135deg, #d8f792 0%, #ffffff 35%, #eefcd5 70%, #c4f364 100%)",
@@ -552,7 +553,7 @@ const FUTURE_SKILLS = [
   {
     title: "Creativity",
     description: "Imagining, designing, expressing and creating something original.",
-    image: CHILD_PHOTOS.fingerPaintingGirl,
+    image: CLOUDINARY_MEDIA[25],
     icon: Palette,
     accent: "#02C9FE",
     bgGradient: "linear-gradient(135deg, #b2eef5 0%, #ffffff 35%, #e2fafc 70%, #8ae4f0 100%)",
@@ -561,7 +562,7 @@ const FUTURE_SKILLS = [
   {
     title: "Communication",
     description: "Listening, speaking, storytelling and sharing ideas confidently.",
-    image: CHILD_PHOTOS.toddlerLaughingBook,
+    image: CLOUDINARY_MEDIA[26],
     icon: MessageCircle,
     accent: "#FECE13",
     bgGradient: "linear-gradient(135deg, #fee575 0%, #ffffff 35%, #fff7ce 70%, #fedc46 100%)",
@@ -570,7 +571,7 @@ const FUTURE_SKILLS = [
   {
     title: "Collaboration",
     description: "Making friends, working together and respecting different viewpoints.",
-    image: CHILD_PHOTOS.classroomDrawing,
+    image: CLOUDINARY_MEDIA[27],
     icon: Users,
     accent: "#FA0672",
     bgGradient: "linear-gradient(135deg, #ffb8c9 0%, #ffffff 35%, #ffe8ee 70%, #ffa3b9 100%)",
@@ -579,7 +580,7 @@ const FUTURE_SKILLS = [
   {
     title: "Emotional Intelligence",
     description: "Recognising emotions, building empathy and learning self-regulation.",
-    image: CHILD_PHOTOS.toddlerAmazedBook,
+    image: CLOUDINARY_MEDIA[28],
     icon: Heart,
     accent: "#9B51E0",
     bgGradient: "linear-gradient(135deg, #dcb7ff 0%, #ffffff 35%, #f3e6ff 70%, #cea0fd 100%)",
@@ -588,7 +589,7 @@ const FUTURE_SKILLS = [
   {
     title: "Future Awareness",
     description: "Exploring sustainability, technology, space and everyday innovation through play.",
-    image: CHILD_PHOTOS.natureExplorerChild,
+    image: CLOUDINARY_MEDIA[29],
     icon: Rocket,
     accent: "#FF8A3D",
     bgGradient: "linear-gradient(135deg, #ffd1ab 0%, #ffffff 35%, #fff0e3 70%, #ffbe85 100%)",
@@ -598,14 +599,14 @@ const FUTURE_SKILLS = [
 
 // SECTION 10: 8 HOLISTIC DEVELOPMENT DIMENSIONS
 const HOLISTIC_DIMENSIONS = [
-  { id: 1, title: "Physical & Motor Development", detail: "Movement, balance, pincer grip coordination & multisensory agility.", image: CHILD_PHOTOS.outdoorBallPlayKids },
-  { id: 2, title: "Cognitive & Executive Function Development", detail: "Attention, working memory, flexible thinking, reasoning & persistence.", image: CHILD_PHOTOS.woodenBlocksChild },
-  { id: 3, title: "Language & Communication", detail: "Storytelling, phonics readiness, active listening & expressive vocabulary.", image: CHILD_PHOTOS.toddlerLaughingBook },
-  { id: 4, title: "Social & Emotional Intelligence", detail: "Self-awareness, empathy, warm friendships, cooperation & inner confidence.", image: CHILD_PHOTOS.classroomDrawing },
-  { id: 5, title: "Creative & Cultural Expression", detail: "Art, music, drama, imagination, Indian heritage & global awareness.", image: CHILD_PHOTOS.fingerPaintingGirl },
-  { id: 6, title: "Values & Personal Responsibility", detail: "Kindness, respect, environmental care, gratitude & ethical habits.", image: CHILD_PHOTOS.natureExplorerChild },
-  { id: 7, title: "Practical Life & Independence", detail: "Self-care routines, organisation, decision-making & everyday confidence.", image: CHILD_PHOTOS.playgroupFloorToddler },
-  { id: 8, title: "21st-Century Capabilities", detail: "Design thinking, early scientific inquiry, sequencing & problem-solving.", image: CHILD_PHOTOS.toddlerBeadMaze }
+  { id: 1, title: "Physical & Motor Development", detail: "Movement, balance, pincer grip coordination & multisensory agility.", image: CLOUDINARY_MEDIA[30] },
+  { id: 2, title: "Cognitive & Executive Function Development", detail: "Attention, working memory, flexible thinking, reasoning & persistence.", image: CLOUDINARY_MEDIA[31] },
+  { id: 3, title: "Language & Communication", detail: "Storytelling, phonics readiness, active listening & expressive vocabulary.", image: CLOUDINARY_MEDIA[32] },
+  { id: 4, title: "Social & Emotional Intelligence", detail: "Self-awareness, empathy, warm friendships, cooperation & inner confidence.", image: CLOUDINARY_MEDIA[33] },
+  { id: 5, title: "Creative & Cultural Expression", detail: "Art, music, drama, imagination, Indian heritage & global awareness.", image: CLOUDINARY_MEDIA[34] },
+  { id: 6, title: "Values & Personal Responsibility", detail: "Kindness, respect, environmental care, gratitude & ethical habits.", image: CLOUDINARY_MEDIA[35] },
+  { id: 7, title: "Practical Life & Independence", detail: "Self-care routines, organisation, decision-making & everyday confidence.", image: CLOUDINARY_MEDIA[36] },
+  { id: 8, title: "21st-Century Capabilities", detail: "Design thinking, early scientific inquiry, sequencing & problem-solving.", image: CLOUDINARY_MEDIA[37] }
 ];
 
 // SECTION 11: LEADERSHIP TEAM
@@ -663,7 +664,7 @@ const PARENT_STORIES = [
     title: "A More Confident Child",
     subtitle: "Communication, Confidence & Independence",
     narrative: "From shy first mornings to eagerly sharing stories at home, parents celebrate how story circles, puppetry and warm encouragement nurture expressive, self-assured young communicators.",
-    image: CHILD_PHOTOS.toddlerLaughingBook,
+    image: CLOUDINARY_MEDIA[39],
     tag: "Playgroup & Nursery Families",
     color: "#ADF802"
   },
@@ -671,7 +672,7 @@ const PARENT_STORIES = [
     title: "Learning With Excitement",
     subtitle: "Curiosity & Joyful School Routines",
     narrative: "Without the stress of heavy schoolbags or rote memorisation, children wake up excited for Wonder Lab experiments, sensory discovery and hands-on block building.",
-    image: CHILD_PHOTOS.fingerPaintingGirl,
+    image: CLOUDINARY_MEDIA[40],
     tag: "No-Book Experiential Joy",
     color: "#60C8D4"
   },
@@ -679,7 +680,7 @@ const PARENT_STORIES = [
     title: "A Place of Care and Trust",
     subtitle: "Compassionate Educators & Safe Environment",
     narrative: "Parents value our warm educator-child bonds, transparent holistic progress observations and a nurturing campus that feels like a second home.",
-    image: CHILD_PHOTOS.classroomDrawing,
+    image: CLOUDINARY_MEDIA[41],
     tag: "Junior & Senior KG Families",
     color: "#ADF802"
   }
@@ -691,7 +692,7 @@ const EVENTS_LIST = [
     title: "Discovery Days",
     date: "Interactive Science & Inquiry Showcase",
     description: "Hands-on investigations, projects and experiential learning showcases.",
-    image: CHILD_PHOTOS.toddlerAmazedBook,
+    image: CLOUDINARY_MEDIA[42],
     badge: "Wonder Lab Showcase",
     color: "#60C8D4"
   },
@@ -699,7 +700,7 @@ const EVENTS_LIST = [
     title: "Roots & Wings Celebrations",
     date: "Indian Festivals & Global Culture",
     description: "Culture, festivals, storytelling and community experiences.",
-    image: CHILD_PHOTOS.classroomDrawing,
+    image: CLOUDINARY_MEDIA[43],
     badge: "Cultural Harmony",
     color: "#fece13"
   },
@@ -707,7 +708,7 @@ const EVENTS_LIST = [
     title: "Little Earthkeepers",
     date: "Green Campus & Nature Drive",
     description: "Nature activities and early environmental responsibility.",
-    image: CHILD_PHOTOS.natureExplorerChild,
+    image: CLOUDINARY_MEDIA[44],
     badge: "Eco Explorers",
     color: "#ADF802"
   },
@@ -715,7 +716,7 @@ const EVENTS_LIST = [
     title: "Blooming Together",
     date: "Family & Community Carnival",
     description: "Parent engagement, family events and collaborative learning.",
-    image: CHILD_PHOTOS.outdoorBallPlayKids,
+    image: CLOUDINARY_MEDIA[45],
     badge: "Parent-Child Joy",
     color: "#FF6B8B"
   }
@@ -728,7 +729,7 @@ const BLOG_POSTS = [
     excerpt: "Discover how experiential learning can build strong foundations beyond repetitive worksheets.",
     category: "Learning Philosophy",
     readTime: "4 Min Read",
-    image: CHILD_PHOTOS.toddlerBeadMaze,
+    image: CLOUDINARY_MEDIA[46],
     color: "#ADF802"
   },
   {
@@ -736,7 +737,7 @@ const BLOG_POSTS = [
     excerpt: "Explore how creativity, curiosity and problem-solving start with simple childhood experiences.",
     category: "21st-Century Skills",
     readTime: "5 Min Read",
-    image: CHILD_PHOTOS.woodenBlocksChild,
+    image: CLOUDINARY_MEDIA[47],
     color: "#60C8D4"
   },
   {
@@ -744,21 +745,21 @@ const BLOG_POSTS = [
     excerpt: "Understand why emotional confidence, independence and communication matter alongside academics.",
     category: "Holistic Growth",
     readTime: "4 Min Read",
-    image: CHILD_PHOTOS.seniorKgFocusedChild,
+    image: CLOUDINARY_MEDIA[48],
     color: "#fece13"
   }
 ];
 
 // SECTION 16: GALLERY PHOTOS
 const GALLERY_ITEMS = [
-  { id: 1, title: "Joyful Classroom Drawing", category: "Classroom", image: CHILD_PHOTOS.classroomDrawing, span: "md:col-span-2 md:row-span-2" },
-  { id: 2, title: "Colourful Finger Painting", category: "Maker Studio", image: CHILD_PHOTOS.fingerPaintingGirl, span: "md:col-span-1 md:row-span-1" },
-  { id: 3, title: "Storyverse Laughter Outdoors", category: "Storyverse", image: CHILD_PHOTOS.toddlerLaughingBook, span: "md:col-span-1 md:row-span-1" },
-  { id: 4, title: "Tactile Bead Maze Discovery", category: "Wonder Lab", image: CHILD_PHOTOS.toddlerBeadMaze, span: "md:col-span-1 md:row-span-1" },
-  { id: 5, title: "Architectural Wooden Towers", category: "Maker Studio", image: CHILD_PHOTOS.woodenBlocksChild, span: "md:col-span-1 md:row-span-1" },
-  { id: 6, title: "Playgroup Sensory Sorting", category: "Classroom", image: CHILD_PHOTOS.playgroupFloorToddler, span: "md:col-span-1 md:row-span-1" },
-  { id: 7, title: "Sunshine Nature Walk", category: "Nature", image: CHILD_PHOTOS.natureExplorerChild, span: "md:col-span-1 md:row-span-1" },
-  { id: 8, title: "Focused Senior KG Readiness", category: "Classroom", image: CHILD_PHOTOS.seniorKgFocusedChild, span: "md:col-span-2 md:row-span-1" },
+  { id: 1, title: "Joyful Classroom Drawing", category: "Classroom", image: CLOUDINARY_MEDIA[49], span: "md:col-span-2 md:row-span-2" },
+  { id: 2, title: "Colourful Finger Painting", category: "Maker Studio", image: CLOUDINARY_MEDIA[50], span: "md:col-span-1 md:row-span-1" },
+  { id: 3, title: "Storyverse Laughter Outdoors", category: "Storyverse", image: CLOUDINARY_MEDIA[51], span: "md:col-span-1 md:row-span-1" },
+  { id: 4, title: "Tactile Bead Maze Discovery", category: "Wonder Lab", image: CLOUDINARY_MEDIA[52], span: "md:col-span-1 md:row-span-1" },
+  { id: 5, title: "Architectural Wooden Towers", category: "Maker Studio", image: CLOUDINARY_MEDIA[53], span: "md:col-span-1 md:row-span-1" },
+  { id: 6, title: "Playgroup Sensory Sorting", category: "Classroom", image: CLOUDINARY_MEDIA[54], span: "md:col-span-1 md:row-span-1" },
+  { id: 7, title: "Sunshine Nature Walk", category: "Nature", image: CLOUDINARY_MEDIA[55], span: "md:col-span-1 md:row-span-1" },
+  { id: 8, title: "Focused Senior KG Readiness", category: "Classroom", image: CLOUDINARY_MEDIA[56], span: "md:col-span-2 md:row-span-1" },
 ];
 
 // SECTION 17: VIDEO BYTES
@@ -769,7 +770,8 @@ const VIDEO_BYTES = [
     duration: "01:45",
     tag: "Warm Relationships",
     color: "#ADF802",
-    image: CHILD_PHOTOS.toddlerLaughingBook,
+    image: CLOUDINARY_MEDIA[57].poster,
+    video: CLOUDINARY_MEDIA[57].url,
     caption: "Every morning begins with warm smiles, reassuring hugs and a classroom where every child feels cherished."
   },
   {
@@ -778,7 +780,8 @@ const VIDEO_BYTES = [
     duration: "02:15",
     tag: "Kindermagic PrimeX",
     color: "#60C8D4",
-    image: CHILD_PHOTOS.classroomDrawing,
+    image: CLOUDINARY_MEDIA[58].poster,
+    video: CLOUDINARY_MEDIA[58].url,
     caption: "Follow our little explorers from circle time storytelling to hands-on maker challenges and outdoor play."
   },
   {
@@ -787,7 +790,8 @@ const VIDEO_BYTES = [
     duration: "01:30",
     tag: "Wonder Lab",
     color: "#fece13",
-    image: CHILD_PHOTOS.toddlerAmazedBook,
+    image: CLOUDINARY_MEDIA[59].poster,
+    video: CLOUDINARY_MEDIA[59].url,
     caption: "See how everyday questions turn into joyful experiments in our hands-on Wonder Lab."
   },
   {
@@ -796,7 +800,8 @@ const VIDEO_BYTES = [
     duration: "02:05",
     tag: "No-Book Philosophy",
     color: "#FF6B8B",
-    image: CHILD_PHOTOS.fingerPaintingGirl,
+    image: CLOUDINARY_MEDIA[60].poster,
+    video: CLOUDINARY_MEDIA[60].url,
     caption: "Why children remember and understand more deeply when they learn by doing, touching and creating."
   }
 ];
@@ -1767,7 +1772,7 @@ export default function IndianPreschoolHome({
                 {/* Main Circular Children's Photograph */}
                 <div className="w-full h-full rounded-full overflow-hidden border-8 border-[#F3FAFC] shadow-[0_25px_60px_rgba(9,30,58,0.16)] relative z-10">
                   <img
-                    src={CHILD_PHOTOS.classroomDrawing}
+                    src={CLOUDINARY_MEDIA[6]}
                     alt="Welcome to Blooming Era Preschools children learning"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
@@ -1777,7 +1782,7 @@ export default function IndianPreschoolHome({
                 {/* Satellite Circular Child Photo 1 */}
                 <div className="absolute -top-4 -right-4 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#ADF802] shadow-xl z-20 bg-white animate-float-gentle">
                   <img
-                    src={CHILD_PHOTOS.toddlerLaughingBook}
+                    src={CLOUDINARY_MEDIA[7]}
                     alt="Happy child reading"
                     className="w-full h-full object-cover"
                   />
@@ -1787,7 +1792,7 @@ export default function IndianPreschoolHome({
                 {/* Satellite Circular Child Photo 2 */}
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#60C8D4] shadow-xl z-20 bg-white animate-float-gentle" style={{ animationDelay: '1.8s' }}>
                   <img
-                    src={CHILD_PHOTOS.fingerPaintingGirl}
+                    src={CLOUDINARY_MEDIA[8]}
                     alt="Creative child painting"
                     className="w-full h-full object-cover"
                   />
@@ -2920,7 +2925,7 @@ export default function IndianPreschoolHome({
 
                   <div className="rounded-2xl overflow-hidden h-44 border-2 border-white/80 shadow-md relative z-10">
                     <img
-                      src={CHILD_PHOTOS.classroomDrawing}
+                      src={CLOUDINARY_MEDIA[38]}
                       alt="Blooming Era Preschool Franchise"
                       className="w-full h-full object-cover"
                     />
@@ -3513,21 +3518,32 @@ export default function IndianPreschoolHome({
               onClick={(e) => e.stopPropagation()}
               className="max-w-2xl w-full rounded-[32px] overflow-hidden bg-white border-4 border-white shadow-2xl"
             >
-              <div className="relative h-80 overflow-hidden">
-                <img src={activeVideoModal.image} alt={activeVideoModal.title} className="w-full h-full object-cover" />
+              <div className="relative h-80 sm:h-96 overflow-hidden bg-[#091E3A]">
+                {activeVideoModal.video ? (
+                  <video
+                    src={activeVideoModal.video}
+                    poster={activeVideoModal.image}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <img src={activeVideoModal.image} alt={activeVideoModal.title} className="w-full h-full object-cover" />
+                )}
                 <ImageNumberBadge number={activeVideoModal.id + 56} position="topRight" size="lg" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A] via-[#091E3A]/30 to-transparent flex flex-col justify-end p-6 text-white">
-                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black mb-2 shadow-xs">
+                <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-[#091E3A]/80 via-[#091E3A]/20 to-transparent p-5 text-white pr-16">
+                  <span className="inline-block w-fit px-3 py-1 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black mb-1.5 shadow-xs">
                     {activeVideoModal.tag} • {activeVideoModal.duration}
                   </span>
-                  <h3 className="text-2xl font-extrabold">{activeVideoModal.title}</h3>
-                  <p className="text-sm text-white/85 mt-1">{activeVideoModal.caption}</p>
+                  <h3 className="text-xl sm:text-2xl font-extrabold leading-tight">{activeVideoModal.title}</h3>
+                  <p className="text-xs sm:text-sm text-white/85 mt-0.5 line-clamp-2">{activeVideoModal.caption}</p>
                 </div>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setActiveVideoModal(null)}
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#091E3A] text-white flex items-center justify-center shadow-lg"
+                  className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-[#091E3A] text-white flex items-center justify-center shadow-lg border border-white/20"
                 >
                   <X className="w-5 h-5" />
                 </motion.button>

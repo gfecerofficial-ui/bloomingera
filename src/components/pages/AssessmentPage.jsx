@@ -5,6 +5,7 @@ import {
   Sparkles, ShieldCheck, ArrowRight, BookOpen, Compass
 } from 'lucide-react';
 import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS, ImageNumberBadge } from './shared';
+import { CLOUDINARY_MEDIA } from '../../data/cloudinaryMedia';
 
 const NINE_AREAS = [
   { title: "Language and Communication", desc: "Expressive vocabulary, articulation, narrative confidence and active listening in group dialogue." },
@@ -70,7 +71,7 @@ export default function AssessmentPage({ onOpenTourModal }) {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-[40px] overflow-hidden border-4 border-white shadow-2xl">
                 <img
-                  src={CHILD_PHOTOS.toddlerAmazedBook}
+                  src={CLOUDINARY_MEDIA[68]}
                   alt="Child Observing and Discovering Joyfully"
                   className="w-full h-[420px] object-cover"
                 />

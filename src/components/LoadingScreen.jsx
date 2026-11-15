@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CHILD_PHOTOS } from './pages/shared';
+import { CLOUDINARY_MEDIA } from '../data/cloudinaryMedia';
 
 const ORBIT_IMAGES = [
   {
@@ -74,9 +75,9 @@ export default function LoadingScreen({ onComplete }) {
     // Preload & decode every hero asset and all website images in memory behind loading screen,
     // pinning each decoded Image reference in PINNED_IMAGES to prevent mobile off-screen eviction.
     const criticalHeroAssets = [
-      '/hero/slide_1.jpg',
-      '/hero/slide_2.jpg',
-      '/hero/slide_3.jpg',
+      CLOUDINARY_MEDIA.s1,
+      CLOUDINARY_MEDIA.s2,
+      CLOUDINARY_MEDIA.s3,
       '/logo.jpeg',
       ...Object.values(CHILD_PHOTOS),
     ];
