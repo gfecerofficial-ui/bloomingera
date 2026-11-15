@@ -4,7 +4,7 @@ import {
   Eye, FileText, Brain, HeartHandshake, Share2, Award, CheckCircle2,
   Sparkles, ShieldCheck, ArrowRight, BookOpen, Compass
 } from 'lucide-react';
-import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS, ImageNumberBadge } from './shared';
+import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
 import { CLOUDINARY_MEDIA } from '../../data/cloudinaryMedia';
 
 const NINE_AREAS = [
@@ -75,7 +75,6 @@ export default function AssessmentPage({ onOpenTourModal }) {
                   alt="Child Observing and Discovering Joyfully"
                   className="w-full h-[420px] object-cover"
                 />
-                <ImageNumberBadge number={68} />
               </div>
               <div className="absolute -bottom-6 -right-6 p-5 rounded-3xl bg-[#091E3A] text-white shadow-xl max-w-xs border-2 border-[#ADF802] animate-float-gentle">
                 <div className="text-xs font-mono font-bold text-[#ADF802] uppercase">

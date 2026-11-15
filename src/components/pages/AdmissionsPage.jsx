@@ -4,7 +4,7 @@ import {
   Compass, MapPin, Phone, Mail, Calendar, CheckCircle2, ArrowRight,
   ShieldCheck, Heart, Sparkles, Clock, User, Award, Loader2, Copy, Check
 } from 'lucide-react';
-import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS, ImageNumberBadge } from './shared';
+import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
 import { CLOUDINARY_MEDIA } from '../../data/cloudinaryMedia';
 import { submitForm } from '../../services/formService';
 
@@ -187,7 +187,6 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                 <div>
                   <div className="relative h-44 rounded-2xl overflow-hidden mb-4 border border-white/60 shadow-sm">
                     <img src={p.photo} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <ImageNumberBadge number={idx + 69} />
                   </div>
                   <span
                     className="inline-block px-3 py-1 rounded-full text-xs font-black shadow-sm"

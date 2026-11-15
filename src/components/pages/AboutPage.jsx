@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Compass, Sparkles, Globe2, BookOpen, ShieldCheck, Quote, ArrowRight, Award } from 'lucide-react';
-import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS, ImageNumberBadge } from './shared';
+import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
 import { CLOUDINARY_MEDIA } from '../../data/cloudinaryMedia';
 
 export default function AboutPage({ onOpenTourModal, onNavigate }) {
@@ -72,7 +72,6 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
                   aria-label="Preschool Children Discovering Hands-On Learning"
                   className="w-full h-[440px] object-cover"
                 />
-                <ImageNumberBadge number={61} />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#091E3A]/80 via-transparent to-transparent flex items-end p-6">
                   <div className="text-white">
                     <span className="px-3 py-1 rounded-full bg-[#ADF802] text-[#091E3A] text-xs font-black uppercase">
