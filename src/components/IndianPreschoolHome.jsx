@@ -1998,7 +1998,9 @@ export default function IndianPreschoolHome({
               DISCOVER. CREATE. EXPERIENCE.
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              Little Hands. Extraordinary Discoveries.
+              Little Hands
+              <br />
+              Extraordinary Discoveries
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium">
               Every experience is an opportunity to wonder, experiment, express and grow. At Blooming Era, purposeful activities transform everyday moments into meaningful learning.
