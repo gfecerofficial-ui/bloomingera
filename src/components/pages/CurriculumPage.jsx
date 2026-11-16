@@ -129,7 +129,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
       {/* Page Header */}
       <PageHeader
         badge="INTRODUCING KINDERMAGIC PRIMEX"
-        title="A Curriculum for the World Children Are Growing Into."
+        title="A Curriculum for the World Children Are Growing Into"
         subtitle="Our Kindermagic PrimeX No-Book Curriculum brings together strong foundational learning, experiential methods, creative exploration and future-ready skills. Designed with reference to NEP 2020 and NCF-FS 2022, the approach integrates play, projects, guided activities, child-friendly worksheets and holistic developmental observation."
       />
 
@@ -171,7 +171,9 @@ export default function CurriculumPage({ onOpenTourModal }) {
                   THE PEDAGOGICAL SHIFT
                 </span>
                 <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3 mb-4">
-                  The No-Book Advantage — No Heavy Books. No Empty Learning.
+                  The No-Book Advantage — No Heavy Books
+                  <br />
+                  No Empty Learning
                 </h2>
                 <p className="text-base sm:text-lg text-slate-700 font-medium">
                   No-Book does not mean removing reading, writing or academic learning. It means reducing unnecessary textbook dependence and creating richer ways to understand concepts.
@@ -446,7 +448,9 @@ export default function CurriculumPage({ onOpenTourModal }) {
                 FUTURE-READY LEARNING
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3 mb-4">
-                Big Ideas. Little Explorers.
+                Big Ideas
+                <br />
+                Little Explorers
               </h2>
               <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
                 Future-ready learning begins with curiosity, imagination, collaboration and the ability to solve everyday problems. At Blooming Era, new-age concepts are introduced through play-based, hands-on experiences rather than technical pressure or premature academic specialisation.

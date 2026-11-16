@@ -169,7 +169,7 @@ export default function ContactPage({ onOpenTourModal }) {
       {/* Page Header */}
       <PageHeader
         badge="GET IN TOUCH"
-        title="Every Great Beginning Starts With a Conversation."
+        title="Every Great Beginning Starts With a Conversation"
         subtitle="Whether you're exploring admissions, interested in a franchise or looking to understand our curriculum, we'd love to connect."
       />
 

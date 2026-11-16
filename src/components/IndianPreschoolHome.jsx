@@ -86,9 +86,9 @@ const HERO_SLIDES = [
     smallHeading: "THE FUTURE BLOOMS HERE",
     headline: "Little Minds. Limitless Possibilities.",
     headlineLines: [
-      { text: "Little Minds." },
+      { text: "Little Minds" },
       { text: "Limitless" },
-      { text: "Possibilities.", highlight: true }
+      { text: "Possibilities", highlight: true }
     ],
     description: "Discover a world where curiosity leads, learning comes alive, and every child grows with confidence, creativity and care.",
     primaryBtn: "Explore Blooming Era",
@@ -107,9 +107,9 @@ const HERO_SLIDES = [
     smallHeading: "BEYOND BOOKS. INTO THE WORLD.",
     headline: "Less Memorising. More Meaningful Learning.",
     headlineLines: [
-      { text: "Less Memorising." },
+      { text: "Less Memorising" },
       { text: "More Meaningful" },
-      { text: "Learning.", highlight: true }
+      { text: "Learning", highlight: true }
     ],
     description: "Real experiences, discovery labs, purposeful play and strong academic foundations — because children learn best when learning makes sense.",
     primaryBtn: "Discover Our Learning Philosophy",
@@ -128,9 +128,9 @@ const HERO_SLIDES = [
     smallHeading: "FRANCHISE OPPORTUNITY",
     headline: "Build a Preschool. Shape a Generation.",
     headlineLines: [
-      { text: "Build a Preschool." },
+      { text: "Build a Preschool" },
       { text: "Shape a" },
-      { text: "Generation.", highlight: true }
+      { text: "Generation", highlight: true }
     ],
     description: "Build a legacy in education with our distinctive preschool franchise model, future-ready learning and structured 360° support.",
     primaryBtn: "Explore Franchise Opportunities",
@@ -1625,7 +1625,7 @@ export default function IndianPreschoolHome({
                     <span>2026–2027 Academic Session</span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                    Their Beautiful Beginning Starts Here.
+                    Their Beautiful Beginning Starts Here
                   </h2>
                   <p className="text-sm sm:text-base text-[#60C8D4] font-semibold mt-0.5">
                     Admissions Open for Playgroup, Nursery, Junior KG &amp; Senior KG.
@@ -1669,9 +1669,10 @@ export default function IndianPreschoolHome({
               Why Parents Love Us
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight">
-              Not Just Different.{" "}
+              Not Just Different
+              <br />
               <span className="relative inline-block">
-                <span className="relative z-10">Thoughtfully Different.</span>
+                <span className="relative z-10">Thoughtfully Different</span>
                 <span className="absolute bottom-1 left-0 right-0 h-3.5 bg-[#ADF802] -z-0 rounded-full" />
               </span>
             </h2>
@@ -1877,7 +1878,7 @@ export default function IndianPreschoolHome({
               Curriculum Framework Highlights
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#091E3A] tracking-tight">
-              Big Thinking for Little Learners.
+              Big Thinking for Little Learners
             </h2>
           </div>
 
@@ -2099,7 +2100,9 @@ export default function IndianPreschoolHome({
               EVERY AGE. A NEW ADVENTURE.
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
-              Little Explorers. Growing Possibilities.
+              Little Explorers
+              <br />
+              Growing Possibilities
             </h2>
             <p className="text-base sm:text-lg text-white/80 font-medium">
               Each stage of childhood brings new discoveries. Our thoughtfully designed programmes nurture age-appropriate skills while keeping curiosity, relationships and joyful learning at the heart.
@@ -2199,7 +2202,9 @@ export default function IndianPreschoolHome({
               THE KINDERMAGIC PRIMEX EXPERIENCE
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              No Heavy Books. More Powerful Learning.
+              No Heavy Books
+              <br />
+              More Powerful Learning
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium leading-relaxed">
               Our Kindermagic PrimeX learning approach combines experiential Foundational Literacy and Numeracy, purposeful play, structured activities, discovery labs, real-world projects and age-appropriate worksheets. Children learn through meaningful experiences while teachers observe, guide and document their progress.
@@ -2378,7 +2383,7 @@ export default function IndianPreschoolHome({
               21ST-CENTURY FOUNDATIONS
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              The Future Begins With Curiosity.
+              The Future Begins With Curiosity
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium">
               Tomorrow&apos;s world will need creative thinkers, compassionate leaders and confident problem-solvers. We begin nurturing these capabilities through developmentally appropriate experiences, without rushing childhood.
@@ -2449,7 +2454,9 @@ export default function IndianPreschoolHome({
               BEYOND ACADEMICS
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              We Don&apos;t Just Track Marks. We Celebrate Growth.
+              We Don&apos;t Just Track Marks
+              <br />
+              We Celebrate Growth
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium">
               Every child develops in beautifully interconnected ways. Our Holistic Progress Approach recognises academic learning alongside confidence, communication, creativity, emotional wellbeing, physical development and independence.
@@ -2680,7 +2687,7 @@ export default function IndianPreschoolHome({
               THE VISIONARIES BEHIND THE BLOOM
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              Great Childhoods Begin With a Greater Vision.
+              Great Childhoods Begin With a Greater Vision
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium">
               Blooming Era is guided by a shared commitment to meaningful early education, academic innovation, thoughtful leadership and responsible growth.
@@ -2858,8 +2865,9 @@ export default function IndianPreschoolHome({
                   BUILD A BUSINESS THAT BUILDS THE FUTURE
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-                  A Preschool With Purpose.{" "}
-                  <span className="text-[#ADF802]">A Business With Possibilities.</span>
+                  A Preschool With Purpose
+                  <br />
+                  <span className="text-[#ADF802]">A Business With Possibilities</span>
                 </h2>
                 <p className="text-base sm:text-lg text-white/85 font-medium leading-relaxed">
                   Why open just another preschool when you can introduce a distinctive learning experience to your city? Blooming Era brings together an innovative No-Book curriculum, strong academic foundations, structured franchise support and a cost-conscious school development model — helping entrepreneurs build meaningful educational enterprises.
@@ -2970,7 +2978,7 @@ export default function IndianPreschoolHome({
               REAL VOICES. MEANINGFUL EXPERIENCES.
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              The Most Beautiful Stories Come From Parents.
+              The Most Beautiful Stories Come From Parents
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium">
               From the first confident goodbye to the joy of a new discovery, every child&apos;s journey is special. Discover what Blooming Era families have to say about their experiences.
@@ -3044,7 +3052,9 @@ export default function IndianPreschoolHome({
               MOMENTS THAT MAKE CHILDHOOD MEMORABLE
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              Beyond the Classroom. Into Life.
+              Beyond the Classroom
+              <br />
+              Into Life
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium">
               Our celebrations, learning showcases and community experiences bring families, educators and children together.
@@ -3103,7 +3113,9 @@ export default function IndianPreschoolHome({
               THE BLOOMING JOURNAL
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              Little Insights. Lifelong Impact.
+              Little Insights
+              <br />
+              Lifelong Impact
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium">
               Explore thoughtful perspectives on childhood, parenting, early education and the skills that help young learners flourish.
@@ -3173,7 +3185,9 @@ export default function IndianPreschoolHome({
                 A PEEK INTO OUR WORLD
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight">
-                See the Wonder. Feel the Joy.
+                See the Wonder
+                <br />
+                Feel the Joy
               </h2>
               <p className="text-base text-[#091E3A]/75 font-medium mt-2">
                 Real smiles. Real friendships. Real discoveries. Explore beautiful moments from life at Blooming Era.
@@ -3259,7 +3273,7 @@ export default function IndianPreschoolHome({
               CHILDHOOD IN MOTION
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight mb-4">
-              Some Moments Are Better Felt Than Told.
+              Some Moments Are Better Felt Than Told
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/75 font-medium">
               From joyful classroom discoveries to caring teacher-child relationships, experience the little moments that make Blooming Era special.
@@ -3340,7 +3354,7 @@ export default function IndianPreschoolHome({
               THEIR FIRST SCHOOL. A BIG DECISION.
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-[#091E3A] tracking-tight mb-4">
-              Let Their Childhood Bloom Beautifully.
+              Let Their Childhood Bloom Beautifully
             </h2>
             <p className="text-base sm:text-lg text-[#091E3A]/85 font-semibold max-w-2xl mx-auto mb-8">
               Discover a preschool that celebrates curiosity, nurtures individuality and builds strong foundations for the years ahead.

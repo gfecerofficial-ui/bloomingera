@@ -10,7 +10,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
       {/* Page Header */}
       <PageHeader
         badge="OUR STORY. OUR PURPOSE."
-        title="Rethinking Preschool. Respecting Childhood."
+        title={<>Rethinking Preschool<br />Respecting Childhood</>}
         subtitle="Blooming Era is built on a belief that early education must prepare children for life without taking away the joy of childhood. Our educational approach brings together experiential learning, holistic development, Indian cultural values and global perspectives to create meaningful foundations for tomorrow."
       />
 
@@ -32,7 +32,9 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
                 A NEW PERSPECTIVE ON EARLY LEARNING
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight">
-                Not Another Preschool. A Living Culture of Wonder.
+                Not Another Preschool
+                <br />
+                A Living Culture of Wonder
               </h2>
               <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-medium">
                 <p>
@@ -158,7 +160,11 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               OUR PHILOSOPHICAL PILLARS
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-4">
-              Proudly Indian. Powerfully Global. Beautifully Child-Centred.
+              Proudly Indian
+              <br />
+              Powerfully Global
+              <br />
+              Beautifully Child-Centred
             </h2>
             <p className="text-base sm:text-lg text-white/80 font-medium">
               Three interconnected commitments that shape every classroom interaction, space design and learning milestone.
@@ -263,7 +269,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               LEADERSHIP & VISION
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3">
-              A Vision Born From Love for Childhood.
+              A Vision Born From Love for Childhood
             </h2>
           </div>
 
