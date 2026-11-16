@@ -1820,11 +1820,11 @@ export default function IndianPreschoolHome({
                 </h2>
               </div>
 
-              <p className="text-base sm:text-lg text-[#091E3A]/80 font-medium leading-relaxed">
+              <p className="text-base sm:text-lg text-[#091E3A]/80 font-medium leading-relaxed text-justify">
                 At Blooming Era, we believe childhood is not a race to finish books, but a beautiful journey of discovery. Our classrooms blend purposeful play, experiential learning, creativity and strong academic foundations — creating a nurturing world where every question matters and every little achievement is celebrated.
               </p>
 
-              <p className="text-base sm:text-lg text-[#091E3A]/80 font-medium leading-relaxed">
+              <p className="text-base sm:text-lg text-[#091E3A]/80 font-medium leading-relaxed text-justify">
                 From discovering sounds through stories to exploring numbers through real-life experiences, children learn by doing, thinking and creating. With future-ready concepts, Indian values, global perspectives and compassionate educators, we nurture curious minds, confident personalities and happy childhoods.
               </p>
 
