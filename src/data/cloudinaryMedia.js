@@ -1,6 +1,7 @@
 // Auto-generated signed Cloudinary CDN URLs for BloomingEra assets
 export const CLOUDINARY_MEDIA = {
   "1": "https://res.cloudinary.com/p0ff3u6n/image/upload/s--Wwm-OLg5--/f_auto,q_auto/v1794727477/BloomingEra/1?_a=BAMAROhM0",
+  "2": "https://res.cloudinary.com/p0ff3u6n/image/upload/s--DNHnvqUY--/f_auto,q_auto/v1794855677/BloomingEra/2?_a=BAMAROhM0",
   "3": "https://res.cloudinary.com/p0ff3u6n/image/upload/s--OFUVJgGi--/f_auto,q_auto/v1794727477/BloomingEra/3?_a=BAMAROhM0",
   "4": "https://res.cloudinary.com/p0ff3u6n/image/upload/s--lsDJ42M2--/f_auto,q_auto/v1794727474/BloomingEra/4?_a=BAMAROhM0",
   "5": "https://res.cloudinary.com/p0ff3u6n/image/upload/s--ag-hyJyX--/f_auto,q_auto/v1794727505/BloomingEra/5?_a=BAMAROhM0",

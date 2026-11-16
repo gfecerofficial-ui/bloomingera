@@ -163,7 +163,7 @@ const WHY_PARENTS_CARDS = [
     id: 2,
     title: "FUTURE SKILLS START EARLY.",
     description: "Creative thinking, problem-solving, communication, collaboration and exciting new-age concepts — introduced through play.",
-    image: CHILD_PHOTOS.woodenBlocksChild,
+    image: CLOUDINARY_MEDIA[2],
     icon: Rocket,
     badge: "21st-Century Play",
     color: "#9B51E0",
