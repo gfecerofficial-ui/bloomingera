@@ -16,7 +16,7 @@ const ORBIT_IMAGES = [
     angleDeg: -30,
   },
   {
-    src: CLOUDINARY_MEDIA[25],
+    src: CLOUDINARY_MEDIA[15],
     label: 'Creativity',
     color: '#fece13',
     angleDeg: 30,

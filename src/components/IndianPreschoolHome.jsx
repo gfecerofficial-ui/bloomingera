@@ -88,7 +88,7 @@ const HERO_SLIDES = [
     headlineLines: [
       { text: "Little Minds" },
       { text: "Limitless" },
-      { text: "Possibilities", highlight: true }
+      { text: "Possibilities...", highlight: true }
     ],
     description: "Discover a world where curiosity leads, learning comes alive, and every child grows with confidence, creativity and care.",
     primaryBtn: "Explore Blooming Era",
@@ -109,7 +109,7 @@ const HERO_SLIDES = [
     headlineLines: [
       { text: "Less Memorising" },
       { text: "More Meaningful" },
-      { text: "Learning", highlight: true }
+      { text: "Learning...", highlight: true }
     ],
     description: "Real experiences, discovery labs, purposeful play and strong academic foundations — because children learn best when learning makes sense.",
     primaryBtn: "Discover Our Learning Philosophy",
@@ -130,7 +130,7 @@ const HERO_SLIDES = [
     headlineLines: [
       { text: "Build a Preschool" },
       { text: "Shape a" },
-      { text: "Generation", highlight: true }
+      { text: "Generation...", highlight: true }
     ],
     description: "Build a legacy in education with our distinctive preschool franchise model, future-ready learning and structured 360° support.",
     primaryBtn: "Explore Franchise Opportunities",
@@ -1261,7 +1261,7 @@ export default function IndianPreschoolHome({
 
                       {/* Description with locked min-height */}
                       <div className="min-h-[64px] sm:min-h-[50px] flex items-start">
-                        <p className="text-base sm:text-lg text-[#091E3A]/80 font-medium leading-relaxed max-w-xl">
+                        <p className="text-base sm:text-lg text-[#091E3A]/80 font-medium leading-relaxed max-w-xl text-justify">
                           {currentSlide.description}
                         </p>
                       </div>
