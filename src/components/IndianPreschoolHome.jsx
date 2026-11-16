@@ -1163,7 +1163,7 @@ export default function IndianPreschoolHome({
             {/* Main Slideshow Showcase Frame */}
             <div
               ref={desktopSlideshowRef}
-              className="relative overflow-hidden rounded-3xl lg:rounded-[36px] border-2 border-white/85 h-[260px] sm:h-[400px] lg:h-[520px] xl:h-[560px] bg-[#091E3A]/5 shadow-2xl"
+              className="relative overflow-hidden rounded-3xl lg:rounded-[36px] border-2 border-white/85 h-[300px] sm:h-[460px] lg:h-[600px] xl:h-[645px] bg-[#091E3A]/5 shadow-2xl"
               style={{
                 transform: "translateZ(0)",
                 WebkitTransform: "translateZ(0)",
@@ -1421,26 +1421,26 @@ export default function IndianPreschoolHome({
               </div>
 
               {/* Right: CTA Buttons & 3 Trust Highlight Cards */}
-              <div className="lg:col-span-5 flex flex-col justify-between gap-5">
-                <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
+              <div className="lg:col-span-5 flex flex-col justify-between gap-5 min-w-0">
+                <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
                   <motion.a
-                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                     href={currentSlide.primaryHref}
-                    className="btn-lime px-6 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2 border-2 border-white shadow-lg group transition-all flex-1 text-center"
+                    className="btn-lime px-6 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2 border-2 border-white shadow-lg group transition-all w-full text-center"
                   >
-                    <span className="truncate">{currentSlide.primaryBtn}</span>
+                    <span>{currentSlide.primaryBtn}</span>
                     <ArrowRight className="w-4 h-4 text-[#091E3A] flex-shrink-0 group-hover:translate-x-1 transition-transform" />
                   </motion.a>
 
                   <motion.button
-                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                     onClick={onOpenTourModal}
-                    className="btn-turquoise px-6 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2 border-2 border-white shadow-md group transition-all flex-1"
+                    className="btn-turquoise px-6 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2 border-2 border-white shadow-md group transition-all w-full text-center"
                   >
                     <Calendar className="w-4 h-4 text-[#091E3A] flex-shrink-0 group-hover:rotate-6 transition-transform" />
-                    <span className="truncate">{currentSlide.secondaryBtn}</span>
+                    <span>{currentSlide.secondaryBtn}</span>
                   </motion.button>
                 </div>
 
