@@ -1,41 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CHILD_PHOTOS } from './pages/shared';
 import { CLOUDINARY_MEDIA } from '../data/cloudinaryMedia';
 
 const ORBIT_IMAGES = [
   {
-    src: CHILD_PHOTOS.toddlerBeadMaze,
+    src: CLOUDINARY_MEDIA[1],
     label: 'Discovery',
     color: '#ADF802',
     angleDeg: -90,
   },
   {
-    src: CHILD_PHOTOS.woodenBlocksChild,
+    src: CLOUDINARY_MEDIA[9],
     label: 'Wonder',
     color: '#60C8D4',
     angleDeg: -30,
   },
   {
-    src: CHILD_PHOTOS.fingerPaintingGirl,
+    src: CLOUDINARY_MEDIA[15],
     label: 'Creativity',
     color: '#fece13',
     angleDeg: 30,
   },
   {
-    src: CHILD_PHOTOS.classroomDrawing,
+    src: CLOUDINARY_MEDIA[34],
     label: 'Expression',
     color: '#FF6B8B',
     angleDeg: 90,
   },
   {
-    src: CHILD_PHOTOS.toddlerLaughingBook,
+    src: CLOUDINARY_MEDIA[6],
     label: 'Joy',
     color: '#9B51E0',
     angleDeg: 150,
   },
   {
-    src: CHILD_PHOTOS.natureExplorerChild,
+    src: CLOUDINARY_MEDIA[13],
     label: 'Nature',
     color: '#02C9FE',
     angleDeg: 210,
@@ -79,7 +78,7 @@ export default function LoadingScreen({ onComplete }) {
       CLOUDINARY_MEDIA.s2,
       CLOUDINARY_MEDIA.s3,
       '/logo.jpeg',
-      ...Object.values(CHILD_PHOTOS),
+      ...Object.values(CLOUDINARY_MEDIA).filter((item) => typeof item === 'string'),
     ];
 
     const secondaryAssets = [...LEADERSHIP_PHOTOS];

@@ -11,6 +11,8 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
     { id: 'curriculum', label: 'Curriculum' },
     { id: 'assessment', label: 'Assessment' },
     { id: 'admissions', label: 'Admissions' },
+    { id: 'gallery', label: 'Gallery' },
+    { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -128,7 +130,7 @@ export default function IndianNavbar({ currentPage, onNavigate, onOpenTourModal 
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-300 ease-out inline-flex items-center gap-1.5 ${
+                    className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-300 ease-out inline-flex items-center gap-1.5 ${
                       isActive
                         ? 'bg-[#091E3A] text-white shadow-md'
                         : 'text-[#091E3A]/85 hover:text-[#091E3A] hover:bg-[#ADF802]/25'

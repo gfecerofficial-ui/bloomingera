@@ -36,7 +36,7 @@ export default function AssessmentPage({ onOpenTourModal }) {
       {/* Page Header */}
       <PageHeader
         badge="OBSERVATION-BASED DEVELOPMENT"
-        title="Every Child Has a Story of Growth."
+        title="Every Child Has a Story of Growth"
         subtitle="Children develop at different paces and reveal their abilities in different ways. At Blooming Era, holistic assessment aims to make their progress visible through meaningful observation, not unnecessary comparison."
       />
 
@@ -52,7 +52,11 @@ export default function AssessmentPage({ onOpenTourModal }) {
                 NEP 2020 & PARAKH GUIDELINES
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight">
-                No Marks. No Rank Pressure. Only Joyful, Visible Progress.
+                No Marks
+                <br />
+                No Rank Pressure
+                <br />
+                Only Joyful, Visible Progress
               </h2>
               <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
                 Traditional preschools often rely on paper tests and comparative grading that can damage a 4-year-old's self-esteem. Blooming Era implements a 360-degree observational portfolio framework aligned with the Ministry of Education’s PARAKH Holistic Progress Card (HPC).

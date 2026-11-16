@@ -10,7 +10,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
       {/* Page Header */}
       <PageHeader
         badge="OUR STORY. OUR PURPOSE."
-        title="Rethinking Preschool. Respecting Childhood."
+        title={<><span className="sm:whitespace-nowrap">Redefining Early Childhood Education</span><br />Redefining Preschool Economics</>}
         subtitle="Blooming Era is built on a belief that early education must prepare children for life without taking away the joy of childhood. Our educational approach brings together experiential learning, holistic development, Indian cultural values and global perspectives to create meaningful foundations for tomorrow."
       />
 
@@ -32,7 +32,9 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
                 A NEW PERSPECTIVE ON EARLY LEARNING
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#091E3A] tracking-tight">
-                Not Another Preschool. A Living Culture of Wonder.
+                Not Another Preschool
+                <br />
+                A Living Culture of Wonder
               </h2>
               <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-medium">
                 <p>
@@ -104,45 +106,137 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
       <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#F4F9FB]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            {/* Vision Card */}
-            <motion.div
-              whileHover={{ y: -6, scale: 1.01 }}
-              className="p-8 sm:p-10 rounded-[36px] card-flow-cyan border-2 shadow-xl relative overflow-hidden transition-all duration-300"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-[#60C8D4] border-2 border-white text-[#091E3A] flex items-center justify-center mb-6 shadow-md">
-                <Compass className="w-7 h-7 text-[#091E3A]" />
-              </div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#60C8D4] bg-[#091E3A] px-3 py-1 rounded-full">
-                Guiding Star
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#091E3A] mt-4 mb-3">
-                Our Vision
-              </h3>
-              <p className="text-base text-slate-700 leading-relaxed font-medium">
-                To help redefine early-childhood education through accessible, innovative, inclusive and research-informed learning experiences that nurture capable, compassionate and confident children.
-              </p>
-            </motion.div>
+            {[
+              {
+                badge: 'Guiding Star',
+                title: 'Our Vision',
+                description:
+                  'To help redefine early-childhood education through accessible, innovative, inclusive and research-informed learning experiences that nurture capable, compassionate and confident children.',
+                icon: Compass,
+                theme: {
+                  bgGradient: 'linear-gradient(135deg, #02c9fe 0%, #05b8e9 50%, #36d6fe 100%)',
+                  waveColor1: 'rgba(255, 255, 255, 0.34)',
+                  waveColor2: 'rgba(2, 130, 195, 0.26)',
+                  waveColor3: 'rgba(255, 255, 255, 0.20)',
+                  sandShimmer: 'rgba(210, 248, 255, 0.45)',
+                  borderColor: 'rgba(255, 255, 255, 0.65)',
+                  shadow: '0 22px 55px rgba(2, 201, 254, 0.35)',
+                  textColor: '#091E3A',
+                  subTextColor: 'rgba(9, 30, 58, 0.85)',
+                  iconBg: '#091E3A',
+                  iconColor: '#02c9fe',
+                  badgeBg: '#091E3A',
+                  badgeText: '#02c9fe',
+                },
+              },
+              {
+                badge: 'Core Purpose',
+                title: 'Our Mission',
+                description:
+                  'To build strong foundational learning through purposeful play, experiential education, holistic development, teacher empowerment and meaningful parent partnerships.',
+                icon: Heart,
+                theme: {
+                  bgGradient: 'linear-gradient(135deg, #fa0672 0%, #e20063 50%, #fc3c91 100%)',
+                  waveColor1: 'rgba(255, 255, 255, 0.28)',
+                  waveColor2: 'rgba(160, 0, 68, 0.26)',
+                  waveColor3: 'rgba(255, 255, 255, 0.18)',
+                  sandShimmer: 'rgba(255, 220, 238, 0.45)',
+                  borderColor: 'rgba(255, 255, 255, 0.55)',
+                  shadow: '0 22px 55px rgba(250, 6, 114, 0.35)',
+                  textColor: '#FFFFFF',
+                  subTextColor: 'rgba(255, 255, 255, 0.92)',
+                  iconBg: '#FFFFFF',
+                  iconColor: '#fa0672',
+                  badgeBg: '#FFFFFF',
+                  badgeText: '#fa0672',
+                },
+              },
+            ].map((card) => {
+              const IconComp = card.icon;
+              const t = card.theme;
+              return (
+                <motion.div
+                  key={card.title}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="p-8 sm:p-10 rounded-[36px] relative overflow-hidden group transition-all duration-300"
+                  style={{
+                    background: t.bgGradient,
+                    border: `2px solid ${t.borderColor}`,
+                    boxShadow: t.shadow,
+                  }}
+                >
+                  {/* Subtle Sand Flow Waves & Grain */}
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[34px]">
+                    <div
+                      className="absolute -inset-10 animate-sand-shimmer pointer-events-none"
+                      style={{
+                        background: `radial-gradient(circle at 35% 25%, ${t.sandShimmer} 0%, transparent 60%)`,
+                      }}
+                    />
+                    <svg
+                      viewBox="0 0 1000 300"
+                      preserveAspectRatio="none"
+                      className="absolute -bottom-2 left-0 w-[200%] h-36 animate-sand-forward pointer-events-none"
+                      style={{ fill: t.waveColor1 }}
+                    >
+                      <path d="M 0,140 Q 125,60 250,140 T 500,140 Q 625,60 750,140 T 1000,140 L 1000,300 L 0,300 Z" />
+                    </svg>
+                    <svg
+                      viewBox="0 0 1000 300"
+                      preserveAspectRatio="none"
+                      className="absolute -bottom-4 left-0 w-[200%] h-44 animate-sand-reverse pointer-events-none"
+                      style={{ fill: t.waveColor2 }}
+                    >
+                      <path d="M 0,180 Q 150,230 300,170 T 500,180 Q 650,230 800,170 T 1000,180 L 1000,300 L 0,300 Z" />
+                    </svg>
+                    <svg
+                      viewBox="0 0 1000 300"
+                      preserveAspectRatio="none"
+                      className="absolute -bottom-6 left-0 w-[200%] h-28 animate-sand-drift pointer-events-none"
+                      style={{ fill: t.waveColor3 }}
+                    >
+                      <path d="M 0,110 C 100,70 180,150 250,110 C 320,70 400,150 500,110 C 600,70 680,150 750,110 C 820,70 900,150 1000,110 L 1000,300 L 0,300 Z" />
+                    </svg>
+                    <div
+                      className="absolute inset-0 opacity-[0.14] mix-blend-overlay pointer-events-none"
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.85) 1px, transparent 1px), radial-gradient(circle at 20% 30%, rgba(0,0,0,0.45) 1px, transparent 1px)`,
+                        backgroundSize: '12px 12px, 16px 16px',
+                      }}
+                    />
+                    <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+                  </div>
 
-            {/* Mission Card */}
-            <motion.div
-              whileHover={{ y: -6, scale: 1.01 }}
-              className="p-8 sm:p-10 rounded-[36px] card-flow-lime border-2 shadow-xl relative overflow-hidden transition-all duration-300"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-[#ADF802] border-2 border-white text-[#091E3A] flex items-center justify-center mb-6 shadow-md">
-                <Heart className="w-7 h-7 text-[#091E3A]" />
-              </div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#091E3A] bg-[#ADF802] px-3 py-1 rounded-full">
-                Core Purpose
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#091E3A] mt-4 mb-3">
-                Our Mission
-              </h3>
-              <p className="text-base text-slate-700 leading-relaxed font-medium">
-                To build strong foundational learning through purposeful play, experiential education, holistic development, teacher empowerment and meaningful parent partnerships.
-              </p>
-            </motion.div>
-
+                  {/* Card Content */}
+                  <div className="relative z-10">
+                    <div
+                      className="w-14 h-14 rounded-2xl border border-white/40 flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 transition-transform duration-300"
+                      style={{ backgroundColor: t.iconBg, color: t.iconColor }}
+                    >
+                      <IconComp className="w-7 h-7" />
+                    </div>
+                    <span
+                      className="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-xs"
+                      style={{ backgroundColor: t.badgeBg, color: t.badgeText }}
+                    >
+                      {card.badge}
+                    </span>
+                    <h3
+                      className="text-2xl sm:text-3xl font-extrabold mt-4 mb-3"
+                      style={{ color: t.textColor }}
+                    >
+                      {card.title}
+                    </h3>
+                    <p
+                      className="text-base leading-relaxed font-medium"
+                      style={{ color: t.subTextColor }}
+                    >
+                      {card.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -158,7 +252,11 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               OUR PHILOSOPHICAL PILLARS
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-3 mb-4">
-              Proudly Indian. Powerfully Global. Beautifully Child-Centred.
+              Proudly Indian
+              <br />
+              Powerfully Global
+              <br />
+              Beautifully Child-Centred
             </h2>
             <p className="text-base sm:text-lg text-white/80 font-medium">
               Three interconnected commitments that shape every classroom interaction, space design and learning milestone.
@@ -263,7 +361,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
               LEADERSHIP & VISION
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3">
-              A Vision Born From Love for Childhood.
+              A Vision Born From Love for Childhood
             </h2>
           </div>
 

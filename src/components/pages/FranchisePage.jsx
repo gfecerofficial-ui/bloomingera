@@ -104,7 +104,7 @@ export default function FranchisePage({ onOpenTourModal }) {
       {/* Page Header */}
       <PageHeader
         badge="THE FUTURE BLOOMS HERE"
-        title="Own a Preschool. Build a Lasting Legacy."
+        title={<>Own a Preschool<br />Build a Lasting Legacy</>}
         subtitle="Blooming Era offers entrepreneurs an opportunity to introduce a distinctive, experiential and future-ready preschool concept to their communities. Our model combines educational differentiation, a cost-conscious setup approach and structured franchise support to help partners plan, launch and grow responsible preschool businesses."
       />
 
@@ -121,7 +121,9 @@ export default function FranchisePage({ onOpenTourModal }) {
                 TRANSPARENT FRANCHISE INVESTMENT
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight">
-                Accessible Entry. Responsible Growth.
+                Accessible Entry
+                <br />
+                Responsible Growth
               </h2>
               <div className="space-y-4 text-base text-slate-700 leading-relaxed font-medium">
                 <p>
@@ -299,7 +301,9 @@ export default function FranchisePage({ onOpenTourModal }) {
               BECOME A FRANCHISE PARTNER
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3 mb-3">
-              An Investment in Education. An Opportunity for Enterprise.
+              An Investment in Education
+              <br />
+              An Opportunity for Enterprise
             </h2>
             <p className="text-base text-slate-600 font-medium">
               Join hands to build a meaningful, profitable, and respected preschool in your city.

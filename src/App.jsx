@@ -8,6 +8,7 @@ import AssessmentPage from './components/pages/AssessmentPage';
 import AdmissionsPage from './components/pages/AdmissionsPage';
 import FranchisePage from './components/pages/FranchisePage';
 import ContactPage from './components/pages/ContactPage';
+import PlaceholderPage from './components/pages/PlaceholderPage';
 import TourBookingModal from './components/TourBookingModal';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import LoadingScreen from './components/LoadingScreen';
@@ -18,10 +19,10 @@ export default function App() {
   const [isTourModalOpen, setIsTourModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   
-  // Parse initial page from hash (#about, #curriculum, #assessment, #admissions, #franchise, #contact)
+  // Parse initial page from hash (#about, #curriculum, #assessment, #admissions, #gallery, #blog, #franchise, #contact)
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash.replace('#', '').toLowerCase();
-    const validPages = ['about', 'curriculum', 'assessment', 'admissions', 'franchise', 'contact'];
+    const validPages = ['about', 'curriculum', 'assessment', 'admissions', 'gallery', 'blog', 'franchise', 'contact'];
     return validPages.includes(hash) ? hash : 'home';
   });
 
@@ -29,7 +30,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      const validPages = ['about', 'curriculum', 'assessment', 'admissions', 'franchise', 'contact'];
+      const validPages = ['about', 'curriculum', 'assessment', 'admissions', 'gallery', 'blog', 'franchise', 'contact'];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
       } else if (!hash || hash === 'home' || hash === 'programmes-india' || hash === 'why-parents') {
@@ -161,6 +162,40 @@ export default function App() {
             >
               <FranchisePage
                 onOpenTourModal={() => setIsTourModalOpen(true)}
+                onNavigate={navigateTo}
+              />
+            </motion.div>
+          )}
+
+          {currentPage === 'gallery' && (
+            <motion.div
+              key="gallery"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25 }}
+            >
+              <PlaceholderPage
+                badge="Campus Moments"
+                title="Gallery"
+                subtitle="A glimpse into joyful discovery, play, and learning across Blooming Era Preschools."
+                onNavigate={navigateTo}
+              />
+            </motion.div>
+          )}
+
+          {currentPage === 'blog' && (
+            <motion.div
+              key="blog"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25 }}
+            >
+              <PlaceholderPage
+                badge="The Blooming Journal"
+                title="Blog"
+                subtitle="Stories, perspectives, and insights on experiential early childhood education."
                 onNavigate={navigateTo}
               />
             </motion.div>

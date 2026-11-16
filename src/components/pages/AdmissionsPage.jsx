@@ -109,7 +109,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
       {/* Page Header */}
       <PageHeader
         badge="ADMISSIONS OPEN 2027–2028"
-        title="Their First Step Into a Bigger World."
+        title="Their First Step Into a Bigger World"
         subtitle="Choosing a preschool is about much more than admissions. It is about finding caring teachers, a stimulating learning environment, strong foundations and a place where your child feels valued. At Blooming Era, we want every child's first school experience to be filled with warmth, discovery, confidence and meaningful learning."
       />
 
