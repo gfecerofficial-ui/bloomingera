@@ -129,7 +129,12 @@ export default function CurriculumPage({ onOpenTourModal }) {
       {/* Page Header */}
       <PageHeader
         badge="INTRODUCING KINDERMAGIC PRIMEX"
-        title="A Curriculum for the World Children Are Growing Into"
+        title={
+          <>
+            <span className="block text-left">A Curriculum for the World</span>
+            <span className="block text-right">Children Are Growing Into</span>
+          </>
+        }
         subtitle="Our Kindermagic PrimeX No-Book Curriculum brings together strong foundational learning, experiential methods, creative exploration and future-ready skills. Designed with reference to NEP 2020 and NCF-FS 2022, the approach integrates play, projects, guided activities, child-friendly worksheets and holistic developmental observation."
       />
 
