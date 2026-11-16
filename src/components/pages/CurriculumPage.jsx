@@ -5,7 +5,7 @@ import {
   Leaf, Globe2, Compass, Rocket, Code2, Bot, Coins, Lightbulb, Users,
   ArrowRight, ShieldCheck, Microscope
 } from 'lucide-react';
-import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
+import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS, SAND_THEMES, FlowingSandWaves } from './shared';
 import { CLOUDINARY_MEDIA } from '../../data/cloudinaryMedia';
 
 const EIGHT_DIMENSIONS = [
@@ -171,7 +171,9 @@ export default function CurriculumPage({ onOpenTourModal }) {
                   THE PEDAGOGICAL SHIFT
                 </span>
                 <h2 className="text-3xl sm:text-5xl font-extrabold text-[#091E3A] tracking-tight mt-3 mb-4">
-                  The No-Book Advantage — No Heavy Books
+                  The No-Book Advantage
+                  <br />
+                  No Heavy Books
                   <br />
                   No Empty Learning
                 </h2>
@@ -187,57 +189,74 @@ export default function CurriculumPage({ onOpenTourModal }) {
                     instead: "Instead of only learning about plants...",
                     real: "Children grow them.",
                     desc: "Touching soil, measuring sprout heights, and noting sunlight changes with their own hands.",
-                    color: "#ADF802",
-                    flowClass: "card-flow-lime"
+                    theme: SAND_THEMES.lime,
                   },
                   {
                     instead: "Instead of only identifying shapes...",
                     real: "Children build with them.",
                     desc: "Constructing bridges, towers, and patterns with solid 3D geometric forms.",
-                    color: "#60C8D4",
-                    flowClass: "card-flow-cyan"
+                    theme: SAND_THEMES.cyan,
                   },
                   {
                     instead: "Instead of only memorising numbers...",
                     real: "Children use them in meaningful situations.",
                     desc: "Running play grocery stalls, sorting bead quantities, and balancing scales.",
-                    color: "#fece13",
-                    flowClass: "card-flow-gold"
+                    theme: SAND_THEMES.yellow,
                   },
                   {
                     instead: "Instead of only reading about the world...",
                     real: "Children experience it.",
                     desc: "Conducting tactile experiments, listening to guest storytellers, and sensory explorations.",
-                    color: "#FF6B8B",
-                    flowClass: "card-flow-coral"
+                    theme: SAND_THEMES.rose,
                   }
-                ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    className={`p-7 rounded-[32px] border-2 shadow-lg flex flex-col justify-between transition-all duration-300 ${item.flowClass}`}
-                    style={{ animationDelay: `${idx * 1.4}s` }}
-                  >
-                    <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 line-through">
-                        {item.instead}
-                      </span>
-                      <h3
-                        className="text-2xl font-black mt-2 mb-3 text-[#091E3A]"
-                        style={{ borderLeft: `4px solid ${item.color}`, paddingLeft: '12px' }}
+                ].map((item, idx) => {
+                  const t = item.theme;
+                  return (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="p-7 rounded-[32px] relative overflow-hidden flex flex-col justify-between transition-all duration-300"
+                      style={{
+                        background: t.bgGradient,
+                        border: `2px solid ${t.borderColor}`,
+                        boxShadow: t.shadow,
+                      }}
+                    >
+                      <FlowingSandWaves theme={t} />
+                      <div className="relative z-10">
+                        <span
+                          className="text-[11px] font-bold uppercase tracking-wider line-through"
+                          style={{ color: t.mutedTextColor }}
+                        >
+                          {item.instead}
+                        </span>
+                        <h3
+                          className="text-2xl font-black mt-2 mb-3"
+                          style={{
+                            color: t.textColor,
+                            borderLeft: `4px solid ${t.accentBarColor}`,
+                            paddingLeft: '12px',
+                          }}
+                        >
+                          {item.real}
+                        </h3>
+                        <p
+                          className="text-sm font-medium leading-relaxed"
+                          style={{ color: t.subTextColor }}
+                        >
+                          {item.desc}
+                        </p>
+                      </div>
+                      <div
+                        className="relative z-10 mt-6 flex items-center gap-2 text-xs font-bold"
+                        style={{ color: t.textColor }}
                       >
-                        {item.real}
-                      </h3>
-                      <p className="text-sm text-slate-700 font-medium leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                    <div className="mt-6 flex items-center gap-2 text-xs font-bold text-[#091E3A]">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                      <span>Deep Experiential Grasp</span>
-                    </div>
-                  </motion.div>
-                ))}
+                        <CheckCircle2 className="w-4 h-4" style={{ color: t.iconColor }} />
+                        <span>Deep Experiential Grasp</span>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </section>

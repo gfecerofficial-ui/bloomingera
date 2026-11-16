@@ -103,3 +103,113 @@ export function PageHeader({ badge, title, subtitle }) {
   );
 }
 
+/**
+ * Flowing-sand palette themes matching "Big Thinking for Little Learners" on the Home page.
+ */
+export const SAND_THEMES = {
+  lime: {
+    bgGradient: 'linear-gradient(135deg, #ADF802 0%, #9fe000 50%, #bbf926 100%)',
+    waveColor1: 'rgba(255, 255, 255, 0.32)',
+    waveColor2: 'rgba(105, 175, 18, 0.28)',
+    waveColor3: 'rgba(255, 255, 255, 0.20)',
+    sandShimmer: 'rgba(235, 255, 190, 0.45)',
+    borderColor: 'rgba(255, 255, 255, 0.65)',
+    shadow: '0 22px 55px rgba(173, 248, 2, 0.35)',
+    textColor: '#091E3A',
+    subTextColor: 'rgba(9, 30, 58, 0.84)',
+    mutedTextColor: 'rgba(9, 30, 58, 0.65)',
+    accentBarColor: '#091E3A',
+    iconColor: '#091E3A',
+  },
+  cyan: {
+    bgGradient: 'linear-gradient(135deg, #02c9fe 0%, #05b8e9 50%, #36d6fe 100%)',
+    waveColor1: 'rgba(255, 255, 255, 0.34)',
+    waveColor2: 'rgba(2, 130, 195, 0.26)',
+    waveColor3: 'rgba(255, 255, 255, 0.20)',
+    sandShimmer: 'rgba(210, 248, 255, 0.45)',
+    borderColor: 'rgba(255, 255, 255, 0.65)',
+    shadow: '0 22px 55px rgba(2, 201, 254, 0.35)',
+    textColor: '#091E3A',
+    subTextColor: 'rgba(9, 30, 58, 0.84)',
+    mutedTextColor: 'rgba(9, 30, 58, 0.65)',
+    accentBarColor: '#091E3A',
+    iconColor: '#091E3A',
+  },
+  yellow: {
+    bgGradient: 'linear-gradient(135deg, #fece13 0%, #f7be0b 50%, #fedd46 100%)',
+    waveColor1: 'rgba(255, 255, 255, 0.35)',
+    waveColor2: 'rgba(215, 150, 0, 0.24)',
+    waveColor3: 'rgba(255, 255, 255, 0.22)',
+    sandShimmer: 'rgba(255, 252, 215, 0.50)',
+    borderColor: 'rgba(255, 255, 255, 0.65)',
+    shadow: '0 22px 55px rgba(254, 206, 19, 0.35)',
+    textColor: '#091E3A',
+    subTextColor: 'rgba(9, 30, 58, 0.84)',
+    mutedTextColor: 'rgba(9, 30, 58, 0.65)',
+    accentBarColor: '#091E3A',
+    iconColor: '#091E3A',
+  },
+  rose: {
+    bgGradient: 'linear-gradient(135deg, #fa0672 0%, #e20063 50%, #fc3c91 100%)',
+    waveColor1: 'rgba(255, 255, 255, 0.28)',
+    waveColor2: 'rgba(160, 0, 68, 0.26)',
+    waveColor3: 'rgba(255, 255, 255, 0.18)',
+    sandShimmer: 'rgba(255, 220, 238, 0.45)',
+    borderColor: 'rgba(255, 255, 255, 0.55)',
+    shadow: '0 22px 55px rgba(250, 6, 114, 0.35)',
+    textColor: '#FFFFFF',
+    subTextColor: 'rgba(255, 255, 255, 0.90)',
+    mutedTextColor: 'rgba(255, 255, 255, 0.78)',
+    accentBarColor: '#FFFFFF',
+    iconColor: '#FFFFFF',
+  },
+};
+
+/**
+ * Animated sand-dune wave layers, shimmer, and micro-grain overlay for themed cards.
+ */
+export function FlowingSandWaves({ theme }) {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[30px]">
+      <div
+        className="absolute -inset-10 animate-sand-shimmer pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at 35% 25%, ${theme.sandShimmer} 0%, transparent 60%)`,
+        }}
+      />
+      <svg
+        viewBox="0 0 1000 300"
+        preserveAspectRatio="none"
+        className="absolute -bottom-2 left-0 w-[200%] h-36 animate-sand-forward pointer-events-none"
+        style={{ fill: theme.waveColor1 }}
+      >
+        <path d="M 0,140 Q 125,60 250,140 T 500,140 Q 625,60 750,140 T 1000,140 L 1000,300 L 0,300 Z" />
+      </svg>
+      <svg
+        viewBox="0 0 1000 300"
+        preserveAspectRatio="none"
+        className="absolute -bottom-4 left-0 w-[200%] h-44 animate-sand-reverse pointer-events-none"
+        style={{ fill: theme.waveColor2 }}
+      >
+        <path d="M 0,180 Q 150,230 300,170 T 500,180 Q 650,230 800,170 T 1000,180 L 1000,300 L 0,300 Z" />
+      </svg>
+      <svg
+        viewBox="0 0 1000 300"
+        preserveAspectRatio="none"
+        className="absolute -bottom-6 left-0 w-[200%] h-28 animate-sand-drift pointer-events-none"
+        style={{ fill: theme.waveColor3 }}
+      >
+        <path d="M 0,110 C 100,70 180,150 250,110 C 320,70 400,150 500,110 C 600,70 680,150 750,110 C 820,70 900,150 1000,110 L 1000,300 L 0,300 Z" />
+      </svg>
+      <div
+        className="absolute inset-0 opacity-[0.14] mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0.85) 1px, transparent 1px), radial-gradient(circle at 20% 30%, rgba(0,0,0,0.45) 1px, transparent 1px)`,
+          backgroundSize: '12px 12px, 16px 16px',
+        }}
+      />
+      <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+    </div>
+  );
+}
+
