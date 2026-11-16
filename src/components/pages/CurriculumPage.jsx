@@ -131,7 +131,7 @@ export default function CurriculumPage({ onOpenTourModal }) {
         badge="INTRODUCING KINDERMAGIC PRIMEX"
         title={
           <>
-            <span className="block text-left">A Curriculum for the World</span>
+            <span className="block text-left">A Curriculum for the World,</span>
             <span className="block text-right">Children Are Growing Into</span>
           </>
         }
