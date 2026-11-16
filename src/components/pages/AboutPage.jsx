@@ -10,7 +10,7 @@ export default function AboutPage({ onOpenTourModal, onNavigate }) {
       {/* Page Header */}
       <PageHeader
         badge="OUR STORY. OUR PURPOSE."
-        title={<>Redefining Early Childhood Education<br />Redefining Preschool Economics</>}
+        title={<><span className="sm:whitespace-nowrap">Redefining Early Childhood Education</span><br />Redefining Preschool Economics</>}
         subtitle="Blooming Era is built on a belief that early education must prepare children for life without taking away the joy of childhood. Our educational approach brings together experiential learning, holistic development, Indian cultural values and global perspectives to create meaningful foundations for tomorrow."
       />
 
