@@ -144,7 +144,7 @@ const HERO_SLIDES = [
     secondaryImage: CHILD_PHOTOS.classroomDrawing,
     tertiaryImage: CHILD_PHOTOS.playgroupFloorToddler,
     badgeTitle: "Franchise Starting at ₹2.50 Lakh Onwards",
-    badgeSub: "Low Investment, High ROI",
+    badgeSub: "Low Investment, High Return on Investment",
     badgeBtnText: "Partner With Us",
     badgeTarget: "franchise",
     accent: "#ADF802"
