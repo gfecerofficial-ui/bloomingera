@@ -99,6 +99,8 @@ const HERO_SLIDES = [
     tertiaryImage: CHILD_PHOTOS.toddlerLaughingBook,
     badgeTitle: "Proudly Indian, Powerfully Global",
     badgeSub: "Futuristic by Design • Childhood First",
+    badgeBtnText: "Admissions Open",
+    badgeTarget: "admissions",
     accent: "#ADF802"
   },
   {
@@ -120,6 +122,8 @@ const HERO_SLIDES = [
     tertiaryImage: CHILD_PHOTOS.natureExplorerChild,
     badgeTitle: "Kindermagic PrimeX™ Curriculum",
     badgeSub: "NEP 2020 & NCF-FS 2022 Aligned",
+    badgeBtnText: "Explore it",
+    badgeTarget: "curriculum",
     accent: "#60C8D4"
   },
   {
@@ -139,8 +143,10 @@ const HERO_SLIDES = [
     mainImage: CLOUDINARY_MEDIA.s3,
     secondaryImage: CHILD_PHOTOS.classroomDrawing,
     tertiaryImage: CHILD_PHOTOS.playgroupFloorToddler,
-    badgeTitle: "Franchise Starting at ₹2.50 Lakh",
-    badgeSub: "360° Setup, Training & Admissions Support",
+    badgeTitle: "Franchise Starting at ₹2.50 Lakh Onwards",
+    badgeSub: "Low Investment, High ROI",
+    badgeBtnText: "Partner With Us",
+    badgeTarget: "franchise",
     accent: "#ADF802"
   }
 ];
@@ -1364,9 +1370,13 @@ export default function IndianPreschoolHome({
                             <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
                             <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
                           </div>
-                          <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] flex-shrink-0">
-                            Admissions Open
-                          </span>
+                          <button
+                            type="button"
+                            onClick={() => onNavigate?.(currentSlide.badgeTarget)}
+                            className="px-2.5 py-1 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] hover:bg-[#0D2342] transition-colors flex-shrink-0 cursor-pointer"
+                          >
+                            {currentSlide.badgeBtnText}
+                          </button>
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -1580,9 +1590,13 @@ export default function IndianPreschoolHome({
                         <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
                         <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
                       </div>
-                      <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] flex-shrink-0">
-                        Admissions Open
-                      </span>
+                      <button
+                        type="button"
+                        onClick={() => onNavigate?.(currentSlide.badgeTarget)}
+                        className="px-2.5 py-1 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] hover:bg-[#0D2342] transition-colors flex-shrink-0 cursor-pointer"
+                      >
+                        {currentSlide.badgeBtnText}
+                      </button>
                     </motion.div>
                   </AnimatePresence>
                 </div>
