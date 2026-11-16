@@ -1152,453 +1152,338 @@ export default function IndianPreschoolHome({
         </motion.div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Desktop Slide Selector Pills with Silky Sliding Layout Animation */}
-          <div className="hidden lg:flex items-center justify-between gap-3 mb-8">
-            <div className="flex items-center gap-2 p-1 rounded-full glass-panel-elevated border border-white/80">
-              {HERO_SLIDES.map((s, idx) => {
-                const isActive = activeSlide === idx;
-                return (
+          {/* Expanded Bounded Image Slideshow Frame (Full-Width Hero Visual on Top) */}
+          <div className="relative">
+            {/* Deep melting glow wash dissolving into hero background */}
+            <div className="absolute -inset-6 sm:-inset-10 rounded-[52px] bg-gradient-to-tr from-[#ADF802]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
+
+            {/* Luminous core aura subtly glowing around the frame */}
+            <div className="absolute -inset-3 sm:-inset-5 rounded-[44px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#ADF802]/35 animate-glow-melt-core pointer-events-none" />
+
+            {/* Main Slideshow Showcase Frame */}
+            <div
+              ref={desktopSlideshowRef}
+              className="relative overflow-hidden rounded-3xl lg:rounded-[36px] border-2 border-white/85 h-[260px] sm:h-[400px] lg:h-[520px] xl:h-[560px] bg-[#091E3A]/5 shadow-2xl"
+              style={{
+                transform: "translateZ(0)",
+                WebkitTransform: "translateZ(0)",
+                backfaceVisibility: "hidden",
+              }}
+            >
+              {/* Subtly Sparkling Rim Border */}
+              <div
+                className="hidden lg:block absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
+                style={{
+                  WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude",
+                  padding: "2px",
+                }}
+              />
+
+              {/* Sparkling border glints */}
+              <div className="absolute top-3 left-12 z-30 pointer-events-none animate-sparkle-star-1">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.95)]">
+                  <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                </svg>
+              </div>
+              <div className="absolute top-1/4 right-3 z-30 pointer-events-none animate-sparkle-star-2">
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-[#fece13] drop-shadow-[0_0_8px_rgba(254,206,19,0.95)]">
+                  <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                </svg>
+              </div>
+              <div className="absolute bottom-4 right-16 z-30 pointer-events-none animate-sparkle-star-3">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-[#60C8D4] drop-shadow-[0_0_8px_rgba(96,200,212,0.95)]">
+                  <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                </svg>
+              </div>
+              <div className="absolute bottom-1/3 left-3 z-30 pointer-events-none animate-sparkle-star-4">
+                <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#ADF802] drop-shadow-[0_0_8px_rgba(173, 248, 2,0.95)]">
+                  <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
+                </svg>
+              </div>
+
+              {/* Desktop Top Slide Selector Pills & Navigation Arrows inside Top of Slideshow */}
+              <div className="hidden lg:flex absolute top-4 inset-x-5 z-20 items-center justify-between gap-3">
+                <div className="flex items-center gap-2 p-1 rounded-full glass-panel-elevated border border-white/85 shadow-md">
+                  {HERO_SLIDES.map((s, idx) => {
+                    const isActive = activeSlide === idx;
+                    return (
+                      <motion.button
+                        key={s.id}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        onClick={() => setActiveSlide(idx)}
+                        className={`relative px-4 py-2 rounded-full text-xs font-extrabold transition-colors duration-300 flex items-center gap-2 ${
+                          isActive ? "text-white" : "text-[#091E3A]/80 hover:text-[#091E3A]"
+                        }`}
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeHeroPill"
+                            transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                            className="absolute inset-0 bg-[#091E3A] rounded-full shadow-md"
+                          />
+                        )}
+                        <span
+                          className="relative z-10 w-2 h-2 rounded-full transition-transform duration-300"
+                          style={{ backgroundColor: s.accent }}
+                        />
+                        <span className="relative z-10">{s.tag}</span>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+
+                <div className="flex items-center gap-2">
                   <motion.button
-                    key={s.id}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    onClick={() => setActiveSlide(idx)}
-                    className={`relative px-4 py-2 rounded-full text-xs font-extrabold transition-colors duration-300 flex items-center gap-2 ${
-                      isActive ? 'text-white' : 'text-[#091E3A]/75 hover:text-[#091E3A]'
-                    }`}
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.92 }}
+                    onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+                    className="w-9 h-9 rounded-full glass-panel-elevated border border-white/85 flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-md"
+                    aria-label="Previous Hero Slide"
                   >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeHeroPill"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                        className="absolute inset-0 bg-[#091E3A] rounded-full shadow-md"
-                      />
-                    )}
-                    <span
-                      className="relative z-10 w-2 h-2 rounded-full transition-transform duration-300"
-                      style={{ backgroundColor: s.accent }}
-                    />
-                    <span className="relative z-10">{s.tag}</span>
+                    <ChevronLeft className="w-4 h-4" />
                   </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.92 }}
+                    onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
+                    className="w-9 h-9 rounded-full glass-panel-elevated border border-white/85 flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-md"
+                    aria-label="Next Hero Slide"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Permanently Mounted GPU-Composited Slideshow Images */}
+              {HERO_SLIDES.map((slide, idx) => {
+                const isCurrent = activeSlide === idx;
+                return (
+                  <img
+                    key={slide.id}
+                    src={slide.mainImage}
+                    alt={slide.headline}
+                    loading="eager"
+                    decoding="sync"
+                    fetchPriority="high"
+                    className={`absolute inset-0 w-full h-full object-cover object-[center_20%] transition-opacity duration-500 ease-in-out will-change-[opacity] ${
+                      isCurrent ? "opacity-100 z-[2]" : "opacity-0 z-[1] pointer-events-none"
+                    }`}
+                    style={{
+                      transform: "translateZ(0)",
+                      WebkitTransform: "translateZ(0)",
+                      backfaceVisibility: "hidden",
+                    }}
+                  />
                 );
               })}
-            </div>
 
-            <div className="flex items-center gap-2">
+              {/* Compact Floating Glass Badge */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide.badgeTitle}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/95 lg:bg-white/90 lg:backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[92%]"
+                >
+                  <div
+                    className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
+                    style={{ backgroundColor: currentSlide.accent }}
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="truncate">
+                    <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
+                    <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate?.(currentSlide.badgeTarget)}
+                    className="px-2.5 py-1 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] hover:bg-[#0D2342] transition-colors flex-shrink-0 cursor-pointer"
+                  >
+                    {currentSlide.badgeBtnText}
+                  </button>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Mobile Slide Controls: Arrows & Active Slide Title right below slideshow */}
+          <div className="flex lg:hidden items-center gap-2 mt-4 w-full">
+            <div className="flex items-center gap-1.5 flex-shrink-0">
               <motion.button
                 whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.92 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-sm"
                 aria-label="Previous Hero Slide"
               >
                 <ChevronLeft className="w-4 h-4" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.92 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-xs"
+                className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-sm"
                 aria-label="Next Hero Slide"
               >
                 <ChevronRight className="w-4 h-4" />
               </motion.button>
             </div>
+
+            <div className="flex-1 min-w-0">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide.id}
+                  initial={{ opacity: 0, x: 6 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -6 }}
+                  transition={{ duration: 0.2 }}
+                  className="px-3.5 py-2 rounded-full bg-[#091E3A] text-white text-xs font-extrabold flex items-center justify-center gap-2 shadow-md"
+                >
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span
+                      className="w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-300"
+                      style={{ backgroundColor: currentSlide.accent }}
+                    />
+                    <span className="truncate">{currentSlide.tag}</span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
-            {/* Left Narrative Column - Locked Heights for Text to eliminate vertical shift */}
-            <div className="lg:col-span-5 flex flex-col justify-between">
-              
-              <div className="space-y-4">
-                {/* Dynamic Slide Content (Badge + Headline + Description) */}
-                <div className="relative min-h-[300px] sm:min-h-[325px] lg:min-h-[365px]">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentSlide.id}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -6 }}
-                      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                      className="space-y-4"
-                    >
-                      {/* Small Heading Badge */}
-                      <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel-elevated border-2 border-white shadow-md">
-                        <div className="relative flex items-center justify-center w-2.5 h-2.5">
-                          <motion.span
-                            animate={{ scale: [1, 2.2, 1], opacity: [0.8, 0, 0.8] }}
-                            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute inset-0 rounded-full"
-                            style={{ backgroundColor: currentSlide.accent }}
-                          />
-                          <span
-                            className="relative w-2 h-2 rounded-full"
-                            style={{ backgroundColor: currentSlide.accent }}
-                          />
-                        </div>
-                        <span className="text-xs font-black uppercase tracking-widest text-[#091E3A]">
-                          {currentSlide.smallHeading}
-                        </span>
+          {/* Structured Hero Content Below Slideshow (Desktop & Mobile) */}
+          <div className="mt-6 lg:mt-8 rounded-3xl lg:rounded-[32px] bg-white/85 backdrop-blur-xl border-2 border-white shadow-xl p-6 sm:p-8 lg:p-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+              {/* Left: Badge, Headline & Justified Description */}
+              <div className="lg:col-span-7">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide.id}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                    className="space-y-4"
+                  >
+                    {/* Small Heading Badge */}
+                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel-elevated border-2 border-white shadow-sm">
+                      <div className="relative flex items-center justify-center w-2.5 h-2.5">
+                        <motion.span
+                          animate={{ scale: [1, 2.2, 1], opacity: [0.8, 0, 0.8] }}
+                          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                          className="absolute inset-0 rounded-full"
+                          style={{ backgroundColor: currentSlide.accent }}
+                        />
+                        <span
+                          className="relative w-2 h-2 rounded-full"
+                          style={{ backgroundColor: currentSlide.accent }}
+                        />
                       </div>
+                      <span className="text-[11px] font-black uppercase tracking-widest text-[#091E3A]">
+                        {currentSlide.smallHeading}
+                      </span>
+                    </div>
 
-                      {/* Headline with locked min-height for 3-line headings across all slides */}
-                      <div className="min-h-[125px] sm:min-h-[165px] lg:min-h-[205px] flex items-center">
-                        <h1
-                          ref={heroHeadingRef}
-                          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#091E3A] tracking-tight leading-[1.08]"
-                        >
-                          {(currentSlide.headlineLines || []).map((line, idx) => (
-                            <span key={idx} className="block">
-                              {line.highlight ? (
-                                <span className="relative inline-block mt-0.5 sm:mt-1">
-                                  <span className="relative z-10">{line.text}</span>
-                                  <span
-                                    className="absolute bottom-1.5 left-0 right-0 h-3.5 sm:h-4 -z-0 rounded-full opacity-75"
-                                    style={{ backgroundColor: currentSlide.accent }}
-                                  />
-                                </span>
-                              ) : (
-                                <span>{line.text}</span>
-                              )}
+                    {/* Headline */}
+                    <h1
+                      ref={heroHeadingRef}
+                      className="text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-[#091E3A] tracking-tight leading-[1.08]"
+                    >
+                      {(currentSlide.headlineLines || []).map((line, idx) => (
+                        <span key={idx} className="inline-block mr-2.5 sm:mr-3">
+                          {line.highlight ? (
+                            <span className="relative inline-block">
+                              <span className="relative z-10">{line.text}</span>
+                              <span
+                                className="absolute bottom-1 left-0 right-0 h-3 sm:h-3.5 -z-0 rounded-full opacity-75"
+                                style={{ backgroundColor: currentSlide.accent }}
+                              />
                             </span>
-                          ))}
-                        </h1>
-                      </div>
+                          ) : (
+                            <span>{line.text}</span>
+                          )}
+                        </span>
+                      ))}
+                    </h1>
 
-                      {/* Description with locked min-height */}
-                      <div className="min-h-[64px] sm:min-h-[50px] flex items-start">
-                        <p className="text-base sm:text-lg text-[#091E3A]/80 font-medium leading-relaxed max-w-xl text-justify">
-                          {currentSlide.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
+                    {/* Justified Description */}
+                    <p className="text-base sm:text-lg text-[#091E3A]/80 font-medium leading-relaxed text-justify max-w-2xl">
+                      {currentSlide.description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-                {/* MOBILE ONLY: Image Slideshow right under heading & content, with slide arrows and title below it */}
-                <div className="block lg:hidden my-6">
-                  {/* Organic Preschool Hero Showcase - Melting Frame & Ambient Glow */}
-                  <div className="relative mx-auto max-w-xl">
-                    {/* Deep melting glow wash dissolving seamlessly into hero background */}
-                    <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#ADF802]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
-
-                    {/* Luminous core aura subtly glowing around the frame */}
-                    <div className="absolute -inset-4 sm:-inset-6 rounded-[50px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#ADF802]/35 animate-glow-melt-core pointer-events-none" />
-
-                    {/* Image Showcase Frame with fluid organic border melting directly into background */}
-                    <div
-                      className="relative overflow-hidden h-[390px] sm:h-[460px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
-                      style={{
-                        transform: 'translateZ(0)',
-                        WebkitTransform: 'translateZ(0)',
-                        backfaceVisibility: 'hidden',
-                      }}
-                    >
-                      {/* Subtly Sparkling Rim Border */}
-                      <div
-                        className="hidden lg:block absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
-                        style={{
-                          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                          WebkitMaskComposite: 'xor',
-                          maskComposite: 'exclude',
-                          padding: '2px',
-                        }}
-                      />
-
-                      {/* Sparkling border glints */}
-                      <div className="absolute top-2 left-10 z-30 pointer-events-none animate-sparkle-star-1">
-                        <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.95)]">
-                          <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
-                        </svg>
-                      </div>
-                      <div className="absolute top-1/4 right-3 z-30 pointer-events-none animate-sparkle-star-2">
-                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-[#fece13] drop-shadow-[0_0_8px_rgba(254,206,19,0.95)]">
-                          <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
-                        </svg>
-                      </div>
-                      <div className="absolute bottom-4 right-14 z-30 pointer-events-none animate-sparkle-star-3">
-                        <svg viewBox="0 0 24 24" className="w-4 h-4 fill-[#60C8D4] drop-shadow-[0_0_8px_rgba(96,200,212,0.95)]">
-                          <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
-                        </svg>
-                      </div>
-                      <div className="absolute bottom-1/3 left-3 z-30 pointer-events-none animate-sparkle-star-4">
-                        <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#ADF802] drop-shadow-[0_0_8px_rgba(173, 248, 2,0.95)]">
-                          <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
-                        </svg>
-                      </div>
-
-                      {/* Permanently Mounted GPU-Composited Slideshow Images (Zero Unmount/Remount Texture Stalls) */}
-                      {HERO_SLIDES.map((slide, idx) => {
-                        const isCurrent = activeSlide === idx;
-                        return (
-                          <img
-                            key={slide.id}
-                            src={slide.mainImage}
-                            alt={slide.headline}
-                            loading="eager"
-                            decoding="sync"
-                            fetchPriority="high"
-                            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 ease-in-out will-change-[opacity] ${
-                              isCurrent ? 'opacity-100 z-[2]' : 'opacity-0 z-[1] pointer-events-none'
-                            }`}
-                            style={{
-                              transform: 'translateZ(0)',
-                              WebkitTransform: 'translateZ(0)',
-                              backfaceVisibility: 'hidden',
-                            }}
-                          />
-                        );
-                      })}
-
-                      {/* Compact Floating Glass Badge */}
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={currentSlide.badgeTitle}
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -6 }}
-                          transition={{ duration: 0.3, ease: 'easeOut' }}
-                          className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/95 lg:bg-white/90 lg:backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
-                        >
-                          <div
-                            className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
-                            style={{ backgroundColor: currentSlide.accent }}
-                          >
-                            <Sparkles className="w-3.5 h-3.5" />
-                          </div>
-                          <div className="truncate">
-                            <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
-                            <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => onNavigate?.(currentSlide.badgeTarget)}
-                            className="px-2.5 py-1 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] hover:bg-[#0D2342] transition-colors flex-shrink-0 cursor-pointer"
-                          >
-                            {currentSlide.badgeBtnText}
-                          </button>
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
-                  </div>
-
-                  {/* Mobile Slide Controls: Arrows & Active Slide Title below the slideshow */}
-                  <div className="flex items-center gap-2 mt-5 w-full">
-                    <div className="flex items-center gap-1.5 flex-shrink-0">
-                      <motion.button
-                        whileHover={{ scale: 1.08 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-                        className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-sm"
-                        aria-label="Previous Hero Slide"
-                      >
-                        <ChevronLeft className="w-4 h-4" />
-                      </motion.button>
-                      <motion.button
-                        whileHover={{ scale: 1.08 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-                        className="w-9 h-9 rounded-full glass-panel-elevated flex items-center justify-center text-[#091E3A] hover:bg-[#ADF802] transition-colors shadow-sm"
-                        aria-label="Next Hero Slide"
-                      >
-                        <ChevronRight className="w-4 h-4" />
-                      </motion.button>
-                    </div>
-
-                    {/* Active slide pill in the free right space of the arrows */}
-                    <div className="flex-1 min-w-0">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={currentSlide.id}
-                          initial={{ opacity: 0, x: 6 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -6 }}
-                          transition={{ duration: 0.2 }}
-                          className="px-3.5 py-2 rounded-full bg-[#091E3A] text-white text-xs font-extrabold flex items-center justify-center gap-2 shadow-md"
-                        >
-                          <div className="flex items-center gap-2 min-w-0">
-                            <span
-                              className="w-2 h-2 rounded-full flex-shrink-0 transition-colors duration-300"
-                              style={{ backgroundColor: currentSlide.accent }}
-                            />
-                            <span className="truncate">{currentSlide.tag}</span>
-                          </div>
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA Buttons - Stacked one over another */}
-                <div className="flex flex-col items-start gap-3 pt-1">
+              {/* Right: CTA Buttons & 3 Trust Highlight Cards */}
+              <div className="lg:col-span-5 flex flex-col justify-between gap-5">
+                <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
                   <motion.a
-                    whileHover={{ scale: 1.04, y: -2 }}
+                    whileHover={{ scale: 1.03, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                     href={currentSlide.primaryHref}
-                    className="btn-lime px-7 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2.5 border-2 border-white shadow-xl group transition-all"
+                    className="btn-lime px-6 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2 border-2 border-white shadow-lg group transition-all flex-1 text-center"
                   >
-                    <span>{currentSlide.primaryBtn}</span>
-                    <ArrowRight className="w-4 h-4 text-[#091E3A] group-hover:translate-x-1 transition-transform" />
+                    <span className="truncate">{currentSlide.primaryBtn}</span>
+                    <ArrowRight className="w-4 h-4 text-[#091E3A] flex-shrink-0 group-hover:translate-x-1 transition-transform" />
                   </motion.a>
 
                   <motion.button
-                    whileHover={{ scale: 1.04, y: -2 }}
+                    whileHover={{ scale: 1.03, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                     onClick={onOpenTourModal}
-                    className="btn-turquoise px-7 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2 border-2 border-white shadow-lg group transition-all"
+                    className="btn-turquoise px-6 py-3.5 rounded-full text-sm font-extrabold inline-flex items-center justify-center gap-2 border-2 border-white shadow-md group transition-all flex-1"
                   >
-                    <Calendar className="w-4 h-4 text-[#091E3A] group-hover:rotate-6 transition-transform" />
-                    <span>{currentSlide.secondaryBtn}</span>
+                    <Calendar className="w-4 h-4 text-[#091E3A] flex-shrink-0 group-hover:rotate-6 transition-transform" />
+                    <span className="truncate">{currentSlide.secondaryBtn}</span>
                   </motion.button>
                 </div>
-              </div>
 
-              {/* Indian Preschool Trust Highlights - Bold Saturated Brand Colors */}
-              <div className="pt-6 grid grid-cols-3 gap-3 max-w-lg">
-                <motion.div
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  className="p-3.5 rounded-2xl border-2 border-[#f5b800] text-center shadow-md relative overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(135deg, #fee575 0%, #fff0a8 35%, #fede54 70%, #fcd33f 100%)',
-                    backgroundSize: '220% 220%',
-                    animation: 'flowyColorDrift 8s ease-in-out infinite',
-                  }}
-                >
-                  <p className="text-xs font-black text-[#091E3A]">No-Book Model</p>
-                  <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">Experiential FLN</p>
-                </motion.div>
-                <motion.div
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  className="p-3.5 rounded-2xl border-2 border-[#76be13] text-center shadow-md relative overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(135deg, #d4f884 0%, #e7fcb4 35%, #c4f466 70%, #b3ed45 100%)',
-                    backgroundSize: '220% 220%',
-                    animation: 'flowyColorDrift 8s ease-in-out infinite',
-                    animationDelay: '1.3s',
-                  }}
-                >
-                  <p className="text-xs font-black text-[#091E3A]">2+ to 5+ Years</p>
-                  <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">Playgroup to Sr. KG</p>
-                </motion.div>
-                <motion.div
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  className="p-3.5 rounded-2xl border-2 border-[#20b2c4] text-center shadow-md relative overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(135deg, #b2f0f7 0%, #d4f7fb 35%, #9eeaf3 70%, #7be1ed 100%)',
-                    backgroundSize: '220% 220%',
-                    animation: 'flowyColorDrift 8s ease-in-out infinite',
-                    animationDelay: '2.6s',
-                  }}
-                >
-                  <p className="text-xs font-black text-[#091E3A]">360° Growth</p>
-                  <p className="text-[11px] text-[#091E3A]/85 font-bold mt-0.5">8 Dimensions</p>
-                </motion.div>
-              </div>
-            </div>
-
-            {/* Right Organic Preschool Hero Showcase - Desktop with Melting Frame & Ambient Glow */}
-            <div className="hidden lg:block lg:col-span-7 relative">
-              <div className="relative mx-auto max-w-lg lg:max-w-none">
-                {/* Deep melting glow wash dissolving seamlessly into hero background */}
-                <div className="absolute -inset-8 sm:-inset-12 rounded-[60px] bg-gradient-to-tr from-[#ADF802]/35 via-[#60C8D4]/35 to-[#fece13]/30 animate-glow-melt-deep pointer-events-none" />
-
-                {/* Luminous core aura subtly glowing around the frame */}
-                <div className="absolute -inset-4 sm:-inset-6 rounded-[50px] bg-gradient-to-br from-[#fece13]/30 via-[#60C8D4]/40 to-[#ADF802]/35 animate-glow-melt-core pointer-events-none" />
-
-                {/* Image Showcase Frame with fluid organic border melting directly into background */}
-                <div
-                  ref={desktopSlideshowRef}
-                  className="relative overflow-hidden h-[440px] sm:h-[500px] lg:h-[530px] xl:h-[560px] bg-[#091E3A]/5 shadow-2xl animate-melt-frame"
-                  style={{
-                    WebkitMaskImage: '-webkit-radial-gradient(white, black)',
-                    transform: 'translateZ(0)',
-                  }}
-                >
-                  {/* Subtly Sparkling Rim Border */}
-                  <div
-                    className="absolute inset-0 pointer-events-none rounded-[inherit] sparkle-border-ring opacity-75 z-20"
+                {/* Indian Preschool Trust Highlights */}
+                <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.02 }}
+                    className="p-3 sm:p-3.5 rounded-2xl border-2 border-[#f5b800] text-center shadow-md relative overflow-hidden"
                     style={{
-                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                      WebkitMaskComposite: 'xor',
-                      maskComposite: 'exclude',
-                      padding: '2px',
+                      background: "linear-gradient(135deg, #fee575 0%, #fff0a8 35%, #fede54 70%, #fcd33f 100%)",
+                      backgroundSize: "220% 220%",
+                      animation: "flowyColorDrift 8s ease-in-out infinite",
                     }}
-                  />
-
-                  {/* Sparkling border glints */}
-                  <div className="absolute top-3 left-12 z-30 pointer-events-none animate-sparkle-star-1">
-                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white drop-shadow-[0_0_8px_rgba(255,255,255,0.95)]">
-                      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
-                    </svg>
-                  </div>
-                  <div className="absolute top-1/4 right-3 z-30 pointer-events-none animate-sparkle-star-2">
-                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-[#fece13] drop-shadow-[0_0_8px_rgba(254,206,19,0.95)]">
-                      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
-                    </svg>
-                  </div>
-                  <div className="absolute bottom-4 right-16 z-30 pointer-events-none animate-sparkle-star-3">
-                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-[#60C8D4] drop-shadow-[0_0_8px_rgba(96,200,212,0.95)]">
-                      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
-                    </svg>
-                  </div>
-                  <div className="absolute bottom-1/3 left-3 z-30 pointer-events-none animate-sparkle-star-4">
-                    <svg viewBox="0 0 24 24" className="w-3 h-3 fill-[#ADF802] drop-shadow-[0_0_8px_rgba(173, 248, 2,0.95)]">
-                      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" />
-                    </svg>
-                  </div>
-
-                  {/* Permanently Mounted GPU-Composited Slideshow Images (Zero Unmount/Remount Texture Stalls) */}
-                  {HERO_SLIDES.map((slide, idx) => {
-                    const isCurrent = activeSlide === idx;
-                    return (
-                      <img
-                        key={slide.id}
-                        src={slide.mainImage}
-                        alt={slide.headline}
-                        loading="eager"
-                        decoding="sync"
-                        fetchPriority="high"
-                        className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 ease-in-out will-change-[opacity] ${
-                          isCurrent ? 'opacity-100 z-[2]' : 'opacity-0 z-[1] pointer-events-none'
-                        }`}
-                        style={{
-                          transform: 'translateZ(0)',
-                          WebkitTransform: 'translateZ(0)',
-                          backfaceVisibility: 'hidden',
-                        }}
-                      />
-                    );
-                  })}
-
-                  {/* Compact Floating Glass Badge */}
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentSlide.badgeTitle}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -6 }}
-                      transition={{ duration: 0.3, ease: 'easeOut' }}
-                      className="absolute bottom-3 right-3 glass-panel-elevated py-2 px-3.5 rounded-2xl border border-white/95 bg-white/90 backdrop-blur-xl flex items-center gap-2.5 shadow-lg z-10 max-w-[90%]"
-                    >
-                      <div
-                        className="w-7 h-7 rounded-xl flex items-center justify-center text-[#091E3A] font-black shadow-xs flex-shrink-0 transition-colors duration-500"
-                        style={{ backgroundColor: currentSlide.accent }}
-                      >
-                        <Sparkles className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="truncate">
-                        <p className="text-xs font-extrabold text-[#091E3A] truncate">{currentSlide.badgeTitle}</p>
-                        <p className="text-[10px] font-semibold text-[#091E3A]/70 truncate">{currentSlide.badgeSub}</p>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => onNavigate?.(currentSlide.badgeTarget)}
-                        className="px-2.5 py-1 rounded-full text-[9px] font-black uppercase bg-[#091E3A] text-[#ADF802] hover:bg-[#0D2342] transition-colors flex-shrink-0 cursor-pointer"
-                      >
-                        {currentSlide.badgeBtnText}
-                      </button>
-                    </motion.div>
-                  </AnimatePresence>
+                  >
+                    <p className="text-[11px] sm:text-xs font-black text-[#091E3A]">No-Book Model</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#091E3A]/85 font-bold mt-0.5">Experiential FLN</p>
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.02 }}
+                    className="p-3 sm:p-3.5 rounded-2xl border-2 border-[#76be13] text-center shadow-md relative overflow-hidden"
+                    style={{
+                      background: "linear-gradient(135deg, #d4f884 0%, #e7fcb4 35%, #c4f466 70%, #b3ed45 100%)",
+                      backgroundSize: "220% 220%",
+                      animation: "flowyColorDrift 8s ease-in-out infinite",
+                      animationDelay: "1.3s",
+                    }}
+                  >
+                    <p className="text-[11px] sm:text-xs font-black text-[#091E3A]">2+ to 5+ Years</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#091E3A]/85 font-bold mt-0.5">Playgroup to Sr. KG</p>
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.02 }}
+                    className="p-3 sm:p-3.5 rounded-2xl border-2 border-[#20b2c4] text-center shadow-md relative overflow-hidden"
+                    style={{
+                      background: "linear-gradient(135deg, #b2f0f7 0%, #d4f7fb 35%, #9eeaf3 70%, #7be1ed 100%)",
+                      backgroundSize: "220% 220%",
+                      animation: "flowyColorDrift 8s ease-in-out infinite",
+                      animationDelay: "2.6s",
+                    }}
+                  >
+                    <p className="text-[11px] sm:text-xs font-black text-[#091E3A]">360° Growth</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#091E3A]/85 font-bold mt-0.5">8 Dimensions</p>
+                  </motion.div>
                 </div>
               </div>
             </div>
