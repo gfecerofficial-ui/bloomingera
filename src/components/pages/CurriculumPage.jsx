@@ -6,6 +6,7 @@ import {
   ArrowRight, ShieldCheck, Microscope
 } from 'lucide-react';
 import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
+import { CLOUDINARY_MEDIA } from '../../data/cloudinaryMedia';
 
 const EIGHT_DIMENSIONS = [
   {
@@ -71,37 +72,37 @@ const DISCOVERY_SPACES = [
     name: "The Wonder Lab",
     focus: "Scientific curiosity & simple experimentation",
     desc: "Magnifying glasses, light tables, floating objects and tactile science probes where hypothesis begins with 'What happens if...?'",
-    photo: CHILD_PHOTOS.natureExplorerChild
+    photo: CLOUDINARY_MEDIA[62]
   },
   {
     name: "The Maker Lab",
     focus: "Design, construction, art & early engineering",
     desc: "Open-ended natural wooden blocks, geometric connecting pieces, and upcycled materials to bring blueprints to life.",
-    photo: CHILD_PHOTOS.woodenBlocksChild
+    photo: CLOUDINARY_MEDIA[63]
   },
   {
     name: "Math Discovery Zone",
     focus: "Experiential number sense & reasoning",
     desc: "Pretend grocery counters, balance scales, abacus frames and real counting counters that make mathematics a tactile game.",
-    photo: CHILD_PHOTOS.toddlerBeadMaze
+    photo: CLOUDINARY_MEDIA[64]
   },
   {
     name: "Language & Story Studio",
     focus: "Listening, vocabulary, stories & expression",
     desc: "Cozy reading circles, finger-puppet stages, audio story corners, and picture walks that nurture fluent, fearless communicators.",
-    photo: CHILD_PHOTOS.toddlerLaughingBook
+    photo: CLOUDINARY_MEDIA[65]
   },
   {
     name: "Little Earth Lab",
     focus: "Nature, plants, water & environmental care",
     desc: "Outdoor seedling beds, soil trays, leaf classification zones and water wheels teaching reverence for our planet.",
-    photo: CHILD_PHOTOS.outdoorBallPlayKids
+    photo: CLOUDINARY_MEDIA[66]
   },
   {
     name: "Future Skills Corner",
     focus: "Unplugged coding, patterns & design thinking",
     desc: "Floor maze navigation grids, directional color tiles, sequence puzzles, and unplugged algorithmic thinking.",
-    photo: CHILD_PHOTOS.seniorKgFocusedChild
+    photo: CLOUDINARY_MEDIA[67]
   }
 ];
 

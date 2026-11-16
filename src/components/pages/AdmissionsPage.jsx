@@ -5,6 +5,7 @@ import {
   ShieldCheck, Heart, Sparkles, Clock, User, Award, Loader2, Copy, Check
 } from 'lucide-react';
 import { FlowyWaveDivider, PageHeader, CHILD_PHOTOS } from './shared';
+import { CLOUDINARY_MEDIA } from '../../data/cloudinaryMedia';
 import { submitForm } from '../../services/formService';
 
 const ADMISSION_STEPS = [
@@ -43,10 +44,10 @@ const ADMISSION_STEPS = [
 ];
 
 const PROGRAMMES = [
-  { name: "Playgroup", age: "2+ to 3 Years", focus: "Sensory discovery, gentle social transition & self-expression", photo: CHILD_PHOTOS.playgroupFloorToddler, cardClass: "card-flow-lime", badgeBg: "#ADF802", badgeText: "#091E3A" },
-  { name: "Nursery", age: "3+ to 4 Years", focus: "Language fluency, foundational numeracy & curiosity projects", photo: CHILD_PHOTOS.toddlerLaughingBook, cardClass: "card-flow-cyan", badgeBg: "#60C8D4", badgeText: "#091E3A" },
-  { name: "Junior KG", age: "4+ to 5 Years", focus: "Scientific inquiry, pre-coding logic & collaborative teamwork", photo: CHILD_PHOTOS.natureExplorerChild, cardClass: "card-flow-gold", badgeBg: "#fece13", badgeText: "#091E3A" },
-  { name: "Senior KG", age: "5+ to 6 Years", focus: "School readiness, creative problem-solving & confidence", photo: CHILD_PHOTOS.seniorKgFocusedChild, cardClass: "card-flow-coral", badgeBg: "#FF6B8B", badgeText: "#FFFFFF" }
+  { name: "Playgroup", age: "2+ to 3 Years", focus: "Sensory discovery, gentle social transition & self-expression", photo: CLOUDINARY_MEDIA[69], cardClass: "card-flow-lime", badgeBg: "#ADF802", badgeText: "#091E3A" },
+  { name: "Nursery", age: "3+ to 4 Years", focus: "Language fluency, foundational numeracy & curiosity projects", photo: CLOUDINARY_MEDIA[70], cardClass: "card-flow-cyan", badgeBg: "#60C8D4", badgeText: "#091E3A" },
+  { name: "Junior KG", age: "4+ to 5 Years", focus: "Scientific inquiry, pre-coding logic & collaborative teamwork", photo: CLOUDINARY_MEDIA[71], cardClass: "card-flow-gold", badgeBg: "#fece13", badgeText: "#091E3A" },
+  { name: "Senior KG", age: "5+ to 6 Years", focus: "School readiness, creative problem-solving & confidence", photo: CLOUDINARY_MEDIA[72], cardClass: "card-flow-coral", badgeBg: "#FF6B8B", badgeText: "#FFFFFF" }
 ];
 
 export default function AdmissionsPage({ onOpenTourModal }) {
@@ -184,7 +185,7 @@ export default function AdmissionsPage({ onOpenTourModal }) {
                 className={`rounded-[32px] ${p.cardClass} shadow-xl overflow-hidden flex flex-col justify-between p-4 group transition-all`}
               >
                 <div>
-                  <div className="h-44 rounded-2xl overflow-hidden mb-4 border border-white/60 shadow-sm">
+                  <div className="relative h-44 rounded-2xl overflow-hidden mb-4 border border-white/60 shadow-sm">
                     <img src={p.photo} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <span
